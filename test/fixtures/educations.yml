@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  institution: MyString
+  qualification: one
+  field: MyString
+  yearCompleted: 2018-10-18 08:58:39
+
+two:
+  institution: MyString
+  qualification: two
+  field: MyString
+  yearCompleted: 2018-10-18 08:58:39

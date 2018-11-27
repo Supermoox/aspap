@@ -1,0 +1,25 @@
+// Place all the styles related to the conversations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.hide{
+	visibility: hidden;
+}
+.my-messages{
+	padding: 10px;
+}
+.my-messages:hover{
+	background-color: #F8F8FF;
+}
+.my-messages a:hover{
+	color: black;
+}
+.unread{
+	background-color: whitesmoke;
+}
+
+.Compose{
+	margin-bottom: 10px;
+}

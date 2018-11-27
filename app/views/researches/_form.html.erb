@@ -1,0 +1,43 @@
+
+ 
+
+
+<div class="my-form">
+<%= form_with(model: research, local: true) do |form| %>
+  <% if research.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(research.errors.count, "error") %> prohibited this research from being saved:</h2>
+
+      <ul>
+      <% research.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="form-group">
+      <p id="form-lebel"><%= form.label :topic %><p>
+      <%= form.text_field :topic, id: :form_input, :placeholder =>"title", :required => true  %>
+    </div>
+    <div class="form-group">
+      <p id="form-lebel"><%= form.label :Research_area %><p>
+      <%= form.text_field :Research_area, id: :form_input, :placeholder =>"research area", :required => true %>
+    </div>
+    <div class="form-group">
+      <p id="form-lebel"><%= form.label :Research_Directorate %><p>
+      <%= collection_select(:research, :directorate_id, Directorate.all, :id, :name, :prompt => "Select") %>
+    </div>
+
+    <div class="form-group">
+      <p id="form-lebel"> <%= form.label :description %><p>
+      <%= form.text_area :description, :placeholder =>"write here...",  :required => true%>
+    </div>
+
+
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>

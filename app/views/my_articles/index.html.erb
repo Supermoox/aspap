@@ -1,0 +1,40 @@
+
+<div class="main-content">
+  <div class="journal-header">
+    <p>Your Articles</p>
+  </div>
+  <% if @articles.blank? %>
+    <h4 style="margin-top: 30px;">You have not posted any article yet.</h4>
+  <% else %>
+    <% @articles.each do |article| %>
+      <div class="panel">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-3 ">
+              <% if article.user.image.blank? %>
+                <p id="user_avatar2"><%= link_to(image_tag("/assets/default_user.png", alt: "user_avatar") ) %></p>
+              <% else %>
+                <p id="user_avatar2"><%= image_tag article.user.image %></p>
+              <% end %>
+            </div>       
+            <div class="col-sm-9 ">
+              <div class="discuss">
+                <p ><strong style="font-family: initial;"><%= link_to article.title ,article %> </strong></p>
+                <div class="fadded">
+                  <span><%= article.body %> </span>
+                </div>
+              </div>
+              <span style="font-size: large;"> <%= link_to "Open", article %></span>
+
+              <span style="font-size: large; float: right; color: grey;"><%= link_to 'Edit This Article', edit_article_path(article) %> |
+                <%= link_to 'Remove this Article', article, method: :delete, data: { confirm: 'Are you sure?' } %> 
+              </span>
+            </div>  
+            
+          </div>
+        </div>
+      </div>        
+    <% end %>
+  <% end %>
+  <p> <%= will_paginate @articles %> </p>
+</div>

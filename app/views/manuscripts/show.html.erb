@@ -1,0 +1,128 @@
+<div class="panel">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-3 ">
+          <div class="thumbnail thumbnail-manuscript">
+            <%= image_tag @manuscript.image %>
+          </div>       
+      </div>       
+      <div class="col-sm-9 ">
+        <h4 style="color: #337ab7;"><%=  @manuscript.title %> </h4>
+        <% if @manuscript.user.image.blank? %>
+          <%= link_to(image_tag("/assets/user.png", alt: "user_avatar") ) %> 
+        <% else %>
+          <span id="user_avatar"><%= image_tag @manuscript.user.image %> </span>
+        <% end %>
+        <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= @manuscript.user.username %></span>
+        <span style="color: grey; float: right;"><%= @manuscript.created_at.strftime("%b %d, %Y")  %></span>
+        <p> <%= @manuscript.abstract %>  </p>
+        <p style="color:#337ab7;"> 
+          <span>Vol. </span> 
+          <span><%= @manuscript.volume %> </span>
+          <span>Issue</span> 
+          <span><%= @manuscript.issue %> </span>
+          <span id="note3">
+            <% if @manuscript.document_content_type == "application/pdf" %>
+              <%= link_to image_tag("/assets/doc3.jpg", alt: "pdf"), @manuscript.document.url, target: "_blank" %>
+            <% else %>
+              <%= link_to image_tag("/assets/note3.png", alt: "doc"), @manuscript.document.url, target: "_blank" %>
+            <% end %>
+          </span>
+          <% if current_user.vip? %>
+            <span style="float: right; margin-left: 10px;">
+              <%= link_to @manuscript, method: :delete, data: { confirm: 'Are you sure you want to delete this Manuscript?' }, class: "btn btn-default" do %>
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              <% end %>
+            </span> 
+          <% end %>
+          <% if current_user.vip? || current_user.publisher? %>
+            <span>
+            	<span style="margin-left: 10px; color: black;"><strong>Rating</strong></span>
+            	<span class="star-rating" data-score= <%= @avg_review %> > </span>
+            </span>  
+          <% end %>          
+        </p>
+      </div>  
+    </div>
+    <div class="row review_manuscript">
+    <% if current_user.vip? %>
+      <% if @reviews.blank? %>
+        <h3>No rating just yet.Be first to rate this Work!</h3>
+      <% else %>
+        <% @reviews.each do |review| %>
+          <div class="reviews"> 
+		  			<div class="comment">
+		          <div class="row">
+		            <div class="col-md-2 comment-owner"> 
+		              <% if review.user.image.blank? %>
+		               <span id="user_avatar"> <%= image_tag("/assets/user.png", alt: "user_avatar") %> </span>
+		              <% else %>
+		                <span id="user_avatar"><%= image_tag review.user.image %> </span>
+		              <% end %>
+		            </div>
+		    				<div class="col-md-10 comment-body">
+		              <p class="media-heading">
+		                <span style="color: #6495EA; font-size: small"><%= review.user.username %>  </span> 
+		              </p>
+		              <div class="star-rating" data-score= <%= review.rating %> > </div>
+		              <p style="font-size: large; font-family: initial; "><%= review.comment %> </p>
+		              <h5 class="media-heading">
+		                <small><%= review.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
+		              </h5>
+		            </div>
+		          </div>
+		        </div>
+          </div>
+   		  <% end %>
+      <% end %>
+    <% else %>
+        <% unless @user_reviews.blank? %>
+          <h3 id="form-header">Your Review </h3>
+          <% @user_reviews.each do |review| %>
+            <div class="reviews"> 
+              <div class="comment">
+                <div class="row">
+                  <div class="col-md-2 comment-owner"> 
+                    <% if review.user.image.blank? %>
+                     <span id="user_avatar"> <%= image_tag("/assets/user.png", alt: "user_avatar") %> </span>
+                    <% else %>
+                      <span id="user_avatar"><%= image_tag review.user.image %> </span>
+                    <% end %>
+                  </div>
+                  <div class="col-md-10 comment-body">
+                    <p class="media-heading">
+                      <span style="color: #6495EA; font-size: small"><%= review.user.username %>  </span> 
+                    </p>
+                    <div class="star-rating" data-score= <%= review.rating %> > </div>
+                    <p style="font-size: large; font-family: initial; "><%= simple_format(review.comment) %> </p>
+                    <h5 class="media-heading">
+                      <small><%= review.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+    <% end %>
+    </div>
+  </div>
+  <% unless @already_reviewd %>
+    <%= render 'layouts/review' %>
+  <% end %>
+</div> 
+
+<script>
+  $(' .star-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function(){
+      return $(this).attr('data-score');
+    }
+  });
+
+</script>
+
+
+
+

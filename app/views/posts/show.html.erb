@@ -1,0 +1,50 @@
+<div class="panel panel-default">
+  <p id="post-header"><%= @post.title %></p>
+
+  <p id="post-body">
+
+    <div id="article-body">
+      <%= simple_format(@post.body) %>
+    </div>
+    <span style="color: grey; font-style: italic;"> - Post by</span>
+    <span style="color: #6495EA;"><%= @post.user.username %></span>
+    <% if @post.user.image.blank? %>
+     <span id="user_avatar"> <%= image_tag("/assets/user.png", alt: "user_avatar") %> </span>
+    <% else %>
+      <span id="user_avatar"><%= image_tag @post.user.image %> </span>
+    <% end %>
+  </p>
+
+  <div class="comments">
+  	<% if @comments.blank? %>
+      <p style="font-style: italic;">No comments on this post yet, be the first to comment!</p>
+    <% else %>
+  		<% @comments.each do |comment| %>
+  			<div class="comment">
+          <div class="row">
+            <div class="col-md-2 comment-owner"> 
+              <% if comment.user.image.blank? %>
+               <span id="user_avatar"> <%= image_tag("/assets/user.png", alt: "user_avatar") %> </span>
+              <% else %>
+                <span id="user_avatar"><%= image_tag comment.user.image %> </span>
+              <% end %>
+            </div>
+    				<div class="col-md-10 comment-body">
+              <p class="media-heading">
+                <span style="color: #6495EA; font-size: small"><%= comment.user.username %> </span> 
+              </p>
+              <p style="font-size: large; font-family: initial; "><%= simple_format(comment.body) %> </p>
+              <h5 class="media-heading">
+                <small><%= comment.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
+              </h5>
+            </div>
+          </div>
+        </div>
+  		<% end %>
+  	<% end %>
+  	<h4> Comment</h4>
+  	<%= render "comments/form" %>
+  </div>
+</div>
+
+ 

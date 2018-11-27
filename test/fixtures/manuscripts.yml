@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  journal: one
+  abstract: MyText
+  approval: false
+
+two:
+  title: MyString
+  journal: two
+  abstract: MyText
+  approval: false

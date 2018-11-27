@@ -1,0 +1,366 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+body{
+	background: #F5F5F5;
+}
+.wrapper{
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 50px;
+}
+
+
+.header{
+	background-color:	#708090;
+}
+#post-header{
+	text-align: center;
+	font-family: initial;
+}
+.mid-header{
+	padding-left: 20%;
+	padding-right: 20%;
+}
+.panel{
+	padding: 20px;
+}
+
+.thumbnail{
+	margin-bottom: 0;
+	padding: 20px;
+}
+
+
+.logo{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.logo img{
+	height: 80px;
+	width: 150px;
+
+}
+
+.carousel-indicators li{
+	background-color: #6495ED;
+	border: 1px solid black;
+}
+
+
+.main-menu > li > a {
+  position: relative;
+  display: block;
+  color: white;  
+}
+
+.navbar-nav :hover{
+  color: #708090;  
+}
+
+
+.btn-faculty{
+	background-color: #708090;
+	height: 50px;
+	border: none;
+	border-radius: 0;
+	color: white;
+}
+button{
+	background-image: none;
+	padding: none;
+	text-shadow: none;
+	box-shadow: none;
+}
+button :hover{
+	background-image: none;
+	padding: none;
+	text-shadow: none;
+	box-shadow: none;
+}
+button:not(.disabled):hover{
+	background-image: none;
+	background-color: #F5F5F5;
+}
+button a:hover{
+	background-image: none;
+	background-color: white;
+	padding: none;
+	text-shadow: none;
+	box-shadow: none;
+}
+
+.btn-faculty:hover{
+	height: 50px;
+	border-radius: 0;
+	color:#708090; 
+	background-color: #F5F5F5;
+}
+
+.btn a, a:link, a:visited{
+  text-decoration: none;
+  color: none;
+}
+
+
+
+a:hover{
+	text-decoration: none;
+	color: blue;
+
+}
+
+.account{
+  color: black;
+  padding-top: 20px;
+	height: 90px;
+	float: right;
+}
+.account-not{
+  color: black;
+  padding-top: 10px;
+	height: 90px;	
+}
+
+.searcher{
+  color: black;
+  padding-top: 30px;
+	height: 90px;	
+}
+
+.first-top-layer{
+  background-color: white;
+}
+
+.top-right{
+	float: right;
+}
+
+#user_avatar img{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+#user_avatar2 img{
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+
+}
+
+#user_avatar3{
+	padding-top:20px;
+	font-style:italic;
+	color: grey; 
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: justify;
+}
+
+#user_avatar4 img{
+	margin-top: 20px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+.sub-message{
+	padding-top: 20px;
+}
+.discuss{
+	border-top: 1px solid #ccc;
+	padding-top: 20px;
+
+}
+
+.discuss a{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color: grey;
+}
+.discuss a:hover{
+	color: blue;
+}
+
+.label-danger{
+  border-radius: 50%;
+}
+.label-danger a{
+	color: white;
+}
+.btn-danger a{
+	color: white;
+}
+.btn-success{
+	margin-bottom:20px;
+}
+.btn-search{
+	background-color: #6495ED;
+	padding: 6px 6px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	color: white;
+	border: 1px solid #ccc; 
+	border-radius: 0;
+}
+.btn-search:hover{
+	color: white;
+}
+
+input#search_keywords{
+	width: 100%;
+	height: 27px;
+}
+
+.nav-search{
+	float: right;
+}
+#post-text{
+	width: 75%;
+}
+#post-title{
+	width: 50%;
+}
+#post-body{
+	margin-left: 50px;
+	margin-right: 50px;
+	font-family: initial;
+	text-align: justify;
+	font-size: large;
+}
+.post-form{
+	padding-left: 25%;
+	border: 1px solid #ccc;
+	padding-bottom: 20px;
+	padding-top: 20px;
+
+}
+
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    margin-top: -70px;
+    color:  #32CD32;
+
+}
+
+#scrollable{
+	overflow-y: scroll;
+  max-height:400px;
+}
+
+#recipient-select{
+	height: 50px;
+	overflow-y: scroll;
+	width: 100%;
+}
+
+.item{
+	height: 320px;
+}
+.item img{
+	height: 300px;
+}
+
+.thumbnail-article{
+	padding: 4px;
+	background-color: #F5F5F5;
+	margin: 10px;
+	height: 300px;
+	width: 100%;
+}
+.thumbnail-manuscript{
+	width: 100%;
+	padding: 4px;
+	margin: 10px;
+}
+.thumbnail-article a{
+	color: grey;
+}
+.thumbnail-article a:hover{
+	color: #6495ED;
+}
+.thumbnail-article:hover{
+	border: 1px solid #6495ED;
+	background-color: #F8F8FF;
+}
+.thumbnail > img, .thumbnail a > img{
+    display: block;
+    max-width: 100%;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.show{
+	padding: 10px;
+	margin-bottom: 20px;
+}
+.call{
+	margin-left: 10px;
+	float: right;
+}
+.email{
+	padding-left: 10px;
+}
+.my-form{
+	padding-left: 20%;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	border: 1px solid #ccc;
+	background-color: white;
+}
+textarea{
+	width: 80%;
+	height: 200px;
+}
+.input{
+	width: 80%;
+}
+#form_input{
+	width: 80%;
+}
+#form-lebel{
+	color: #6495ED;
+}
+#form-header{
+	text-align: center;
+	color: #708090;
+}
+
+#research-link a{
+	text-decoration: underline;
+}
+.fa-trash{
+	color: red;
+	font-size: large;
+}
+.fa-plus{
+	color: #32CD32;
+	font-size: large;
+}

@@ -1,0 +1,35 @@
+ 
+<div class="main-content">
+  <div class="journal-header">
+    <p>Requests</p>
+  </div>
+
+  <% unless @editors.blank? %>
+    <h3 style="text-align: center;">Requests for Peer Editors</h3>
+    <% @editors.order("created_at DESC").each do |peer| %>
+      <div class="panel">
+        <div class="panel-body">
+          <div class="row">
+            <h5>
+              <span>
+                <strong>Request From : </strong>
+              </span>
+              <span style="color: #337ab7;">
+                <%= peer.user.username %>      
+              </span>
+              <span style="margin-left: 100px;"><%= link_to "VIEW SENDER", peer, class: "btn btn-default" %> </span>
+                          
+              <span style="float: right;">
+              <span style="color: grey; margin-right:10px;">Requesting to be</span><span style="color: #32CD32;"><%= peer.request %> </span>
+              </span> 
+            </h5>
+          </div>
+        </div>
+      </div>        
+    <% end %>
+  <% end %>
+
+</div>
+
+
+ 

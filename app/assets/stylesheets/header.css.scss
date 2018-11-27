@@ -1,0 +1,26 @@
+.nav-hero-dropdown {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  padding: 15px;
+  width: 740px;
+  z-index: 100;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 300ms ease-in-out,top 300ms ease-in-out;
+  -moz-transition: opacity 300ms ease-in-out,top 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out,top 300ms ease-in-out;
+}
+
+.top-right-item{
+  margin-left:5px;
+  margin-right:5px;
+  font-size: smaller;
+}
+
+#user_name{
+  color: #32CD32;
+}
+.param-text{
+  font-style: italic;
+}

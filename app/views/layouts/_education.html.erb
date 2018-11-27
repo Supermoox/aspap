@@ -1,0 +1,41 @@
+<%= form_for @education do |form| %>
+  <% if @education.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@education.errors.count, "error") %> prohibited this education from being saved:</h2>
+
+      <ul>
+      <% @education.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :institution %>
+    <%= form.text_field :institution, id: :education_institution %>
+  </div>
+
+  <div class="field">
+    <%= form.label :qualification_id %>
+    <%= collection_select(:education, :qualification_id, Qualification.all, :id, :name, :prompt => "Qualification") %>
+  </div>
+
+  <div class="field">
+    <%= form.label :field %>
+    <%= form.text_field :field, id: :education_field %>
+  </div>
+  <div class="field">
+    <%= form.label :Document_of_qualification %>
+    <%= form.file_field :document%>
+  </div>
+
+  <div class="field">
+    <%= form.label :yearCompleted %>
+    <%= form.datetime_select :yearCompleted, id: :education_yearCompleted %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

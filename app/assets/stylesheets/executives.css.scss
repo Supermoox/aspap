@@ -1,0 +1,27 @@
+// Place all the styles related to the executives controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.executive_image { 
+	text-align: center;
+}
+.executive_image img{
+	height: 400px;
+	width: 65%;
+}
+.executive{
+	font-family: initial;
+}
+
+.executive_description{
+	text-align: justify;
+	font-size: large;
+}
+#name{
+	text-align: center;
+	margin-top: 20px;
+}
+#executive_header{
+	text-align: center;
+	font-family: initial;
+}

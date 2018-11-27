@@ -1,0 +1,34 @@
+<div class="main-content">
+<h3 id="form-header"><%= @directorate.name %></h3>
+
+  <div class="executive">
+   
+    <div class="row">
+      <div class="executive_description">
+      	<p>
+      	  
+      	  <span><%= @directorate.description %></span> 
+      	</p>
+        <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
+        <div class="related_research">
+          <% if !@researches.blank? %>
+            <h3 style="text-align: center;"> Researches Under this Directorate</h3>
+            <% @researches.each do |research| %>
+              <hr>
+              <p>
+                <span><strong>Topic: </strong></span><span style="color: #337ab7;"><%= research.topic %></span>
+              </p>
+              <p>
+                <span><strong>Research Area: </strong></span><span style="color: #337ab7;"><%= research.Research_area %></span>
+              </p>
+              <p>
+                <span><strong>Description: </strong></span><span><%= research.description %></span>
+              </p>
+ 
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

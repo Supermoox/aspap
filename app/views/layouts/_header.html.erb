@@ -1,0 +1,70 @@
+<div class="row first-top-layer">
+  <div class="col-md-2 logo">
+    <%= link_to(image_tag("/assets/logo.png", alt: "logo", title: "Home"), "/" )  %>
+  </div>
+  <div class="col-md-5 searcher">
+    <nav class="navbar">     
+      <%= form_for  @search do |f| %>    
+        <ul class="nav navbar-nav nav-search">  
+          <li>
+              <p class="param-text">
+                <%= f.text_field :keywords, :placeholder =>"search for articles" %>
+              </p>
+          </li>
+          <li>
+              <p ><%= f.submit "search", class: "btn btn-search" %></p>
+          </li>
+        </ul>
+      <% end %>
+    </nav>
+  </div>
+  <div class="col-md-5 account">
+    <ul class="top-right">
+      <% if user_signed_in? %>
+        <span class="label label-danger top-right-item"><%=link_to unread_messages_count,mailbox_inbox_path %> </span> 
+        <span class="top-right-item"> <%= link_to "NOTIFICATIONS", mailbox_inbox_path %></span> |
+        <span class="top-right-item"><%= link_to "ACCOUNT" , edit_user_registration_path %></span> |
+        <span class="top-right-item"><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></span> |
+        <span id="user_name"><%= current_user.username %> </span>
+        <% if current_user.image.blank? %>
+          <span id="user_avatar"><%= link_to(image_tag("/assets/user.png", alt: "user_avatar") ) %> </span>
+        <% else %>
+          <span id="user_avatar"><%= image_tag current_user.image %> </span>
+        <% end %>
+      <% else %>
+        <div class="account-not">
+          <span style="font-family: initial;">Join the Amano Sciety of Pure and Applied Physics</span>
+          <span class="top-right-item"><%= link_to "REGISTER", new_user_registration_path %></span> |
+          <span class="top-right-item"><%= link_to "LOG IN", new_user_session_path %></span>
+        </div>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<div class="row header mid-header">
+  <ul class="nav navbar-nav main-menu">
+    <li> <%= link_to "HOME" , root_path %></li>
+    <li> <%= link_to "ABOUT ASPAP" , abouts_path %></li>
+    <li> <%= link_to "GALLARY", pictures_path %></li>
+    <li><%= link_to "DISCUSSIONS", posts_path %></li>
+    <li> 
+      <button class="dropdown-toggle btn-faculty" type="button" data-toggle="dropdown">JOURNALS
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <% @journals.each do |journal| %>
+          <li><a href="#"><%= link_to journal.name, journal %></a></li>
+        <% end %>
+      </ul>
+    </li>
+    <li> 
+      <button class="dropdown-toggle btn-faculty" type="button" data-toggle="dropdown">RESEARCH DIRECTORATES
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <% @directorates.each do |directorate| %>
+          <li><a href="#"><%= link_to directorate.name, directorate %></a></li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+</div>
+

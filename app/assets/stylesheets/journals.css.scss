@@ -1,0 +1,36 @@
+// Place all the styles related to the Journals controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.main-content{
+	padding-left: 20px;
+	padding-right: 20px;
+	background-color: white;
+}
+
+.journal-header{
+	font-size: xx-large;
+	text-align: center;
+	background-color: #FAEBD7;
+	color: #337ab7;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	box-shadow:  5px 5px 5px 5px #888888;
+}
+
+#note3 img{
+	height: 50px;
+	width: 50px;
+}
+.download{
+	background-color: #FAEBD7;
+	border: 1px solid #337ab7;
+	color: #337ab7;
+	border-radius: 4px;
+	padding: 5px;
+}
+
+.download:hover{
+	background-color:	#DEB887;
+}

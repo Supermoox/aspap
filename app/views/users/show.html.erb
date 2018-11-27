@@ -1,0 +1,99 @@
+<div class="panel">
+  <div class="panel-body">
+  	<div class="row user_details">
+  		<div class="col-md-3">
+	  		<% if  @user.image.blank? %>
+	      	<span id="user_avatar2"><%= link_to(image_tag("/assets/default_user.png", alt: "user_avatar") ) %></span>
+	      <% else %>
+	      	<span id="user_avatar2"><%= image_tag @user.image %></span>
+	      <% end %>
+      </div>
+      <div class="col-md-6">
+      	<div id="user_info">
+      		<p id="user_title">
+	      		<span ><%= @user.title %></span>
+	      		<span ><%= @user.firstname %></span>
+	      		<% unless @user.middlename.blank?  %>
+	      			<span><%= @user.middlename %></span>
+	      		<% end %>
+	      		<span><%= @user.surname %></span>
+      		</p>
+      		<p>
+ 	      		<% if @user.qualification == "PhD" %>
+	      			<span> Doctor of Science,</span>
+	      			<span><%= @user.field %></span>
+	      		<% end %>
+      		</p>     		    		
+      		<p>
+      			<span><%= @user.phone %></span>
+      		</p>
+
+      	</div>
+      </div>
+  	</div>
+  </div>
+</div> 
+
+<div class="row">
+	<% unless @user_researches.blank? %>
+  <div class="panel">
+   <div class="panel-body">
+		<h4>User's Research works -------------------------------------------------------------</h4>
+  	<% @user_researches.each do |research| %>
+  		<h4 id="research-link">
+        <span style="float: right; font-size: small;">
+          <% if research.concluded %> 
+            <span style="color: grey; margin-right:10px;">Status</span><span style="color: #32CD32;">Concluded</span>
+          <% else %>   
+            <span style="color: grey; margin-right:10px;">Status</span><span style="color: #32CD32;">On Going</span>
+          <% end %>   
+        </span>
+  			<span><%=link_to research.topic,research  %><span>
+  		</h4>
+  	<% end %>
+  	</div>
+  </div>
+	<% end %>
+
+
+	<% unless @user_researches.blank? %>
+    <div class="panel">
+      <div class="panel-body">
+      	<h4>User's Published Manuscripts-----------------------------------------------------</h4>
+      	<% @manuscripts.each do |manuscript| %>
+        <div class="row">
+          <div class="col-sm-3 ">
+              <div class="thumbnail thumbnail-manuscript">
+              	<%= image_tag manuscript.image %>
+              </div>       
+          </div>       
+          <div class="col-sm-9 ">
+						<h4 style="color: #337ab7;"><%=  manuscript.title %> </h4>
+            <% if manuscript.user.image.blank? %>
+              <span id="user_avatar"><%= link_to(image_tag("/assets/user.png", alt: "user_avatar") ) %> </span>
+            <% else %>
+              <span id="user_avatar"><%= image_tag manuscript.user.image %> </span>
+						<% end %>
+            <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= manuscript.user.username %></span>
+            <span style="color: grey; float: right;"><%= manuscript.created_at.strftime("%b %d, %Y")  %></span>
+            <p> <%= simple_format(manuscript.abstract) %>  </p>
+            <p style="color:#337ab7;"> 
+            	<span>Vol. </span> 
+            	<span><%= manuscript.volume %> </span>
+            	<span>Issue</span> 
+              <span><%= manuscript.issue %> </span>
+            	<span id="note3">
+                <% if manuscript.document_content_type == "application/pdf" %>
+                  <%= link_to image_tag("/assets/doc3.jpg", alt: "pdf"), manuscript.document.url, target: "_blank" %>
+                <% else %>
+                  <%= link_to image_tag("/assets/note3.png", alt: "doc"), manuscript.document.url, target: "_blank" %>
+                <% end %>
+              </span>
+            </p>
+          </div>  
+        </div>
+        <% end %>
+      </div>
+    </div>	
+	<% end %>
+</div>

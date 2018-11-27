@@ -1,0 +1,101 @@
+<div class="main-content">
+  <div class="journal-header">
+    <p>Researches</p>
+  </div>
+  <% if user_signed_in? && current_user.vip? %>
+    <div class="panel">
+      <% @allresearches.order("created_at DESC").each do |research| %>
+        <% if !research.approval? %>
+          <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'Approve',approve_research_path(research), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
+          </span> 
+          <span style="float: right; margin-right: 10px;">
+            <%= link_to research, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %>
+          </span>                
+        <% end %>
+
+        <% @researches.order("created_at DESC").each do |research| %>
+          <%= link_to research do %> 
+            <div class="row clickable-div">
+              <p>
+                <span style="color: grey;">
+                  <strong>Topic: </strong>
+                </span>
+                <span style="color: #337ab7;">
+                  <%= research.topic %>      
+                </span>            
+              </p>
+              <p>
+                <span style="color: grey;"><strong>Research Area: </strong></span>
+                <span style="color: #337ab7;"><%= research.Research_area %></span>
+              <p>
+                <% if research.user.image.blank? %>
+                  <p id="user_avatar">
+                    <span><strong>Researcher: </strong></span><span style="color: #337ab7;"><%= research.user.username %></span>
+                    <span style="margin-left: 10px;"><%=(image_tag("/assets/default_user.png", alt: "user_avatar") ) %>
+                    </span>
+                  </p>
+                <% else %>
+                  <p id="user_avatar">
+                    <span style="color: grey;"><strong>Researcher: </strong></span><span style="color: #337ab7;"><%= research.user.username %></span>
+                    <span style="margin-left: 10px;"><%= image_tag research.user.image %></span>
+                  </p>
+                <% end %>          
+              </p>
+              <div class="fade_research">
+                <p><%= research.description %></p>
+                <p class="read_more"></p>
+              </div>
+            </div> 
+          <% end %>
+          <hr>       
+        <% end %>
+      <% end %>  
+    </div>
+  <% else %>
+
+    <% if @researches.blank? %>
+      <h3 id="form-header">No Researches Yet</h3>
+    <% else %>
+      <div class="panel">
+        <% @researches.order("created_at DESC").each do |research| %>
+          <%= link_to research do %> 
+            <div class="row clickable-div">
+              <p>
+                <span style="color: grey;">
+                  <strong>Topic: </strong>
+                </span>
+                <span style="color: #337ab7;">
+                  <%= research.topic %>      
+                </span>            
+              </p>
+              <p>
+                <span style="color: grey;"><strong>Research Area: </strong></span>
+                <span style="color: #337ab7;"><%= research.Research_area %></span>
+              <p>
+                <% if research.user.image.blank? %>
+                  <p id="user_avatar">
+                    <span><strong>Researcher: </strong></span><span style="color: #337ab7;"><%= research.user.username %></span>
+                    <span style="margin-left: 10px;"><%=(image_tag("/assets/default_user.png", alt: "user_avatar") ) %>
+                    </span>
+                  </p>
+                <% else %>
+                  <p id="user_avatar">
+                    <span style="color: grey;"><strong>Researcher: </strong></span><span style="color: #337ab7;"><%= research.user.username %></span>
+                    <span style="margin-left: 10px;"><%= image_tag research.user.image %></span>
+                  </p>
+                <% end %>          
+              </p>
+              <div class="fade_research">
+                <p><%= research.description %></p>
+                <p class="read_more"></p>
+              </div>
+            </div> 
+          <% end %>
+          <hr>       
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

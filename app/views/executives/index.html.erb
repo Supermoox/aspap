@@ -1,0 +1,47 @@
+<div class="main-content">
+  <div class="journal-header">
+    <p>ASPAP Executive</p>
+  </div>
+  <div class="executive">
+    <div class="row">
+      <% if @executives.blank? %>
+        <p>No executives added</p>  
+        <% else %>
+        <% @executives.each do |executive| %>
+        	<hr style="height:2px;border:none;color:#333;background-color:#708090;" />
+        	<h1 id="executive_header"> <%= executive.position %></h1>
+          <div class="executive_image">
+ 						<%= image_tag executive.image %>
+          </div>
+          <h4 id="name"> <strong><%= executive.name %></strong> </h4>
+          <div class="executive_description">
+          	<p>
+          	  <span><strong>Education:</strong> </span> 
+          	  <span><%= executive.education %></span> 
+          	</p>
+          	<p>
+          	  <span><strong>Expertise:</strong> </span> 
+          	  <span> <%= executive.expertise %></span> 
+          	</p>
+          	<p>
+          	  <span><strong>Research Interest:</strong> </span> 
+          	  <span><%= executive.research_interest %></span> 
+          	</p>
+          	<p>
+          	  <span><strong>Brief Description:</strong> </span> 
+          	  <span><%= simple_format(executive.description) %></span> 
+          	</p>
+            <% if user_signed_in? && current_user.vip %>
+              <span>
+                <%= link_to 'Delete',executive , method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-danger" %>  
+              </span>               
+              <span>
+                <%= link_to 'Edit',edit_executive_path(executive) , class: "btn btn-default btn-approve" %>  
+              </span> 
+            <% end %>            
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

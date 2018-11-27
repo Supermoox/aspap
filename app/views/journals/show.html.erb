@@ -1,0 +1,43 @@
+<div class="main-content">
+	<div class="journal-header">
+		<p><%= @journal.name %></p>
+	</div>
+  <% @manuscripts.order("created_at DESC").each do |manuscript| %>
+    <div class="panel">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-3 ">
+              <div class="thumbnail thumbnail-manuscript">
+              	<%= image_tag manuscript.image %>
+              </div>       
+          </div>       
+          <div class="col-sm-9 ">
+						<h4 style="color: #337ab7;"><%=  manuscript.title %> </h4>
+            <% if manuscript.user.image.blank? %>
+              <span id="user_avatar"><%= link_to (image_tag("/assets/user.png", alt: "user_avatar") ), manuscript.user %> </span>
+            <% else %>
+              <span id="user_avatar"><%= link_to (image_tag manuscript.user.image), manuscript.user %> </span>
+						<% end %>
+            <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= link_to manuscript.user.username,manuscript.user  %></span>
+            <span style="color: grey; float: right;"><%= manuscript.created_at.strftime("%b %d, %Y")  %></span>
+            <p> <%= simple_format(manuscript.abstract) %>  </p>
+            <p style="color:#337ab7;"> 
+            	<span>Vol. </span> 
+            	<span><%= manuscript.volume %> </span>
+            	<span>Issue</span> 
+              <span><%= manuscript.issue %> </span>
+            	<span id="note3">
+                <% if manuscript.document_content_type == "application/pdf" %>
+                  <%= link_to image_tag("/assets/doc3.jpg", alt: "pdf"), manuscript.document.url, target: "_blank" %>
+                <% else %>
+                  <%= link_to image_tag("/assets/note3.png", alt: "doc"), manuscript.document.url, target: "_blank" %>
+                <% end %>
+              </span>
+            </p>
+          </div>  
+        </div>
+      </div>
+    </div>        
+  <% end %>
+  <%= will_paginate @manuscripts %>
+</div>

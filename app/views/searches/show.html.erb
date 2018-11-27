@@ -1,0 +1,52 @@
+
+<div class="main-content">
+  <div class="journal-header">
+    <p>Manuscripts</p>
+  </div>
+    <% if @searches.empty? %>
+      <h4> 
+        <p> No matches</p>
+      </h4>
+    <% else %>  
+    <% @searches.order("created_at DESC").each do |manuscript| %>
+      <div class="panel">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-3 ">
+                <div class="thumbnail thumbnail-manuscript">
+                  <%= image_tag manuscript.image %>
+                </div>       
+            </div>       
+            <div class="col-sm-9 ">
+              <h4 style="color: #337ab7;"><%=  manuscript.title %> </h4>
+              <% if manuscript.user.image.blank? %>
+                <%= link_to(image_tag("/assets/user.png", alt: "user_avatar") ) %> 
+              <% else %>
+                <span id="user_avatar"><%= image_tag manuscript.user.image %> </span>
+              <% end %>
+              <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= manuscript.user.username %></span>
+              <span style="color: grey; float: right;"><%= manuscript.created_at.strftime("%b %d, %Y")  %></span>
+              <p> <%= manuscript.abstract %>  </p>
+              <p style="color:#337ab7;"> 
+                <span>Vol. </span> 
+                <span><%= manuscript.volume %> </span>
+                <span>Issue</span> 
+                <span><%= manuscript.issue %> </span>
+                <span id="note3">
+                  <% if manuscript.document_content_type == "application/pdf" %>
+                    <%= link_to image_tag("/assets/doc3.jpg", alt: "pdf"), manuscript.document.url, target: "_blank" %>
+                  <% else %>
+                    <%= link_to image_tag("/assets/note3.png", alt: "doc"), manuscript.document.url, target: "_blank" %>
+                  <% end %>
+                </span>
+              </p>
+            </div>  
+          </div>
+        </div>
+      </div>        
+    <% end %>
+  <% end %>
+  <%= will_paginate @searches %>
+</div>
+
+
