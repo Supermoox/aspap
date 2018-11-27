@@ -39,14 +39,11 @@ class ExecutivesController < ApplicationController
 
 
   def update
-    respond_to do |format|
-      if @executive.update(executive_params)
-        format.html { redirect_to @executive, notice: 'executive was successfully updated.' }
-        format.json { render :show, status: :ok, location: @executive }
-      else
-        format.html { render :edit }
-        format.json { render json: @executive.errors, status: :unprocessable_entity }
-      end
+    if @executive.update(executive_params)
+      redirect_to root_path
+      flash[:notice] = "Executive updated!"
+    else
+      render 'edit'
     end
   end
 

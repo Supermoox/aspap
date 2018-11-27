@@ -63,20 +63,29 @@
 							<p id="trunc"><%=  @posts.last.title %></p>
 						</div>
 					<% end %>
-					<%= link_to @posts.last do %> 
-						<div class="sub-item2">
-							<p id="trunc"><%=  @posts.third.title %></p>
-						</div>
+
+					<% unless @posts.third.blank?  %>
+						<%= link_to @posts.third do %> 
+							<div class="sub-item2">
+								<p id="trunc"><%=  @posts.third.title %></p>
+							</div>
+						<% end %>
 					<% end %>
-					<%= link_to @posts.last do %> 
-						<div class="sub-item3">
-							<p id="trunc"><%=  @posts.second.title %></p>
-						</div>
+
+					<% unless @posts.second.blank?  %>
+						<%= link_to @posts.second do %> 
+							<div class="sub-item3">
+								<p id="trunc"><%=  @posts.second.title %></p>
+							</div>
+						<% end %>
 					<% end %>
-					<%= link_to @posts.last do %> 
-						<div class="sub-item4">
-							<p id="trunc"><%=  @posts.first.title  %></p>
-						</div>
+
+					<% unless @posts.first.blank?  %>
+						<%= link_to @posts.first do %> 
+							<div class="sub-item4">
+								<p id="trunc"><%=  @posts.first.title  %></p>
+							</div>
+						<% end %>
 					<% end %>
 				<% end %>
 			</div>
