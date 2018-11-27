@@ -8,7 +8,7 @@
         <div class="row clickable-div">
           <div class="col-sm-3 ">
             <% if post.user.image.blank? %>
-              <p id="user_avatar2"><%= (image_tag("/assets/default_user.png", alt: "user_avatar") ) %></p>
+              <p id="user_avatar2"><img src="<%= asset_path( 'default_user.png' ) %>" /></p>
             <% else %>
               <p id="user_avatar2"><%= image_tag post.user.image %></p>
             <% end %>

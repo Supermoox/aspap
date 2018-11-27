@@ -12,7 +12,7 @@
           <div class="row">
             <div class="col-sm-3 ">
               <% if post.user.image.blank? %>
-                <p id="user_avatar2"><%= link_to(image_tag("/assets/default_user.png", alt: "user_avatar") ) %></p>
+                <img src="<%= asset_path( 'default_user.png' ) %>" />
               <% else %>
                 <p id="user_avatar2"><%= image_tag post.user.image %></p>
               <% end %>

@@ -9,7 +9,7 @@
     <span style="color: grey; font-style: italic;"> - Post by</span>
     <span style="color: #6495EA;"><%= @post.user.username %></span>
     <% if @post.user.image.blank? %>
-     <span id="user_avatar"> <%= image_tag("/assets/user.png", alt: "user_avatar") %> </span>
+      <span id="user_avatar"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
     <% else %>
       <span id="user_avatar"><%= image_tag @post.user.image %> </span>
     <% end %>
@@ -24,7 +24,7 @@
           <div class="row">
             <div class="col-md-2 comment-owner"> 
               <% if comment.user.image.blank? %>
-               <span id="user_avatar"> <%= image_tag("/assets/user.png", alt: "user_avatar") %> </span>
+                <span id="user_avatar"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
               <% else %>
                 <span id="user_avatar"><%= image_tag comment.user.image %> </span>
               <% end %>

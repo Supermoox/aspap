@@ -9,7 +9,7 @@
       <div class="col-sm-9 ">
         <h4 style="color: #337ab7;"><%=  @manuscript.title %> </h4>
         <% if @manuscript.user.image.blank? %>
-          <%= link_to(image_tag("/assets/user.png", alt: "user_avatar") ) %> 
+          <img src="<%= asset_path( 'user.png' ) %>" />
         <% else %>
           <span id="user_avatar"><%= image_tag @manuscript.user.image %> </span>
         <% end %>
@@ -55,7 +55,7 @@
 		          <div class="row">
 		            <div class="col-md-2 comment-owner"> 
 		              <% if review.user.image.blank? %>
-		               <span id="user_avatar"> <%= image_tag("/assets/user.png", alt: "user_avatar") %> </span>
+                    <img src="<%= asset_path( 'user.png' ) %>" />
 		              <% else %>
 		                <span id="user_avatar"><%= image_tag review.user.image %> </span>
 		              <% end %>
@@ -84,7 +84,7 @@
                 <div class="row">
                   <div class="col-md-2 comment-owner"> 
                     <% if review.user.image.blank? %>
-                     <span id="user_avatar"> <%= image_tag("/assets/user.png", alt: "user_avatar") %> </span>
+                      <img src="<%= asset_path( 'user.png' ) %>" />
                     <% else %>
                       <span id="user_avatar"><%= image_tag review.user.image %> </span>
                     <% end %>

@@ -11,7 +11,7 @@
             <% end %>
           <% end %>
           <% if @recipient.image.blank? %>
-            <%= image_tag("/assets/user.png", alt: "user_avatar") %> 
+            <img src="<%= asset_path( 'user_avatar.png' ) %>" />
           <% else %>
             <span id="user_avatar"><%= image_tag @recipient.image  %> </span><br>
           <% end %>
@@ -74,14 +74,14 @@
           <% end %>
         <% end %>
         <% if @recipient.image.blank? %>
-          <%= image_tag("/assets/user.png", alt: "user_avatar") %> 
+           <img src="<%= asset_path( 'user.png' ) %>" />
         <% else %>
           <span id="user_avatar"><%= image_tag @recipient.image  %> </span><br>
         <% end %>
       <% else %>
         <% unless conversation.originator.blank? %>
           <% if conversation.originator.image.blank? %>
-            <%= image_tag("/assets/user.png", alt: "user_avatar") %> 
+            <img src="<%= asset_path( 'user.png' ) %>" />
           <% else %>
             <span id="user_avatar"><%= image_tag conversation.originator.image  %> </span><br>
           <% end %>
@@ -105,7 +105,7 @@
 
         <% if conversation.messages.last.sender.image.blank? %>
           <div class="col-md-2">
-            <span id="user_avatar4"><%= image_tag("/assets/user.png", alt: "user_avatar3") %></span>
+            <span id="user_avatar4"> <img src="<%= asset_path( 'user.png' ) %>" /></span>
           </div>
           <div class="col-md-10 sub-message">
             <div class="fadded">

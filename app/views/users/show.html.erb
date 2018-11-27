@@ -3,7 +3,7 @@
   	<div class="row user_details">
   		<div class="col-md-3">
 	  		<% if  @user.image.blank? %>
-	      	<span id="user_avatar2"><%= link_to(image_tag("/assets/default_user.png", alt: "user_avatar") ) %></span>
+          <span id="user_avatar2"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
 	      <% else %>
 	      	<span id="user_avatar2"><%= image_tag @user.image %></span>
 	      <% end %>
@@ -70,7 +70,7 @@
           <div class="col-sm-9 ">
 						<h4 style="color: #337ab7;"><%=  manuscript.title %> </h4>
             <% if manuscript.user.image.blank? %>
-              <span id="user_avatar"><%= link_to(image_tag("/assets/user.png", alt: "user_avatar") ) %> </span>
+              <span id="user_avatar"><img src="<%= asset_path( 'user.png' ) %>" /></span>
             <% else %>
               <span id="user_avatar"><%= image_tag manuscript.user.image %> </span>
 						<% end %>

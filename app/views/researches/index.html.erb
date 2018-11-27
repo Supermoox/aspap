@@ -33,7 +33,7 @@
                 <% if research.user.image.blank? %>
                   <p id="user_avatar">
                     <span><strong>Researcher: </strong></span><span style="color: #337ab7;"><%= research.user.username %></span>
-                    <span style="margin-left: 10px;"><%=(image_tag("/assets/default_user.png", alt: "user_avatar") ) %>
+                    <span style="margin-left: 10px;"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
                     </span>
                   </p>
                 <% else %>
@@ -77,7 +77,7 @@
                 <% if research.user.image.blank? %>
                   <p id="user_avatar">
                     <span><strong>Researcher: </strong></span><span style="color: #337ab7;"><%= research.user.username %></span>
-                    <span style="margin-left: 10px;"><%=(image_tag("/assets/default_user.png", alt: "user_avatar") ) %>
+                    <span style="margin-left: 10px;"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
                     </span>
                   </p>
                 <% else %>

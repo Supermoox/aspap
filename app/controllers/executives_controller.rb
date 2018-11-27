@@ -31,6 +31,7 @@ class ExecutivesController < ApplicationController
 
     if @executive.save
       redirect_to root_path
+      flash[:notice] = "Executive member added!"
     else
       render 'new'
     end
