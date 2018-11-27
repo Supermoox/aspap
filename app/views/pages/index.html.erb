@@ -43,11 +43,13 @@
 			<hr style="height:2px;border:none;color:#333;background-color:#708090;" />
 			<h3 class="sub-title">News & Events</h3>
 			<ul class="sub-content"> 
-				<% @events.each do |event| %>
-					<li>
-						<p id="event"><%= event.title %>	</p>
-						<p id="event_fade" "><%= event.body %>	</p>
-					</li>
+				<% unless @events.blank? %>
+					<% @events.each do |event| %>
+						<li>
+							<p id="event"><%= event.title %>	</p>
+							<p id="event_fade" "><%= event.body %>	</p>
+						</li>
+					<% end %>
 				<% end %>
 			</ul>
 		</div>
@@ -55,53 +57,57 @@
 			<hr style="height:2px;border:none;color:#333;background-color:#708090;" />
 			<h3 class="sub-title">Join Discussions!</h3>
 			<div class="join-discussions">
-				<%= link_to @posts.last do %> 
-					<div class="sub-item1">
-						<p id="trunc"><%=  @posts.last.title %></p>
-					</div>
-				<% end %>
-				<%= link_to @posts.last do %> 
-					<div class="sub-item2">
-						<p id="trunc"><%=  @posts.third.title %></p>
-					</div>
-				<% end %>
-				<%= link_to @posts.last do %> 
-					<div class="sub-item3">
-						<p id="trunc"><%=  @posts.second.title %></p>
-					</div>
-				<% end %>
-				<%= link_to @posts.last do %> 
-					<div class="sub-item4">
-						<p id="trunc"><%=  @posts.first.title  %></p>
-					</div>
+				<% unless @posts.blank? %>
+					<%= link_to @posts.last do %> 
+						<div class="sub-item1">
+							<p id="trunc"><%=  @posts.last.title %></p>
+						</div>
+					<% end %>
+					<%= link_to @posts.last do %> 
+						<div class="sub-item2">
+							<p id="trunc"><%=  @posts.third.title %></p>
+						</div>
+					<% end %>
+					<%= link_to @posts.last do %> 
+						<div class="sub-item3">
+							<p id="trunc"><%=  @posts.second.title %></p>
+						</div>
+					<% end %>
+					<%= link_to @posts.last do %> 
+						<div class="sub-item4">
+							<p id="trunc"><%=  @posts.first.title  %></p>
+						</div>
+					<% end %>
 				<% end %>
 			</div>
 		</div>		
 	</div>
 	<div class="row bottom">
 		<hr style="height:2px;border:none;color:#333;background-color:#708090;" />
-	    <% @articles.each do |article| %>
-	      <div class="col-md-4">
-	        <%= link_to article do %>
-		        <div class="thumbnail thumbnail-article">		          		          
-	        		<% if article.image.blank? %>
-	        			 
-	        		<% else %>
-	              <%=  (image_tag article.image, class: 'image') %>
-	            <% end %>
-		          <div class = "caption">
-		              <h5 id="thumb-title">  
-		               <strong> 
-		               		<span><%=  article.title %> </span>
-		               </strong>
-		              </h5>
-		             <div class="brief-body">
-		             	<%=  article.body %>
-		             </div>
-		          </div>
-		        </div>
-	        <% end %>
-	      </div>
+			<% unless @articles.blank? %>
+		    <% @articles.each do |article| %>
+		      <div class="col-md-4">
+		        <%= link_to article do %>
+			        <div class="thumbnail thumbnail-article">		          		          
+		        		<% if article.image.blank? %>
+		        			 
+		        		<% else %>
+		              <%=  (image_tag article.image, class: 'image') %>
+		            <% end %>
+			          <div class = "caption">
+			              <h5 id="thumb-title">  
+			               <strong> 
+			               		<span><%=  article.title %> </span>
+			               </strong>
+			              </h5>
+			             <div class="brief-body">
+			             	<%=  article.body %>
+			             </div>
+			          </div>
+			        </div>
+		        <% end %>
+		      </div>
+		    <% end %>
 	    <% end %>
 	    <p> <%= will_paginate @articles %> </p>
 	</div>
