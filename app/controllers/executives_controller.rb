@@ -28,14 +28,11 @@ class ExecutivesController < ApplicationController
   def create
     @executive = Executive.new(executive_params)
 
-    respond_to do |format|
-      if @executive.save
-        format.html { redirect_to @executive, notice: 'executive was successfully created.' }
-        format.json { render :show, status: :created, location: @executive }
-      else
-        format.html { render :new }
-        format.json { render json: @executive.errors, status: :unprocessable_entity }
-      end
+
+    if @executive.save
+      redirect_to root_path
+    else
+      render 'new'
     end
   end
 
