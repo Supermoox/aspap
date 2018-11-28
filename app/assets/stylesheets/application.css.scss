@@ -68,7 +68,10 @@ body{
 	background-color: #6495ED;
 	border: 1px solid black;
 }
-
+.main-menu{
+	
+	background-color: #708090;
+}
 
 .main-menu > li > a {
   position: relative;
@@ -231,12 +234,12 @@ a:hover{
 }
 
 input#search_keywords{
-	width: 100%;
+	
 	height: 27px;
 }
 
 .nav-search{
-	float: right;
+	margin-left: 20%;
 }
 #post-text{
 	width: 75%;
@@ -363,4 +366,25 @@ textarea{
 .fa-plus{
 	color: #32CD32;
 	font-size: large;
+}
+
+
+.navbar-default {
+  background-color: #708090;
+  padding-left: 18%;
+  border-color: #708090;
+}
+
+.navbar{
+	margin-bottom: 0;
+}
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  color: #191970;
+  background-color: #F5F5F5;
+}
+#new_search{
+	padding-left: 20%;
 }
