@@ -49,7 +49,9 @@
        <p id="form-lebel">
         <span><%= form.label :volume %></span>
         <span style="margin-left: 50px; color: grey; font-style: italic;">current volume</span>
-        <span style="margin-left: 5px; color: grey; font-style: italic;"><%= @manuscripts.last.volume %></span>
+         <% unless @manuscripts.blank? %>
+            <span style="margin-left: 5px; color: grey; font-style: italic;"><%= @manuscripts.last.volume %></span>
+         <% end %>
       <p>
       <%= form.number_field :volume %>
     </div>
@@ -57,7 +59,9 @@
       <p id="form-lebel">
         <span><%= form.label :issue %></span>
         <span style="margin-left: 50px; color: grey; font-style: italic;">current Issue</span>
-        <span style="margin-left: 5px; color: grey; font-style: italic;"><%= @manuscripts.last.issue %></span>
+        <% unless @manuscripts.blank? %>
+          <span style="margin-left: 5px; color: grey; font-style: italic;"><%= @manuscripts.last.issue %></span>
+        <% end %>
       <p>
       <%= form.number_field :issue %>
     </div> 

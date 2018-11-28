@@ -30,10 +30,6 @@
         <%= f.text_field :surname, placeholder: "surname", class: "form-control", :required => true %>
       </div>  
       <div class="form-group">
-        <p id="form-lebel"><%= f.label :title %><p/>
-        <%=  f.collection_select :title, User.titles.map{ |a| [a.first,a.first] },  :first, :second %>
-      </div>
-      <div class="form-group">
         <p id="form-lebel">
           <span><%= f.label :Work_Place %></span>
         <p/>
