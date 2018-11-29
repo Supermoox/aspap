@@ -1,4 +1,6 @@
+
 <div class="my-form">
+<h3 id="form-header">Publish Manuscript</h3>
   <%= form_with(model: manuscript, local: true) do |form| %>
     <% if manuscript.errors.any? %>
       <div id="error_explanation">
@@ -31,19 +33,19 @@
       <p id="form-lebel"><%= form.label :abstract %><p>
       <%= form.text_area :abstract, id: :manuscript_abstract %>
     </div>
-
+    <!--
     <div class="form-group">
       <p id="form-lebel">
-        <span><%= form.label :document %> </span>
+        <span><%= form.label #:document %> </span>
         <span style="color: grey; font-style: italic; margin-left: 20px;"> pdf, word doc  </span>
       <p>
-      <%= form.file_field :document %>
+      <%= form.file_field #:document %>
     </div>
-
+    
     <div class="form-group">
-      <p id="form-lebel"><%= form.label :image %><p>
-      <%= form.file_field :image %>
-    </div>
+      <p id="form-lebel"><%= form.label #:image %><p>
+      <%= form.file_field #:image %>
+    </div>-->
 
     <div class="form-group">
        <p id="form-lebel">

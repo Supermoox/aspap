@@ -40,10 +40,13 @@
         <p id="form-lebel"><%= f.label :phone_Number %><p/>
         <%=  f.text_field :phone, placeholder: "your contact number", class: "form-control" %>
       </div>
+
+      <!--
       <div class="form-group">
-           <p id="form-lebel"><%= f.label :profile_picture %><p/>
-          <%= f.file_field :image %> 
+           <p id="form-lebel"><%= f.label #:profile_picture %><p/>
+          <%= f.file_field #:image %> 
       </div>
+      -->
     </div>
     <div class="row education_info">
       <h3>Education</h3> 
@@ -63,13 +66,15 @@
           <p id="form-lebel"><%= f.label :year_completed %><p/>
           <%= f.date_select :year_completed %> 
       </div>
+      <!--
       <div class="form-group">
         <p id="form-lebel">
-          <span><%= f.label :Document_of_qualification %> </span>
+          <span><%= f.label #:Document_of_qualification %> </span>
           <span style="color: grey; font-style: italic; margin-left: 20px;"> pdf, word doc  </span>
         <p>
-        <%= f.file_field :document %>
+        <%= f.file_field #:document %>
       </div>
+      -->
     </div>
 
     <div class="form-group">

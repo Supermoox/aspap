@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   end
   resources :events
   resources :pictures
+  resources :editorial_teams
+  resources :journal_pages
+  resources :publishing_processes
   resources :downloads
   resources :manuscripts do
     resources :reviews, except: [:show, :index]

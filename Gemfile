@@ -22,8 +22,8 @@ gem "font-awesome-rails"
 gem 'mailboxer'
 gem 'activeadmin', '~> 1.0'
 gem 'figaro'
-gem 'aws-sdk'
-
+gem 'aws-sdk', '~> 2.3'
+gem 'fog'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -10,10 +10,6 @@ class Article < ApplicationRecord
 	 :storage => 's3',
 	 :s3_region => ENV['AWS_REGION']
 
-	 validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
-
-
-
-
+	 validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
 end
