@@ -22,7 +22,7 @@ gem "font-awesome-rails"
 gem 'mailboxer'
 gem 'activeadmin', '~> 1.0'
 gem 'figaro'
-gem 'aws-sdk', '~> 2.3'
+gem 'aws-sdk'
 
 
 group :development, :test do

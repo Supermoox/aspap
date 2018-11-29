@@ -283,7 +283,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin (~> 1.0)
-  aws-sdk (~> 2.3)
+  aws-sdk
   bootstrap-sass (~> 3.3, >= 3.3.7)
   byebug
   capybara (~> 2.13)
