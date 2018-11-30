@@ -113,6 +113,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.action_mailer.default_url_options = { :host => 'www.aspap.org' }
+  config.action_mailer.default_url_options = { :host => 'https://aspap.herokuapp.com/' }
 
 end
