@@ -11,7 +11,7 @@
               <% end %>
             <% end %>
             <% if @recipient.image.blank? %>
-              <img src="<%= asset_path( 'user_avatar.png' ) %>" />
+              <img src="<%= asset_path( 'user.png' ) %>" />
             <% else %>
               <span id="user_avatar"><%= image_tag @recipient.image  %> </span><br>
             <% end %>

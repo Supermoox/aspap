@@ -41,6 +41,7 @@
 			 		<h5 id="side-content-links"> <%= link_to "MY ARTICLES" , my_articles_path %></h5>
 			 		<h5 id="side-content-links"> <%= link_to "PENDING REQUESTS" , editors_path %></h5>
 			 		<h5 id="side-content-links"> <%= link_to "ADD TO DOWNLOADS" , new_download_path %></h5>
+			 		<h5 id="side-content-links"> <%= link_to "ADD TO DIRECTORATE" , new_directorate_path %></h5>
 		 		</div>
 			<% elsif  current_user.PR? || current_user.editor? %>
 				<div class="administrative">
