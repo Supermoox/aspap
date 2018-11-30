@@ -40,6 +40,10 @@
         <p id="form-lebel"><%= f.label :phone_Number %><p/>
         <%=  f.text_field :phone, placeholder: "your contact number", class: "form-control" %>
       </div>
+    </div>      
+    <div class="form-group">
+        <p id="form-lebel"><%= f.label :Profile_Picture %><p/>
+        <%=  f.file_field :image %>
     </div>
     <div class="row education_info">
       <h3>Education</h3> 
@@ -59,6 +63,10 @@
           <p id="form-lebel"><%= f.label :year_completed %><p/>
           <%= f.date_select :year_completed %> 
       </div>
+    </div>
+    <div class="form-group">
+        <p id="form-lebel"><%= f.label :Academic_document %><p/>
+       <%= f.file_field :document %>
     </div>
 
     <div class="form-group">
@@ -87,7 +95,7 @@
 
   <h3>Cancel my account</h3>
 
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <p>Unhappy? <%= button_to "Delete My Account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
   <%= link_to "Back", :back %>
 
