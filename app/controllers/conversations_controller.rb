@@ -14,7 +14,8 @@ class ConversationsController < ApplicationController
     end
     conversation = current_user.send_message(recipients, conversation_params[:body], conversation_params[:subject]).conversation
     flash[:success] = "Your message was successfully sent!"
-    redirect_to conversation_path(conversation)
+    #redirect_to conversation_path(conversation)
+     redirect_to root_path
   end
 
   def show
@@ -26,7 +27,8 @@ class ConversationsController < ApplicationController
     current_user.reply_to_conversation(conversation, message_params[:body])
     flash[:notice] = "Your reply message was successfully sent!"
    # redirect_to conversation_path(conversation)
-    redirect_to mailbox_inbox_url
+   # redirect_to mailbox_inbox_url
+    redirect_to root_path
   end
 
   private
