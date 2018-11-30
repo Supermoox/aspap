@@ -36,6 +36,10 @@
         <%= f.text_field :placeOfWork, placeholder: "organization, affiliate, institution etc", class: "form-control" %>
       </div>
       <div class="form-group">
+          <p id="form-lebel"><%= f.label :Profile_Picture %><p/>
+          <%=  f.file_field :image %>
+      </div>
+      <div class="form-group">
         <p id="form-lebel"><%= f.label :phone_Number %><p/>
         <%=  f.text_field :phone, placeholder: "your contact number", class: "form-control"%>
       </div>
@@ -60,7 +64,10 @@
           <%= f.date_select :year_completed %> 
       </div>
     </div>
-
+    <div class="form-group">
+        <p id="form-lebel"><%= f.label :Academic_document %><p/>
+       <%= f.file_field :document %>
+    </div>
     <div class="form-group">
       <p id="form-lebel"><%= f.label :password %><p/>
       <% if @minimum_password_length %>

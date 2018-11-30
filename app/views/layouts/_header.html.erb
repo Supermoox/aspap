@@ -24,7 +24,7 @@
         <% if current_user.image.blank? %>
           <span id="user_avatar"><img src="<%= asset_path( 'user.png', alt: "avatar" ) %>" /></span>
         <% else %>
-          <span id="user_avatar"><%= image_tag current_user.image, alt: "avatar" %> </span>
+          <span id="user_avatar"><%= image_tag current_user.image %> </span>
         <% end %>
       <% else %>
         <div class="account-not">

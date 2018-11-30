@@ -17,6 +17,10 @@
     <div class="form-group">
       <p id="form-lebel"><%= form.label :title %><p>
       <%= form.text_field :title, :placeholder =>"title", :required => true, class: "form-control"  %>
+    </div>    
+    <div class="form-group">
+      <p id="form-lebel"><%= form.label :image %><p>
+      <%= form.file_field :image, class: "form-control"  %>
     </div>
 
     <div class="form-group">
