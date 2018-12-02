@@ -16,7 +16,7 @@ class Article < ApplicationRecord
 
     def approve
       if self.user.editor || self.user.editor || self.user.vip || self.user.PR
-        self.approve = true
+        self.update(approve: true)
         self.save
       end 
     end
