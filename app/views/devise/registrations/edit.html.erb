@@ -93,10 +93,20 @@
     </div>
   <% end %>
 
-  <h3>Cancel my account</h3>
 
-  <p>Unhappy? <%= button_to "Delete My Account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-  <%= link_to "Back", :back %>
+
+  <button type="button" id="formButton">Delete Your AccountHere!</button>
+
+  <div id="delete_acc">
+    <p style="margin-top: 50px;">
+      <p>Unhappy? <%= button_to "Delete My Account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+    </p>
+  </div>
+
+
 
 </div>
+
+
+

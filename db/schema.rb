@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181130184313) do
+ActiveRecord::Schema.define(version: 20181202102237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,26 @@ ActiveRecord::Schema.define(version: 20181130184313) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.boolean "approve"
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "articomments", force: :cascade do |t|
+    t.text "body"
+    t.bigint "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["article_id"], name: "index_articomments_on_article_id"
+  end
+
+  create_table "artireplies", force: :cascade do |t|
+    t.text "body"
+    t.bigint "articomment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["articomment_id"], name: "index_artireplies_on_articomment_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -302,6 +321,8 @@ ActiveRecord::Schema.define(version: 20181130184313) do
   end
 
   add_foreign_key "articles", "users"
+  add_foreign_key "articomments", "articles"
+  add_foreign_key "artireplies", "articomments"
   add_foreign_key "comments", "posts"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"

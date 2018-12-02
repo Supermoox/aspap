@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :artireplies
+  resources :articomments
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :researches do
@@ -12,6 +14,7 @@ Rails.application.routes.draw do
   resources :editorial_teams
   resources :journal_pages
   resources :publishing_processes
+  resources :pending_articles
   resources :downloads
   resources :manuscripts do
     resources :reviews, except: [:show, :index]
@@ -20,13 +23,26 @@ Rails.application.routes.draw do
     end
   end
   resources :journals
-  resources :articles
+  resources :articles do
+    resources :articomments do
+      resources :artireplies
+    end
+    member do
+      patch :approve
+    end
+  end
   devise_for :users
   # NOTE: put this after the 'devise_for :users' line
   resources :users, only: [:index, :show]
   resources :pages
   resources :abouts
-  resources :editors
+  resources :editors do
+    member do
+      patch :approve_editor
+      patch :approve_peer
+      patch :approve_publisher
+    end
+  end
   resources :constitutions
   resources :my_posts
   resources :my_articles

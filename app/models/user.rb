@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :researches
   has_many :comments, dependent: :destroy
+  has_many :articomments, dependent: :destroy
   has_many :articles, dependent: :destroy
   has_many :manuscripts
   has_many :reviews, dependent: :destroy

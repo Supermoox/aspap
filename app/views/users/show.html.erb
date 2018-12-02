@@ -19,13 +19,26 @@
 	      		<span><%= @user.surname %></span>
       		</p>
       		<p>
- 	      		<% if @user.qualification == "PhD" %>
+ 	      		<% if @user.qualification == "PhD" ||  @user.qualification == "Dsc"  %>
 	      			<span> Doctor of Science,</span>
 	      			<span><%= @user.field %></span>
+            <% elsif @user.qualification == "Bsc" %>
+              <span> Bachelor of Science,</span>
+              <span><%= @user.field %></span>
+            <% elsif @user.qualification == "Msc" %>
+              <span> Master of Science,</span>
+              <span><%= @user.field %></span>
+            <% else %>
+              <span><%= @user.field %></span>
 	      		<% end %>
       		</p>     		    		
-      		<p>
-      			<span><%= @user.phone %></span>
+          <p>
+            <span>Phone: </span>
+            <span><%= @user.phone %></span>
+          </p>      		
+          <p>
+            <span>email: </span>
+      			<span><%= @user.email %></span>
       		</p>
 
       	</div>
@@ -35,28 +48,41 @@
 </div> 
 
 <div class="row">
-	<% unless @user_researches.blank? %>
-  <div class="panel">
-   <div class="panel-body">
-		<h4>User's Research works -------------------------------------------------------------</h4>
-  	<% @user_researches.each do |research| %>
-  		<h4 id="research-link">
-        <span style="float: right; font-size: small;">
-          <% if research.concluded %> 
-            <span style="color: grey; margin-right:10px;">Status</span><span style="color: #32CD32;">Concluded</span>
-          <% else %>   
-            <span style="color: grey; margin-right:10px;">Status</span><span style="color: #32CD32;">On Going</span>
-          <% end %>   
-        </span>
-  			<span><%=link_to research.topic,research  %><span>
-  		</h4>
-  	<% end %>
-  	</div>
-  </div>
+  <% unless @articles.blank? %>
+    <div class="panel">
+     <div class="panel-body">
+      <h4>User's Articles------------------------------------------------------------------------</h4>
+      <% @articles.each do |article| %>
+        <h4 id="research-link">  
+          <span><%=link_to article.title, article  %><span>
+        </h4>
+      <% end %>
+      </div>
+    </div>
+  <% end %>	
+
+  <% unless @user_researches.blank? %>
+    <div class="panel">
+     <div class="panel-body">
+  		<h4>User's Research works -------------------------------------------------------------</h4>
+    	<% @user_researches.each do |research| %>
+    		<h4 id="research-link">
+          <span style="float: right; font-size: small;">
+            <% if research.concluded %> 
+              <span style="color: grey; margin-right:10px;">Status</span><span style="color: #32CD32;">Concluded</span>
+            <% else %>   
+              <span style="color: grey; margin-right:10px;">Status</span><span style="color: #32CD32;">On Going</span>
+            <% end %>   
+          </span>
+    			<span><%=link_to research.topic,research  %><span>
+    		</h4>
+    	<% end %>
+    	</div>
+    </div>
 	<% end %>
 
 
-	<% unless @user_researches.blank? %>
+	<% unless @manuscripts.blank? %>
     <div class="panel">
       <div class="panel-body">
       	<h4>User's Published Manuscripts-----------------------------------------------------</h4>

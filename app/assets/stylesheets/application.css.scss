@@ -298,6 +298,9 @@ input#search_keywords{
 	height: 300px;
 	width: 100%;
 }
+.thumbnail-users{
+	margin: 10px;
+}
 .thumbnail-manuscript{
 	width: 100%;
 	padding: 4px;
@@ -387,4 +390,16 @@ textarea{
 }
 #new_search{
 	padding-left: 20%;
+}
+
+#delete_acc {
+	background-color: #ccc;
+	display:none;
+	width: 80%;
+	padding: 10px;
+}
+#formButton{
+	margin-top: 100px;
+	background-color: white;
+	color: red;
 }

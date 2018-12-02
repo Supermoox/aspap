@@ -1,9 +1,8 @@
 class RepliesController < ApplicationController
   before_action :set_reply, only: [:show, :edit, :update, :destroy]
   before_action :set_comment
+  before_action :authenticate_user!, except: [:index, :show]
 
-  # GET /replies
-  # GET /replies.json
   def index
     @replies = Reply.all
   end

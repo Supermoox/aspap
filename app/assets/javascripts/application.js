@@ -17,4 +17,8 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-
+$(document).ready(function(){
+    $("#formButton").click(function(){
+        $("#delete_acc").toggle();
+    });
+});

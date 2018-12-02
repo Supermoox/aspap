@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @articomment.body %>
+</p>
+
+<p>
+  <strong>Article:</strong>
+  <%= @articomment.article %>
+</p>
+
+<%= link_to 'Edit', edit_articomment_path(@articomment) %> |
+<%= link_to 'Back', articomments_path %>

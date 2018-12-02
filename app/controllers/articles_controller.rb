@@ -1,22 +1,29 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :approve]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @articles = Article.all.paginate(page: params[:page], per_page: 10)
+    @articles = Article.all.where(approve: true).paginate(page: params[:page], per_page: 10)
   end
 
 
   def show
+    
+    unless @article.approve?
+      unless current_user.vip?
+        redirect_to root_path 
+      end
+    end 
+    @artireply = Artireply.new
+    @articomment = Articomment.new
+    @articomments = Articomment.where(article_id: @article.id)
+
+    
   end
 
 
   def new
-    if current_user.vip? || current_user.publisher? || current_user.editor? || current_user.PR?
-      @article = current_user.articles.build
-    else
-      redirect_to root_path
-    end
+    @article = current_user.articles.build
   end
 
   def edit
@@ -52,7 +59,10 @@ class ArticlesController < ApplicationController
     end
   end
 
- 
+ def approve
+   @article.update(approve: true)
+   redirect_to pending_articles_path
+ end
   def destroy
     @article.destroy
     respond_to do |format|
@@ -67,6 +77,6 @@ class ArticlesController < ApplicationController
     end
 
     def article_params
-      params.require(:article).permit(:title, :image, :body, :user_id)
+      params.require(:article).permit(:title, :image, :body, :approve, :user_id)
     end
 end

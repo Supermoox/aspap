@@ -6,12 +6,31 @@
     <div class="panel">
       <div class="panel-body">
         <div class="row user_info">
-          <div style="color: red; text-align: center;">
-            <span>
-              <%= link_to @editor, method: :delete, data: { confirm: 'Are you sure you want to delete this request?' }, class: "btn btn-default" do %>
-                <i class="fa fa-trash" aria-hidden="true"></i>
-              <% end %>
-            </span>             
+          <div style="color: grey; text-align: center;">
+            <span><%= @editor.request %> Request</span>
+            <% if @editor.request == "editor" %>        
+              <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'Approve',approve_editor_editor_path(@editor), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
+              </span> 
+              <span style="float: right; margin-right: 10px;">
+                <%= link_to @editor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                <% end %>
+              </span>  
+            <% elsif @editor.request == "peer_reviewer"  %> 
+              <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'Approve',approve_peer_editor_path(@editor), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
+              </span> 
+              <span style="float: right; margin-right: 10px;">
+                <%= link_to @editor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                <% end %>
+            <% elsif @editor.request == "publisher"  %> 
+              <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'Approve',approve_publisher_editor_path(@editor), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
+              </span> 
+              <span style="float: right; margin-right: 10px;">
+                <%= link_to @editor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                <% end %>
+            <% end %>            
           </div>
         	<div class="col-md-2">
 		        <% if @editor.user.image.blank? %>

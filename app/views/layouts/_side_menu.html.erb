@@ -12,9 +12,12 @@
    <h5> <%= link_to "START A RESEARCH" , new_research_path %></h5>
 	 <hr style="height:2px;border:none;color:#333;background-color:white;" />
 
-   <h5> <%= link_to "ARTICLES" , articles_path %></h5>
+   <h5> <%= link_to "POST AN ARTICLE" , new_article_path %></h5>
 	 <hr style="height:2px;border:none;color:#333;background-color:white;" />
-
+   <h5> <%= link_to "ALL ARTICLES" , articles_path %></h5>
+	 <hr style="height:2px;border:none;color:#333;background-color:white;" />
+   <h5> <%= link_to "MY ARTICLES" , my_articles_path %></h5>
+	 <hr style="height:2px;border:none;color:#333;background-color:white;" />
 	 <h5> <%= link_to "ASPAP CONSTITUTION" , constitutions_path %></h5>
 	 <hr style="height:2px;border:none;color:#333;background-color:white;" />
 	 <h5> <%= link_to "ASPAP EXECUTIVE" , executives_path %></h5>
@@ -24,6 +27,7 @@
 </div>
 
 <div class="row side-content-bottom">
+	 
 	 <h5 id="side-content-links"> <%= link_to "MY POSTS" , my_posts_path %></h5>
 	 <h5 id="side-content-links"> <%= link_to "MY MANUSCRIPTS" , my_manuscripts_path %></h5>
 	 
@@ -32,31 +36,25 @@
 		 <span><i class="fa fa-envelope-open-o" aria-hidden="true"></i></span>
 		 <span> <%= link_to "MESSAGES", mailbox_inbox_path %></span>
 	 </h5>
-
+	 <h5 id="side-content-links"> <%= link_to "USERS" , users_path %></h5>
 		<% if user_signed_in? %>
 		 	<% if current_user.vip?  %>
 				<div class="administrative">
 			 		<h5 id="side-content-links"> <%= link_to "PENDING MANUSCRIPTS" , manuscripts_path %></h5>
 			 		<h5 id="side-content-links"> <%= link_to "PENDING RESEARCHES" , researches_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "MY ARTICLES" , my_articles_path %></h5>
+			 		<h5 id="side-content-links"> <%= link_to "PENDING ARTICLES" , pending_articles_path %></h5>
 			 		<h5 id="side-content-links"> <%= link_to "PENDING REQUESTS" , editors_path %></h5>
 			 		<h5 id="side-content-links"> <%= link_to "ADD TO DOWNLOADS" , new_download_path %></h5>
 			 		<h5 id="side-content-links"> <%= link_to "ADD TO DIRECTORATE" , new_directorate_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "CREATE AN ARTICLE" , new_article_path %></h5>
 		 		</div>
 			<% elsif  current_user.PR? || current_user.editor? %>
 				<div class="administrative">
 			 		<h5 id="side-content-links"> <%= link_to "PENDING MANUSCRIPTS" , manuscripts_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "CREATE AN ARTICLE" , new_article_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "MY ARTICLES" , my_articles_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "CREATE AN ARTICLE" , new_article_path %></h5>
+			 		
 		 		</div>			
 		 	<% elsif  current_user.publisher? %>
 				<div class="administrative">
 			 		<h5 id="side-content-links"> <%= link_to "PENDING MANUSCRIPTS" , manuscripts_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "CREATE AN ARTICLE" , new_article_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "MY ARTICLES" , my_articles_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "CREATE AN ARTICLE" , new_article_path %></h5>
 		 		</div>
 			<% end %>	
 		<% end %>

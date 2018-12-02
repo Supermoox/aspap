@@ -1,0 +1,11 @@
+<%= form_for([@article, @articomment]) do |form| %>
+ 
+
+  <div class="form-group">
+    <%= form.text_area :body, id: :comment_body, :placeholder =>"Type your comment here!", :required => true, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

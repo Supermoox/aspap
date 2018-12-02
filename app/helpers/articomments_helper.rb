@@ -1,0 +1,2 @@
+module ArticommentsHelper
+end

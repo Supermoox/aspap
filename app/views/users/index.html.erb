@@ -1,5 +1,19 @@
-<ul>
-  <% @users.each do |user| %>
-    <li><%= user.username %></li>
+<div class="row bottom">
+	<hr style="height:2px;border:none;color:#333;background-color:#708090;" />
+	<% unless @users.blank? %>
+    <% @users.each do |user| %>
+      <div class="col-md-4">
+        <%= link_to user do %>
+	        <div class="thumbnail thumbnail-users">		          		          
+        		<% if user.image.blank? %>
+        			 <img src="<%= asset_path( 'default_user.png' ) %>" />
+        		<% else %>
+              <%=  (image_tag user.image, class: 'image') %>
+            <% end %>
+            <p style="text-align: center; margin-top: 10px;"><strong><%=  user.username %></strong> </p>
+	        </div>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
-</ul>
+</div>

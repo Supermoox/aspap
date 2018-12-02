@@ -1,0 +1,53 @@
+<div class="main-content">
+  <div class="journal-header">
+    <p>Articles</p>
+  </div>
+    <div class="panel">
+      <% @articles.order("created_at DESC").each do |article| %>
+          <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'Approve',approve_article_path(article), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
+          </span> 
+          <span style="float: right; margin-right: 10px;">
+            <%= link_to article, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %>
+          </span>                
+
+        <% @articles.order("created_at DESC").each do |article| %>
+          <%= link_to article do %> 
+            <div class="row clickable-div">
+              <p>
+                <span style="color: grey;">
+                  <strong>Title: </strong>
+                </span>
+                <span style="color: #337ab7;">
+                  <%= article.title %>      
+                </span>            
+              </p>
+              <p>
+                <span style="color: grey;"><strong>Research Area: </strong></span>
+                <span style="color: #337ab7;"><%= article.user.field %></span>
+              <p>
+                <% if article.user.image.blank? %>
+                  <p id="user_avatar">
+                    <span><strong>Author: </strong></span><span style="color: #337ab7;"><%= article.user.username %></span>
+                    <span style="margin-left: 10px;"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+                    </span>
+                  </p>
+                <% else %>
+                  <p id="user_avatar">
+                    <span style="color: grey;"><strong>Author: </strong></span><span style="color: #337ab7;"><%= article.user.username %></span>
+                    <span style="margin-left: 10px;"><%= image_tag article.user.image %></span>
+                  </p>
+                <% end %>          
+              </p>
+              <div class="fade_research">
+                <p><%= article.body %></p>
+                <p class="read_more"></p>
+              </div>
+            </div> 
+          <% end %>
+          <hr>       
+        <% end %>
+      <% end %>  
+    </div>
+</div>
