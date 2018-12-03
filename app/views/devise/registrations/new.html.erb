@@ -6,28 +6,29 @@
     <div class="row education_info">
       <h3>Personal Info</h3> 
       <div class="form-group">
-        <p id="form-lebel"><%= f.label :email %><p/>
-        <%= f.email_field :email, placeholder: "email", class: "form-control", :required => true %>
+        <p id="form-lebel"><span><%= f.label :email %></span><span style="color: red;">*</span><p/>
+        <span><%= f.email_field :email, placeholder: "email", class: "form-control", :required => true %></span>
+        
       </div>
       <div class="form-group">
-        <p id="form-lebel"><%= f.label :username %><p/>
-        <%= f.text_field :username, placeholder: "username", class: "form-control", :required => true %>
+        <p id="form-lebel"><span><%= f.label :username %></span><span style="color: red;">*</span><p/>
+        <span><%= f.text_field :username, placeholder: "username", class: "form-control", :required => true %></span>
       </div>  
       <div class="form-group">
         <p id="form-lebel"><%= f.label :title %><p/>
         <%=  f.collection_select :title, User.titles.map{ |a| [a.first,a.first] },  :first, :second %>
       </div>
       <div class="form-group">
-        <p id="form-lebel"><%= f.label :first_Name %><p/>
-        <%= f.text_field :firstname, placeholder: "firstname", class: "form-control", :required => true %>
+        <p id="form-lebel"><span><%= f.label :first_Name %></span><span style="color: red;">*</span><p/>
+        <span><%= f.text_field :firstname, placeholder: "firstname", class: "form-control", :required => true %></span>
       </div>  
       <div class="form-group">
         <p id="form-lebel"><%= f.label :middle_Name %><p/>
         <%= f.text_field :middlename, placeholder: "optional", class: "form-control" %>
       </div>  
       <div class="form-group">
-        <p id="form-lebel"><%= f.label :surname %><p/>
-        <%= f.text_field :surname, placeholder: "surname", class: "form-control", :required => true %>
+        <p id="form-lebel"><span><%= f.label :surname %></span><span style="color: red;">*</span><p/>
+        <span><%= f.text_field :surname, placeholder: "surname", class: "form-control", :required => true %></span>
       </div>  
       <div class="form-group">
         <p id="form-lebel">
@@ -53,7 +54,8 @@
       </div>  
       <div class="form-group">
         <p id="form-lebel"><%= f.label :qualification %><p/>
-         <%=  f.collection_select :qualification, User.qualifications.map{ |a| [a.first,a.first] },  :first, :second %>
+         <span><%=  f.collection_select :qualification, User.qualifications.map{ |a| [a.first,a.first] },  :first, :second %></span>
+         
       </div>
       <div class="form-group">
         <p id="form-lebel"><%= f.label :field %><p/>
@@ -65,11 +67,11 @@
       </div>
     </div>
     <div class="form-group">
-        <p id="form-lebel"><%= f.label :Academic_document %><p/>
-       <%= f.file_field :document %>
+        <p id="form-lebel"><span><%= f.label :Academic_document %><span><span style="color: grey; margin-left: 10px; font-style: italic;">Required if you intend to join the editorial team!</span><p/>
+        <%= f.file_field :document %>
     </div>
     <div class="form-group">
-      <p id="form-lebel"><%= f.label :password %><p/>
+      <p id="form-lebel"><span><%= f.label :password %></span><span style="color: red;">*</span><p/>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
@@ -77,7 +79,7 @@
     </div>
 
     <div class="form-group">
-      <p id="form-lebel"><%= f.label :password_confirmation %><p/>
+      <p id="form-lebel"><span><%= f.label :password_confirmation %></span><span style="color: red;">*</span><p/>
       <%= f.password_field :password_confirmation, autocomplete: "off" %>
     </div>
 
