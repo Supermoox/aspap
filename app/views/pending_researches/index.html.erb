@@ -1,12 +1,12 @@
 <div class="main-content">
   <div class="journal-header">
-    <p>Researches</p>
+    <p>Pending Researches</p>
   </div>
-    <% if @researches.blank? %>
-      <h3 id="form-header">No Researches Yet</h3>
-    <% else %>
-      <div class="panel">
-        <% @researches.order("created_at DESC").each do |research| %>
+    <div class="panel">
+      <% if @reseaches.blank? %>
+        <p>No pending research </p>
+      <% else %>
+        <% @reseaches.order("created_at DESC").each do |research| %>
           <%= link_to research do %> 
             <div class="row clickable-div">
               <p>
@@ -42,6 +42,6 @@
           <% end %>
           <hr>       
         <% end %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
 </div>

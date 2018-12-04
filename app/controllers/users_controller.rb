@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user_researches = Research.where(user_id: @user.id).where(approval: true)
     @manuscripts = Manuscript.where(user_id: @user.id).where(approval: true)
     @articles = Article.where(user_id: @user.id).where(approve: true)
+    @posts = Post.where(user_id: @user.id)
   end
 
   private

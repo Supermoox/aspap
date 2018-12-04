@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :journal_pages
   resources :publishing_processes
   resources :pending_articles
+  resources :pending_researches
   resources :downloads
   resources :manuscripts do
     resources :reviews, except: [:show, :index]
@@ -46,6 +47,7 @@ Rails.application.routes.draw do
   resources :constitutions
   resources :my_posts
   resources :my_articles
+  resources :my_researches
   resources :executives
   resources :directorates
   resources :my_manuscripts
