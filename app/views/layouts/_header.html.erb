@@ -15,7 +15,7 @@
       <% if user_signed_in? %>
         <%= link_to mailbox_inbox_path do %>
           <span class="label label-danger top-right-item">      
-            <%= 2 %> 
+            <%= unread_messages_count %> 
           </span> 
           <i class="fa fa-envelope-open-o" aria-hidden="true"> </i>
           <span class="top-right-item"> MESSAGES</span> |
