@@ -52,7 +52,7 @@
 	<% unless @manuscripts.blank? %>
     <div class="panel">
       <div class="panel-body">
-      	<h4>User's Published Manuscripts-----------------------------------------------------</h4>
+      	<h4><%= @user.username %>'s  Published Manuscripts-----------------------------------------------------</h4>
       	<% @manuscripts.each do |manuscript| %>
         <div class="row">
           <div class="col-sm-3 ">
@@ -93,7 +93,7 @@
   <% unless @articles.blank? %>
     <div class="panel">
      <div class="panel-body">
-      <h4>User's Articles------------------------------------------------------------------------</h4>
+      <h4><%= @user.username %>'s  Articles------------------------------------------------------------------------</h4>
       <% @articles.each do |article| %>
         <h4 id="research-link">  
           <span><%=link_to article.title, article  %><span>
@@ -106,7 +106,7 @@
   <% unless @posts.blank? %>
     <div class="panel">
      <div class="panel-body">
-      <h4>User's Posts------------------------------------------------------------------------</h4>
+      <h4><%= @user.username %>'s  Posts------------------------------------------------------------------------</h4>
       <% @posts.each do |post| %>
         <h4 id="research-link">  
           <span><%=link_to post.title, post  %><span>
@@ -119,7 +119,7 @@
   <% unless @user_researches.blank? %>
     <div class="panel">
      <div class="panel-body">
-      <h4>User's Research works -------------------------------------------------------------</h4>
+      <h4><%= @user.username %>'s  Research works -------------------------------------------------------------</h4>
       <% @user_researches.each do |research| %>
         <h4 id="research-link">
           <span style="float: right; font-size: small;">

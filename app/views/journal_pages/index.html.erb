@@ -75,8 +75,11 @@
     be attached to the manuscript describing the purpose and motivation for completing the
     work presented in the manuscript.
 
-
+  <h3>Currently Active Journals</h3>
+  <% @journals.each do |journal| %>
+    <h4><%= link_to journal.name, journal %></h4>
+  <% end %>
   </div>
-  <div class="btn btn-default"><%= link_to "Publish To our Journals" , new_manuscript_path  %></div>
+
 </div>
 
