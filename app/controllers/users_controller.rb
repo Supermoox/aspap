@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = User.all
+    @users = User.all.order("created_at DESC")
   end
   def show
     @user_researches = Research.where(user_id: @user.id).where(approval: true)
