@@ -1,6 +1,6 @@
 <div class="row first-top-layer">
   <div class="col-md-2 logo">
-    <img src="<%= asset_path( 'logo.png' ) %>" />
+  <%= link_to(image_tag("/assets/logo.png", alt: "logo", title: "Home"))  %>
   </div>
   <div class="col-md-5 searcher">
     <%= form_for  @search do |f| %>    
