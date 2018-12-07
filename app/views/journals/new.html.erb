@@ -1,3 +1,5 @@
+<h3 id="form-header">New Journal</h3>
+
 <div class="my-form">
 <%= form_with(model: @journal, local: true) do |form| %>
   <% if @journal.errors.any? %>
@@ -21,7 +23,7 @@
       <%= form.text_area :description,  :required => true  %>
     </div>
   <div class="actions">
-    <input type="submit" name="commit" value="create Directorate" data-disable-with="Create Editor">
+    <input type="submit" name="commit" value="create Journal" data-disable-with="Create Journal">
   </div>
 <% end %>
 </div>
