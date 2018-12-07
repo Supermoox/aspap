@@ -7,7 +7,7 @@ class Research < ApplicationRecord
 
     def approve
       if self.user.editor || self.user.publisher || self.user.vip || self.user.PR
-        self.update(approve: true)
+        self.update(approval: true)
         self.save
       end 
     end

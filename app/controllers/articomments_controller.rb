@@ -17,6 +17,13 @@ class ArticommentsController < InheritedResources::Base
     @articomment.user_id = current_user.id
     @articomment.article_id = @article.id
 
+    unless @article.user == current_user
+      if @article.counter == nil
+        @article.update(counter: 1)
+      else
+        @article.update(counter: @article.counter + 1)
+      end
+    end
 
     if @articomment.save
       redirect_to @article

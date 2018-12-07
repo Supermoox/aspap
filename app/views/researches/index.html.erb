@@ -9,14 +9,12 @@
         <% @researches.order("created_at DESC").each do |research| %>
           <%= link_to research do %> 
             <div class="row clickable-div">
-              <p>
-                <span style="color: grey;">
-                  <strong>Topic: </strong>
-                </span>
+              <h4>
+
                 <span style="color: #337ab7;">
                   <%= research.topic %>      
                 </span>            
-              </p>
+              </h4>
               <p>
                 <span style="color: grey;"><strong>Research Area: </strong></span>
                 <span style="color: #337ab7;"><%= research.Research_area %></span>

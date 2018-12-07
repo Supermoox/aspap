@@ -13,13 +13,55 @@
   <div class="col-md-5 account">
     <ul class="top-right">
       <% if user_signed_in? %>
+
+        <span> 
+          <button class="dropdown-toggle btn-notification" data-toggle="dropdown">
+            <span class="label label-danger top-right-item">      
+              <span><%= @notifications %></span>
+            </span> 
+            <span style="font-size: larger; color: #708090;">
+              <i class="fa fa-bell" aria-hidden="true"> </i> 
+            </span>
+          </button> |
+          <ul class="dropdown-menu dropdown-menu-notification">
+            <% unless @active_posts.blank?  %>
+              <strong>Posts</strong>
+              <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
+              <% @active_posts.each do |post| %>
+                <li>
+                  <%= link_to post do %>
+                    <p id="noti-item">
+                      <p id="trunc"><span style="color: blue;"><%=  post.title  %></span></p>
+                      <span style="font-size: small; color: black; font-style: italic;">(<%=  post.counter %> new comments) </span>
+                    </p>
+                  <% end %>
+                </li>
+              <% end %>  
+            <% end %>  
+            
+            <% unless @active_articles.blank?  %>
+              <strong>Articles</strong>   
+              <hr style="height:2px;border:none;color:#333;background-color:#708090;" />       
+              <% @active_articles.each do |article| %>
+                <li>
+                  <%= link_to article do %>
+                    <p id="noti-item">
+                      <p id="trunc"><span style="color: blue;"><%=  article.title  %></span></p>
+                      <span style="font-size: small; color: black; font-style: italic;">(<%=  article.counter %> new comments) </span>
+                    </p>
+                  <% end %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </span> 
+
         <%= link_to mailbox_inbox_path do %>
           <span class="label label-danger top-right-item">      
             <%= unread_messages_count %> 
           </span> 
-          <i class="fa fa-envelope-open-o" aria-hidden="true"> </i>
-          <span class="top-right-item"> MESSAGES</span> |
-        <% end %>
+          <span style="font-size: larger; color: #708090;"><i class="fa fa-envelope-open-o" aria-hidden="true"> </i> </span>
+        <% end %>|
         <span class="top-right-item"><%= link_to "ACCOUNT" , edit_user_registration_path %></span> |
         <span class="top-right-item"><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></span> |
         <span id="user_name"><%= current_user.username %> </span>

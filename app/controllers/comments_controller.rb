@@ -28,8 +28,13 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     @comment.post_id = @post.id
-
-
+    unless @post.user == current_user
+      if @post.counter == nil
+        @post.update(counter: 1)
+      else
+        @post.update(counter: @post.counter + 1)
+      end
+    end
     if @comment.save
       redirect_to @post
     else

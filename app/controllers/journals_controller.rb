@@ -6,6 +6,9 @@ class JournalsController < ApplicationController
     @manuscripts = Manuscript.where(journal_id: @journal.id).where(approval: true).paginate(page: params[:page], per_page: 10)
   end
 
+  def index
+    @journals = Journal.all.paginate(page: params[:page], per_page: 10)
+  end
 
   def create
     @journal = Journal.new(journal_params)
@@ -29,6 +32,6 @@ class JournalsController < ApplicationController
     end
 
     def journal_params
-      params.require(:journal).permit(:name)
+      params.require(:journal).permit(:name, :description)
     end
 end

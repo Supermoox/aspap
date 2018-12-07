@@ -6,16 +6,16 @@
     <% @posts.each do |post| %> 
       <%= link_to post do %> 
         <div class="row clickable-div">
-          <div class="col-sm-3 ">
+          <div class="col-sm-2 ">
             <% if post.user.image.blank? %>
-              <p id="user_avatar2"><img src="<%= asset_path( 'default_user.png' ) %>" /></p>
+              <p id="user_avatar"><img src="<%= asset_path( 'default_user.png' ) %>" /></p>
             <% else %>
-              <p id="user_avatar2"><%= image_tag post.user.image %></p>
+              <p id="user_avatar"><%= image_tag post.user.image %></p>
             <% end %>
           </div>       
-          <div class="col-sm-9 ">
+          <div class="col-sm-10 ">
           <div class="discuss">
-            <p ><strong style="font-family: initial;"><%=  post.title  %> </strong></p>
+            <p ><strong style="font-family: initial; font-size: large;"><%=  post.title  %> </strong></p>
             <div class="fadded">
               <span><%=  post.body  %> </span>
             </div>

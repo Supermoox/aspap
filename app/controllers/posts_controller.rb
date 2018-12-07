@@ -13,6 +13,9 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @reply = Reply.new
     @comments = Comment.where(post_id: @post.id)
+    if user_signed_in? && @post.user == current_user
+      @post.update(counter: 0)
+    end
   end
 
   def new
@@ -67,6 +70,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :body, :image)
+      params.require(:post).permit(:title, :body, :counter, :image)
     end
 end

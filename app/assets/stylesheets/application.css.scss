@@ -407,3 +407,19 @@ textarea{
 a.btn.btn-primary{
 	color: white;
 }
+
+.btn-notification{
+	background-color: white;
+	border: none;
+}
+.dropdown-menu-notification{
+	top: 70%;
+	padding: 10px;
+	float: left;
+}
+.dropdown-menu-notification a{
+	color: blue;
+}
+#noti-item:hover{
+	background-color: #F5F5F5;
+}

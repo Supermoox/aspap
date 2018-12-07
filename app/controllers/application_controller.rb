@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_journals
   before_action :set_directorates
+  before_action :notifcation
   before_action :configure_permitted_parameters, if: :devise_controller? 
 	helper_method :mailbox, :conversation
 	before_action :set_search
@@ -15,6 +16,25 @@ class ApplicationController < ActionController::Base
 
 	def conversation
    	@conversation ||= mailbox.conversations.find(params[:id])
+  end
+
+  def notifcation
+		if user_signed_in? 
+			@active_posts = Post.where(user_id: current_user.id).where("counter > ?", 0)
+			@active_articles = Article.where(user_id: current_user.id).where("counter > ?", 0)
+			@notifications = 0
+			unless @active_posts.blank?
+				@active_posts.each do |post|
+					@notifications += post.counter
+				end
+			end			
+			unless @active_articles.blank?
+				@active_articles.each do |post|
+					@notifications += post.counter
+				end
+			end
+
+		end
   end
 
  	def set_journals

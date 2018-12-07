@@ -18,7 +18,9 @@ class ArticlesController < ApplicationController
     @articomment = Articomment.new
     @articomments = Articomment.where(article_id: @article.id)
 
-    
+    if user_signed_in? && @article.user == current_user
+      @article.update(counter: 0)
+    end
   end
 
 
@@ -77,6 +79,6 @@ class ArticlesController < ApplicationController
     end
 
     def article_params
-      params.require(:article).permit(:title, :image, :body, :approve, :user_id)
+      params.require(:article).permit(:title, :image, :body, :approve, :user_id, :counter)
     end
 end
