@@ -104,9 +104,9 @@
             <% if manuscript.user.image.blank? %>
               <span id="user_avatar"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
             <% else %>
-              <span id="user_avatar"><%= image_tag manuscript.user.image %> </span>
+              <span id="user_avatar"><%= link_to (image_tag manuscript.user.image), manuscript.user  %> </span>
 						<% end %>
-            <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= manuscript.user.username %></span>
+            <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= link_to manuscript.user.username , manuscript.user %></span>
             <span style="color: grey; float: right;"><%= manuscript.created_at.strftime("%b %d, %Y")  %></span>
             <p> <%= simple_format(manuscript.abstract) %>  </p>
             <p style="color:#337ab7;"> 

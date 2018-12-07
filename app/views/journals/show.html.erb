@@ -28,12 +28,14 @@
       </div>       
       <div class="col-sm-9 ">
         <h4 style="color: #337ab7;"><%=  manuscript.title %> </h4>
-        <% if manuscript.user.image.blank? %>
-          <span id="user_avatar"><img src="<%= asset_path( 'user.png' ) %>" /></span>
-        <% else %>
-          <span id="user_avatar"><%= image_tag manuscript.user.image %> </span>
+        <%= link_to manuscript.user do %>
+          <% if manuscript.user.image.blank? %>
+            <span id="user_avatar"><img src="<%= asset_path( 'user.png' ) %>" /></span>
+          <% else %>
+            <span id="user_avatar"><%= image_tag manuscript.user.image %> </span>
+          <% end %>
+          <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= manuscript.user.username %></span>
         <% end %>
-        <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= manuscript.user.username %></span>
         <span style="color: grey; float: right;"><%= manuscript.created_at.strftime("%b %d, %Y")  %></span>
         <p> <%= simple_format(manuscript.abstract) %>  </p>
         <p style="color:#337ab7;"> 

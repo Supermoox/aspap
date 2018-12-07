@@ -13,12 +13,14 @@
           </div>       
           <div class="col-sm-9 ">
             <h4 style="color: #337ab7;"><%= link_to manuscript.title, manuscript %> </h4>
-            <% if manuscript.user.image.blank? %>
-              <%= link_to(image_tag("/assets/user.png", alt: "user_avatar") ) %> 
-            <% else %>
-              <span id="user_avatar"><%= image_tag manuscript.user.image %> </span>
+            <%= link_to manuscript.user do %>
+              <% if manuscript.user.image.blank? %>
+                <%= image_tag("/assets/user.png", alt: "user_avatar")  %> 
+              <% else %>
+                <span id="user_avatar"><%= image_tag manuscript.user.image %> </span>
+              <% end %>
+              <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= manuscript.user.username %></span>
             <% end %>
-            <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= manuscript.user.username %></span>
             <span style="color: grey; float: right;"><%= manuscript.created_at.strftime("%b %d, %Y")  %></span>
             <p style="color:#337ab7;"> 
               <span>Vol. </span> 

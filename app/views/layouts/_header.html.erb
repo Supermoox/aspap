@@ -1,7 +1,9 @@
 <div class="row first-top-layer">
-  <div class="col-md-2 logo">
-    <img src="<%= asset_path( 'logo.png' ) %>" />
-  </div>
+  <%= link_to root_path do %>
+    <div class="col-md-2 logo">
+      <img src="<%= asset_path( 'logo.png' ) %>" />
+    </div>
+  <% end %>
   <div class="col-md-5 searcher">
     <%= form_for  @search do |f| %>    
       <span class="param-text">
@@ -64,11 +66,13 @@
         <% end %>|
         <span class="top-right-item"><%= link_to "ACCOUNT" , edit_user_registration_path %></span> |
         <span class="top-right-item"><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></span> |
-        <span id="user_name"><%= current_user.username %> </span>
-        <% if current_user.image.blank? %>
-          <span id="user_avatar"><img src="<%= asset_path( 'user.png', alt: "avatar" ) %>" /></span>
-        <% else %>
-          <span id="user_avatar"><%= image_tag current_user.image %> </span>
+        <%= link_to current_user do %>
+          <span id="user_name"><%= current_user.username %> </span>
+          <% if current_user.image.blank? %>
+            <span id="user_avatar"><img src="<%= asset_path( 'user.png', alt: "avatar" ) %>" /></span>
+          <% else %>
+            <span id="user_avatar"><%= image_tag current_user.image %> </span>
+          <% end %>
         <% end %>
       <% else %>
         <div class="account-not">
