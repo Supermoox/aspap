@@ -1,7 +1,7 @@
 class Article < ApplicationRecord
 	has_many :articomments, dependent: :destroy
   belongs_to :user
-  after_create :initialize
+  after_create :set_some_values
 
   # This method associates the attribute ":avatar" with a file attachment
   has_attached_file :image, styles: {
@@ -14,7 +14,7 @@ class Article < ApplicationRecord
 
   private
 
-    def initialize
+    def set_some_values
       if self.user.editor || self.user.editor || self.user.vip || self.user.PR
         self.update(approve: true)
       end 
