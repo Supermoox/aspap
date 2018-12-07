@@ -9,6 +9,8 @@
    <h5> <%= link_to "START A RESEARCH" , new_research_path %></h5>
    <hr style="height:2px;border:none;color:#333;background-color:white;" />
    <h5 id="side-content-links"> <%= link_to "PUBLISH TO A JOURNAL" , journals_path %></h5>
+	 <hr style="height:2px;border:none;color:#333;background-color:white;" />   
+	 <h5 id="side-content-links"> <%= link_to "ASPAP JOURNALS" , journal_pages_path %></h5>
 	 <hr style="height:2px;border:none;color:#333;background-color:white;" />
    <h5 id="side-content-links"> <%= link_to "PUBLISHING ETHICS & POLICIES" , publishing_processes_path %></h5>	 
    <hr style="height:2px;border:none;color:#333;background-color:white;" />
@@ -39,6 +41,7 @@
 			 		<h5 id="side-content-links"> <%= link_to "PENDING REQUESTS" , editors_path %></h5>
 			 		<h5 id="side-content-links"> <%= link_to "ADD TO DOWNLOADS" , new_download_path %></h5>
 			 		<h5 id="side-content-links"> <%= link_to "ADD TO DIRECTORATES" , new_directorate_path %></h5>
+			 		<h5 id="side-content-links"> <%= link_to "ADD A JOURNAL" , new_journal_path %></h5>
 		 		</div>
 			<% elsif  current_user.PR? || current_user.editor? %>
 				<div class="administrative">
