@@ -1,7 +1,7 @@
 <%= form_for :conversation, url: :conversations, html: { class: "" } do |f| %>
 
     <div class="form-group">
-      <%= f.label :recipients %>
+      <%= f.label :Select_Recipient %>
       <% @users = User.where("id != ?", current_user.id) %>
       <p id="recipient-select"><%= f.select(:recipients, @users.all.collect {|p| [ p.username, p.id ] }, {}, { multiple: true}) %></p>
     </div> 

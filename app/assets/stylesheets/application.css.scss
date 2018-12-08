@@ -398,21 +398,13 @@ textarea{
 	width: 80%;
 	padding: 10px;
 }
-#send_message {
-	background-color: #ccc;
-	display:none;
-	width: 80%;
-	padding: 10px;
-}
+
 #formButton{
 	margin-top: 100px;
 	background-color: white;
 	color: red;
 }
-#messageButton{
-	background-color: white;
-	color: blue;
-}
+
 
 a.btn.btn-primary{
 	color: white;
@@ -428,7 +420,7 @@ a.btn.btn-primary{
 	float: left;
 }
 .dropdown-menu-notification a{
-	color: blue;
+	color: #4169E1;
 }
 #noti-item:hover{
 	background-color: #F5F5F5;
@@ -436,5 +428,10 @@ a.btn.btn-primary{
 
 #conversation_recipients{
 	height: 25px;
+	border-radius: 4px;
 }
 
+.dropdown-send-message{
+	width: 28%;
+	border: #4169E1;
+}
