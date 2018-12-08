@@ -11,11 +11,12 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery-migrate-min
 //= require rails-ujs
 //= require bootstrap-sprockets
 //= require lightbox
+//= require turbolinks
 //= require_tree .
+
 
 
 
