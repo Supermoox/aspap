@@ -12,10 +12,12 @@
 //
 //= require jquery
 //= require rails-ujs
-//= require turbolinks
 //= require lightbox
 //= require bootstrap-sprockets
+//= require turbolinks
 //= require_tree .
+
+
 
 $(document).ready(function(){
     $("#formButton").click(function(){
