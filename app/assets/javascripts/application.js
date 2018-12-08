@@ -25,5 +25,10 @@ $(document).ready(function(){
     });
 });
 
+$(document).ready(function(){
+    $("#messageButton").click(function(){
+        $("#send_message").toggle();
+    });
+});
 
 
