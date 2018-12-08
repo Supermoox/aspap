@@ -28,3 +28,5 @@ $(document).ready(function(){
         $("#send_message").toggle();
     });
 });
+
+
