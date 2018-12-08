@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require rails-ujs
-//= require lightbox
-//= require bootstrap-sprockets
 //= require turbolinks
+//= require bootstrap-sprockets
+//= require lightbox
 //= require_tree .
 
 
@@ -25,10 +25,5 @@ $(document).ready(function(){
     });
 });
 
-$(document).ready(function(){
-    $("#messageButton").click(function(){
-        $("#send_message").toggle();
-    });
-});
 
 
