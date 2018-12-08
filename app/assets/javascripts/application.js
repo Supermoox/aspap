@@ -22,3 +22,9 @@ $(document).ready(function(){
         $("#delete_acc").toggle();
     });
 });
+
+$(document).ready(function(){
+    $("#messageButton").click(function(){
+        $("#send_message").toggle();
+    });
+});

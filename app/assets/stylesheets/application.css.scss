@@ -398,10 +398,20 @@ textarea{
 	width: 80%;
 	padding: 10px;
 }
+#send_message {
+	background-color: #ccc;
+	display:none;
+	width: 80%;
+	padding: 10px;
+}
 #formButton{
 	margin-top: 100px;
 	background-color: white;
 	color: red;
+}
+#messageButton{
+	background-color: white;
+	color: blue;
 }
 
 a.btn.btn-primary{
@@ -422,4 +432,8 @@ a.btn.btn-primary{
 }
 #noti-item:hover{
 	background-color: #F5F5F5;
+}
+
+#conversation_recipients{
+	height: 25px;
 }

@@ -8,7 +8,7 @@
 	      	<span id="user_avatar2"><%= image_tag @user.image %></span>
 	      <% end %>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-9">
       	<div id="user_info">
       		<p id="user_title">
 	      		<span ><%= @user.title %></span>
@@ -18,7 +18,7 @@
 	      		<% end %>
 	      		<span><%= @user.surname %></span>
       		</p>
-      		<p>
+      		<p style="color: grey">
  	      		<% if @user.qualification == "PhD" ||  @user.qualification == "Dsc"  %>
 	      			<span> Doctor of Science,</span>
 	      			<span><%= @user.field %></span>
@@ -32,15 +32,38 @@
               <span><%= @user.field %></span>
 	      		<% end %>
       		</p>     		    		
-          <p>
+          <p style="color: grey">
             <span>Phone: </span>
             <span><%= @user.phone %></span>
           </p>      		
-          <p>
+          <p style="color: grey">
             <span>email: </span>
       			<span><%= @user.email %></span>
       		</p>
+          <% unless user_signed_in? && current_user == @user %>
+            <div class="message-user">
+              <%= form_for :conversation, url: :conversations, html: { class: "" } do |f| %>
+                <div class="form-group">
+                  <% @users = User.where("id = ?", @user.id) %>
+                  <div id="messageButton">
+                    <%= f.select :recipients, @users.all.collect {|p| [ "Write Message", p.id ] }, {} ,{ multiple: true}  %>    
+                  </div>
+                </div> 
 
+                <div id="send_message">
+                  <div class="form-group">
+                    <%= f.label :subject %>
+                    <%= f.text_field :subject, placeholder: "Subject", class: "form-control", :required => true %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :message %>
+                    <%= f.text_area :body, class: 'form-control',placeholder: "Type your message here", rows: 4  %>
+                  </div>
+                  <%= f.submit "Send Message", class: "btn btn-success" %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
       	</div>
       </div>
   	</div>

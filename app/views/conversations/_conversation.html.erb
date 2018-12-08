@@ -9,7 +9,7 @@
               <% if recipient != current_user %>
                 <% @recipient = recipient %>
               <% end %>
-            <% end %>
+            <% end %> 
             <% if @recipient.image.blank? %>
               <img src="<%= asset_path( 'user.png' ) %>" />
             <% else %>
