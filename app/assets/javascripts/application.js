@@ -11,8 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-migrate-min
 //= require rails-ujs
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require lightbox
 //= require_tree .
@@ -30,5 +30,4 @@ $(document).ready(function(){
         $("#send_message").toggle();
     });
 });
-
 
