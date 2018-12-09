@@ -14,30 +14,62 @@
    
     <div class="row">
       <div class="executive_description">
-      	<p>
-      	  
+      	<p>  	  
       	  <span><%= @directorate.description %></span> 
       	</p>
-        <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
-        <div class="related_research">
-          <% if !@researches.blank? %>
-            <h3 style="text-align: center;"> Researches Under this Directorate</h3>
-            <% @researches.each do |research| %>
-              <hr>
-              <p>
-                <span><strong>Topic: </strong></span><span style="color: #337ab7;"><%= research.topic %></span>
-              </p>
-              <p>
-                <span><strong>Research Area: </strong></span><span style="color: #337ab7;"><%= research.Research_area %></span>
-              </p>
-              <p>
-                <span><strong>Description: </strong></span><span><%= research.description %></span>
-              </p>
- 
-            <% end %>
-          <% end %>
-        </div>
       </div>
     </div>
   </div>
 </div>
+
+
+<% unless @researches.blank? %>
+  <div class="panel">
+   <div class="panel-body">
+    <h4>Related Research
+      <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
+    </h4>
+    <% @researches.each do |research| %>
+      <h4 id="research-link">
+        <span style="float: right; font-size: small;">
+          <% if research.concluded %> 
+            <span style="color: grey; margin-right:10px;">Status</span><span style="color: #32CD32;">Concluded</span>
+          <% else %>   
+            <span style="color: grey; margin-right:10px;">Status</span><span style="color: #32CD32;">On Going</span>
+          <% end %>   
+        </span>
+        <span><%=link_to research.topic,research  %><span>
+      </h4>
+    <% end %>
+    </div>
+  </div>
+<% end %>
+
+<% unless @articles.blank? %>
+  <div class="panel">
+   <div class="panel-body">
+    <h4>Related Articles
+      <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
+      <% @articles.each do |article| %>
+        <h4 id="research-link">  
+          <span><%=link_to article.title, article  %><span>
+        </h4>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<% unless @posts.blank? %>
+  <div class="panel">
+   <div class="panel-body">
+    <h4>Related Posts
+      <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
+      <% @posts.each do |post| %>
+        <h4 id="research-link">  
+          <span><%=link_to post.title, post  %><span>
+        </h4>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+

@@ -3,7 +3,9 @@ class DirectoratesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def show
-    @researches = Research.where(directorate_id: @directorate).paginate(page: params[:page], per_page: 10)
+    @researches = Research.where(directorate_id: @directorate.id).order("created_at DESC").paginate(page: params[:page], per_page: 10)
+    @articles = Article.where(directorate_id: @directorate.id).order("created_at DESC").paginate(page: params[:page], per_page: 10)
+    @posts = Post.where(directorate_id: @directorate.id).order("created_at DESC").paginate(page: params[:page], per_page: 10)
   end
 
 
