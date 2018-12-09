@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
 	has_many :comments, dependent: :destroy
-	belongs_to :user
+  belongs_to :user
+	belongs_to :directorate
 
   # This method associates the attribute ":avatar" with a file attachment
   has_attached_file :image, styles: {

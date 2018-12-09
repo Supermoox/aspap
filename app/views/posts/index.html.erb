@@ -33,6 +33,11 @@
         </div>
 
         <div class="form-group">
+          <p id="form-lebel"><%= f.label :Directorate %><p>
+          <%= collection_select(:post, :directorate_id, Directorate.all, :id, :name, :prompt => "Select") %>
+        </div>
+
+        <div class="form-group">
           <p id="post-text"><%= f.text_area :body, :placeholder =>"write here...", class: "form-control" %></p>
         </div>
 

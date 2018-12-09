@@ -1,20 +1,31 @@
 <div class="panel panel-default">
-  <p id="post-header"><%= @post.title %></p>
-
-  <p id="post-body">
-
-    <div id="article-body">
-      <%= simple_format(@post.body) %>
+  <% unless @post.directorate.blank? %> 
+    <div style="text-align: right;">  
+      <%= link_to @post.directorate do %>
+        <p style="font-style: italic; font-size: smaller;"><%= @post.directorate.name %></p>
+      <% end %>
     </div>
-    <span style="color: grey; font-style: italic;"> - Post by</span>
-    <span style="color: #6495EA;"><%= link_to @post.user.username , @post.user%></span>
-    <% if @post.user.image.blank? %>
-      <span id="user_avatar"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
-    <% else %>
-      <span id="user_avatar"><%= link_to (image_tag @post.user.image ), @post.user %> </span>
+  <% end %>
+  <div class="post">
+    <% unless @post.image.blank? %>
+      <img class="img-responsive" src="<%=  @post.image %>" class="img-fluid">
     <% end %>
-  </p>
-
+    <p id="post-header"><%= @post.title %></p>
+    <p id="post-body">
+      <div id="article-body">
+        <p>
+          <%= simple_format(@post.body) %>
+        </p>
+      </div>
+      <span style="color: grey; font-style: italic;"> - Post by</span>
+      <span style="color: #6495EA;"><%= link_to @post.user.username , @post.user%></span>
+      <% if @post.user.image.blank? %>
+        <span id="user_avatar"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+      <% else %>
+        <span id="user_avatar"><%= link_to (image_tag @post.user.image ), @post.user %> </span>
+      <% end %>
+    </p>
+  </div>
   <div class="comments">
   	<% if @comments.blank? %>
       <p style="font-style: italic;">No comments on this post yet, be the first to comment!</p>

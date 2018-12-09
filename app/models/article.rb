@@ -1,6 +1,7 @@
 class Article < ApplicationRecord
 	has_many :articomments, dependent: :destroy
   belongs_to :user
+  belongs_to :directorate
   after_create :set_some_values
 
   # This method associates the attribute ":avatar" with a file attachment
