@@ -6,10 +6,11 @@
   <% end %>
   <div class="col-md-5 searcher">
     <%= form_for  @search do |f| %>    
-      <span class="param-text">
-        <%= f.text_field :keywords, :placeholder =>"search for articles" %>
-      </span>
-      <span ><%= f.submit "search", class: "btn btn-search" %></span>
+      
+      <span><%= f.text_field :keywords, :placeholder =>"Publications, articles, People or discussions" %></span>
+
+      <span><%= f.button fa_icon("search"), class: "button btn-search", id: "register-button" %></span>
+
     <% end %>
   </div>
   <div class="col-md-5 account">

@@ -1,52 +1,134 @@
-
-<div class="main-content">
-  <div class="journal-header">
-    <p>Manuscripts</p>
+<% if @searches_manuscripts.blank? && @searches_users.blank? && @searches_articles.blank? && @searches_posts.blank?  %>
+  <div class="main-content">
+    <h3>No Matches Found!</h3>
   </div>
-    <% if @searches.empty? %>
-      <h4> 
-        <p> No matches</p>
-      </h4>
-    <% else %>  
-    <% @searches.order("created_at DESC").each do |manuscript| %>
-      <div class="panel">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-sm-3 ">
-                <div class="thumbnail thumbnail-manuscript">
-                  <%= image_tag manuscript.image %>
-                </div>       
-            </div>       
-            <div class="col-sm-9 ">
-              <h4 style="color: #337ab7;"><%=  manuscript.title %> </h4>
-              <% if manuscript.user.image.blank? %>
-                <span><img src="<%= asset_path( 'user.png' ) %>" /></span>
-              <% else %>
-                <span id="user_avatar"><%= image_tag manuscript.user.image %> </span>
-              <% end %>
-              <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= manuscript.user.username %></span>
-              <span style="color: grey; float: right;"><%= manuscript.created_at.strftime("%b %d, %Y")  %></span>
-              <p> <%= manuscript.abstract %>  </p>
-              <p style="color:#337ab7;"> 
-                <span>Vol. </span> 
-                <span><%= manuscript.volume %> </span>
-                <span>Issue</span> 
-                <span><%= manuscript.issue %> </span>
-                <span id="note3">
-                  <% if manuscript.document_content_type == "application/pdf" %>
-                    <%= link_to image_tag("/assets/doc3.jpg", alt: "pdf"), manuscript.document.url, target: "_blank" %>
+<% else %>
+  <div class="main-content">
+    <div class="journal-header">
+      <p>Search Results</p>
+    </div>
+    <% unless @searches_manuscripts.blank? %>
+      <h4 style="margin-top: 20px;">Manuscripts Found</h4>
+      <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
+      <% @searches_manuscripts.order("created_at DESC").each do |manuscript| %>
+        <div class="panel">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-sm-3 ">
+                  <div class="thumbnail thumbnail-manuscript">
+                    <%= image_tag manuscript.image %>
+                  </div>       
+              </div>       
+              <div class="col-sm-9 ">
+                <h4 style="color: #337ab7;"><%=  manuscript.title %> </h4>
+                <% if manuscript.user.image.blank? %>
+                  <span><img src="<%= asset_path( 'user.png' ) %>" /></span>
+                <% else %>
+                  <span id="user_avatar"><%= image_tag manuscript.user.image %> </span>
+                <% end %>
+                <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= manuscript.user.username %></span>
+                <span style="color: grey; float: right;"><%= manuscript.created_at.strftime("%b %d, %Y")  %></span>
+                <p> <%= manuscript.abstract %>  </p>
+                <p style="color:#337ab7;"> 
+                  <span>Vol. </span> 
+                  <span><%= manuscript.volume %> </span>
+                  <span>Issue</span> 
+                  <span><%= manuscript.issue %> </span>
+                  <span id="note3">
+                    <% if manuscript.document_content_type == "application/pdf" %>
+                      <%= link_to image_tag("/assets/doc3.jpg", alt: "pdf"), manuscript.document.url, target: "_blank" %>
+                    <% else %>
+                      <%= link_to image_tag("/assets/note3.png", alt: "doc"), manuscript.document.url, target: "_blank" %>
+                    <% end %>
+                  </span>
+                </p>
+              </div>  
+            </div>
+          </div>
+        </div>        
+      <% end %>
+    <% end %>
+    <%= will_paginate @searches_manuscripts %>
+
+    <% unless @searches_users.blank? %>
+      <div class="row bottom">
+        <h4 style="margin-top: 20px;">People Found</h4>
+        <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
+        
+        <% @searches_users.each do |user| %>
+          <div class="col-md-4">
+            <%= link_to user do %>
+              <div class="thumbnail thumbnail-users">                           
+                <% if user.image.blank? %>
+                   <img src="<%= asset_path( 'default_user.png' ) %>" />
+                <% else %>
+                  <%=  (image_tag user.image, class: 'image') %>
+                <% end %>
+                <p style="text-align: center; margin-top: 10px;"><strong><%=  user.username %></strong> </p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% unless @searches_articles.blank? %>
+      <div class="row bottom">
+        <h4 style="margin-top: 20px;">Articles Found</h4>
+        <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
+          <% @searches_articles.each do |article| %>
+            <div class="col-md-4">
+              <%= link_to article do %>
+                <div class="thumbnail thumbnail-article">                           
+                  <% if article.image.blank? %>
+                     
                   <% else %>
-                    <%= link_to image_tag("/assets/note3.png", alt: "doc"), manuscript.document.url, target: "_blank" %>
+                    <%=  (image_tag article.image, class: 'image') %>
                   <% end %>
-                </span>
-              </p>
+                  <div class = "caption">
+                      <h5 id="thumb-title">  
+                       <strong> 
+                          <span><%=  article.title %> </span>
+                       </strong>
+                      </h5>
+                     <div class="brief-body">
+                      <%=  article.body %>
+                     </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+          <p> <%= will_paginate @searches_articles %> </p>
+      </div>
+    <% end %>
+
+    <% unless @searches_posts.blank? %>
+      <h4 style="margin-top: 20px;">Posts Found</h4>
+      <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
+      <% @searches_posts.each do |post| %> 
+        <%= link_to post do %> 
+          <div class="row clickable-div">
+            <div class="col-sm-2 ">
+              <% if post.user.image.blank? %>
+                <p id="user_avatar"><img src="<%= asset_path( 'default_user.png' ) %>" /></p>
+              <% else %>
+                <p id="user_avatar"><%= image_tag post.user.image %></p>
+              <% end %>
+            </div>       
+            <div class="col-sm-10 ">
+            <div class="discuss">
+              <p ><strong style="font-family: initial; font-size: large;"><%=  post.title  %> </strong></p>
+              <div class="fadded">
+                <span><%=  post.body  %> </span>
+              </div>
+            </div>
             </div>  
           </div>
-        </div>
-      </div>        
+        <% end %>
+      <% end %>
+      <p> <%= will_paginate @searches_posts %> </p>
     <% end %>
-  <% end %>
-  <%= will_paginate @searches %>
-</div>
-
+  </div>
+<% end %>
 

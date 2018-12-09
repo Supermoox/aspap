@@ -3,6 +3,9 @@ class SearchesController < ApplicationController
 	def new
 		@search = Search.new
 		@manuscripts = Manuscript.all.paginate(page: params[:page], per_page: 10)
+		@users = User.all.paginate(page: params[:page], per_page: 10)
+		@articles = Article.all.paginate(page: params[:page], per_page: 10)
+		@posts = Post.all.paginate(page: params[:page], per_page: 10)
 	end
 
 	def create 
@@ -13,7 +16,10 @@ class SearchesController < ApplicationController
 
 	def show
 		@search = Search.find(params[:id])
-		@searches = @search.find_manuscripts.paginate(page: params[:page], per_page: 10)
+		@searches_manuscripts = @search.find_manuscripts.paginate(page: params[:page], per_page: 10)
+		@searches_users = @search.find_users.paginate(page: params[:page], per_page: 10)
+		@searches_articles = @search.find_articles.paginate(page: params[:page], per_page: 10)
+		@searches_posts = @search.find_posts.paginate(page: params[:page], per_page: 10)
 	end
 
 
