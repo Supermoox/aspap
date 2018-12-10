@@ -70,7 +70,7 @@
 	<% unless @user_researches.blank? %>
   <div class="panel">
    <div class="panel-body">
-    <h4><%= @user.username %>'s  Research</h4>
+    <h4><%= @research.user.username %>'s  Research</h4>
     <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
   	<% @user_researches.each do |research| %>
   		<h4 id="research-link">
@@ -92,7 +92,7 @@
 	<% unless @manuscripts.blank? %>
     <div class="panel">
       <div class="panel-body">
-      <h4><%= @user.username %>'s  PUblished Manuscripts</h4>
+      <h4><%= @research.user.username %>'s  PUblished Manuscripts</h4>
       <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
       	<% @manuscripts.each do |manuscript| %>
         <div class="row">

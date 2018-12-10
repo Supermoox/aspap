@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/amro/gibbon.git
+  revision: 1a118e57734e66547c430a85bce881c0f11016b5
+  specs:
+    gibbon (3.2.0)
+      faraday (>= 0.9.1)
+      multi_json (>= 1.11.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -454,9 +462,6 @@ GEM
     selenium-webdriver (3.6.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
-    shareable (1.1.4)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     signet (0.11.0)
       addressable (~> 2.3)
       faraday (~> 0.9)
@@ -522,6 +527,7 @@ DEPENDENCIES
   figaro
   fog
   font-awesome-rails
+  gibbon!
   jbuilder (~> 2.5)
   jquery-migrate-rails
   jquery-rails
@@ -533,7 +539,6 @@ DEPENDENCIES
   rails (~> 5.1.4)
   sass-rails (~> 5.0)
   selenium-webdriver
-  shareable
   social-share-button
   spring
   spring-watcher-listen (~> 2.0.0)

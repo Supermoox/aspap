@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  after_create :subscribe_user_to_mailing_list
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          
@@ -36,4 +38,11 @@ class User < ApplicationRecord
   def mailboxer_email(object)
     self.email
   end
+
+  private
+
+  def subscribe_user_to_mailing_list
+    SubscribeUserToMailingListJob.perform_later(self)
+  end
+
 end

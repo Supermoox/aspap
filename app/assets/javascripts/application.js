@@ -15,9 +15,8 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require lightbox
-//= require social-share-button
 //= require_tree .
-
+//= require social-share-button
 
 $(document).ready(function(){
     $("#formButton").click(function(){
