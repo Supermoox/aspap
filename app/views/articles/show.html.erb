@@ -1,23 +1,32 @@
 <div class="row article">
 	<div>
 		<div style="margin-bottom: 20px;"><%= image_tag @article.image %></div>
-		<% if @article.user.image.blank? %>
-			  <span style="color: grey; color: #337ab7; font-style: italic;"> -Author </span>
-			  <span id="user_avatar"><%= @article.user.username %> </span>
-	      <span id="user_avatar"><%= link_to(image_tag("/assets/user.png", alt: "user_avatar") ) %> </span>
-        <% unless @article.directorate.blank? %>
-	       <p style="color: grey; margin-top: 20px; font-style: italic;"><%= link_to @article.directorate.name, @article.directorate %></p>
-        <% end %>
-	  <% else %>
-	  	<span style="color: grey; color: #337ab7; font-style: italic;"> -Author </span>
-        <%= link_to @article.user do %>
-	  	    <span id="user_avatar"><%= @article.user.username %> </span>
-	        <span id="user_avatar"><%= image_tag @article.user.image %> </span>
-        <% end %>
-        <% unless @article.directorate.blank? %>
-          <p style="color: grey; margin-top: 20px; font-style: italic;"><%= link_to @article.directorate.name, @article.directorate %></p>
-        <% end %>
-	  <% end %>
+    <div class="row">
+      <div class="col-md-8">
+      <% if @article.user.image.blank? %>
+          <span style="color: grey; color: #337ab7; font-style: italic;"> -Author </span>
+          <span id="user_avatar"><%= @article.user.username %> </span>
+          <span id="user_avatar"><%= link_to(image_tag("/assets/user.png", alt: "user_avatar") ) %> </span>
+          <% unless @article.directorate.blank? %>
+           <p style="color: grey; margin-top: 20px; font-style: italic;"><%= link_to @article.directorate.name, @article.directorate %></p>
+          <% end %>
+      <% else %>
+        <span style="color: grey; color: #337ab7; font-style: italic;"> -Author </span>
+          <%= link_to @article.user do %>
+            <span id="user_avatar"><%= @article.user.username %> </span>
+            <span id="user_avatar"><%= image_tag @article.user.image %> </span>
+          <% end %>
+          <% unless @article.directorate.blank? %>
+            <p style="color: grey; margin-top: 20px; font-style: italic;"><%= link_to @article.directorate.name, @article.directorate %></p>
+          <% end %>
+      <% end %>
+      </div>
+      <div class="col-md-4">
+      <span style="margin-left: 50px;">Share On</span>
+      <span style="float: right;"><%= social_share_button_tag(@article.title) %></span>
+      </div>
+    </div>
+
   </div>
 	<div id="article-title">
 		<%=  @article.title %>

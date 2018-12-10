@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require social-share-button
  *= require_self
  */
 @import "bootstrap-sprockets";
@@ -444,4 +445,14 @@ button.btn-search-submit{
 	margin-left: -4px;
 	border-top-right-radius: 4px;
 	border-bottom-right-radius: 4px;
+}
+
+$size: 50px;
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+  }
 }
