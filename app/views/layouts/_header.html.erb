@@ -14,9 +14,8 @@
     <% end %>
   </div>
   <div class="col-md-5 account">
-    <ul class="top-right">
+    <span class="top-right">
       <% if user_signed_in? %>
-
         <span> 
           <button class="dropdown-toggle btn-notification" data-toggle="dropdown">
             <span class="label label-danger top-right-item">      
@@ -41,7 +40,6 @@
                 </li>
               <% end %>  
             <% end %>  
-            
             <% unless @active_articles.blank?  %>
               <strong>Articles</strong>   
               <hr style="height:2px;border:none;color:#333;background-color:#708090;" />       
@@ -76,13 +74,12 @@
           <% end %>
         <% end %>
       <% else %>
-        <div class="account-not">
-          <span style="font-family: initial;">Join Amano Society of Pure and Applied Physics</span>
-          <span class="top-right-item"><%= link_to "REGISTER", new_user_registration_path %></span> |
-          <span class="top-right-item"><%= link_to "LOG IN", new_user_session_path %></span>
-        </div>
+        <span class="account-not">
+          <span class="top-right-item"><%= link_to "REGISTER", new_user_registration_path, class: "btn btn-primary" %></span>
+          <span class="top-right-item"><%= link_to "LOG IN", new_user_session_path, class: "btn btn-primary" %></span>
+        </span>
       <% end %>
-    </ul>
+    </span>
   </div>
 </div>
 

@@ -386,9 +386,6 @@ textarea{
   color: #191970;
   background-color: #F5F5F5;
 }
-#new_search{
-	padding-left: 20%;
-}
 
 #delete_acc {
 	background-color: #ccc;
@@ -449,10 +446,16 @@ button.btn-search-submit{
 
 
 
+
+
 .social-share-button {
   .ssb-icon {
     background-size: 50px 50px;
     height: 50px;
     width: 50px;
   }
+}
+
+.social-share-button-facebook{
+	height: 40px;
 }

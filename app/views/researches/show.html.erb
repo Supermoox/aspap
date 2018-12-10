@@ -2,36 +2,39 @@
   <div class="panel-body">
   	<div class="row">
   		<div class="col-md-3">
-	  		<% if  @research.user.image.blank? %>
-          <span id="user_avatar2"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
-	      <% else %>
-	      	<span id="user_avatar2"><%= image_tag @research.user.image %></span>
+        <%= link_to @research.user do %>
+  	  		<% if  @research.user.image.blank? %>
+            <span id="user_avatar2"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+  	      <% else %>
+  	      	<span id="user_avatar2"><%= image_tag @research.user.image %></span>
+          <% end %>
 	      <% end %>
       </div>
       <div class="col-md-9">
       	<div id="user_info">
+
       		<p>
-	      		<span><%= @research.user.title %></span>
-	      		<span style="margin-left: 10px;"><%= @research.user.firstname %></span>
-	      		<% unless @research.user.middlename.blank?  %>
-	      			<span><%= @research.user.middlename %></span>
-	      		<% end %>
-	      		<span style="margin-left: 10px;"><%= @research.user.surname %></span>
+            <%= link_to @research.user do %>
+  	      		<span><%= @research.user.title %></span>
+  	      		<span style="margin-left: 10px;"><%= @research.user.firstname %></span>
+  	      		<% unless @research.user.middlename.blank?  %>
+  	      			<span><%= @research.user.middlename %></span>
+  	      		<% end %>
+  	      		<span style="margin-left: 10px;"><%= @research.user.surname %></span>
+            <% end %>
       		</p>
       		<p>
-      			<span><%= @research.user.qualification %></span>
-      		</p>      		
+      			<span><%= @research.user.qualification %></span>,
+            <span><%= @research.user.field %></span>
+      		</p>      		 		
       		<p>
-      			<span><%= @research.user.field %></span>
-      		</p>      		
-      		<p>
-      			<span><%= @research.user.phone %></span>
+      			<span><%= @research.user.institution %></span>
       		</p>
 
       	</div>
       </div>
   	</div>
-  	<h3 id="form-header">Researching on <%= @research.topic %></h3>
+  	<h3 id="form-header"><%= @research.topic %></h3>
     <div class="row">
       <p>
       <% unless !user_signed_in? %>
