@@ -138,9 +138,9 @@ a:hover{
 
 .account{
   color: black;
-  padding-top: 20px;
-	height: 90px;
+  padding-top: 30px;
 	float: right;
+	vertical-align: middle;
 }
 .account-not{
   color: black;
@@ -233,7 +233,8 @@ input#search_keywords{
 	border-bottom-right-radius: 0;
 	border-top-left-radius: 4px;
 	border-bottom-left-radius: 4px;
-	border: 1px solid black;
+	border: 1px solid #4169E1;
+	border-right: none;
 }
 
 .nav-search{
@@ -400,6 +401,9 @@ textarea{
 	color: red;
 }
 
+.btn.btn-primary{
+	height: 29px;
+}
 
 a.btn.btn-primary{
 	color: white;
@@ -442,6 +446,7 @@ button.btn-search-submit{
 	margin-left: -4px;
 	border-top-right-radius: 4px;
 	border-bottom-right-radius: 4px;
+	border: 1px solid #4169E1;
 }
 
 
