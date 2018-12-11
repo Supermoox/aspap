@@ -469,11 +469,22 @@ $size: 24px;
 	margin: 0;
 }
 #reaction{
-	float: right;
 	background-image: none;
 	background-color: white;
 	font-size: small;
 	color: #4169E1;
 	text-decoration: none;
 	text-shadow: none;
+}
+
+.btn-unrecommend{
+	border-radius: 18px;
+	height: 27px;
+	padding-top: 3px;
+	border:1px solid #4169E1;
+
+}
+
+.btn-unrecommend a{
+	color: white;
 }

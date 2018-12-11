@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :destroy, :approve]
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :approve, :unrecommend]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -20,11 +20,13 @@ class ArticlesController < ApplicationController
     @articomment = Articomment.new
     @articomments = Articomment.where(article_id: @article.id)
     @reactions = Reaction.where(article_id: @article.id)
-
-    @reactions.each do |reaction|
-      if reaction.user == current_user
-        @already_rcommended = true
-      end
+    if user_signed_in?
+      @user_reaction = @reactions.where(user_id: current_user.id).last
+      @reactions.each do |reaction|
+        if reaction.user == current_user
+          @already_rcommended = true
+        end
+      end 
     end 
           
     if user_signed_in? && @article.user == current_user
@@ -73,9 +75,17 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def unrecommend
+    @reaction = @article.reactions.where(user_id: current_user.id).last
+    @reaction.destroy
+    redirect_to @article
+    flash[:notice] = "You have Unrecommended!"
+  end
+
  def approve
    @article.update(approve: true)
    redirect_to pending_articles_path
+   flash[:notice] = "Article Approved!"
  end
   def destroy
     @article.destroy

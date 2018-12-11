@@ -5,7 +5,7 @@ class ManuscriptsController < ApplicationController
   
   def index
     if current_user.vip? || current_user.PR? || current_user.editor? || current_user.publisher?
-      @manuscripts = Manuscript.where(approval: false).order("created_at DESC")
+      @manuscripts = Manuscript.where(approval: nil).order("created_at DESC")
     else
       redirect_to root_path
     end

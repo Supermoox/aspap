@@ -39,8 +39,11 @@
           </strong>
         </div>
         <div class="col-md-5">
-          <% unless @already_rcommended %>
-            <span><%= render 'layouts/react' %></span>
+          <% if @already_rcommended %>
+            <span style="margin: 20px;"> <%= link_to 'Unrecommend',unrecommend_article_path(@article), method: :patch, class: "btn btn-default btn-unrecommend" %>
+            </span> 
+          <% else %>
+            <span "><%= render 'layouts/react' %></span>
           <% end %>
         </div>
       </div>

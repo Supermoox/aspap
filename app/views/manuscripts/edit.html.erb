@@ -1,12 +1,12 @@
 <h3 id="form-header">Edit Manuscript</h3>
 <div class="my-form">
-  <%= form_with(model: manuscript, local: true) do |form| %>
-    <% if manuscript.errors.any? %>
+  <%= form_with(model: @manuscript, local: true) do |form| %>
+    <% if @manuscript.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(manuscript.errors.count, "error") %> prohibited this manuscript from being saved:</h2>
+        <h2><%= pluralize(@manuscript.errors.count, "error") %> prohibited this manuscript from being saved:</h2>
 
         <ul>
-        <% manuscript.errors.full_messages.each do |message| %>
+        <% @manuscript.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
         </ul>

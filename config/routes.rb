@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  resources :reactions
   resources :artireplies
   resources :articomments
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     end
     member do
       patch :approve
+      patch :unrecommend
     end
   end
   devise_for :users
