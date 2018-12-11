@@ -55,7 +55,7 @@ Rails.application.configure do
   
   # EDITED TO TRUE
 
-  config.assets.compile = true
+  config.assets.compile = false
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
