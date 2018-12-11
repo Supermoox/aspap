@@ -2,7 +2,6 @@
 	<div>
 		<div style="margin-bottom: 20px;"><%= image_tag @article.image %></div>
     <div class="row">
-      <div class="col-md-8">
       <% if @article.user.image.blank? %>
           <span style="color: grey; color: #337ab7; font-style: italic;"> -Author </span>
           <span id="user_avatar"><%= @article.user.username %> </span>
@@ -20,11 +19,6 @@
             <p style="color: grey; margin-top: 20px; font-style: italic;"><%= link_to @article.directorate.name, @article.directorate %></p>
           <% end %>
       <% end %>
-      </div>
-      <div class="col-md-4">
-      <span style="margin-left: 50px;">Share On</span>
-      <span style="float: right;"><%= social_share_button_tag(@article.title) %></span>
-      </div>
     </div>
 
   </div>
@@ -34,7 +28,32 @@
 	<div id="article-body">
 		<%= simple_format(@article.body) %>
 	</div>
-
+  <div class="row row-article-footer">
+    <hr>
+    <div class="col-md-6 recommendations">
+      <div class="row">
+        <div class="col-md-7">
+          <strong>
+            <span>Recommendations</span>
+            <span style="color: blue;">(<%= @reactions.count %>)</span>
+          </strong>
+        </div>
+        <div class="col-md-5">
+          <% unless @already_rcommended %>
+            <span><%= render 'layouts/react' %></span>
+          <% end %>
+        </div>
+      </div>
+      <% if @already_rcommended %>
+        <p style="margin-top: 20px; margin-left: 15px; color: grey;">You Recommended This Article</p>        
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <span style="float: right;"><%= social_share_button_tag(@article.title) %></span>
+      <span style="color: grey;float: right; margin-right: 10px; ">Share On</span>
+    </div>
+  </div>
+  <hr>
   <div class="comments">
   	<% if @articomments.blank? %>
       <p style="font-style: italic;">No comments on this post yet, be the first to comment!</p>

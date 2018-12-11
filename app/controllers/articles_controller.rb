@@ -14,15 +14,27 @@ class ArticlesController < ApplicationController
         redirect_to root_path 
       end
     end 
+
     @artireply = Artireply.new
+    @reaction = Reaction.new
     @articomment = Articomment.new
     @articomments = Articomment.where(article_id: @article.id)
+    @reactions = Reaction.where(article_id: @article.id)
 
+    @reactions.each do |reaction|
+      if reaction.user == current_user
+        @already_rcommended = true
+      end
+    end 
+          
     if user_signed_in? && @article.user == current_user
       @article.update(counter: 0)
     end
   end
 
+  def already_liked?
+    Reaction.where(user_id: current_user.id, article_id: params[:article_id]).exists?
+  end
 
   def new
     @article = current_user.articles.build

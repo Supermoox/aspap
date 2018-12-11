@@ -451,16 +451,29 @@ button.btn-search-submit{
 
 
 
-
+$size: 24px;
 
 .social-share-button {
   .ssb-icon {
-    background-size: 50px 50px;
-    height: 50px;
-    width: 50px;
+    background-size: $size $size;
+    height: $size;
+    width: $size;
   }
 }
-
-.social-share-button-facebook{
-	height: 40px;
+.row-article-footer{
+	padding: 0;
+	margin: 0;
+}
+.recommendations{
+	padding: 0;
+	margin: 0;
+}
+#reaction{
+	float: right;
+	background-image: none;
+	background-color: white;
+	font-size: small;
+	color: #4169E1;
+	text-decoration: none;
+	text-shadow: none;
 }

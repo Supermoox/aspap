@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   end
   resources :journals
   resources :articles do
+    resources :reactions, except: [:show, :index]
     resources :articomments do
       resources :artireplies
     end

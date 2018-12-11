@@ -1,5 +1,6 @@
 class Article < ApplicationRecord
-	has_many :articomments, dependent: :destroy
+  has_many :articomments, dependent: :destroy
+	has_many :reactions, dependent: :destroy
   belongs_to :user
   belongs_to :directorate
   after_create :set_some_values

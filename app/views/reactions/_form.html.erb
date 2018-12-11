@@ -1,0 +1,24 @@
+<%= form_for([@article, @reaction]) do |form| %>
+  <% if reaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reaction.errors.count, "error") %> prohibited this reaction from being saved:</h2>
+
+      <ul>
+      <% reaction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :rating %>
+    <%= form.check_box :recommend%>
+  </div>
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

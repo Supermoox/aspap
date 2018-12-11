@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :manuscripts, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :editors, dependent: :destroy
+  has_many :reactions, dependent: :destroy
 
 
   enum qualification: [:PhD, :Dsc, :Msc, :MEng, :Bsc, :BEng, :Dip, :Cert]
