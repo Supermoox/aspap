@@ -30,34 +30,45 @@
 	</div>
   <div class="row row-article-footer">
     <hr>
-    <div class="col-md-6 recommendations">
       <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-3 col-article-footer">
           <strong>
             <span>Recommendations</span>
             <span style="color: blue;">(<%= @reactions.count %>)</span>
           </strong>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-3 col-article-footer">
           <% if @already_rcommended %>
-            <span style="margin: 20px;"> <%= link_to 'Unrecommend',unrecommend_article_path(@article), method: :patch, class: "btn btn-default btn-unrecommend" %>
+            <span> <%= link_to 'Unrecommend',unrecommend_article_path(@article), method: :patch, class: "btn btn-default btn-unrecommend" %>
             </span> 
           <% else %>
-            <span "><%= render 'layouts/react' %></span>
+            <span><%= render 'layouts/react' %></span>
           <% end %>
         </div>
+        <div class="col-md-3 col-article-footer">
+          <strong>
+            <span>Comments</span>
+            <span style="color: blue;">(<%= @articomments.count %>)</span>
+          </strong>
+        </div>        
+        <div class="col-md-3 col-article-footer">
+          <span class="btn btn-unrecommend"><a href="#write_comment">Comment</a></span>
+        </div>
+
       </div>
-      <% if @already_rcommended %>
-        <p style="margin-top: 20px; margin-left: 15px; color: grey;">You Recommended This Article</p>        
-      <% end %>
-    </div>
-    <div class="col-md-6">
-      <span style="float: right;"><%= social_share_button_tag(@article.title) %></span>
-      <span style="color: grey;float: right; margin-right: 10px; ">Share On</span>
-    </div>
+      <div class="row row-share-links">
+        <div class="col-md-3 col-article-footer"">
+          <span><strong>Share Article On:</strong></span>
+        </div>
+        <div class="col-md-9 col-article-footer">
+          <span style="float: left;"><%=  twitter_button %></span>
+          <span style="float: left; margin-left: 10px;"><%=  facebook_button %></span>
+          <span style="float: left; margin-left: 10px;"><%=  linkedin_button %></span>
+        </div>
+      </div>
   </div>
   <hr>
-  <div class="comments">
+  <div id="comments">
   	<% if @articomments.blank? %>
       <p style="font-style: italic;">No comments on this post yet, be the first to comment!</p>
     <% else %>
@@ -85,7 +96,9 @@
   		<% end %>
   	<% end %>
   	<h4> Comment</h4>
-  	<%= render "articomments/form" %>
+    <div id="write_comment">
+      <%= render "articomments/form" %>
+    </div>
   </div>	
 </div>
 

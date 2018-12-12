@@ -26,6 +26,8 @@ gem 'aws-sdk', '~> 2.3'
 gem 'fog'
 gem 'gibbon', github: "amro/gibbon"
 gem 'social-share-button', '~> 1.2'
+gem 'shareable'
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
