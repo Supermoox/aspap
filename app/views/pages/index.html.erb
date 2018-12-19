@@ -58,9 +58,9 @@
 			<h3 class="sub-title">Join Discussions!</h3>
 			<div class="join-discussions">
 				<% unless @posts.blank? %>
-					<%= link_to @posts.last do %> 
+					<%= link_to @posts.fourth do %> 
 						<div class="sub-item1">
-							<p id="trunc"><%=  @posts.last.title %></p>
+							<p id="trunc"><%=  @posts.fourth.title %></p>
 						</div>
 					<% end %>
 
