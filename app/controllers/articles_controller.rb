@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :destroy, :approve, :unrecommend]
+  before_action :set_article, only: [:show, :edit, :update, :vote, :destroy, :approve, :unrecommend]
   before_action :authenticate_user!, except: [:index, :show]
-
+  respond_to :js, :json, :html
+  
   def index
     @articles = Article.all.where(approve: true).paginate(page: params[:page], per_page: 10)
   end
@@ -75,11 +76,23 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def vote
+    if !current_user.liked? @article
+      @article.liked_by current_user
+    elsif current_user.liked? @article
+      @article.unliked_by current_user
+    end 
+  end
+
   def unrecommend
-    @reaction = @article.reactions.where(user_id: current_user.id).last
-    @reaction.destroy
-    redirect_to @article
-    flash[:notice] = "You have Unrecommended!"
+    @reactions = Reaction.where(user_id: current_user.id).where(article_id: @article.id)
+
+    if !@reactions.blank?
+      @reaction = @article.reactions.where(user_id: current_user.id).last
+      @reaction.destroy
+    else
+      @reaction = Reaction.new
+    end
   end
 
  def approve

@@ -29,8 +29,8 @@ class ApplicationController < ActionController::Base
 				end
 			end			
 			unless @active_articles.blank?
-				@active_articles.each do |post|
-					@notifications += post.counter
+				@active_articles.each do |article|
+					@notifications += article.counter
 				end
 			end
 

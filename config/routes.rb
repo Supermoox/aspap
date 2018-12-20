@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     member do
       patch :approve
       patch :unrecommend
+      put "like" => "articles#vote"
     end
   end
   devise_for :users

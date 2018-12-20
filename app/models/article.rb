@@ -4,6 +4,7 @@ class Article < ApplicationRecord
   belongs_to :user
   belongs_to :directorate
   after_create :set_some_values
+  acts_as_votable
 
   # This method associates the attribute ":avatar" with a file attachment
   has_attached_file :image, styles: {

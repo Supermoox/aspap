@@ -31,31 +31,25 @@
   <div class="row row-article-footer">
     <hr>
       <div class="row">
-        <div class="col-md-3 col-article-footer">
+        <div class="col-md-6 col-article-footer">
           <strong>
             <span>Recommendations</span>
-            <span style="color: blue;">(<%= @reactions.count %>)</span>
+            <span class="likes-count">( <%= @article.get_upvotes.size %> )</span>
+             <%= link_to like_article_path(@article.id), class: "like-btn",  method: :put, remote: :true do  %>  
+                <span class="btn btn-unrecommend"><i class="fa fa-star fa-x3"></i></span>
+             <% end %>
           </strong>
-        </div>
-        <div class="col-md-3 col-article-footer">
-          <% if @already_rcommended %>
-            <span> <%= link_to 'Unrecommend',unrecommend_article_path(@article), method: :patch, class: "btn btn-default btn-unrecommend" %>
-            </span> 
-          <% else %>
-            <span><%= render 'layouts/react' %></span>
-          <% end %>
-        </div>
-        <div class="col-md-3 col-article-footer">
-          <strong>
-            <span>Comments</span>
-            <span style="color: blue;">(<%= @articomments.count %>)</span>
-          </strong>
-        </div>        
-        <div class="col-md-3 col-article-footer">
-          <span class="btn btn-unrecommend"><a href="#write_comment">Comment</a></span>
         </div>
 
+        <div class="col-md-6 col-article-footer">
+          <strong>
+            <span>Comments</span>
+            <span style="color: blue; margin-right: 10px;">(<%= @articomments.count %>)</span>
+            <span class="btn btn-unrecommend"><a href="#write_comment"><i class="fa fa-comment fa-x3"></i></a></span>
+          </strong>
+        </div>
       </div>
+
       <div class="row row-share-links">
         <div class="col-md-3 col-article-footer"">
           <span><strong>Share Article On:</strong></span>

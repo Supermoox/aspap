@@ -16,7 +16,7 @@ class SearchesController < ApplicationController
 
 	def show
 		@search = Search.find(params[:id])
-		@searches_manuscripts = @search.find_manuscripts.paginate(page: params[:page], per_page: 10)
+		@searches_manuscripts = @search.find_manuscripts.where(approval: true).paginate(page: params[:page], per_page: 10)
 		@searches_users = @search.find_users.paginate(page: params[:page], per_page: 10)
 		@searches_articles = @search.find_articles.paginate(page: params[:page], per_page: 10)
 		@searches_posts = @search.find_posts.paginate(page: params[:page], per_page: 10)

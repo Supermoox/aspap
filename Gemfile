@@ -27,6 +27,7 @@ gem 'fog'
 gem 'gibbon', github: "amro/gibbon"
 gem 'social-share-button', '~> 1.2'
 gem 'shareable'
+gem 'acts_as_votable'
 
 
 group :development, :test do
