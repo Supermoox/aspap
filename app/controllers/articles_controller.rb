@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.build(article_params)
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to @article, notice: 'Article has been submited for approval.' }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }

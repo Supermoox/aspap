@@ -6,158 +6,47 @@
 
   <div class="executive">
     <div class="row">
-      <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
-      <h1 id="executive_header"> President</h1>
-      <div class="executive_image">
-          <img src="<%= asset_path( 'tilas.png' ) %>" />
-      </div>
-      <h4 id="name"> <strong>Tilas Kabengele</strong> </h4>
-      <div class="executive_description">
-        <p>
-          <span><strong>Education:</strong> </span> 
-          <span>BSc. Physics, VSU, Russia, Dip. Teaching methodology, VSU, Russia. physics</span> 
-        </p>
-        <p>
-          <span><strong>Expertise:</strong> </span> 
-          <span> Theoretical physics</span> 
-        </p>
-        <p>
-          <span><strong>Research Interest:</strong> </span> 
-          <span>Atomic, molecular and optical (AMO) physics, quantum biology, quantum computing, computational physics </span> 
-        </p>
-        <p>
-          <span><strong>Brief Description:</strong> </span> 
-          <span>Tilas Kabengele received his BSc. in physics with a major in theoretical physics from Voronezh State University, Russian Federation. Mr Kabengele also holds a teaching diploma with a major in physics also from the same University. At the department of theoretical physics, Kabengele has been involved in research in the Field of Atomic, Molecular and Optical physics with a particular interest to advance the research on the applications of atoms, ions and molecules for modern-day technologies such as quantum information, quantum computers, atomic and optical lattice clocks and other high-precision sensory and measurement devices used in the search of new physics.</span> 
-        </p>           
-      </div>
-    </div>
-  </div>
+    <% unless @executives.blank? %>
+      <% @executives.each do |executive| %>
 
-
-
-  <div class="executive">
-    <div class="row">
-      <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
-      <h1 id="executive_header"> Vice President</h1>
-      <div class="executive_image">
-        <img src="<%= asset_path( 'harrison.png' ) %>" />
-      </div>
-      <h4 id="name"> <strong>Harrison Mwenda</strong> </h4>
-      <div class="executive_description">
-        <p>
-          <span><strong>Education:</strong> </span> 
-          <span>B.Eng. Electrical and electronics, CBU, Zambia</span> 
-        </p>
-        <p>
-          <span><strong>Expertise:</strong> </span> 
-          <span> Robotics</span> 
-        </p>
-        <p>
-          <span><strong>Research Interest:</strong> </span> 
-          <span>Robotics, electronics, Physical Cosmology </span> 
-        </p>
-        <p>
-          <span><strong>Brief Description:</strong> </span> 
-          <span>Harrison Mwenda received his B.Eng. in Electrical and electronics from the Copperbelt University, Zambia with a major in robotics. Mwenda has worked for prominent technological companies such as Huawei and now currently serves as the Director of Research at Creation Dynamics Company. Furthermore, he has also demonstrated keen interest and ambition in aspects of pure physics as well such as Cosmology.
-          </span> 
-        </p>           
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-  <div class="executive">
-    <div class="row">
-      <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
-      <h1 id="executive_header"> Secretary</h1>
-      <div class="executive_image">
-          <img src="<%= asset_path( 'chileshe.png' ) %>" />
-      </div>
-      <h4 id="name"> <strong>Fredrick Chisenga</strong> </h4>
-      <div class="executive_description">
-        <p>
-          <span><strong>Education:</strong> </span> 
-          <span>B.Ed. Mathematics, CBU, Zambia</span> 
-        </p>
-        <p>
-          <span><strong>Expertise:</strong> </span> 
-          <span>Mathematics</span> 
-        </p>
-        <p>
-          <span><strong>Research Interest:</strong> </span> 
-          <span>Applied mathematics</span> 
-        </p>
-        <p>
-          <span><strong>Brief Description:</strong> </span> 
-          <span>Fredrick Chisenga received his B. Ed. in mathematics from the Copperbelt University. Mr Chisenga has been involved in scientific research at a professional level, serving as one of the leading researchers at Creation Dynamics Company. Mr Chisenga is a science practitioner and has demonstrated vast knowledge in applied mathematics and science for the advancement of technology.
-          </span> 
-        </p>           
-      </div>
-    </div>
-  </div>
-
-
-
-  <div class="executive">
-    <div class="row">
-      <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
-      <h1 id="executive_header"> Treasurer</h1>
-      <div class="executive_image">
-        <img src="<%= asset_path( 'jane.png' ) %>" />
-      </div>
-      <h4 id="name"> <strong>Jane Banda</strong> </h4>
-      <div class="executive_description">
-        <p>
-          <span><strong>Education:</strong> </span> 
-          <span> B.Eng. Chemical Engineering, CBU, Zambia</span> 
-        </p>
-        <p>
-          <span><strong>Expertise:</strong> </span> 
-          <span> Chemical Engineering</span> 
-        </p>
-        <p>
-          <span><strong>Research Interest:</strong> </span> 
-          <span>Clean and Renewable Energy, Nanotechnology</span> 
-        </p>
-        <p>
-          <span><strong>Brief Description:</strong> </span> 
-          <span>Jane Banda received her B. Eng. In Chemical Engineering from the Copperbelt University. Ms Banda is a certified engineer and a qualified practitioner. She is also an upcoming entrepreneur and business oriented woman already involved in various business networks.</span> 
-        </p>           
-      </div>
-    </div>
-  </div>
-
-
-  <div class="executive">
-    <div class="row">
-      <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
-      <h1 id="executive_header"> Public Relations Action Group Director</h1>
-      <div class="executive_image">
-        <img src="<%= asset_path( 'suzyo.png' ) %>" />
-      </div>
-      <h4 id="name"> <strong>Suzyo Shawa</strong> </h4>
-      <div class="executive_description">
-        <p>
-          <span><strong>Education:</strong> </span> 
-          <span> BSc. Radio physics, VSU, Russia</span> 
-        </p>
-        <p>
-          <span><strong>Expertise:</strong> </span> 
-          <span> Radio physics, in Physics of Information systems and telecommunications</span> 
-        </p>
-        <p>
-          <span><strong>Research Interest:</strong> </span> 
-          <span> Telecommunications, fibre optics, nuclear physics</span> 
-        </p>
-        <p>
-          <span><strong>Brief Description:</strong> </span> 
-          <span>Suzyo Shawa received his BSc. Radio physics from Voronezh State University, Russian Federation. Mr Shawa has specialized in Physics of Information systems and telecommunications and has been involved in scientific work in this field at the department of Radio physics, Voronezh State University. Mr Shawa has also worked as an engineer for major telecommunication companies such as Zamtel. Shawa is currently pursuing graduate studies in Nuclear physics and technologies.
-          </span> 
-        </p>           
-      </div>
+       <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
+        <h1 id="executive_header"> <%= executive.position %></h1>
+        <div class="executive_image">
+          <% if executive.image.blank? %>
+             <p>image not found</p>
+          <% else %>
+            <%=  (image_tag executive.image, class: 'image') %>
+          <% end %>
+        </div>
+        <h4 id="name"> <strong> <%= executive.name %></strong> </h4>
+        <div class="executive_description">
+          <p>
+            <span><strong>Education:</strong> </span> 
+            <span> <%= executive.education  %></span> 
+          </p>
+          <p>
+            <span><strong>Expertise:</strong> </span> 
+            <span> <%= executive.expertise  %></span> 
+          </p>
+          <p>
+            <span><strong>Research Interest:</strong> </span> 
+            <span><%= executive.research_interest  %></span> 
+          </p>
+          <p>
+            <span><strong>Brief Description:</strong> </span> 
+            <span> <%= executive.description  %> </span> 
+          </p>           
+        </div>
+          <% if user_signed_in? && current_user.vip %>        
+            <span>
+              <%= link_to executive, method: :delete, data: { confirm: 'Are you sure you want to delete this executive?' }, class: "btn btn-default" do %>
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              <% end %>
+            </span> 
+            <span><%= link_to 'Edit Post', edit_executive_path(executive), class: "btn btn-default" %></span>                
+          <% end %>
+      <% end %>
+    <% end %>
     </div>
   </div>
 </div>
