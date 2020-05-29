@@ -13,21 +13,22 @@
   </div>
   <div class="col-md-4">
   	<h4 id="footer-header">License</h4>
-  	<p style="color:white;">Copyright ©ASPAP 2018. All rights reserved.</p>
+  	<p style="color:white;">Copyright ©ASPAP <%= Time.now.strftime("%Y") %>
+. All rights reserved.</p>
   </div>
   <div class="col-md-4">
   	<div class="row">
   		<h4 id="footer-header">Contact Us</h4>
   		<div class="col-md-5 email">
 		 		<span class="email"> 
-		      <%= mail_to "tilaskabengele@yahoo.com" do %>
+		      <%= mail_to "secretary@aspap.com" do %>
 		        <i class="fa fa-envelope-o" aria-hidden="true" target="_blank"></i> Webmail
 		      <% end %>
 			  </span> 
 		  </div>	
   		<div class="col-md-6 call">
   			<span ><i class="fa fa-phone" aria-hidden="true"></i></span>
-		    <span style="color: grey;">+260973904880</span>
+		    <span style="color: grey;">+260977948551</span>
 		  </div>	
 	  </div>
   </div>

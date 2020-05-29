@@ -4,7 +4,7 @@ class ExecutivesController < ApplicationController
 
 
   def index
-    @executives = Executive.all.order("created_at")
+    @executives = Executive.all.order("priority")
   end
 
   def show
@@ -62,6 +62,6 @@ class ExecutivesController < ApplicationController
     end
 
     def executive_params
-      params.require(:executive).permit(:name, :position, :image, :research_interest, :education, :expertise, :description)
+      params.require(:executive).permit(:name, :position, :image, :priority, :research_interest, :education, :expertise, :description)
     end
 end
