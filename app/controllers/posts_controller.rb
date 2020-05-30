@@ -19,12 +19,17 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = current_user.posts.build
+    if current_user.verified?
+      @post = current_user.posts.build
+    else
+      flash[:success] = "To create a post, verify your account"
+      redirect_to root_path
+    end
   end
 
   def edit
     if @post.user != current_user
-      flash[:success] = "You are prohibited from edition this Item!"
+      flash[:success] = "You are prohibited from editing this Item!"
       redirect_to root_path
     end
   end

@@ -53,8 +53,10 @@
         </div>
   		<% end %>
   	<% end %>
-  	<h4> Comment</h4>
-  	<%= render "comments/form" %>
+    <% if user_signed_in? && current_user.verified? %>
+      <h4> Comment</h4>
+  	  <%= render "comments/form" %>
+    <% end %>
   </div>
 </div>
 

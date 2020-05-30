@@ -1,4 +1,4 @@
-<h3 id="form-header">Submit a Request To Become a Peer Reviewer, Editor or Publisher</h3>
+<h3 id="form-header">Send your Request</h3>
 <div class="my-form">
 <%= form_with(model: editor, local: true) do |form| %>
   <% if editor.errors.any? %>
@@ -14,8 +14,14 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label :select_request_to_send %><br>
-    <%=  form.collection_select :request, Editor.requests.map{ |a| [a.first,a.first] },  :first, :second %>
+    <% if current_user.verified %>
+      <p>Request to become an Editor, Peer Reviewer or Publisher!</p>
+      <%= form.label :select_request_to_send %><br>
+      <%=  form.collection_select :request, Editor.requests.map{ |a| [a.first,a.first] },  :first, :second %>
+    <% else %>
+      <p>Please click the button below to have your account verified!</p>
+      <%= form.hidden_field :request, value:"verify_my_account" %>
+    <% end %>
   </div>
 
   <div class="actions">

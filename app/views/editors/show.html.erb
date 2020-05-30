@@ -30,6 +30,13 @@
                 <%= link_to @editor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
                   <i class="fa fa-trash" aria-hidden="true"></i>
                 <% end %>
+            <% elsif @editor.request == "verify_my_account"  %> 
+              <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'Approve',verify_user_editor_path(@editor), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
+              </span> 
+              <span style="float: right; margin-right: 10px;">
+                <%= link_to @editor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                <% end %>
             <% end %>            
           </div>
         	<div class="col-md-2">

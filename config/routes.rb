@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       patch :approve_editor
       patch :approve_peer
       patch :approve_publisher
+      patch :verify_user
     end
   end
   resources :constitutions

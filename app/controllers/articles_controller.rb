@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   respond_to :js, :json, :html
   
   def index
-    @articles = Article.all.where(approve: true).paginate(page: params[:page], per_page: 10)
+    @articles = Article.all.where(approve: true).order("created_at DESC").paginate(page: params[:page], per_page: 10)
   end
 
 

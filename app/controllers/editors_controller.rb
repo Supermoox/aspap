@@ -1,6 +1,6 @@
 class EditorsController < InheritedResources::Base
   before_action :authenticate_user!
-  before_action :set_editor, only: [:show, :edit, :update, :destroy, :approve_editor, :approve_peer, :approve_publisher]
+  before_action :set_editor, only: [:show, :edit, :update, :destroy, :approve_editor, :approve_peer, :verify_user, :approve_publisher]
 
   def new
     @editors = Editor.all
@@ -47,6 +47,12 @@ class EditorsController < InheritedResources::Base
    @editor.user.update(publisher: true)
    @editor.destroy
    flash[:notice] = "Request approved!"
+   redirect_to editors_path
+  end   
+  def verify_user
+   @editor.user.update(verified: true)
+   @editor.destroy
+   flash[:notice] = "User Verified!"
    redirect_to editors_path
   end 
 

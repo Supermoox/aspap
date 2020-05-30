@@ -5,7 +5,6 @@
   </div>
 
   <% unless @editors.blank? %>
-    <h3 style="text-align: center;">Requests for Peer Editors</h3>
     <% @editors.order("created_at DESC").each do |editor| %>
       <div class="panel">
         <div class="panel-body">
