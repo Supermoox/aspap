@@ -11,13 +11,17 @@
 
        <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
         <h1 id="executive_header"> <%= executive.position %></h1>
-        <div class="executive_image">
-          <% if executive.image.blank? %>
-             <p>image not found</p>
-          <% else %>
-            <%=  (image_tag executive.image, class: 'image') %>
-          <% end %>
-        </div>
+          <div class="executive_image">
+            <div class="img-fluid">
+              <% if executive.image.blank? %>
+                 <p>image not found</p>
+              <% else %>
+              
+                <%= image_tag(executive.image) %>            
+            </div>
+
+            <% end %>
+          </div>
         <h4 id="name"> <strong> <%= executive.name %></strong> </h4>
         <div class="executive_description">
           <p>
