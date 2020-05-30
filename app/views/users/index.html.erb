@@ -1,17 +1,43 @@
 <div class="row bottom">
+
+  <div class="row filter"> 
+    <div class="col-md-6">
+      <div class="searcher">
+        <%= form_for  @search do |f| %>    
+          
+          <span><%= f.text_field :keywords, :placeholder =>"Filter by name" %></span>
+          <span><%= f.button fa_icon("search"), class: "btn-search-submit" %></span>
+        <% end %>
+      </div>
+    </div>    
+    <div class="col-md-6 aspap_users">
+      <h3 style="color: #708090"> ASPAP Users</h3>
+    </div>
+
+  </div>
 	<hr style="height:2px;border:none;color:#333;background-color:#708090;" />
-	<% unless @users.blank? %>
+	<% unless @users.blank? %> 
     <% @users.each do |user| %>
-      <div class="col-md-4">
+      <div class="col-md-3 md-3-user">
         <%= link_to user do %>
-	        <div class="thumbnail thumbnail-users">		          		          
-        		<% if user.image.blank? %>
-        			 <img src="<%= asset_path( 'default_user.png' ) %>" />
-        		<% else %>
-              <%=  (image_tag user.image, class: 'image') %>
-            <% end %>
-            <p style="text-align: center; margin-top: 10px;"><strong><%=  user.username %></strong> </p>
-	        </div>
+          <div class="thumbnail user_dp_thumbnail">   
+            <div class="thumbnail_image_dp"> 
+              <% if user.image.blank? %>
+                 <img src="<%= asset_path( 'default_user.png' ) %>" />
+              <% else %>
+                <%=  (image_tag user.image) %>
+              <% end %>
+            </div>
+            <div class="fadded_user">
+
+              <strong style="color: #4169E1;">
+                <span><%=  user.firstname %> </span>
+                <span><%=  user.surname %> </span> 
+              </strong><br>
+              <span><%=  user.qualification %></span>,
+              <span><%=  user.field %></span>,
+            </div>
+          </div>
         <% end %>
       </div>
     <% end %>

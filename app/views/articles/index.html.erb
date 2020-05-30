@@ -6,12 +6,14 @@
       <% @articles.each do |article| %>
         <div class="col-md-4">
           <%= link_to article do %>
-            <div class="thumbnail thumbnail-article">                           
-              <% if article.image.blank? %>
-                 
-              <% else %>
-                <%=  (image_tag article.image, class: 'image') %>
-              <% end %>
+            <div class="thumbnail thumbnail-article"> 
+              <div class="thumbnail_image">                        
+                <% if article.image.blank? %>
+                   
+                <% else %>
+                  <%=  (image_tag article.image) %>
+                <% end %>
+              </div>  
               <div class = "caption">
                   <h5 id="thumb-title">  
                    <strong> 

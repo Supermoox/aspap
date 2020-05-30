@@ -44,8 +44,10 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    if @article.user != current_user 
-      redirect_to root_path
+    unless current_user.vip?
+      if @article.user != current_user
+        redirect_to root_path
+      end   
     end
   end
 
