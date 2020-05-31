@@ -14,7 +14,7 @@
  *= require_self
  */
 @import "bootstrap-sprockets";
-@import "bootstrap";
+@import "bootstrap"; 
 @import "font-awesome";
 
 
@@ -62,13 +62,12 @@ body{
   height: auto;
 }
 
-.logo{
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
 .logo img{
-	height: 80px;
-	width: 150px;
+	height: 38px;
+	width: 80px;
+	margin:10px;
+	margin-bottom: 14px;
+	border-radius: 4px;
 
 }
 
@@ -157,8 +156,8 @@ a:hover{
 
 .searcher{
   color: black;
-  padding-top: 30px;
-	height: 90px;	
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .first-top-layer{
@@ -238,8 +237,8 @@ a:hover{
 }
 
 input#search_keywords{
-	
-	height: 29px;
+	width: 50%;
+	height: 40px;
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
 	border-top-left-radius: 4px;
@@ -334,10 +333,8 @@ input#search_keywords{
 }
 
 .col-md-4{
-	padding:0;
 }
 .col-md-3{
-	padding:0;
 }
 
 
@@ -348,6 +345,7 @@ input#search_keywords{
 	border-radius: 0;
 	overflow-y: hidden;
 	text-align: center;
+	margin-bottom: 20px;
 }
 .user_dp_thumbnail:hover{
 	background-color: #F8F8FF;
@@ -491,6 +489,8 @@ button.btn-search-submit{
 	border-top-right-radius: 4px;
 	border-bottom-right-radius: 4px;
 	border: 1px solid #4169E1;
+	height: 40px;
+	border-left: none;
 }
 
 

@@ -1,86 +1,99 @@
-<div class="panel">
-  <div class="panel-body">
-  	<div class="row user_details">
-  		<div class="col-md-3">
-	  		<% if  @user.image.blank? %>
-          <span id="user_avatar2"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
-	      <% else %>
-	      	<span id="user_avatar2"><%= image_tag @user.image %></span>
-	      <% end %>
-      </div>
-      <div class="col-md-9">
-      	<div id="user_info">
-      		<p id="user_title">
-	      		<span ><%= @user.title %></span>
-	      		<span ><%= @user.firstname %></span>
-	      		<% unless @user.middlename.blank?  %>
-	      			<span><%= @user.middlename %></span>
-	      		<% end %>
-	      		<span><%= @user.surname %></span>
-      		</p>
-      		<p style="color: grey">
- 	      		<% if @user.qualification == "PhD" ||  @user.qualification == "Dsc"  %>
-	      			<span> Doctor of Science,</span>
-	      			<span><%= @user.field %></span>
-            <% elsif @user.qualification == "Bsc" %>
-              <span> Bachelor of Science,</span>
-              <span><%= @user.field %></span>
-            <% elsif @user.qualification == "Msc" %>
-              <span> Master of Science,</span>
-              <span><%= @user.field %></span>
-            <% else %>
-              <span><%= @user.field %></span>
-	      		<% end %>
-      		</p>     		    		
-          <p style="color: grey">
-            <span>Phone: </span>
-            <span><%= @user.phone %></span>
-          </p>      		
-          <p style="color: grey">
-            <span>email: </span>
-      			<span><%= @user.email %></span>
-      		</p>
-          <% unless user_signed_in? && current_user == @user %>
-            <%= form_for :conversation, url: :conversations, html: { class: "" } do |f| %>
-              <span> 
-                <p class="dropdown-toggle dropdown-send-message" data-toggle="dropdown">
-                  <span style="color: #4169E1;">
-                    <%= f.select :recipients, @users.all.collect {|p| [ "Send Message", p.id ] }, {} ,{ multiple: true}  %>
-                  </span>
-                </p> 
-                <ul class="dropdown-menu dropdown-menu-notification">
-                  <li>
-                    <div class="form-group">
-                      <%= f.label :subject %>
-                      <%= f.text_field :subject, placeholder: "Subject", class: "form-control", :required => true %>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-group">
-                      <%= f.label :message %>
-                      <%= f.text_area :body, class: 'form-control',placeholder: "Type your message here", :required => true, rows: 4  %>
-                    </div>
-                  </li>
-                  <li>
-                    <%= f.submit "Send Message", class: "btn btn-success" %>
-                  </li>
-                </ul>
-              </span>
-            <% end %>
-          <% end %>
-      	</div>
-      </div>
-  	</div>
-    <% unless @user.verified? %>
-      <% if user_signed_in? && current_user.vip? %>
-        <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'verify User',verify_user_user_path(@user), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
-        </span>         
-        <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'Delete User',delete_user_user_path(@user), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
-        </span> 
+<div class="row user-header">
+  <div class="row">
+    <div class="cover">
+      <img src="<%= asset_path( 'g6.jpg' ) %>" />
+    </div>
+    <div class="col-md-5 profile-pic">
+      <% if  @user.image.blank? %>
+        <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+      <% else %>
+        <span><%= image_tag @user.image %></span>
       <% end %>
-    <% end %>
+    </div> 
+    <div class="col-md-7 profile-menu">
+      <div class="row profile-menu-inside">
+            <div class="row">
+              <div class="col-md-9">
+                <p style="color: #4169E1; font-size: 18px; margin:0; padding: 0;">
+                  <span style="font-size: x-large; margin-right: 10px;"><%= @user.firstname %></span>
+                  <% unless @user.middlename.blank?  %>
+                    <span style="font-size: x-large; margin-right: 10px;"><%= @user.middlename %></span>
+                  <% end %>
+                  <span style="font-size: x-large; margin-right: 10px;"><%= @user.surname %></span>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                <% unless user_signed_in? && current_user == @user %>
+                  <%= form_for :conversation, url: :conversations, html: { class: "" } do |f| %>
+                    <span style="float: right; "> 
+                      <span class="dropdown-toggle dropdown-send-message" data-toggle="dropdown">
+                        <span style="color: #4169E1;">
+                          <%= f.select :recipients, @users.all.collect {|p| [ "Send Message", p.id ] }, {} ,{ multiple: true}  %>
+                        </span>
+                      </span> 
+                      <ul class="dropdown-menu dropdown-menu-notification">
+                        <li>
+                          <div class="form-group">
+                            <%= f.label :subject %>
+                            <%= f.text_field :subject, placeholder: "Subject", class: "form-control", :required => true %>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-group">
+                            <%= f.label :message %>
+                            <%= f.text_area :body, class: 'form-control',placeholder: "Type your message here", :required => true, rows: 4  %>
+                          </div>
+                        </li>
+                        <li>
+                          <%= f.submit "Send Message", class: "btn btn-success" %>
+                        </li>
+                      </ul>
+                    </span>
+                  <% end %>
+                <% end %>
+                </p>
+              </div>
+            </div>
+          
+          <p style="font-size: 18px; margin:0; padding: 0;">
+            <% unless @user.qualification.blank? %>  
+              <span style="color: grey;"><i class="fa fa-graduation-cap" aria-hidden="true"> </i> </span>
+              <span><%=  @user.qualification %></span>,
+            <% end %>
+            <% unless @user.field.blank? %>  
+              <span><%=  @user.field %></span>
+            <% end %>
+          </p>          
+          <p style="font-size: 18px; margin:0; padding: 0;">
+            <% unless @user.institution.blank? %>  
+              <span style="color: grey;"><i class="fa fa-university" aria-hidden="true"> </i> </span>
+              <span><%=  @user.institution %></span>,
+            <% end %>
+          </p>          
+          <p style="font-size: 18px; margin:0; padding: 0;">
+            <% unless @user.placeOfWork.blank? %>  
+              <span style="color: grey;"><i class="fa fa-briefcase" aria-hidden="true"> </i> </span>
+              <span><%=  @user.placeOfWork %></span>,
+            <% end %>
+          </p>
+      </div>
+    </div>
   </div>
-</div> 
+</div>
+
+
+
+<% unless @user.verified? %>
+  <% if user_signed_in? && current_user.vip? %>
+    <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'verify User',verify_user_user_path(@user), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
+    </span>         
+    <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'Delete User',delete_user_user_path(@user), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
+    </span> 
+  <% end %>
+<% end %>
+
+
 
 <div class="row">
 

@@ -22,8 +22,144 @@
 .fadded_user{
 	font-style:italic;
 	color: grey; 
-	max-height: 50px;
+	max-height: 180px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	
 }
+.all-users{
+	background-color: white;
+	padding: 10px;
+}
+
+
+
+
+
+
+
+.profile_info{
+	border: 1px solid #ccc;
+	padding: 20px;
+	border-radius: 4px;
+	margin-bottom: 20px;
+}
+
+
+#user_education_university{
+	margin-left: 20px;
+}
+#user_education_college{
+	margin-left: 20px;
+}
+#user_education_secondary{
+	margin-left: 20px;
+}
+
+#user_income_varying{
+	margin-left: 30px;
+}
+#user_income_high{
+	margin-left: 30px;
+}
+#user_income_middle{
+	margin-left: 30px;
+}
+
+.checkbox{
+	margin-left: 100px;
+}
+.subtitle{
+	color: grey;
+}
+
+.row-check-box{
+	margin-bottom: 20px;
+}
+
+.user-header{
+	margin-bottom: 20px;
+}
+
+.user-header img{
+	width: 100%;
+	height: auto;
+	border-top-right-radius: 18px;
+	border-top-left-radius: 18px;
+}
+
+.profile-pic{
+	height: 250px;
+	border-bottom-right-radius: 50%;
+	border-bottom-left-radius: 50%;
+	background-color: white;
+	border-bottom: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	box-shadow:   2px 2px 2px #888888;
+	overflow:visible;
+}
+.profile-pic img{
+	border-radius: 50%;
+	border-bottom-right-radius: 50%;
+	height: 280px;
+	width: 100%;
+	position: absolute;
+	right:0;
+	bottom:0;
+	border: 20px solid white;
+}
+
+div img.thing {
+position: absolute;
+right:0;
+bottom:0;
+}
+.cover{
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-top-right-radius: 18px;
+	border-top-left-radius: 18px;
+	border-right: 1px solid #ccc;
+	box-shadow:  1px 1px 1px 1px #888888;
+
+
+}
+.profile-menu{
+	background-color: white;
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	box-shadow:   2px 2px 2px #888888;
+}
+.profile-menu-inside{
+	padding:0;
+}
+.write-message{
+	margin-top: 20px;
+}
+.user-main{
+	background-color: white;
+	box-shadow:  2px 2px 2px 2px #888888;
+}
+.user-main-row{
+	padding: 20px;
+	border-bottom: 1px solid #ccc;
+}
+.user-footer{
+	height: 200px;
+}
+.user-add-picture{
+	background-color: white;
+	padding: 20px;
+	margin-bottom: 20px;
+	box-shadow:  2px 2px 2px 2px #888888;
+}
+.user-photos{
+	background-color: white;
+	padding: 20px;
+	box-shadow:  2px 2px 2px 2px #888888;
+	margin-bottom: 20px;
+}
+
+
+
+

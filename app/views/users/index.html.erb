@@ -16,30 +16,52 @@
 
   </div>
 	<hr style="height:2px;border:none;color:#333;background-color:#708090;" />
-	<% unless @users.blank? %> 
-    <% @users.each do |user| %>
-      <div class="col-md-3 md-3-user">
-        <%= link_to user do %>
-          <div class="user_dp_thumbnail">   
-            <div class="thumbnail_image_dp"> 
+  <div class="row all-users">
+  	<% unless @users.blank? %> 
+      <% @users.each do |user| %>
+        <div class="col-md-4 md-3-user">
+          <%= link_to user do %>
+            <div class="thumbnail user_dp_thumbnail">   
               <% if user.image.blank? %>
-                 <img src="<%= asset_path( 'default_user.png' ) %>" />
+              <p id="user_avatar2"><img src="<%= asset_path( 'default_user.png' ) %>" /></p>
               <% else %>
-                <%=  (image_tag user.image) %>
+                <p id="user_avatar2"><%= image_tag user.image %></p>
               <% end %>
-            </div>
-            <div class="fadded_user">
+              <div class="fadded_user">
 
-              <strong style="color: #4169E1;">
-                <span><%=  user.firstname %> </span>
-                <span><%=  user.surname %> </span> 
-              </strong><br>
-              <span><%=  user.qualification %></span>,
-              <span><%=  user.field %></span>
+                <p style="color: #4169E1; font-size: 20px; font-family: times; font-style: normal;">
+                  <span><%=  user.firstname %> </span>
+                  <span><%=  user.surname %> </span> 
+                </p>
+                <p>
+                  <% unless user.qualification.blank? %>  
+                    <span><i class="fa fa-graduation-cap" aria-hidden="true"> </i> </span>
+                    <span><%=  user.qualification %></span>,
+                  <% end %>
+                  <% unless user.field.blank? %>  
+                    <span><%=  user.field %></span>
+                  <% end %>
+                 
+                </p>
+                <p>
+                  <% unless user.institution.blank? %>             
+                    <span> <i class="fa fa-university" aria-hidden="true"></i>
+                      <%=  user.institution %>
+                    </span>
+                  <% end %>
+                </p>
+                <p>
+                  <% unless user.placeOfWork.blank? %>  
+                    <span> <i class="fa fa-briefcase" aria-hidden="true"></i>
+                      <%=  user.placeOfWork %>
+                    </span>
+                  <% end %>               
+                </p>
+              </div>
             </div>
-          </div>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
