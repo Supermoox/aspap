@@ -1,5 +1,5 @@
 <div class="row side-content">
-		<% if user_signed_in? && current_user.verified == false  %>
+		<% if user_signed_in? && !current_user.verified? %>
 			<h5 id="side-content-links"> <%= link_to "VERIFY YOUR ACCOUNT" , new_editor_path %></h5>
 		<% end %>
 	 <hr style="height:2px;border:none;color:#333;background-color:white;" />
@@ -19,7 +19,7 @@
 	 <hr style="height:2px;border:none;color:#333;background-color:white;" />
    <h5 id="side-content-links"> <%= link_to "PUBLISHING ETHICS & POLICIES" , publishing_processes_path %></h5>	 
    
-   <% unless user_signed_in? && current_user.verified == false %>
+   <% unless user_signed_in? && !current_user.verified? %>
    		<hr style="height:2px;border:none;color:#333;background-color:white;" />
    	 <h5 id="side-content-links"> <%= link_to "JOIN THE EDITORIAL TEAM" , editorial_teams_path %></h5>
    <% end %>
