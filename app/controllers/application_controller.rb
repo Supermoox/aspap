@@ -39,7 +39,8 @@ class ApplicationController < ActionController::Base
 
  	def set_journals
 		@journals = Journal.all
-	end  	
+	end  	 	
+	
 	def set_directorates
 		@directorates = Directorate.all
 	end 	
