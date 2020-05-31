@@ -21,7 +21,7 @@ class User < ApplicationRecord
   enum title: [:Mr, :Ms, :Dr, :Prof, :Mrs]
 
   has_attached_file :image,
-   styles: { small: "64x64", medium: "100x100", large: "200x200" }
+   styles: { small: "64x64", medium: "100x100", large: "300x300" }
    validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
    validates_uniqueness_of :username  
 

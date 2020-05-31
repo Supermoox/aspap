@@ -20,7 +20,7 @@
     <% @users.each do |user| %>
       <div class="col-md-3 md-3-user">
         <%= link_to user do %>
-          <div class="thumbnail user_dp_thumbnail">   
+          <div class="user_dp_thumbnail">   
             <div class="thumbnail_image_dp"> 
               <% if user.image.blank? %>
                  <img src="<%= asset_path( 'default_user.png' ) %>" />
