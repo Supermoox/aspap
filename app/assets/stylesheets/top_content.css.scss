@@ -28,7 +28,12 @@
 	border-top: 1px solid #ccc;
 }
 
-
+#event_fade{
+  position: relative;
+  height: 5.6em; /* exactly three lines */
+  overflow: hidden;
+  font-size: small;
+}
 #slideshow { 
     position: relative; 
     width: 100%; 

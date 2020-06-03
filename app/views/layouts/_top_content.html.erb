@@ -13,10 +13,12 @@
             <% @events.each do |event| %>
               <div>
                 <%= link_to event do %>
-                <span style="font-size: 16px;color: #32CD32;"><i class="fa fa-tasks"></i> 
-                </span>
-                <span style="font-size: 16px;color: black;"><%=  event.title %> </span>
-                <p id="event_fade" "><%= event.body %>  </p>
+                <p id="event_fade" ">
+                  <span style="font-size: 16px;color: #32CD32;"><i class="fa fa-tasks"></i> 
+                  </span> 
+                  <span style="font-size: 14px;color: black;"><%=  event.title %> </span><br>
+                  <span><%= event.body %> </span> 
+                </p>
                 <% end %>
               </div>
             <% end %>

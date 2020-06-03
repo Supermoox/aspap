@@ -272,13 +272,7 @@
 	text-overflow: ellipsis;
 	text-align: center;
 }
-#event_fade{
-  position: relative;
-  height: 4.6em; /* exactly three lines */
-  overflow: hidden;
-  font-size: small;
-  padding: 10px;
-}
+
 .fade_research{
   max-height: 120px;
   position: relative;
@@ -305,6 +299,13 @@
 	background-color: white;
 	height: 50px;
 	padding: 10px;
+}
+.join-discussions-event{
+	border: 1px solid #ccc;
+	background-color: white;
+	height: 50px;
+	padding: 10px;
+	margin-top: 20px;
 }
 
 

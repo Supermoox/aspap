@@ -1,8 +1,13 @@
-<div class="row">
-	<div class="col-md-3 left_menu">  
-	  <%= render 'layouts/leftSide_menu' %>
-	</div>
-	<div class="col-md-9 middle_content">
+
+
+
+
+
+<div class="col-md-3 left_menu">  
+  <%= render 'layouts/leftSide_menu' %>
+</div>
+<div class="col-md-9 middle_content">
+	<div class="row">
 		<div class="row article">
 			<div id="article-title">
 				<%=  @event.title %>
@@ -11,48 +16,83 @@
 				<%= simple_format(@event.body) %>             
 		  </div>
 		</div>
-		<div class="row main-content">
-			<div class="row middle">
-				<div class="col-md-6">
-					<hr style="height:2px;border:none;color:#333;background-color:#708090;" />
-					<h3 class="sub-title">Join Discussions!</h3>
-					<div class="join-discussions">
-						<% unless @posts.blank? %>
-							<%= link_to @posts.fourth do %> 
-								<div class="sub-item1">
-									<p id="trunc"><%=  @posts.fourth.body %></p>
+	</div>
+
+	<div class="row join-discussions-event"> <span style="color: #4169E1;">ASPAP</span> <span>articles</span></div>
+	<div class="row main-content">
+		<div class="row bottom">
+			<% unless @articles.blank? %>
+		    <% @articles.each do |article| %>
+		    	<%= link_to article do %>
+						<div class="row article">
+						  <div>
+						    <% if article.user.image.blank? %> 
+						        <span id="user_avatar"><%= (image_tag("/assets/user.png", alt: "user_avatar") ) %> </span>
+						        <span id="user_avatar"><%= article.user.firstname %> </span>
+						        <span id="user_avatar"><%= article.user.username %> </span>
+						    <% else %>	      
+				          <span id="user_avatar"><%= image_tag article.user.image %> </span>
+				          <span id="user_avatar"><%= article.user.firstname %> </span>
+				          <span id="user_avatar"><%= article.user.username %> </span>
+						    <% end %>
+
+
+						    <div id="article-title-small">
+						    	<%=  article.title %>					    		
+						    </div>
+						    <div id="article-body-small">
+									<%= simple_format(article.body) %> 
+
 								</div>
-							<% end %>
+								<span style="font-style: italic; margin: 0; color: blue;">...Continue</span>
+						    <div style="margin-top: 10px;">
+						      <% unless article.image.blank? %>
+						        <div class="article_image">
+						          <%= image_tag article.image %>          
+						        </div>  
+						      <% end %> 
+						    </div>
 
-							<% unless @posts.third.blank?  %>
-								<%= link_to @posts.third do %> 
-									<div class="sub-item2">
-										<p id="trunc"><%=  @posts.third.title %></p>
-									</div>
-								<% end %>
-							<% end %>
 
-							<% unless @posts.second.blank?  %>
-								<%= link_to @posts.second do %> 
-									<div class="sub-item3">
-										<p id="trunc"><%=  @posts.second.title %></p>
-									</div>
-								<% end %>
-							<% end %>
+						  </div>
+						</div>
+						  <div class="row small_article_footer">
+						  	<span style="font-size: 14px;">Coments (<%= article.articomments.count %>)</span>
 
-							<% unless @posts.first.blank?  %>
-								<%= link_to @posts.first do %> 
-									<div class="sub-item4">
-										<p id="trunc"><%=  @posts.first.title  %></p>
-									</div>
-								<% end %>
-							<% end %>
-						<% end %>
-					</div>
-				</div>		
-			</div>
+						  </div>
+		   	  <% end %>
+		    <% end %>
+	    <% end %>
+	     
+			<p style="font-style: italic; text-align:right; font-size: 16px;"><%= link_to "See more posts" ,posts_path(@posts) %></p>
+	  
+		</div>
+	</div>
+	<div class="row join-discussions"> <span>Join Discussions</span> </div>
+	<div class="row main-content">
+		<div class="row middle">
+	    <% @posts.each do |post| %> 
+	      <%= link_to post do %> 
+	        <div class="row clickable-div">
+	          <div class="col-sm-2 posts-col-sm">
+	            <% if post.user.image.blank? %>
+	              <p id="user_avatar"><img src="<%= asset_path( 'default_user.png' ) %>" /></p>
+	            <% else %>
+	              <p id="user_avatar"><%= image_tag post.user.image %></p>
+	            <% end %>
+	          </div>       
+	          <div class="col-sm-10">
+	          <div class="discuss">
+	            <p ><strong style="font-family: initial; font-size: large;"><%=  post.title  %> </strong></p>
+	            <div class="fadded">
+	              <span><%=  post.body  %> </span>
+	            </div>
+	          </div>
+	          </div>  
+	        </div>
+	      <% end %>
+	    <% end %>
+	    <p style="font-style: italic; text-align:right; font-size: 16px;"><%= link_to "See more posts" ,posts_path(@posts) %></p>
 		</div>
 	</div>
 </div>
-
-

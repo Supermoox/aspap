@@ -4,6 +4,7 @@ class EventsController < ApplicationController
 
 def show
 	@posts = Post.all
+	@articles = Article.all
 end
   private
     def set_event
