@@ -14,7 +14,7 @@
     <%= render 'layouts/header' %>
     <div class="row wrapper">
       <% flash.each do |name, msg| %>
-        <%= content_tag(:div, msg, class: "alert") %>
+        <%= content_tag(:p, msg, class: "alert") %>
       <% end %>
 
       <div class="row">
