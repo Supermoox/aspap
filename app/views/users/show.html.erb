@@ -12,50 +12,53 @@
     </div> 
     <div class="col-md-7 profile-menu">
       <div class="row profile-menu-inside">
-            <div class="row">
-              <div class="col-md-9">
-                <p style="color: #4169E1; font-size: 18px; margin:0; padding: 0;">
-                  <span style="font-size: x-large; margin-right: 10px;"><%= @user.firstname %></span>
-                  <% unless @user.middlename.blank?  %>
-                    <span style="font-size: x-large; margin-right: 10px;"><%= @user.middlename %></span>
-                  <% end %>
-                  <span style="font-size: x-large; margin-right: 10px;"><%= @user.surname %></span>
-                </p>
-              </div>
-              <div class="col-md-3">
-                <p>
-                <% unless user_signed_in? && current_user == @user %>
-                  <%= form_for :conversation, url: :conversations, html: { class: "" } do |f| %>
-                    <span style="float: right; "> 
-                      <span class="dropdown-toggle dropdown-send-message" data-toggle="dropdown">
-                        <span style="color: #4169E1;">
-                          <%= f.select :recipients, @users.all.collect {|p| [ "Send Message", p.id ] }, {} ,{ multiple: true}  %>
-                        </span>
-                      </span> 
-                      <ul class="dropdown-menu dropdown-menu-notification">
-                        <li>
-                          <div class="form-group">
-                            <%= f.label :subject %>
-                            <%= f.text_field :subject, placeholder: "Subject", class: "form-control", :required => true %>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="form-group">
-                            <%= f.label :message %>
-                            <%= f.text_area :body, class: 'form-control',placeholder: "Type your message here", :required => true, rows: 4  %>
-                          </div>
-                        </li>
-                        <li>
-                          <%= f.submit "Send Message", class: "btn btn-success" %>
-                        </li>
-                      </ul>
-                    </span>
-                  <% end %>
+          <div class="row">
+            <div class="col-md-9">
+              <p style="color: #4169E1; font-size: 18px; margin:0; padding: 0;">
+                <span style="font-size: x-large; margin-right: 10px;"><%= @user.firstname %></span>
+                <% unless @user.middlename.blank?  %>
+                  <span style="font-size: x-large; margin-right: 10px;"><%= @user.middlename %></span>
                 <% end %>
-                </p>
-              </div>
+                <span style="font-size: x-large; margin-right: 10px;"><%= @user.surname %></span>
+              </p>
             </div>
-          
+            <div class="col-md-3">
+              <p>
+              <% unless user_signed_in? && current_user == @user %>
+                <%= form_for :conversation, url: :conversations, html: { class: "" } do |f| %>
+                  <span style="float: right; "> 
+                    <span class="dropdown-toggle dropdown-send-message" data-toggle="dropdown">
+                      <span style="color: #4169E1;">
+                        <%= f.select :recipients, @users.all.collect {|p| [ "Send Message", p.id ] }, {} ,{ multiple: true}  %>
+                      </span>
+                    </span> 
+                    <ul class="dropdown-menu dropdown-menu-notification">
+                      <li>
+                        <div class="form-group">
+                          <%= f.label :subject %>
+                          <%= f.text_field :subject, placeholder: "Subject", class: "form-control", :required => true %>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="form-group">
+                          <%= f.label :message %>
+                          <%= f.text_area :body, class: 'form-control',placeholder: "Type your message here", :required => true, rows: 4  %>
+                        </div>
+                      </li>
+                      <li>
+                        <%= f.submit "Send Message", class: "btn btn-success" %>
+                      </li>
+                    </ul>
+                  </span>
+                <% end %>
+              <% end %>
+              <% if user_signed_in? && current_user == @user %>
+                <strong style="color: blue; margin-top: 20px; font-size: 18px;"><%= link_to "Edit" , edit_user_registration_path %></strong> 
+              <% end %>
+              </p>
+            </div>
+          </div>
+        
           <p style="font-size: 18px; margin:0; padding: 0;">
             <% unless @user.qualification.blank? %>  
               <span style="color: grey;"><i class="fa fa-graduation-cap" aria-hidden="true"> </i> </span>
@@ -164,7 +167,11 @@
       </h4>
       <% @posts.each do |post| %>
         <h4 id="research-link">  
-          <span><%=link_to post.title, post  %><span>
+          <% if post.title.blank? %>
+            <span><%=link_to post.body, post  %><span>
+          <% else %>
+            <span><%=link_to post.title, post  %><span>
+          <% end %>
         </h4>
       <% end %>
       </div>
@@ -193,4 +200,5 @@
     </div>
   <% end %>
 </div>
+
 

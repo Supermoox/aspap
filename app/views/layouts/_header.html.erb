@@ -1,128 +1,80 @@
 <div class="row first-top-layer">
-
-
   <div class="col-md-7 searcher">
     <%= form_for  @search do |f| %>    
       <%= link_to root_path do %>
         <span class="logo">  <img src="<%= asset_path( 'logo.png' ) %>" /></span>
       <% end %>
       <span><%= f.text_field :keywords, :placeholder =>"Publications, articles, People or discussions" %></span>
-
       <span><%= f.button fa_icon("search"), class: "btn-search-submit" %></span>
     <% end %>
   </div>
   <div class="col-md-5 account">
-    <span class="top-right">
       <% if user_signed_in? %>
-        <span> 
-          <button class="dropdown-toggle btn-notification" data-toggle="dropdown">
-            <span class="label label-danger top-right-item">      
-              <span><%= @notifications %></span>
-            </span> 
-            <span style="font-size: larger; color: #708090;">
-              <i class="fa fa-bell" aria-hidden="true"> </i> 
-            </span>
-          </button> |
-          <ul class="dropdown-menu dropdown-menu-notification">
-            <% unless @active_posts.blank?  %>
-              <strong>Posts</strong>
-              <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
-              <% @active_posts.each do |post| %>
-                <li>
-                  <%= link_to post do %>
-                    <p id="noti-item">
-                      <p id="trunc"><span style="color: blue;"><%=  post.title  %></span></p>
-                      <span style="font-size: small; color: black; font-style: italic;">(<%=  post.counter %> new comments) </span>
-                    </p>
-                  <% end %>
-                </li>
-              <% end %>  
-            <% end %>  
-            <% unless @active_articles.blank?  %>
-              <strong>Articles</strong>   
-              <hr style="height:2px;border:none;color:#333;background-color:#708090;" />       
-              <% @active_articles.each do |article| %>
-                <li>
-                  <%= link_to article do %>
-                    <p id="noti-item">
-                      <p id="trunc"><span style="color: blue;"><%=  article.title  %></span></p>
-                      <span style="font-size: small; color: black; font-style: italic;">(<%=  article.counter %> new comments) </span>
-                    </p>
-                  <% end %>
-                </li>
-              <% end %>
-            <% end %>
-          </ul>
-        </span> 
-
-        <%= link_to mailbox_inbox_path do %>
+        <button class="dropdown-toggle btn-notification" data-toggle="dropdown">
           <span class="label label-danger top-right-item">      
-            <%= unread_messages_count %> 
+            <span><%= @notifications %></span>
           </span> 
-          <span style="font-size: larger; color: #708090;"><i class="fa fa-envelope-open-o" aria-hidden="true"> </i> </span>
-        <% end %>|
-        <span class="top-right-item"><%= link_to "ACCOUNT" , edit_user_registration_path %></span> |
-        <span class="top-right-item"><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></span> |
-        <%= link_to current_user do %>
-          <span id="user_name"><%= current_user.username %> </span>
-          <% if current_user.image.blank? %>
-            <span id="user_avatar"><img src="<%= asset_path( 'user.png', alt: "avatar" ) %>" /></span>
-          <% else %>
-            <span id="user_avatar"><%= image_tag current_user.image %> </span>
+          <span style="font-size: larger; color: #708090;">
+            <i class="fa fa-bell" aria-hidden="true"> </i> 
+          </span>
+        </button> |
+        <ul class="dropdown-menu dropdown-menu-notification">
+          <% unless @active_posts.blank?  %>
+            <strong>Posts</strong>
+            <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
+            <% @active_posts.each do |post| %>
+              <li>
+                <%= link_to post do %>
+                  <p id="noti-item">
+                    <p id="trunc"><span style="color: blue;"><%=  post.title  %></span></p>
+                    <span style="font-size: small; color: black; font-style: italic;">(<%=  post.counter %> new comments) </span>
+                  </p>
+                <% end %>
+              </li>
+            <% end %>  
+          <% end %>  
+          <% unless @active_articles.blank?  %>
+            <strong>Articles</strong>   
+            <hr style="height:2px;border:none;color:#333;background-color:#708090;" />       
+            <% @active_articles.each do |article| %>
+              <li>
+                <%= link_to article do %>
+                  <p id="noti-item">
+                    <p id="trunc"><span style="color: blue;"><%=  article.title  %></span></p>
+                    <span style="font-size: small; color: black; font-style: italic;">(<%=  article.counter %> new comments) </span>
+                  </p>
+                <% end %>
+              </li>
+            <% end %>
           <% end %>
-        <% end %>
-      <% else %>
-        <span class="account-not">
-          <span class="top-right-item"><%= link_to "REGISTER", new_user_registration_path, class: "btn btn-primary" %></span>
-          <span class="top-right-item"><%= link_to "LOG IN", new_user_session_path, class: "btn btn-primary" %></span>
-        </span>
+        </ul>
+      </span> 
+
+      <%= link_to mailbox_inbox_path do %>
+        <span class="label label-danger top-right-item">      
+          <%= unread_messages_count %> 
+        </span> 
+        <span style="font-size: larger; color: white;"><i class="fa fa-envelope-open-o" aria-hidden="true"> </i> </span>
       <% end %>
-    </span>
+      <span class="top-right-item"><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></span> |
+      <%= link_to current_user do %>
+        <span id="user_name"><%= current_user.username %> </span>
+        <% if current_user.image.blank? %>
+          <span id="user_avatar"><img src="<%= asset_path( 'user.png', alt: "avatar" ) %>" /></span>
+        <% else %>
+          <span id="user_avatar"><%= image_tag current_user.image %> </span>
+        <% end %>
+      <% end %>
+    <% else %>
+      <span class="top-right-item">
+        <span style="float: right; margin-top: 20px;"><%= link_to "REGISTER", new_user_registration_path %></span>
+      </span>
+      <span class="top-right-item"><span style="float: right; margin-top: 20px;"><%= link_to "LOG IN", new_user_session_path %></span></span>
+    <% end %>
   </div>
 </div>
 
 
-<div class="row main-menu">
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>      
-
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav top-left">
-          <li> <%= link_to "HOME" , root_path %></li>
-          <li> <%= link_to "ABOUT ASPAP" , abouts_path %></li>
-          <li> <%= link_to "GALLARY", pictures_path %></li>
-          <li><%= link_to "DISCUSSIONS", posts_path %></li>
-          <li> 
-            <button class="dropdown-toggle btn-faculty" type="button" data-toggle="dropdown">JOURNALS
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <% @journals.each do |journal| %>
-                <li><a href="#"><%= link_to journal.name, journal %></a></li>
-              <% end %>
-            </ul>
-          </li>
-          <li> 
-            <button class="dropdown-toggle btn-faculty" type="button" data-toggle="dropdown">RESEARCH DIRECTORATES
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <% @directorates.each do |directorate| %>
-                <li><a href="#"><%= link_to directorate.name, directorate %></a></li>
-              <% end %>
-            </ul>
-          </li>
-        </ul>
-    </div>
-  </nav> 
-</div>
 
 
 

@@ -8,23 +8,27 @@
 	border: 1px solid #ccc;
 }
 #article-title{
-	font-size: xx-large;
-	text-align: center;
+	font-size: 18px;
 	margin-top: 20px;
-	margin-bottom: 20px;
 	font-family: initial;
 }
+
 #article-body{
 	font-size: large;
 	font-family: initial;
 }
 
-.article_image{
-	height: 500px;
-	overflow-y: hidden;
-}
+
 .article_image img{
 	height: auto;
 	width: 100%;
 }
+.small_article_footer{
+	background-color: #F5F5F5;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	padding: 10px;
 
+}

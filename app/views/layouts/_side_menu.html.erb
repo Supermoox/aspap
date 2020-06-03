@@ -1,66 +1,42 @@
 <div class="row side-content">
 		<% if user_signed_in? && !current_user.verified? %>
-			<h5 id="side-content-links"> <%= link_to "VERIFY YOUR ACCOUNT" , new_editor_path %></h5>
+			<h5 id="side-content-links"> <%= link_to "Verify your account" , new_editor_path %></h5>
 		<% end %>
-	 <hr style="height:2px;border:none;color:#333;background-color:white;" />
-   <h5> <%= link_to "ARTICLES" , articles_path %></h5>
-	 <hr style="height:2px;border:none;color:#333;background-color:white;" />
-   <h5> <%= link_to "RESEARCH" , researches_path %></h5>
- 	 <hr style="height:2px;border:none;color:#333;background-color:white;" />
-   <h5> <%= link_to "WRITE AN ARTICLE" , new_article_path %></h5>
-	 <hr style="height:2px;border:none;color:#333;background-color:white;" /> 
-	 <h5> <%= link_to "CREATE A DISCUSSION" , new_post_path %></h5>
-	 <hr style="height:2px;border:none;color:#333;background-color:white;" />
-   <h5> <%= link_to "START A RESEARCH" , new_research_path %></h5>
-   <hr style="height:2px;border:none;color:#333;background-color:white;" />
-   <h5 id="side-content-links"> <%= link_to "PUBLISH TO A JOURNAL" , journals_path %></h5>
-	 <hr style="height:2px;border:none;color:#333;background-color:white;" />   
-	 <h5 id="side-content-links"> <%= link_to "ASPAP JOURNALS" , journal_pages_path %></h5>
-	 <hr style="height:2px;border:none;color:#333;background-color:white;" />
-   <h5 id="side-content-links"> <%= link_to "PUBLISHING ETHICS & POLICIES" , publishing_processes_path %></h5>	 
-   
+   <h5 id="side-content-links"> <%= link_to "Articles" , articles_path %></h5>
+   <h5 id="side-content-links"> <%= link_to "Research" , researches_path %></h5>
+   <h5 id="side-content-links"> <%= link_to "Write an article" , new_article_path %></h5>
+   <h5 id="side-content-links"> <%= link_to "Start a research" , new_research_path %></h5>
+	 <h5 id="side-content-links"> <%= link_to "ASPAP Journal" , journal_pages_path %></h5>
+   <h5 id="side-content-links"> <%= link_to "Publish to the journal" , journals_path %></h5>
+   <h5 id="side-content-links"> <%= link_to "Publishing ethics & policies" , publishing_processes_path %></h5>	 
    <% unless user_signed_in? && !current_user.verified? %>
-   		<hr style="height:2px;border:none;color:#333;background-color:white;" />
-   	 <h5 id="side-content-links"> <%= link_to "JOIN THE EDITORIAL TEAM" , editorial_teams_path %></h5>
+   	 <h5 id="side-content-links"> <%= link_to "Join the ASPAP editorial team" , editorial_teams_path %></h5>
    <% end %>
-	 <hr style="height:2px;border:none;color:#333;background-color:white;" />
-	 <h5> <%= link_to "ASPAP EXECUTIVE" , executives_path %></h5>
-	 <hr style="height:2px;border:none;color:#333;background-color:white;" />
-	 <h5> <%= link_to "ASPAP CONSTITUTION" , constitutions_path %></h5>
-	 <hr style="height:2px;border:none;color:#333;background-color:white;" />
-	 <h5> <%= link_to "DOWNLOADS" , downloads_path %></h5>
-	 <hr style="height:2px;border:none;color:#333;background-color:white;" />
+	 <h5 id="side-content-links"> <%= link_to "ASPAP Executive 2020-2022" , executives_path %></h5>
+	 <h5 id="side-content-links"> <%= link_to "ASPAP Constitution" , constitutions_path %></h5>
+	 <h5 id="side-content-links"> <%= link_to "Downloads" , downloads_path %></h5>
 </div>
 
-<div class="row side-content-bottom">
-
-	 <h5 id="side-content-links"> <%= link_to "MY POSTS" , my_posts_path %></h5>
-	 <h5 id="side-content-links"> <%= link_to "MY MANUSCRIPTS" , my_manuscripts_path %></h5>
-	 <h5 id="side-content-links"> <%= link_to "MY RESEARCH" , my_researches_path %></h5>
-	 <h5 id="side-content-links"> <%= link_to "MY ARTICLES" , my_articles_path %></h5>
-	 <h5 id="side-content-links"><%= link_to "MY ACCOUNT" , edit_user_registration_path %></h5>	
-	 <h5 id="side-content-links"> <%= link_to "THE ASPAP NETWORK" , users_path %></h5>
-		<% if user_signed_in? %>
-		 	<% if current_user.vip?  %>
-				<div class="administrative">
-			 		<h5 id="side-content-links"> <%= link_to "PENDING MANUSCRIPTS" , manuscripts_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "PENDING RESEARCH" , pending_researches_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "PENDING ARTICLES" , pending_articles_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "PENDING REQUESTS" , editors_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "ADD EXECUTIVE" , new_executive_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "ADD TO DOWNLOADS" , new_download_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "ADD TO DIRECTORATES" , new_directorate_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "ADD A JOURNAL" , new_journal_path %></h5>
-		 		</div>
-			<% elsif  current_user.PR? || current_user.editor? %>
-				<div class="administrative">
-			 		<h5 id="side-content-links"> <%= link_to "PENDING MANUSCRIPTS" , manuscripts_path %></h5>
-			 		
-		 		</div>			
-		 	<% elsif  current_user.publisher? %>
-				<div class="administrative">
-			 		<h5 id="side-content-links"> <%= link_to "PENDING MANUSCRIPTS" , manuscripts_path %></h5>
-		 		</div>
-			<% end %>	
-		<% end %>
+<div class="row side-content-footer">
+	<span style="margin:10px;"><%= link_to "About Us", abouts_path %></span>
+		<span class="email"> 
+    <%= mail_to "secretary@aspap.org" do %>
+      <i class="fa fa-envelope-o" aria-hidden="true" target="_blank"></i> Webmail
+    <% end %>
+  	</span> 
+		<span ><i class="fa fa-phone" aria-hidden="true"></i></span>
+    <span style="color: grey;">+260977948551</span>
+   	<p style="color:grey; font-style: 12px; margin: 10px;">Copyright ©<span style="color:#4169E1;">ASPAP</span> <%= Time.now.strftime("%Y") %>
+		</p>
+		<p style="color: #FF4500; margin:10px;">
+			Links	
+		</p>
+		<p style="margin:10px;">
+			<span style="color: grey;"><i class="fa fa-link" aria-hidden="true"></i></span><a href="https://www.mohe.gov.zm/"> Ministry of Higher Education</a> 
+		</p>		
+		<p style="margin:10px;">
+			<span style="color: grey;"><i class="fa fa-link" aria-hidden="true"></i></span><a href="https://www.linkedin.com/in/mkusa-sakala-861383161/"> Web Developer</a> 
+		</p>
 </div>
+
+

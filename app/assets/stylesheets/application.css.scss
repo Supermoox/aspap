@@ -13,29 +13,74 @@
  *= require_tree .
  *= require_self
  */
+
+
 @import "bootstrap-sprockets";
 @import "bootstrap"; 
 @import "font-awesome";
 
+body{
+	background: #F5F5F5;
+}
 
 .row {
   margin-left: 0;
   margin-right: 0;
 }
 
-body{
-	background: #F5F5F5;
-}
 .wrapper{
-	margin-left: 10%;
-	margin-right: 10%;
-	margin-top: 50px;
+	margin-left: 3%;
+	margin-right: 3%;
+	margin-top: 20px;
 }
 
 
 .header{
 	background-color:	#708090;
 }
+
+.first-top-layer{
+  background-color: #708090;
+  vertical-align: middle;
+ padding-right: 2%;
+ padding-left: 4%;
+}
+
+
+.account-not{
+  margin-top: 20px;
+}
+
+
+.account{
+	padding-top: 6px;
+	text-align: right;
+}
+.searcher{
+  color: black;
+	padding: 0;
+	overflow-y: hidden;
+}
+
+.top-content{
+	background-color: white;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+}
+.right_content{
+	padding: 0;
+}
+.left_menu{
+	padding: 0;
+}
+.middle_content{
+	padding-right: 0;
+}
+.col-md-6-openPostBox{
+	padding: 0;
+	border-right: 1px solid #ccc;
+}
+
 #post-header{
 	text-align: center;
 	font-family: initial;
@@ -142,27 +187,6 @@ a:hover{
 
 }
 
-.account{
-  color: black;
-  padding-top: 30px;
-	float: right;
-	vertical-align: middle;
-}
-.account-not{
-  color: black;
-  padding-top: 10px;
-	height: 90px;	
-}
-
-.searcher{
-  color: black;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-.first-top-layer{
-  background-color: white;
-}
 
 .top-right{
 	float: right;
@@ -178,6 +202,7 @@ a:hover{
 	width: 200px;
 	border-radius: 30%;
 }
+
 #user_avatar2 img{
   height: 100px;
   width: 100px;
@@ -331,12 +356,6 @@ input#search_keywords{
 	overflow-y: hidden;
 
 }
-
-.col-md-4{
-}
-.col-md-3{
-}
-
 
 
 .user_dp_thumbnail{
@@ -495,15 +514,6 @@ button.btn-search-submit{
 
 
 
-$size: 24px;
-
-.social-share-button {
-  .ssb-icon {
-    background-size: $size $size;
-    height: $size;
-    width: $size;
-  }
-}
 .row-article-footer{
 	padding: 0;
 	margin: 0;
@@ -544,3 +554,31 @@ a.like-btn{
 a.liked {
   color: red;
 }
+.new_post{
+}
+p#post-text{
+	width: 100%;
+	border-radius: 0;
+}
+#post_body{
+	border-radius: 0;
+	height: 200px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#post_directorate_id{
+	margin: 10px;
+	width: 120px;
+	padding: 5px;
+}
+.dropdown-toggle{
+	background-color: white;
+}
+
+
+
+
+
+
+
+
