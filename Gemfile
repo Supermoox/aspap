@@ -28,7 +28,7 @@ gem 'gibbon', github: "amro/gibbon"
 gem 'social-share-button', '~> 1.2'
 gem 'shareable'
 gem 'acts_as_votable'
-
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

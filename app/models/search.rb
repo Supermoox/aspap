@@ -8,7 +8,7 @@ class Search < ApplicationRecord
 
 	def find_users
 		users = User.all
-		users = users.where("username ILIKE ?", "%#{keywords}%") if keywords.present?
+		users = users.where('firstname ILIKE ? OR surname ILIKE ? OR middlename ILIKE ?', "%#{keywords}%", "%#{keywords}%", "%#{keywords}%") if keywords.present?
 		return users
 	end
 
@@ -25,3 +25,4 @@ class Search < ApplicationRecord
 	end
 
 end
+
