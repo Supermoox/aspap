@@ -58,7 +58,7 @@
       <% end %>
       <span class="top-right-item"><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></span> |
       <%= link_to current_user do %>
-        <span id="user_name"><%= current_user.username %> </span>
+        <span id="user_name"><%= current_user.firstname %> </span>
         <% if current_user.image.blank? %>
           <span id="user_avatar"><img src="<%= asset_path( 'user.png', alt: "avatar" ) %>" /></span>
         <% else %>

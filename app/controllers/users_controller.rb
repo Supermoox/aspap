@@ -24,6 +24,8 @@ class UsersController < ApplicationController
     @articles = Article.where(user_id: @user.id).where(approve: true)
     @posts = Post.where(user_id: @user.id)
     @users = User.where("id = ?", @user.id)
+    @post = Post.new
+    @directorates = Directorate.all
   end
 
   private

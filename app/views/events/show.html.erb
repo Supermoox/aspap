@@ -23,26 +23,25 @@
 		<div class="row bottom">
 			<% unless @articles.blank? %>
 		    <% @articles.each do |article| %>
-		    	<%= link_to article do %>
-						<div class="row article">
+					<div class="row article">
+						<%= link_to article.user do %> 
+					    <% if article.user.image.blank? %>
+				        <span id="user_avatar"><%= (image_tag("/assets/user.png", alt: "user_avatar") ) %> </span>
+				        <span id="user_avatar"><%= article.user.firstname %> </span>
+				        <span id="user_avatar"><%= article.user.surname %> </span>
+					    <% else %>	      
+			          <span id="user_avatar"><%= image_tag article.user.image %> </span>
+			          <span id="user_avatar"><%= article.user.firstname %> </span>
+			          <span id="user_avatar"><%= article.user.surname %> </span>
+					    <% end %>
+				    <% end %>
+						<%= link_to article do %>
 						  <div>
-						    <% if article.user.image.blank? %> 
-						        <span id="user_avatar"><%= (image_tag("/assets/user.png", alt: "user_avatar") ) %> </span>
-						        <span id="user_avatar"><%= article.user.firstname %> </span>
-						        <span id="user_avatar"><%= article.user.username %> </span>
-						    <% else %>	      
-				          <span id="user_avatar"><%= image_tag article.user.image %> </span>
-				          <span id="user_avatar"><%= article.user.firstname %> </span>
-				          <span id="user_avatar"><%= article.user.username %> </span>
-						    <% end %>
-
-
 						    <div id="article-title-small">
 						    	<%=  article.title %>					    		
 						    </div>
 						    <div id="article-body-small">
 									<%= simple_format(article.body) %> 
-
 								</div>
 								<span style="font-style: italic; margin: 0; color: blue;">...Continue</span>
 						    <div style="margin-top: 10px;">
@@ -52,20 +51,15 @@
 						        </div>  
 						      <% end %> 
 						    </div>
-
-
 						  </div>
-						</div>
-						  <div class="row small_article_footer">
-						  	<span style="font-size: 14px;">Coments (<%= article.articomments.count %>)</span>
-
-						  </div>
-		   	  <% end %>
+						<% end %>
+					</div>
+					  <div class="row small_article_footer">
+					  	<span style="font-size: 14px;">Coments (<%= article.articomments.count %>)</span>
+					  </div>
 		    <% end %>
-	    <% end %>
-	     
-			<p style="font-style: italic; text-align:right; font-size: 16px;"><%= link_to "See more posts" ,posts_path(@posts) %></p>
-	  
+	    <% end %>    
+			<p style="font-style: italic; text-align:right; font-size: 16px;"><%= link_to "See more articles" ,articles_path(@articles) %></p>  
 		</div>
 	</div>
 	<div class="row join-discussions"> <span>Join Discussions</span> </div>

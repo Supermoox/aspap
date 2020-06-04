@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller? 
 	helper_method :mailbox, :conversation
 	before_action :set_search
+	before_action :set_manuscripts
+	before_action :set_research
+	before_action :set_articles
+	before_action :set_editors
 
 
 	private 
@@ -33,7 +37,6 @@ class ApplicationController < ActionController::Base
 					@notifications += article.counter
 				end
 			end
-
 		end
   end
 
@@ -46,6 +49,18 @@ class ApplicationController < ActionController::Base
 	end 	
 	def set_search
 		@search = Search.new
+	end	
+	def set_manuscripts
+		@pending_manuscripts = Manuscript.where(approval: nil).count
+	end	
+	def set_research
+		@pending_research = Research.where(approval: nil).count
+	end	
+	def set_articles
+		@pending_articles = Article.where(approve: nil).count
+	end	
+	def set_editors
+		@pending_requests = Editor.all.count
 	end
 		
 	protected

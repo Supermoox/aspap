@@ -3,12 +3,11 @@
 		<div class="row user_content">
 			<div class="user_content_pic">
 				<div class="profile-pic-small">
-			      <% if current_user.image.blank? %>
-			      	<p><img src="<%= asset_path( 'default_user.png' ) %>" /></p>
-			      <% else %>
-			        <p><%= image_tag current_user.image %></p>
-			      <% end %>
-					
+		      <% if current_user.image.blank? %>
+		      	<p><img src="<%= asset_path( 'default_user.png' ) %>" /></p>
+		      <% else %>
+		        <p><%= image_tag current_user.image %></p>
+		      <% end %>		
 				</div>
 			</div>
 
@@ -52,31 +51,85 @@
     	<%= link_to "Gallery" ,pictures_path(@posts) %> 
     </h5>   
 		<% if user_signed_in? %>
+			
 		  <h5 id="side-content-links"> <%= link_to "My Posts" , my_posts_path %></h5>
 		  <h5 id="side-content-links"> <%= link_to "My Manuscripts" , my_manuscripts_path %></h5>
 		  <h5 id="side-content-links"> <%= link_to "My Research" , my_researches_path %></h5>
 		  <h5 id="side-content-links"> <%= link_to "My Articles" , my_articles_path %></h5>
 		 	<h5 id="side-content-links"><%= link_to "My Account" , edit_user_registration_path %></h5>
-		 	<% if current_user.vip?  %>
-				<div class="administrative">
-			 		<h5 id="side-content-links"> <%= link_to "PENDING MANUSCRIPTS" , manuscripts_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "PENDING RESEARCH" , pending_researches_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "PENDING ARTICLES" , pending_articles_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "PENDING REQUESTS" , editors_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "ADD EXECUTIVE" , new_executive_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "ADD TO DOWNLOADS" , new_download_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "ADD TO DIRECTORATES" , new_directorate_path %></h5>
-			 		<h5 id="side-content-links"> <%= link_to "ADD A JOURNAL" , new_journal_path %></h5>
-		 		</div>
-			<% elsif  current_user.PR? || current_user.editor? %>
-				<div class="administrative">
-			 		<h5 id="side-content-links"> <%= link_to "PENDING MANUSCRIPTS" , manuscripts_path %></h5>
-			 		
-		 		</div>			
-		 	<% elsif  current_user.publisher? %>
-				<div class="administrative">
-			 		<h5 id="side-content-links"> <%= link_to "PENDING MANUSCRIPTS" , manuscripts_path %></h5>
-		 		</div>
-			<% end %>	
 		<% end %>
 </div>
+
+<% if user_signed_in? %>
+	<div class="row administrative_content">
+		<div id="administrative_header"> <p style="color:white;">Admin</p></div>
+	 	<% if current_user.vip?  %>
+			<div class="administrative">
+		 		<h5 id="side-content-links">  
+		 			<span class="label label-danger top-right-item">      
+          	<span><%= @pending_manuscripts + 0 %></span>
+        	</span> 
+		 			<span><%= link_to "Pending Manuscripts" , manuscripts_path %></span>
+		 		</h5>
+		 		<h5 id="side-content-links"> 
+		 			<span class="label label-danger top-right-item">      
+          	<span><%= @pending_research + 0 %> </span>
+         	</span>
+		 			<span><%= link_to "Pending Research" , pending_researches_path %></span>
+		 		</h5>
+		 		<h5 id="side-content-links">
+		 			<span class="label label-danger top-right-item">      
+          	<span><%= @pending_articles + 0 %></span>      	
+          </span>		
+		 		 <span><%= link_to "Pending Articles" , pending_articles_path %> 	</span>		
+		 		</h5>			 		
+		 		<h5 id="side-content-links">
+		 			<span class="label label-danger top-right-item">      
+          	<span><%= @pending_requests + 0 %></span>      	
+          </span>		
+		 		 <span><%= link_to "Pending Requests" , editors_path %> 	</span>		
+		 		</h5>
+		 		<h5 id="side-content-links"> <%= link_to "Add a new Executive" , new_executive_path %></h5>
+		 		<h5 id="side-content-links"> <%= link_to "Add a new Downloads" , new_download_path %></h5>
+		 		<h5 id="side-content-links"> <%= link_to "Add a new Directorate" , new_directorate_path %></h5>
+		 		<h5 id="side-content-links"> <%= link_to "Add a new Journal" , new_journal_path %></h5>
+	 		</div>
+		<% elsif  current_user.PR? || current_user.editor? %>
+			<div class="administrative">
+		 		<h5 id="side-content-links">  
+		 			<span class="label label-danger top-right-item">      
+          	<span><%= @pending_manuscripts + 0 %></span>
+        	</span> 
+		 			<span><%= link_to "Pending Manuscripts" , manuscripts_path %></span>
+		 		</h5>
+		 		<h5 id="side-content-links"> 
+		 			<span class="label label-danger top-right-item">      
+          	<span><%= @pending_research + 0 %> </span>
+         	</span>
+		 			<span><%= link_to "Pending Research" , pending_researches_path %></span>
+		 		</h5>
+		 		<h5 id="side-content-links">
+		 			<span class="label label-danger top-right-item">      
+          	<span><%= @pending_articles + 0 %></span>      	
+          </span>		
+		 		 <span><%= link_to "Pending Articles" , pending_articles_path %> 	</span>		
+		 		</h5>			 		
+		 		<h5 id="side-content-links">
+		 			<span class="label label-danger top-right-item">      
+          	<span><%= @pending_requests + 0 %></span>      	
+          </span>		
+		 		 <span><%= link_to "Pending Requests" , editors_path %> 	</span>		
+		 		</h5>	
+	 		</div>			
+	 	<% elsif  current_user.publisher? %>
+			<div class="administrative">
+		 		<h5 id="side-content-links">  
+		 			<span class="label label-danger top-right-item">      
+          	<span><%= @pending_manuscripts + 0 %></span>
+        	</span> 
+		 			<span><%= link_to "Pending Manuscripts" , manuscripts_path %></span>
+		 		</h5> 		
+	 		</div>
+		<% end %>	
+	</div>
+<% end %>

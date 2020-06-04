@@ -17,13 +17,13 @@
           <%= simple_format(@post.body) %>
         </p>
       </div>
-      <span style="color: grey; font-style: italic;"> - Post by</span>
-      <span style="color: #6495EA;"><%= link_to @post.user.username , @post.user%></span>
       <% if @post.user.image.blank? %>
         <span id="user_avatar"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
       <% else %>
         <span id="user_avatar"><%= link_to (image_tag @post.user.image ), @post.user %> </span>
       <% end %>
+      <span style="color: #6495EA;"><%= link_to @post.user.firstname , @post.user%></span>
+      <span style="color: #6495EA;"><%= link_to @post.user.surname , @post.user%></span>
     </p>
   </div>
   <div class="comments">
@@ -42,7 +42,8 @@
             </div>
     				<div class="col-md-10 comment-body">
               <p class="media-heading">
-                <span style="color: #6495EA; font-size: small"><%= link_to comment.user.username, comment.user %> </span> 
+                <span style="color: #6495EA; font-size: small"><%= link_to comment.user.firstname, comment.user %> </span> 
+                <span style="color: #6495EA; font-size: small"><%= link_to comment.user.surname, comment.user %> </span> 
               </p>
               <p style="font-size: large; font-family: initial; "><%= simple_format(comment.body) %> </p>
               <h5 class="media-heading">

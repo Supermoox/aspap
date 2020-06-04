@@ -32,12 +32,6 @@
 	padding: 10px;
 }
 
-
-
-
-
-
-
 .profile_info{
 	border: 1px solid #ccc;
 	padding: 20px;
@@ -79,50 +73,49 @@
 
 .user-header{
 	margin-bottom: 20px;
-}
-
-.user-header img{
-	width: 100%;
-	height: auto;
-	border-top-right-radius: 18px;
-	border-top-left-radius: 18px;
-}
-
-.profile-pic{
-	height: 250px;
-	border-bottom-right-radius: 50%;
-	border-bottom-left-radius: 50%;
 	background-color: white;
-	border-bottom: 1px solid #ccc;
-	border-left: 1px solid #ccc;
-	box-shadow:   2px 2px 2px #888888;
-	overflow:visible;
+	box-shadow:  0 0.3px 0 0 #888888;
+	border-radius: 1px;
 }
-.profile-pic img{
-	border-radius: 50%;
-	border-bottom-right-radius: 50%;
-	height: 280px;
-	width: 100%;
-	position: absolute;
-	right:0;
-	bottom:0;
-	border: 20px solid white;
-}
+
+
+
 
 div img.thing {
 position: absolute;
 right:0;
 bottom:0;
 }
+
+.user_profile_picture{
+	text-align: center;
+	padding:0;
+}
 .cover{
-	border-top: 1px solid #ccc;
+	height: 200px;
+	background: url(/assets/g6.jpg);
+	background-color: white;
+	border-bottom: 1px solid #ccc;
 	border-left: 1px solid #ccc;
-	border-top-right-radius: 18px;
-	border-top-left-radius: 18px;
-	border-right: 1px solid #ccc;
-	box-shadow:  1px 1px 1px 1px #888888;
+	overflow:visible;
+	padding-left: 20px;
+	padding-top: 120px;
 
+}
+.cover img{
+	width: 150px;
+	height: 150px;
+	border: 6px solid white;
+	border-radius: 50%;
+	cursor: pointer;
+}
+.profile_picture_large img{
+	height: auto;
+	width:  100%;
 
+}
+.profile_details{
+	margin-top: 100px;
 }
 .profile-menu{
 	background-color: white;
