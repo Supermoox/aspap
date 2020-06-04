@@ -72,7 +72,8 @@
               <% else %>
                 <span id="user_avatar"><%= image_tag current_user.image %> </span>
               <% end %>
-                 <span id="user_name"><%= current_user.username %> </span>
+                 <span id="user_name"><%= current_user.firstname %> </span>
+                 <span id="user_name"><%= current_user.surname %> </span>
               
                 <span style="width: 100px;">
                   <%= collection_select(:post, :directorate_id, @directorates.all, :id, :name) %>   
