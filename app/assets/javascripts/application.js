@@ -11,12 +11,11 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require turbolinks
 //= require jquery.easy-autocomplete
+//= require rails-ujs
+//= require turbolinks
 //= require bootstrap-sprockets
 //= require lightbox
-//= require_tree .
 
 $(document).ready(function(){
     $("#formButton").click(function(){
