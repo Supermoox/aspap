@@ -43,7 +43,13 @@
 			</div>
 		<% end %>
 	</div>
-	<div class="row join-discussions"> <span style="color: #4169E1;">ASPAP</span> <span>articles</span></div>
+	<div class="row join-discussions"> 	
+		<%=link_to articles_path(@articles) do %>
+			<span style="color: #4169E1;"> ASPAP </span> 
+			<span>articles</span>
+		<% end %>
+	</div>
+		
 	<div class="row main-content">
 		<div class="row bottom">
 			<% unless @articles.blank? %>
@@ -84,10 +90,14 @@
 					  </div>
 		    <% end %>
 	    <% end %>    
-			<p style="font-style: italic; text-align:right; font-size: 16px;"><%= link_to "See more articles" ,articles_path(@articles) %></p>  
+			<p style="font-style: italic; text-align:right; font-size: 16px;"><%= link_to "...See more articles" ,articles_path(@articles) %></p>  
 		</div>
 	</div>
-	<div class="row join-discussions"> <span>Join Discussions</span> </div>
+	<div class="row join-discussions"> 
+		<%= link_to posts_path(@posts) do %>
+			<span>Join Discussions</span> 
+		<% end %>
+	</div>
 	<div class="row main-content">
 		<div class="row middle">
 	    <% @posts.each do |post| %> 
@@ -111,7 +121,7 @@
 	        </div>
 	      <% end %>
 	    <% end %>
-	    <p style="font-style: italic; text-align:right; font-size: 16px;"><%= link_to "See more posts" ,posts_path(@posts) %></p>
+	    <p style="font-style: italic; text-align:right; font-size: 16px;"><%= link_to "...See more posts" ,posts_path(@posts) %></p>
 		</div>
 	</div>
 </div>

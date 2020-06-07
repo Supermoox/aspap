@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   resources :reactions
   resources :artireplies
   resources :articomments
@@ -79,8 +81,10 @@ Rails.application.routes.draw do
       post :untrash
     end
   end
+
   root 'pages#index'
 
+  get :find, controller: :pages
   get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox
   get "mailbox/sent" => "mailbox#sent", as: :mailbox_sent
   get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash

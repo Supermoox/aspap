@@ -1,1 +1,16 @@
 bundle exec rake assets:precompile
+
+
+
+//removed this line form header.html.erb 
+    <%= form_for  @search do |f| %>    
+      <%= link_to root_path do %>
+        <span class="logo">  <img src="<%= asset_path( 'logo.png' ) %>" /></span>
+      <% end %>
+      <span><%= f.text_field :keywords, :placeholder =>"Publications, articles, People or discussions" %></span>
+      <span><%= f.button fa_icon("search"), class: "btn-search-submit" %></span>
+    <% end %>
+
+
+
++ " <img src='"  + element.image  + " ' >"

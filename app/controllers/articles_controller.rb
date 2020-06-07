@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
   def show
     
     unless @article.approve?
-      unless current_user.vip?
+      if !user_signed_in? || !current_user.vip?
         redirect_to root_path 
       end
     end 
@@ -56,6 +56,7 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.build(article_params)
     respond_to do |format|
       if @article.save
+        OrderMailer.with(article: @article).new_article_email.deliver_later
         format.html { redirect_to @article, notice: 'Article has been submited for approval.' }
         format.json { render :show, status: :created, location: @article }
       else

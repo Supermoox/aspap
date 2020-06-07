@@ -9,7 +9,8 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
+ *= require easy-autocomplete
+ *= require easy-autocomplete.themes
  *= require_tree .
  *= require_self
  */
@@ -43,7 +44,7 @@ body{
   background-color: #708090;
   vertical-align: middle;
  padding-right: 2%;
- padding-left: 4%;
+ padding-left: 3%;
 }
 
 
@@ -53,14 +54,11 @@ body{
 
 
 .account{
-	padding-top: 6px;
 	text-align: right;
+	 padding-top: 7.5px;
+	 padding-bottom:7.5px;
 }
-.searcher{
-  color: black;
-	padding: 0;
-	overflow-y: hidden;
-}
+
 
 .top-content{
 	background-color: white;
@@ -110,8 +108,7 @@ body{
 .logo img{
 	height: 38px;
 	width: 80px;
-	margin:10px;
-	margin-bottom: 14px;
+
 	border-radius: 4px;
 
 }
@@ -193,8 +190,8 @@ a:hover{
 }
 
 #user_avatar img{
-  height: 50px;
-  width: 50px;
+  height: 38px;
+  width: 38px;
   border-radius: 50%;
 }
 #user_dp img{
@@ -270,7 +267,7 @@ input#search_keywords{
 	border-bottom-left-radius: 4px;
 	border: 1px solid #4169E1;
 	border-right: none;
-}
+	}
 
 .nav-search{
 	margin-left: 20%;
@@ -472,8 +469,8 @@ a.btn.btn-primary{
 }
 
 .btn-notification{
-	background-color: white;
-	border: none;
+	border: 2px solid #6495ED;
+	height: 38px;
 }
 .dropdown-menu-notification{
 	top: 70%;
@@ -578,7 +575,32 @@ p#post-text{
 
 
 
+/*AUTO COMPLETE OVERRIDE */
 
 
+.easy-autocomplete{
+	display:inline;
+	text-align: left;
+}
+
+
+.top-left-col{
+	padding: 0;
+	 padding-top: 7.5px;
+	 padding-bottom:7.5px;
+
+}
+.autosearch{
+	padding: 3px;
+	background-color: #6495ED;
+	text-align: center;
+	border-radius: 18px;
+	border: 1px solid white;
+}
+.easy-autocomplete input{
+	border: 0;
+	border-radius: 0;
+	height: 30px;
+}
 
 

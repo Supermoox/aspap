@@ -7,6 +7,19 @@ class PagesController < ApplicationController
 		@pictures = Journal.all
 		@directorates = Directorate.all
 		@post = Post.new
-
 	end
+
+  def find
+  	@approvedArticles = Article.all.where(approve: true)
+  	@articles = @approvedArticles.ransack(title_cont: params[:q]).result(distinct: true)
+  	@users = User.ransack(firstname_cont: params[:q]).result(distinct: true)
+
+  	respond_to do |format|
+  		format.html{}
+  		format.json {
+  			@articles = @articles.limit(5)
+  			@users = @users.limit(5)
+  		}
+  	end
+  end
 end

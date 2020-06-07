@@ -10,10 +10,12 @@
                 <% @recipient = recipient %>
               <% end %>
             <% end %> 
-            <% if @recipient.image.blank? %>
-              <img src="<%= asset_path( 'user.png' ) %>" />
-            <% else %>
-              <span id="user_avatar"><%= image_tag @recipient.image  %> </span><br>
+            <% unless @recipient.nil? %>
+              <% if @recipient.image.blank? %>
+                <img src="<%= asset_path( 'user.png' ) %>" />
+              <% else %>
+                <span id="user_avatar"><%= image_tag @recipient.image  %> </span><br>
+              <% end %>     
             <% end %>
           <% else %>
             <% unless conversation.originator.blank? %>
@@ -30,17 +32,29 @@
             <% if current_user == conversation.originator %>
               <% conversation.recipients.each do |recipient| %>
                 <% if recipient != current_user %>
-                  <% @recipient = recipient %>
+                  <% unless @recipient.nil? %>
+                    <% @recipient = recipient %>
+                  <% end %>
                 <% end %>
               <% end %>
-              <span><%= @recipient.username %><br></span>
+              <% unless @recipient.nil? %>
+                <span><%= @recipient.firstname %><br></span>
+              <% end %>
             <% else %>
-              <span><%= conversation.originator.username %> </span><br>
+              <span><%= conversation.originator.firstname %> </span><br>
             <% end %>      
           <% end %>
 
-
-            <% if conversation.messages.last.sender.image.blank? %>
+            <% if @recipient.nil? %>
+              <div class="col-md-2">
+                <span id="user_avatar4"><%= image_tag("/assets/user.png", alt: "user_avatar3") %></span>
+              </div>
+              <div class="col-md-10 sub-message">
+                <div class="fadded">
+                  <span ><%=  conversation.messages.last.body %></span>
+                </div>
+              </div>
+            <% elsif conversation.messages.last.sender.image.blank?%>
               <div class="col-md-2">
                 <span id="user_avatar4"><%= image_tag("/assets/user.png", alt: "user_avatar3") %></span>
               </div>
@@ -70,16 +84,19 @@
         <% if current_user == conversation.originator %>
           <% conversation.recipients.each do |recipient| %>
             <% if recipient != current_user %>
-              <% @recipient = recipient %>
+              <% unless @recipient.nil? %>
+                <% @recipient = recipient %>
+              <% end %>
             <% end %>
           <% end %>
-          <% if @recipient.image.blank? %>
+
+          <% if @recipient.nil? || @recipient.image.blank? %>
              <img src="<%= asset_path( 'user.png' ) %>" />
           <% else %>
             <span id="user_avatar"><%= image_tag @recipient.image  %> </span><br>
           <% end %>
         <% else %>
-          <% unless conversation.originator.blank? %>
+          <% unless conversation.originator.nil? %>
             <% if conversation.originator.image.blank? %>
               <img src="<%= asset_path( 'user.png' ) %>" />
             <% else %>
@@ -93,16 +110,31 @@
           <% if current_user == conversation.originator %>
             <% conversation.recipients.each do |recipient| %>
               <% if recipient != current_user %>
-                <% @recipient = recipient %>
+                <% unless @recipient.nil? %>
+                  <% @recipient = recipient %>
+                <% end %>
               <% end %>
             <% end %>
-            <span><%= @recipient.username %><br></span>
+            <% unless @recipient.nil? %>
+              <span><%= @recipient.firstname %><br></span>
+            <% end %>
           <% else %>
-            <span><%= conversation.originator.username %> </span><br>
+            <% unless conversation.originator.nil? %>
+              <span><%= conversation.originator.firstname %> </span><br>
+            <% end %>      
           <% end %>      
         <% end %>
 
-
+        <% if conversation.messages.last.sender.nil? %>
+          <div class="col-md-2">
+            <span id="user_avatar4"> <img src="<%= asset_path( 'user.png' ) %>" /></span>
+          </div>
+          <div class="col-md-10 sub-message">
+            <div class="fadded">
+              <span ><%=  conversation.messages.last.body %></span>
+            </div>
+          </div>
+        <% else %>
           <% if conversation.messages.last.sender.image.blank? %>
             <div class="col-md-2">
               <span id="user_avatar4"> <img src="<%= asset_path( 'user.png' ) %>" /></span>
@@ -116,12 +148,14 @@
             <div class="col-md-2">
               <span id="user_avatar4"><%= image_tag conversation.messages.last.sender.image %> </span>
             </div>
+
             <div class="col-md-10 sub-message">
               <div class="fadded">
                 <span ><%=  conversation.messages.last.body %></span>
               </div>
             </div>
           <% end %>
+        <% end %>
       </div>
     </div>
     <hr style="margin:0px; padding:0px;">

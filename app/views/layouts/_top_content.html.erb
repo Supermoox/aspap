@@ -79,7 +79,7 @@
                   <%= collection_select(:post, :directorate_id, @directorates.all, :id, :name) %>   
                 </span>  
               <p id="post-text">
-                <%= f.text_area :body, :placeholder =>"What do you want to disscus?", class: "form-control" , :required => true%>
+                <%= f.text_area :body, :placeholder =>"What do you want to discuss?", class: "form-control" , :required => true%>
               </p> 
             </div>
           </div>
@@ -171,14 +171,15 @@
   </div>
 <% end %>
 
+
 <script type="text/javascript">
 $("#slideshow > div:gt(0)").hide();
 
 setInterval(function() { 
   $('#slideshow > div:first')
-    .fadeOut(1000)
+    .fadeOut(250)
     .next()
-    .fadeIn(1000)
+    .fadeIn(250)
     .end()
     .appendTo('#slideshow');
 },  5000);

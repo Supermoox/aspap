@@ -1,13 +1,21 @@
 <div class="row first-top-layer">
   <div class="col-md-7 searcher">
-    <%= form_for  @search do |f| %>    
-      <%= link_to root_path do %>
-        <span class="logo">  <img src="<%= asset_path( 'logo.png' ) %>" /></span>
-      <% end %>
-      <span><%= f.text_field :keywords, :placeholder =>"Publications, articles, People or discussions" %></span>
-      <span><%= f.button fa_icon("search"), class: "btn-search-submit" %></span>
-    <% end %>
+    
+    <div class="row">
+      <div class="col-md-4 top-left-col">
+        <%= link_to root_path do %>
+          <span class="logo">  <img src="<%= asset_path( 'logo.png' ) %>" /></span>
+        <% end %>  
+      </div>
+      <div class="col-md-8 top-left-col"> 
+        <%= form_with url: find_path, local: true, method: :get, html: {class: "autosearch"} do |form| %>
+            <span style="color: white; font-size: 16px; "><i class="fa fa-search" aria-hidden="true"> </i> </span>
+            <span><%= form.text_field :q, placeholder: "Search...", data: { behavior: "autocomplete" }  %></span>
+        <% end %>    
+      </div>
+    </div>
   </div>
+
   <div class="col-md-5 account">
       <% if user_signed_in? %>
         <button class="dropdown-toggle btn-notification" data-toggle="dropdown">

@@ -1,0 +1,23 @@
+new_article_email.html.erb
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>You got a new Article from <%= @article.user.firstname %>!</p>
+    <p>
+    Article Details<br>
+    --------------------------
+    </p>
+    <p>Name: <%= @article.firstname %></p>
+    <p>Email: <%= @article.email %></p>
+    <p>Title: <%= @article.title %></p>
+    <p>Directorate: <%= @article.directorate %></p>
+    <p>
+    <br>
+    ----------
+    </p>
+    <p><%= @article.body %></p>
+  </body>
+</html>

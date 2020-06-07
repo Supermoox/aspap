@@ -1,19 +1,6 @@
 <div class="row bottom">
 
-  <div class="row filter"> 
-    <div class="col-md-6">
-      <div class="searcher">
-        <%= form_for  @search do |f| %>    
-          
-          <span><%= f.text_field :keywords, :placeholder =>"Filter by name" %></span>
-          <span><%= f.button fa_icon("search"), class: "btn-search-submit" %></span>
-        <% end %>
-      </div>
-    </div>    
-    <div class="col-md-6 aspap_users">
-    </div>
 
-  </div>
 	<hr style="height:2px;border:none;color:#333;background-color:#708090;" />
   <div class="row all-users">
   	<% unless @users.blank? %> 

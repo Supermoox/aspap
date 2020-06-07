@@ -2,20 +2,27 @@
     <% message = receipt.message %>
     <div class="media">
       <div class="media-left">
-        <% if !message.sender.image.blank? %>
-          <a href="#">
-            <span id="user_avatar"><%= image_tag message.sender.image %> </span><br>
-          </a>
+
+        <% if !message.sender.nil? %>
+          <% if !message.sender.image.blank? %>
+            <span id="user_avatar">
+              <%= image_tag message.sender.image %> 
+            </span><br>
+          <% else %>
+            <span id="user_avatar">  <%=link_to (image_tag("/assets/user.png", alt: "user_avatar") ), message.sender %> </span><br>
+          <% end %>
         <% else %>
-          <a href="#">
-            <span id="user_avatar">  <%= link_to(image_tag("/assets/user.png", alt: "user_avatar") ) %> </span><br>
-          </a>
+          <span id="user_avatar">  <%= (image_tag("/assets/user.png", alt: "user_avatar") ) %> </span><br>
         <% end %>
       </div>
       <div class="media-body">
 
         <p class="media-heading">
-          <span style="color: #6495EA;"><%= link_to message.sender.username, message.sender %></span><br>
+          <% if !message.sender.nil? %>
+              <span style="color: #6495EA;"><%= link_to message.sender.username, message.sender %></span><br>
+          <% else %>
+            <span style="color: #6495EA;">Deleted User</span><br>
+          <% end %>
         </p>
         <div class="message-field">
           <p style="font-size: larger; font-family: initial;">  <%= message.body %> </p>

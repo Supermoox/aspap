@@ -13,6 +13,7 @@
 //= require jquery
 //= require rails-ujs
 //= require turbolinks
+//= require jquery.easy-autocomplete
 //= require bootstrap-sprockets
 //= require lightbox
 //= require_tree .
@@ -22,7 +23,5 @@ $(document).ready(function(){
         $("#delete_acc").toggle();
     });
 });
-
-
 
 
