@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       patch :approve
     end
   end
+  resources :application_forms
+  resources :received_applications
   resources :events
   resources :pictures
   resources :editorial_teams

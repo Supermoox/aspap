@@ -11,7 +11,7 @@ class ResearchesController < ApplicationController
  
   def show
     if user_signed_in?
-      unless current_user.vip? || @research.user == current_user
+      unless current_user.vip? || @research.user == current_user || current_user.editor? || current_user.publisher?
         if !@research.approval
             redirect_to root_path
         end

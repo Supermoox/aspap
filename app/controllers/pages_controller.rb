@@ -17,8 +17,8 @@ class PagesController < ApplicationController
   	respond_to do |format|
   		format.html{}
   		format.json {
-  			@articles = @articles.limit(5)
-  			@users = @users.limit(5)
+  			@articles = @articles.limit(8)
+  			@users = @users.limit(8)
   		}
   	end
   end

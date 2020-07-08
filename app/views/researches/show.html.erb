@@ -38,7 +38,7 @@
     <div class="row">
       <p>
       <% unless !user_signed_in? %>
-        <% if !@research.approval && current_user.vip? %>
+        <% if !@research.approval && current_user.vip? || current_user.editor?  %>
          <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'Approve',approve_research_path(@research), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
           </span> 
           <span style="float: right; margin-right: 10px;">

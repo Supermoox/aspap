@@ -60,10 +60,11 @@
 		<% end %>
 </div>
 
-<% if user_signed_in? %>
+<% if user_signed_in?%>
 	<div class="row administrative_content">
-		<div id="administrative_header"> <p style="color:white;">Admin</p></div>
+		
 	 	<% if current_user.vip?  %>
+	 		<div id="administrative_header"> <p style="color:white;">Admin</p></div>
 			<div class="administrative">
 		 		<h5 id="side-content-links">  
 		 			<span class="label label-danger top-right-item">      
@@ -82,6 +83,12 @@
           	<span><%= @pending_articles + 0 %></span>      	
           </span>		
 		 		 <span><%= link_to "Pending Articles" , pending_articles_path %> 	</span>		
+		 		</h5>			 		
+		 		<h5 id="side-content-links">
+		 			<span class="label label-danger top-right-item">      
+          	<span><%= @received_applications + 0 %></span>      	
+          </span>		
+		 		 <span><%= link_to "Received Applications" , received_applications_path %> 	</span>		
 		 		</h5>			 		
 		 		<h5 id="side-content-links">
 		 			<span class="label label-danger top-right-item">      
@@ -90,11 +97,12 @@
 		 		 <span><%= link_to "Pending Requests" , editors_path %> 	</span>		
 		 		</h5>
 		 		<h5 id="side-content-links"> <%= link_to "Add a new Executive" , new_executive_path %></h5>
-		 		<h5 id="side-content-links"> <%= link_to "Add a new Downloads" , new_download_path %></h5>
+		 		<h5 id="side-content-links"> <%= link_to "Add a new Download" , new_download_path %></h5>
 		 		<h5 id="side-content-links"> <%= link_to "Add a new Directorate" , new_directorate_path %></h5>
 		 		<h5 id="side-content-links"> <%= link_to "Add a new Journal" , new_journal_path %></h5>
 	 		</div>
 		<% elsif  current_user.PR? || current_user.editor? %>
+			<div id="administrative_header"> <p style="color:white;">Admin</p></div>
 			<div class="administrative">
 		 		<h5 id="side-content-links">  
 		 			<span class="label label-danger top-right-item">      
@@ -112,16 +120,11 @@
 		 			<span class="label label-danger top-right-item">      
           	<span><%= @pending_articles + 0 %></span>      	
           </span>		
-		 		 <span><%= link_to "Pending Articles" , pending_articles_path %> 	</span>		
+		 		 <span><%= link_to "Pending Articles" , pending_articles_path %> 	</span>	
 		 		</h5>			 		
-		 		<h5 id="side-content-links">
-		 			<span class="label label-danger top-right-item">      
-          	<span><%= @pending_requests + 0 %></span>      	
-          </span>		
-		 		 <span><%= link_to "Pending Requests" , editors_path %> 	</span>		
-		 		</h5>	
 	 		</div>			
 	 	<% elsif  current_user.publisher? %>
+	 		<div id="administrative_header"> <p style="color:white;">Admin</p></div>
 			<div class="administrative">
 		 		<h5 id="side-content-links">  
 		 			<span class="label label-danger top-right-item">      

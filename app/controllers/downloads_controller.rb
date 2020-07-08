@@ -4,7 +4,7 @@ class DownloadsController < ApplicationController
 
 
   def index
-    @downloads = Download.all
+    @downloads = Download.where(form: true)
   end
 
 
@@ -16,19 +16,22 @@ class DownloadsController < ApplicationController
     end
   end
 
+  def show
+    unless current_user.vip? || current_user.editor? || current_user.publisher?
+      redirect_to root_path
+    end
+  end
+
 
   def create
     @download = Download.new(download_params)
-
-    respond_to do |format|
-      if @download.save
-        format.html { redirect_to @download, notice: 'Download was successfully created.' }
-        format.json { render :show, status: :created, location: @download }
-      else
-        format.html { render :new }
-        format.json { render json: @download.errors, status: :unprocessable_entity }
-      end
-    end
+    @download.user_id = current_user.id
+    if @download.save
+      redirect_to root_path
+      flash[:notice] = 'Document Submitted.' 
+    else
+      render 'new'
+    end 
   end
 
 
@@ -46,6 +49,6 @@ class DownloadsController < ApplicationController
     end
 
     def download_params
-      params.require(:download).permit(:title, :document)
+      params.require(:download).permit(:title, :document, :form, :application)
     end
 end

@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
 	before_action :set_research
 	before_action :set_articles
 	before_action :set_editors
+	before_action :set_applications
 
 
 	private 
@@ -61,6 +62,9 @@ class ApplicationController < ActionController::Base
 	end	
 	def set_editors
 		@pending_requests = Editor.all.count
+	end	
+	def set_applications
+		@received_applications = Download.where(application: true).where(form: false).count
 	end
 		
 	protected

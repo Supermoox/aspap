@@ -21,6 +21,13 @@
       <%= form.file_field :document,  :required => true  %>
     </div>
 
+    <div class="form-group">
+
+      <p id="form-lebel"><%= form.label :form_template %><p><span>is this an application form?</span>
+      <%= form.check_box :form  %>
+    </div>    
+
+
     <div class="actions">
       <%= form.submit %>
     </div>

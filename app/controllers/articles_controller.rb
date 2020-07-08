@@ -10,11 +10,18 @@ class ArticlesController < ApplicationController
 
   def show
     
-    unless @article.approve?
-      if !user_signed_in? || !current_user.vip?
-        redirect_to root_path 
+
+    if user_signed_in?
+      unless current_user.vip? || @article.user == current_user || current_user.editor? || current_user.publisher?
+        if !@research.approval
+            redirect_to root_path
+        end
       end
-    end 
+    else
+      if !@article.approval
+          redirect_to root_path
+      end     
+    end
 
     @artireply = Artireply.new
     @reaction = Reaction.new

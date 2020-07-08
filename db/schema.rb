@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200604162254) do
+ActiveRecord::Schema.define(version: 20200708221348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,6 +118,9 @@ ActiveRecord::Schema.define(version: 20200604162254) do
     t.string "document_content_type"
     t.integer "document_file_size"
     t.datetime "document_updated_at"
+    t.boolean "application", default: true
+    t.boolean "form", default: false
+    t.integer "user_id"
   end
 
   create_table "editors", force: :cascade do |t|
