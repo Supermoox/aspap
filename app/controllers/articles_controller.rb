@@ -13,12 +13,12 @@ class ArticlesController < ApplicationController
 
     if user_signed_in?
       unless current_user.vip? || @article.user == current_user || current_user.editor? || current_user.publisher?
-        if !@research.approval
+        if !@article.approve
             redirect_to root_path
         end
       end
     else
-      if !@article.approval
+      if !@article.approve
           redirect_to root_path
       end     
     end
