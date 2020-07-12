@@ -19,37 +19,32 @@
       </div>
       <% if @post.user.image.blank? %>
         <div id="user_avatar">
-          <div style="position: relative; left: 0; top: 0;">
-            <div id="paged_pic">
-            <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
-            </div>
-            <div id="certificate_posts">
-              <% if !@post.user.membership.blank? %>
-                <span style="color: orange; font-size: 20px;">
-                  <i class="fa fa-certificate" aria-hidden="true"></i>
-                </span>
-              <% end %>
-            </div>
-          </div>
+          <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
         </div>
       <% else %>
         <div id="user_avatar">
-          <div style="position: relative; left: 0; top: 0;">
-            <div id="paged_pic">
-            <span ><%= link_to (image_tag @post.user.image ), @post.user %></span>
-            </div>
-            <div id="certificate_posts">
-              <% if !@post.user.membership.blank? %>
-                <span style="color: orange; font-size: 20px;">
-                  <i class="fa fa-certificate" aria-hidden="true"></i>
-                </span>
-              <% end %>
-            </div>
-          </div>
+          <span ><%= link_to (image_tag @post.user.image ), @post.user %></span>
+          <span style="color: #6495EA;"><%= link_to @post.user.firstname , @post.user%></span>
+          <span style="color: #6495EA;"><%= link_to @post.user.surname , @post.user%></span>
         </div>
       <% end %>
-      <span style="color: #6495EA;"><%= link_to @post.user.firstname , @post.user%></span>
-      <span style="color: #6495EA;"><%= link_to @post.user.surname , @post.user%></span>
+
+      <% unless @post.user.membership.blank? %>
+        <p style="color: black; font-size: 14px; font-family: times; font-style: italic;">
+         <% if @post.user.membership.kind == "Executive" %>
+            <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+            <span style="color: gold;">(Executive)</span>
+          <% elsif @post.user.membership.kind == "Proffesional" %>
+            <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+            <span style="color: #7CFC00;">(Professional)</span>
+          <% else %>
+            <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+            <span style="color: #835220;">(Student)</span>
+          <% end %>               
+          <span> Certified </span>
+          <span>member! </span>
+        </p>
+      <% end %> 
     </p>
   </div>
   <div class="comments">
@@ -61,36 +56,23 @@
           <div class="row">
             <div class="col-md-2 comment-owner"> 
               <% if comment.user.image.blank? %>
-                <div id="user_avatar">
-                  <div style="position: relative; left: 0; top: 0;">
-                    <div id="paged_pic">
-                    <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
-                    </div>
-                    <div id="certificate_posts">
-                      <% if !@post.user.membership.blank? %>
-                        <span style="color: orange; font-size: 20px;">
-                          <i class="fa fa-certificate" aria-hidden="true"></i>
-                        </span>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
+                <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
               <% else %>
-                <div id="user_avatar">
-                  <div style="position: relative; left: 0; top: 0;">
-                    <div id="paged_pic">
-                    <span ><%= link_to (image_tag comment.user.image), comment.user%></span>
-                    </div>
-                    <div id="certificate_posts">
-                      <% if !@post.user.membership.blank? %>
-                        <span style="color: orange; font-size: 20px;">
-                          <i class="fa fa-certificate" aria-hidden="true"></i>
-                        </span>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
+                <span id="user_avatar">
+                  <%= link_to (image_tag comment.user.image), comment.user%>
+                </span>
               <% end %>
+              <% unless comment.user.membership.blank? %>
+                <span style="color: black; font-size: 14px; font-family: times; font-style: italic;">
+                 <% if comment.user.membership.kind == "Executive" %>
+                    <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                  <% elsif comment.user.membership.kind == "Proffesional" %>
+                    <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                  <% else %>
+                    <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                  <% end %>               
+                </span>
+              <% end %> 
             </div>
     				<div class="col-md-10 comment-body">
               <p class="media-heading">

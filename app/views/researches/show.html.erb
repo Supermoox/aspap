@@ -5,32 +5,12 @@
         <%= link_to @research.user do %>
   	  		<% if  @research.user.image.blank? %>
             <div id="user_avatar2">
-              <div style="position: relative; left: 0; top: 0;">
-                <div id="paged_pic">
-                <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
-                </div>
-                <div id="certificate_research">
-                  <% if !@research.user.membership.blank? %>
-                    <span style="color: orange; font-size: 30px;">
-                      <i class="fa fa-certificate" aria-hidden="true"></i>
-                    </span>
-                  <% end %>
-                </div>
-              </div>
+              <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
             </div>
   	      <% else %>
             <div id="user_avatar2">
-              <div style="position: relative; left: 0; top: 0;">
-                <div id="paged_pic">
+              <div id="paged_pic">
                 <span ><%= image_tag @research.user.image %></span>
-                </div>
-                <div id="certificate_research">
-                  <% if !@research.user.membership.blank? %>
-                    <span style="color: orange; font-size: 30px;">
-                      <i class="fa fa-certificate" aria-hidden="true"></i>
-                    </span>
-                  <% end %>
-                </div>
               </div>
             </div>
           <% end %>
@@ -40,7 +20,7 @@
       	<div id="user_info">
       		<p>
             <%= link_to @research.user do %>
-  	      		<span><%= @research.user.title %></span>
+  	      		<span><%= @research.user.title %></span>.
   	      		<span style="margin-left: 10px;"><%= @research.user.firstname %></span>
   	      		<% unless @research.user.middlename.blank?  %>
   	      			<span><%= @research.user.middlename %></span>
@@ -48,6 +28,23 @@
   	      		<span style="margin-left: 10px;"><%= @research.user.surname %></span>
             <% end %>
       		</p>
+          <% unless @research.user.membership.blank? %>
+            <p style="color: black; font-size: 14px; font-family: times; font-style: italic;">
+             <% if @research.user.membership.kind == "Executive" %>
+                <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                <span style="color: gold;">(Executive)</span>
+              <% elsif @research.user.membership.kind == "Proffesional" %>
+                <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                <span style="color: #7CFC00;">(Professional)</span>
+              <% else %>
+                <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                <span style="color: #835220;">(Student)</span>
+              <% end %>               
+              <span>ASPAP</span>
+              <span> Certified </span>
+              <span>member! </span>
+            </p>
+          <% end %> 
       		<p>
       			<span><%= @research.user.qualification %></span>,
             <span><%= @research.user.field %></span>

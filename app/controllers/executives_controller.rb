@@ -51,7 +51,7 @@ class ExecutivesController < ApplicationController
   def destroy
     @executive.destroy
     respond_to do |format|
-      format.html { redirect_to executives_url, notice: 'Journal was successfully destroyed.' }
+      format.html { redirect_to executives_url, notice: 'Executive was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

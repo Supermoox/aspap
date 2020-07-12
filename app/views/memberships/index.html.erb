@@ -11,20 +11,11 @@
           <div class="row">
             <div class="col-sm-3 ">
               <div id="user_avatar2">
-                <div style="position: relative; left: 0; top: 0; text-align: center;">
-                  <div id="paged_pic">
-                    <% if membership.user.image.blank? %>
-                      <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
-                    <% else  %>
-                      <%= image_tag membership.user.image %>
-                    <% end  %>
-                  </div>
-                  <div id="certificate_member_index">
-                      <span style="color: orange; font-size: 30px;">
-                        <i class="fa fa-certificate" aria-hidden="true"></i>
-                      </span>
-                  </div>
-                </div>
+                <% if membership.user.image.blank? %>
+                  <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+                <% else  %>
+                  <%= image_tag membership.user.image %>
+                <% end  %>
               </div> 
               <p style="color:blue; text-align: center; margin-top: 20px;"> 
                 <span style="font-size: 16px;"><%=  membership.user.firstname %></span>
@@ -34,27 +25,35 @@
             </div>               
             <div class="col-sm-3 ">
               <p style="color:#337ab7;"> 
-                <span style="color: #337ab7; font-size: 14px;"><%=  membership.kind %></span>
-                <span style="color: #337ab7; font-size: 14px;">Member</span>
+                <p style="color: black; font-size: 14px; font-family: times; font-style: normal;">
+                 <% if membership.kind == "Executive" %>
+                    <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                    <span style="color: gold;">(Executive)</span>
+                  <% elsif membership.kind == "Proffesional" %>
+                    <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                    <span style="color: #7CFC00;">(Professional)</span>
+                  <% else %>
+                    <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                    <span style="color: #835220;">(Student)</span>
+                  <% end %>               
+                </p>
               </p>   
             </div>            
             
             <div class="col-sm-3 ">
-              <p style="color:#337ab7;"> 
-                <span style="color: #337ab7; font-size: 14px;">Status </span>
-                <% if  membership.active %>
-                  <span style="color: #32CD32; font-size: 14px;"><strong>Active</strong></span>
+              <p style="color: black; font-size: 16px; font-family: times; font-style: normal; margin-top: 10px">
+               <span style="color: #337ab7; font-size: 16px;">Status: </span>
+               <% if membership.active? %>
+                  <span style="color: #32CD32;">Active</span>
                 <% else %>
-                  <span style="color: red; font-size: 14px;"><strong>Expired</strong></span>
-                <% end %>
+                  <span style="color: grey;">Expired</span>
+                <% end %>               
               </p>
             </div>           
              <div class="col-sm-3 ">
-              <p> 
-                <span style="font-size: 14px;">Due Date:</span>
-                <span style="color: #337ab7; font-size: 14px;">
-                  <%=(membership.created_at + 1.year).strftime("%A, %b %d, %Y") %>
-                </span>
+              <p style="color: black; font-size: 16px; font-family: times; font-style: normal; margin-top: 10px">
+                <span style="color: #337ab7; font-size: 16px;">Due: </span>
+                <span style="color: #32CD32;"><%=(membership.created_at + 1.year).strftime("%b %d, %Y") %></span>
               </p>
             </div> 
           </div>

@@ -67,6 +67,17 @@
       <span class="top-right-item"><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></span> |
       <%= link_to current_user do %>
         <span id="user_name"><%= current_user.firstname %> </span>
+          <% unless current_user.membership.blank? %>
+            <span style="font-size: 14px; font-family: times; font-style: italic;">
+             <% if current_user.membership.kind == "Executive" %>
+                <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+              <% elsif current_user.membership.kind == "Proffesional" %>
+                <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+              <% else %>
+                <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+              <% end %>               
+            </span>
+          <% end %> 
         <% if current_user.image.blank? %>
           <span id="user_avatar"><img src="<%= asset_path( 'default_user.png', alt: "avatar" ) %>" /></span>
         <% else %>

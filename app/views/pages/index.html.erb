@@ -57,41 +57,31 @@
 					<div class="row article">
 						<%= link_to article.user do %> 
 					    <% if article.user.image.blank? %>
-
-	              <div id="user_avatar">
-	                <div style="position: relative; left: 0; top: 0;">
-	                  <div id="paged_pic">
-	                  <span ><%= (image_tag("/assets/user.png", alt: "user_avatar") ) %></span>
-	                  </div>
-	                  <div id="certificate_posts">
-	                    <% if !article.user.membership.blank? %>
-	                      <span style="color: orange; font-size: 20px;">
-	                        <i class="fa fa-certificate" aria-hidden="true"></i>
-	                      </span>
-	                    <% end %>
-	                  </div>
-	                </div>
-	              </div>
+	              <span id="user_avatar"><%= (image_tag("/assets/user.png", alt: "user_avatar") ) %></span>
 				        <span id="user_avatar"><%= article.user.firstname %> </span>
 				        <span id="user_avatar"><%= article.user.surname %> </span>
 					    <% else %>	
-	              <div id="user_avatar">
-	                <div style="position: relative; left: 0; top: 0;">
-	                  <div id="paged_pic">
-	                  <span ><%= image_tag article.user.image %> </span>
-	                  </div>
-	                  <div id="certificate_posts">
-	                    <% if !article.user.membership.blank? %>
-	                      <span style="color: orange; font-size: 20px;">
-	                        <i class="fa fa-certificate" aria-hidden="true"></i>
-	                      </span>
-	                    <% end %>
-	                  </div>
-	                </div>
-	              </div>      
+	              <span id="user_avatar"><%= image_tag article.user.image %> </span>
 			          <span id="user_avatar"><%= article.user.firstname %> </span>
 			          <span id="user_avatar"><%= article.user.surname %> </span>
 					    <% end %>
+		          <% unless article.user.membership.blank? %>
+		            <p style="color: black; font-size: 14px; font-family: times; font-style: italic;">
+		             <% if article.user.membership.kind == "Executive" %>
+		                <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+		                <span style="color: gold;">(Executive)</span>
+		              <% elsif article.user.membership.kind == "Proffesional" %>
+		                <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+		                <span style="color: #7CFC00;">(Professional)</span>
+		              <% else %>
+		                <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+		                <span style="color: #835220;">(Student)</span>
+		              <% end %>               
+		              <span>ASPAP</span>
+		              <span> Certified </span>
+		              <span>member! </span>
+		            </p>
+		          <% end %> 
 				    <% end %>
 						<%= link_to article do %>
 						  <div>
@@ -133,33 +123,33 @@
 	          <div class="col-sm-2 posts-col-sm">
 	            <% if post.user.image.blank? %>
 	              <div id="user_avatar">
-	                <div style="position: relative; left: 0; top: 0;">
-	                  <div id="paged_pic">
-	                  <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
-	                  </div>
-	                  <div id="certificate_posts">
-	                    <% if !post.user.membership.blank? %>
-	                      <span style="color: orange; font-size: 20px;">
-	                        <i class="fa fa-certificate" aria-hidden="true"></i>
-	                      </span>
-	                    <% end %>
-	                  </div>
-	                </div>
-	              </div>
+	                <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+				          <% unless post.user.membership.blank? %>
+				            <span style="color: #32CD32; font-size: 14px; font-family: times; font-style: italic;">
+				             <% if post.user.membership.kind == "Executive" %>
+				                <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+				              <% elsif post.user.membership.kind == "Proffesional" %>
+				                <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+				              <% else %>
+				                <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+				              <% end %>               
+				            </span>
+				          <% end %> 
+		             </div>
 	            <% else %>
 	              <div id="user_avatar">
-	                <div style="position: relative; left: 0; top: 0;">
-	                  <div id="paged_pic">
-	                  <span ><%= image_tag post.user.image %></span>
-	                  </div>
-	                  <div id="certificate_posts">
-	                    <% if !post.user.membership.blank? %>
-	                      <span style="color: orange; font-size: 20px;">
-	                        <i class="fa fa-certificate" aria-hidden="true"></i>
-	                      </span>
-	                    <% end %>
-	                  </div>
-	                </div>
+	                <span ><%= image_tag post.user.image %></span>
+				          <% unless post.user.membership.blank? %>
+				            <span style="color: #32CD32; font-size: 14px; font-family: times; font-style: italic;">
+				             <% if post.user.membership.kind == "Executive" %>
+				                <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+				              <% elsif post.user.membership.kind == "Proffesional" %>
+				                <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+				              <% else %>
+				                <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+				              <% end %>               
+				            </span>
+				          <% end %> 
 	              </div>
 	            <% end %>
 	          </div>       

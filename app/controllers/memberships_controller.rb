@@ -1,6 +1,6 @@
 class MembershipsController < InheritedResources::Base
   before_action :set_membership, only: [:show, :edit, :update, :destroy]
- 	before_action :set_user, except: [:index, :edit, :show]
+ 	before_action :set_user, except: [:index, :edit, :update, :destroy, :show]
   before_action :authenticate_user!
 
   def new
@@ -39,13 +39,21 @@ class MembershipsController < InheritedResources::Base
 
 
   def update
-    @membership.update(membership_params)
+    if @membership.update(membership_params)
+      redirect_to membership_path
+      flash[:notice] = "Membership updated!"
+    else
+      render 'edit'
+    end
   end
 
  
   def destroy
     @membership.destroy
-    redirect_to root_path
+    respond_to do |format|
+      format.html { redirect_to memberships_url, notice: 'Membership was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
 

@@ -5,30 +5,12 @@
 				<div class="profile-pic-small">
 		      <% if current_user.image.blank? %>
 	          <div style="position: relative; left: 0; top: 0;">
-	            <div id="paged_pic">
 	            <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
-	            </div>
-	            <div id="certificate_2">
-	              <% if !current_user.membership.blank? %>
-	                <span style="color: orange; font-size: 30px;">
-	                  <i class="fa fa-certificate" aria-hidden="true"></i>
-	                </span>
-	              <% end %>
-	            </div>
 	          </div>
 		      <% else %>
 		        <p></p>
 	          <div style="position: relative; left: 0; top: 0;">
-	            <div id="paged_pic">
 	            <span ><%= image_tag current_user.image %></span>
-	            </div>
-	            <div id="certificate_2">
-	              <% if !current_user.membership.blank? %>
-	                <span style="color: orange; font-size: 30px;">
-	                  <i class="fa fa-certificate" aria-hidden="true"></i>
-	                </span>
-	              <% end %>
-	            </div>
 	          </div>
 		        
 		      <% end %>		
@@ -37,14 +19,22 @@
 
 			<div class="welcome_user">
 				<span>Welcome, <%=  current_user.firstname %>!</span>
-        <% if !current_user.membership.blank?%>
-          <p style="color: #32CD32; font-size: 14px; font-family: times; font-style: normal;">
-            <span style="color: #FF4500;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-            <span>ASPAP</span>
+        <% unless current_user.membership.blank? %>
+          <p style="color: black; font-size: 14px; font-family: times; font-style: italic;">
+           <% if current_user.membership.kind == "Executive" %>
+              <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+              <span style="color: gold;">(Executive)</span>
+            <% elsif current_user.membership.kind == "Proffesional" %>
+              <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+              <span style="color: #7CFC00;">(Professional)</span>
+            <% else %>
+              <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+              <span style="color: #835220;">(Student)</span>
+            <% end %>               
             <span> Certified </span>
             <span>member! </span>
           </p>
-        <% end %>
+        <% end %> 
 			</div>		
 			<div style="text-align: center; padding-bottom: 10px;">
 				<span style="font-size: 12px;">View your Profile</span>
