@@ -8,7 +8,7 @@ class MembershipsController < InheritedResources::Base
   end
 
   def index
-    @memberships = Membership.all
+    @memberships = Membership.all.order("created_at")
     if !current_user.vip?
       redirect_to root_path
     end
