@@ -68,7 +68,7 @@
       <%= link_to current_user do %>
         <span id="user_name"><%= current_user.firstname %> </span>
         <% if current_user.image.blank? %>
-          <span id="user_avatar"><img src="<%= asset_path( 'user.png', alt: "avatar" ) %>" /></span>
+          <span id="user_avatar"><img src="<%= asset_path( 'default_user.png', alt: "avatar" ) %>" /></span>
         <% else %>
           <span id="user_avatar"><%= image_tag current_user.image %> </span>
         <% end %>

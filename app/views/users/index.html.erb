@@ -1,6 +1,5 @@
 <div class="row bottom">
 
-
 	<hr style="height:2px;border:none;color:#333;background-color:#708090;" />
   <div class="row all-users">
   	<% unless @users.blank? %> 
@@ -9,16 +8,54 @@
           <%= link_to user do %>
             <div class="thumbnail user_dp_thumbnail">   
               <% if user.image.blank? %>
-              <p id="user_avatar2"><img src="<%= asset_path( 'default_user.png' ) %>" /></p>
+                <div id="user_avatar2">
+
+                  <div style="position: relative; left: 0; top: 0;">
+                    <div id="paged_pic">
+                    <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+                    </div>
+                    <div id="certificate_index">
+                      <% if !user.membership.blank? %>
+                        <span style="color: orange; font-size: 30px;">
+                          <i class="fa fa-certificate" aria-hidden="true"></i>
+                        </span>
+                      <% end %>
+                    </div>
+                  </div>
+
+                </div>
               <% else %>
-                <p id="user_avatar2"><%= image_tag user.image %></p>
+                <div id="user_avatar2">
+
+                  <div style="position: relative; left: 0; top: 0;">
+                    <div id="paged_pic">
+                    <span ><%= image_tag user.image %></span>
+                    </div>
+                    <div id="certificate_index">
+                      <% if !user.membership.blank? %>
+                        <span style="color: orange; font-size: 30px;">
+                          <i class="fa fa-certificate" aria-hidden="true"></i>
+                        </span>
+                      <% end %>
+                    </div>
+                  </div>
+
+                </div>
               <% end %>
               <div class="fadded_user">
-
+              
                 <p style="color: #4169E1; font-size: 20px; font-family: times; font-style: normal;">
                   <span><%=  user.firstname %> </span>
                   <span><%=  user.surname %> </span> 
                 </p>
+                <% if !user.membership.blank?%>
+                  <p style="color: #32CD32; font-size: 14px; font-family: times; font-style: normal;">
+                    <span style="color: #FF4500;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                    <span>ASPAP</span>
+                    <span> Certified </span>
+                    <span>member! </span>
+                  </p>
+                <% end %>  
                 <p>
                   <% unless user.qualification.blank? %>  
                     <span><i class="fa fa-graduation-cap" aria-hidden="true"> </i> </span>

@@ -77,6 +77,12 @@
 	box-shadow:  0 0.3px 0 0 #888888;
 	border-radius: 1px;
 }
+.user-header2{
+	margin-bottom: 20px;
+	background-color: white;
+	box-shadow:  0 0.3px 0 0 #888888;
+	border-radius: 1px;
+}
 
 
 
@@ -101,6 +107,23 @@ bottom:0;
 	padding-left: 20px;
 	padding-top: 120px;
 
+}
+.cover2{
+	background: url(/assets/g6.jpg);
+	background-color: white;
+	border-bottom: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	overflow:visible;
+	padding-left: 20px;
+	padding-top: 20px;
+}
+
+.cover2 img{
+	width: 150px;
+	height: 150px;
+	border: 6px solid white;
+	border-radius: 50%;
+	cursor: pointer;
 }
 .cover img{
 	width: 150px;
@@ -154,5 +177,60 @@ bottom:0;
 }
 
 
-
+#paged_pic{
+  position: relative;
+  top: 0;
+  left: 0;
+}
+#certificate
+{
+  position: absolute;
+  top: 80px;
+  left: 80px;
+}
+#certificate_show{
+  position: absolute;
+  top: 80px;
+  left: 150px;
+}
+#certificate_index{
+  position: absolute;
+  top: 80px;
+  left: 140px;
+}
+#certificate_2{
+  position: absolute;
+  top: 40px;
+  left: 80px;
+}
+#certificate_research{
+  position: absolute;
+  top: 40px;
+  left: 10px;
+}
+#certificate_posts{
+	position: absolute;
+  top: 10px;
+  left: 2px;
+}
+#certificate_member{
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+#certificate_member_show{
+  position: absolute;
+  top: 80px;
+  left: 110px;
+}
+#certificate_member_index{
+  position: absolute;
+  top: 80px;
+  left: 100px;
+}
+.spacing{
+	background-color: white;
+	margin-bottom: 150px;
+	margin-top: 150px;
+}
 

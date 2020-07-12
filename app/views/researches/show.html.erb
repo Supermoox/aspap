@@ -4,15 +4,40 @@
   		<div class="col-md-3">
         <%= link_to @research.user do %>
   	  		<% if  @research.user.image.blank? %>
-            <span id="user_avatar2"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+            <div id="user_avatar2">
+              <div style="position: relative; left: 0; top: 0;">
+                <div id="paged_pic">
+                <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+                </div>
+                <div id="certificate_research">
+                  <% if !@research.user.membership.blank? %>
+                    <span style="color: orange; font-size: 30px;">
+                      <i class="fa fa-certificate" aria-hidden="true"></i>
+                    </span>
+                  <% end %>
+                </div>
+              </div>
+            </div>
   	      <% else %>
-  	      	<span id="user_avatar2"><%= image_tag @research.user.image %></span>
+            <div id="user_avatar2">
+              <div style="position: relative; left: 0; top: 0;">
+                <div id="paged_pic">
+                <span ><%= image_tag @research.user.image %></span>
+                </div>
+                <div id="certificate_research">
+                  <% if !@research.user.membership.blank? %>
+                    <span style="color: orange; font-size: 30px;">
+                      <i class="fa fa-certificate" aria-hidden="true"></i>
+                    </span>
+                  <% end %>
+                </div>
+              </div>
+            </div>
           <% end %>
 	      <% end %>
       </div>
       <div class="col-md-9">
       	<div id="user_info">
-
       		<p>
             <%= link_to @research.user do %>
   	      		<span><%= @research.user.title %></span>

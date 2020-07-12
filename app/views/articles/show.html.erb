@@ -15,7 +15,20 @@
         <% if @article.user.image.blank? %>
             <span style="color: grey; color: #337ab7; font-style: italic;"> -Author </span>
             <span id="user_avatar"><%= @article.user.username %> </span>
-            <span id="user_avatar"><%= link_to(image_tag("/assets/user.png", alt: "user_avatar") ) %> </span>
+                <div id="user_avatar">
+                  <div style="position: relative; left: 0; top: 0;">
+                    <div id="paged_pic">
+                    <span ><%= link_to(image_tag("/assets/user.png", alt: "user_avatar") ) %> </span>
+                    </div>
+                    <div id="certificate_posts">
+                      <% if !article.user.membership.blank? %>
+                        <span style="color: orange; font-size: 20px;">
+                          <i class="fa fa-certificate" aria-hidden="true"></i>
+                        </span>
+                      <% end %>
+                    </div>
+                  </div>
+                </div> 
             <% unless @article.directorate.blank? %>
              <p style="color: grey; margin-top: 20px; font-style: italic;"><%= link_to @article.directorate.name, @article.directorate %></p>
             <% end %>
@@ -23,7 +36,20 @@
           <span style="color: grey; color: #337ab7; font-style: italic;"> -Author </span>
             <%= link_to @article.user do %>
               <span id="user_avatar"><%= @article.user.username %> </span>
-              <span id="user_avatar"><%= image_tag @article.user.image %> </span>
+                <div id="user_avatar">
+                  <div style="position: relative; left: 0; top: 0;">
+                    <div id="paged_pic">
+                    <span ><%= image_tag @article.user.image %> </span>
+                    </div>
+                    <div id="certificate_posts">
+                      <% if !@article.user.membership.blank? %>
+                        <span style="color: orange; font-size: 20px;">
+                          <i class="fa fa-certificate" aria-hidden="true"></i>
+                        </span>
+                      <% end %>
+                    </div>
+                  </div>
+                </div> 
             <% end %>
             <% unless @article.directorate.blank? %>
               <p style="color: grey; margin-top: 20px; font-style: italic;"><%= link_to @article.directorate.name, @article.directorate %></p>
@@ -78,6 +104,7 @@
           </div>
       </div>
       <hr>
+      
       <div id="comments">
       	<% if @articomments.blank? %>
           <p style="font-style: italic;">No comments on this post yet, be the first to comment!</p>
@@ -87,7 +114,22 @@
               <div class="row">
                 <div class="col-md-2 comment-owner"> 
                   <% if comment.user.image.blank? %>
-                    <span id="user_avatar"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+
+                    <div id="user_avatar">
+                      <div style="position: relative; left: 0; top: 0;">
+                        <div id="paged_pic">
+                        <span ><%= link_to(image_tag("/assets/user.png", alt: "user_avatar") ) %> </span>
+                        </div>
+                        <div id="certificate_posts">
+                          <% if !comment.user.membership.blank? %>
+                            <span style="color: orange; font-size: 20px;">
+                              <i class="fa fa-certificate" aria-hidden="true"></i>
+                            </span>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div> 
+
                   <% else %>
                     <span id="user_avatar"><%= link_to (image_tag comment.user.image),comment.user  %> </span>
                   <% end %>
@@ -104,11 +146,20 @@
               </div>
             </div>
       		<% end %>
-      	<% end %>
-      	<h4> Comment</h4>
-        <div id="write_comment">
-          <%= render "articomments/form" %>
-        </div>
+        <% end %>
+      	<% if user_signed_in? && current_user.verified? %>
+        	<h4> Comment</h4>
+          <div id="write_comment">
+            <%= render "articomments/form" %>
+          </div>
+        
+        <% elsif user_signed_in? && %>
+          <span>Have your account verified</span>
+          <span>  <%= link_to 'here' , new_editor_path %></span>
+          <span>in order to add comments!</span>
+        <% else %>
+          Sign in to comment!
+        <% end %>
       </div>	
     </div>
   </div>

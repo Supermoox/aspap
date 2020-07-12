@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  
   resources :reactions
   resources :artireplies
   resources :articomments
@@ -12,6 +13,12 @@ Rails.application.routes.draw do
     end
   end
   resources :application_forms
+  resources :payments do 
+    member do
+      patch :request_topay
+      patch :check_balance
+    end
+  end
   resources :received_applications
   resources :events
   resources :pictures
@@ -40,10 +47,12 @@ Rails.application.routes.draw do
     end
   end
   devise_for :users
+  resources :memberships
 
   # NOTE: put this after the 'devise_for :users' line
   #removed this only: [:index, :show] 
   resources :users, only: [:index, :show]  do
+    resources :memberships, except: [:show, :index]
     member do
       patch :verify_user
       patch :delete_user

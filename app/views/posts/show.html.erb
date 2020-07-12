@@ -18,9 +18,35 @@
         </p>
       </div>
       <% if @post.user.image.blank? %>
-        <span id="user_avatar"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+        <div id="user_avatar">
+          <div style="position: relative; left: 0; top: 0;">
+            <div id="paged_pic">
+            <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+            </div>
+            <div id="certificate_posts">
+              <% if !@post.user.membership.blank? %>
+                <span style="color: orange; font-size: 20px;">
+                  <i class="fa fa-certificate" aria-hidden="true"></i>
+                </span>
+              <% end %>
+            </div>
+          </div>
+        </div>
       <% else %>
-        <span id="user_avatar"><%= link_to (image_tag @post.user.image ), @post.user %> </span>
+        <div id="user_avatar">
+          <div style="position: relative; left: 0; top: 0;">
+            <div id="paged_pic">
+            <span ><%= link_to (image_tag @post.user.image ), @post.user %></span>
+            </div>
+            <div id="certificate_posts">
+              <% if !@post.user.membership.blank? %>
+                <span style="color: orange; font-size: 20px;">
+                  <i class="fa fa-certificate" aria-hidden="true"></i>
+                </span>
+              <% end %>
+            </div>
+          </div>
+        </div>
       <% end %>
       <span style="color: #6495EA;"><%= link_to @post.user.firstname , @post.user%></span>
       <span style="color: #6495EA;"><%= link_to @post.user.surname , @post.user%></span>
@@ -35,9 +61,35 @@
           <div class="row">
             <div class="col-md-2 comment-owner"> 
               <% if comment.user.image.blank? %>
-                <span id="user_avatar"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+                <div id="user_avatar">
+                  <div style="position: relative; left: 0; top: 0;">
+                    <div id="paged_pic">
+                    <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+                    </div>
+                    <div id="certificate_posts">
+                      <% if !@post.user.membership.blank? %>
+                        <span style="color: orange; font-size: 20px;">
+                          <i class="fa fa-certificate" aria-hidden="true"></i>
+                        </span>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
               <% else %>
-                <span id="user_avatar"><%= link_to (image_tag comment.user.image), comment.user  %> </span>
+                <div id="user_avatar">
+                  <div style="position: relative; left: 0; top: 0;">
+                    <div id="paged_pic">
+                    <span ><%= link_to (image_tag comment.user.image), comment.user%></span>
+                    </div>
+                    <div id="certificate_posts">
+                      <% if !@post.user.membership.blank? %>
+                        <span style="color: orange; font-size: 20px;">
+                          <i class="fa fa-certificate" aria-hidden="true"></i>
+                        </span>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
               <% end %>
             </div>
     				<div class="col-md-10 comment-body">

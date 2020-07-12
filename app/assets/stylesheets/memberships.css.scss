@@ -1,0 +1,16 @@
+// Place all the styles related to the Memberships controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.membership_link:hover{
+	background-color: #F5F5F5;
+}
+.membership_card{
+	border: 2px solid #ccc;
+	padding: 20px;
+}
+.membership_card img{
+	width: 500px;
+	height: 381px;
+}

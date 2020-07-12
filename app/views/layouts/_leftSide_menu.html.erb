@@ -4,7 +4,18 @@
 			<div class="user_content_pic">
 				<div class="profile-pic-small">
 		      <% if current_user.image.blank? %>
-		      	<p><img src="<%= asset_path( 'default_user.png' ) %>" /></p>
+	          <div style="position: relative; left: 0; top: 0;">
+	            <div id="paged_pic">
+	            <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+	            </div>
+	            <div id="certificate_2">
+	              <% if !current_user.membership.blank? %>
+	                <span style="color: orange; font-size: 30px;">
+	                  <i class="fa fa-certificate" aria-hidden="true"></i>
+	                </span>
+	              <% end %>
+	            </div>
+	          </div>
 		      <% else %>
 		        <p><%= image_tag current_user.image %></p>
 		      <% end %>		
@@ -13,6 +24,14 @@
 
 			<div class="welcome_user">
 				<span>Welcome, <%=  current_user.firstname %>!</span>
+        <% if !current_user.membership.blank?%>
+          <p style="color: #32CD32; font-size: 14px; font-family: times; font-style: normal;">
+            <span style="color: #FF4500;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+            <span>ASPAP</span>
+            <span> Certified </span>
+            <span>member! </span>
+          </p>
+        <% end %>
 			</div>		
 			<div style="text-align: center; padding-bottom: 10px;">
 				<span style="font-size: 12px;">View your Profile</span>
@@ -20,22 +39,22 @@
 		</div>
 	<% end %>
 <% else %>
-		<div class="row user_content">
-			<div class="user_content_pic">
-				<div class="profile-pic-small">
-									
-				</div>
-				</div>
-				<h3 style="color: black;"> <%= link_to "Sign Up!", new_user_registration_path %></h3>	
-				<%= link_to users_path  do %>
-				<div class="welcome_user">
-					<span> View the ASPAP </span>
-				</div>		
-				<div style="text-align: center; padding-bottom: 10px;">
-					<span style="font-size: 12px;">Network</span>
-				</div>
-			<% end %>
-		</div>
+	<div class="row user_content">
+		<div class="user_content_pic">
+			<div class="profile-pic-small">
+								
+			</div>
+			</div>
+			<h3 style="color: black;"> <%= link_to "Sign Up!", new_user_registration_path %></h3>	
+			<%= link_to users_path  do %>
+			<div class="welcome_user">
+				<span> View the ASPAP </span>
+			</div>		
+			<div style="text-align: center; padding-bottom: 10px;">
+				<span style="font-size: 12px;">Network</span>
+			</div>
+		<% end %>
+	</div>
 <% end %>
 
 <div class="row side-content-bottom">
@@ -51,7 +70,9 @@
     	<%= link_to "Gallery" ,pictures_path(@posts) %> 
     </h5>   
 		<% if user_signed_in? %>
-			
+			<% if !current_user.membership.blank? %>
+		  	<h5 id="side-content-links"> <%= link_to "My Membership" , current_user.membership %></h5>
+			<% end %>
 		  <h5 id="side-content-links"> <%= link_to "My Posts" , my_posts_path %></h5>
 		  <h5 id="side-content-links"> <%= link_to "My Manuscripts" , my_manuscripts_path %></h5>
 		  <h5 id="side-content-links"> <%= link_to "My Research" , my_researches_path %></h5>
@@ -96,6 +117,7 @@
           </span>		
 		 		 <span><%= link_to "Pending Requests" , editors_path %> 	</span>		
 		 		</h5>
+		 		<h5 id="side-content-links"> <%= link_to "ASPAP Members" , memberships_path %></h5>
 		 		<h5 id="side-content-links"> <%= link_to "Add a new Executive" , new_executive_path %></h5>
 		 		<h5 id="side-content-links"> <%= link_to "Add a new Download" , new_download_path %></h5>
 		 		<h5 id="side-content-links"> <%= link_to "Add a new Directorate" , new_directorate_path %></h5>

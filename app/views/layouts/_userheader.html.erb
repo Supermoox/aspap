@@ -1,0 +1,215 @@
+<% if user_signed_in? %> 
+  <div class="row user-header">
+    <div class="cover">
+      <div class="row">
+        <div class="col-md-4 user_profile_picture">
+          <% if  @user.image.blank? %>       
+              <div style="position: relative; left: 0; top: 0;">
+                <div id="paged_pic">
+                <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+                </div>
+                <div id="certificate_show">
+                  <% if @membership_exists %>
+                    <span style="color: orange; font-size: 40px;">
+                      <i class="fa fa-certificate" aria-hidden="true"></i>
+                    </span>
+                  <% end %>
+                </div>
+              </div>
+          <% else %> 
+            <div type="button" data-toggle="modal" data-target="#myModal">
+              <div style="position: relative; left: 0; top: 0;">
+                <div id="paged_pic">
+                <%= image_tag @user.image %>
+                </div>
+                <div id="certificate_show">
+                  <% if @membership_exists %>
+                    <span style="color: orange; font-size: 40px;">
+                      <i class="fa fa-certificate" aria-hidden="true"></i>
+                    </span>
+                  <% end %>
+                </div>
+              </div>
+            </div>  
+          <% end %>  
+
+          <p style="color: #4169E1; font-size: 18px; margin:0; padding: 0; ">
+            <span><%= @user.firstname %></span>
+            <% unless @user.middlename.blank?  %>
+              <span><%= @user.middlename %></span>
+            <% end %>
+            <span><%= @user.surname %></span>
+          </p> 
+          <% if !@user.membership.blank?%>
+            <p style="color: #32CD32; font-size: 14px; font-family: times; font-style: normal;">
+              <span style="color: #FF4500;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+              <span>ASPAP</span>
+              <span> Certified </span>
+              <span>member! </span>
+            </p>
+          <% end %>
+          <p  style="font-size: smaller; color: grey;">
+            <span>Email:</span>
+            <span><%= @user.email %></span><br>
+            <% unless @user.phone.blank? %>
+              <span ><i class="fa fa-phone" aria-hidden="true"></i></span>
+              <span><%= @user.phone %></span>           
+            <% end %>          
+          </p>      
+        </div>
+        <div class="col-md-8 profile_details">
+          <p>
+            <% unless @user.qualification.blank? %>  
+            <p>
+              <span style="color: grey;"><i class="fa fa-graduation-cap" aria-hidden="true"> </i> </span>
+              <span><%=  @user.qualification %></span>,
+            
+              <% end %>
+              <% unless @user.field.blank? %>  
+                <span ><%=  @user.field %></span><br>
+              <% end %>
+            </p>
+            <p>
+              <% unless @user.institution.blank? %>  
+                <span style="color: grey;"><i class="fa fa-university" aria-hidden="true"> </i> </span>
+                <span><%=  @user.institution %></span><br>
+              <% end %>
+            </p>
+            <p>
+              <% unless @user.placeOfWork.blank? %>  
+                <span style="color: grey;"><i class="fa fa-briefcase" aria-hidden="true"> </i> </span>
+                <span>Works at </span>
+                <span><%=  @user.placeOfWork %></span>
+              <% end %>
+            </p>
+          </p> 
+          <% if current_user == @user %>
+            <strong style="color: blue; margin-top: 20px;float: right; font-size: 18px;"><%= link_to "Edit" , edit_user_registration_path %>
+              <span style="color:grey;"><i class="fa fa-pencil" aria-hidden="true"> </i> </span>
+            </strong> 
+          <% elsif current_user.verified?  %>
+            <%= form_for :conversation, url: :conversations, html: { class: "" } do |f| %>
+              <span style="float: right; "> 
+                <span class="dropdown-toggle dropdown-send-message" data-toggle="dropdown">
+                  <span style="color: #4169E1;">
+                    <%= f.select :recipients, @users.all.collect {|p| [ "Send Message", p.id ] }, {} ,{ multiple: true}  %>
+                  </span>
+                </span> 
+                <ul class="dropdown-menu dropdown-menu-notification">
+                  <li>
+                    <div class="form-group">
+                      <%= f.label :subject %>
+                      <%= f.text_field :subject, placeholder: "Subject", class: "form-control", :required => true %>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group">
+                      <%= f.label :message %>
+                      <%= f.text_area :body, class: 'form-control',placeholder: "Type your message here", :required => true, rows: 4  %>
+                    </div>
+                  </li>
+                  <li>
+                    <%= f.submit "Send Message", class: "btn btn-success" %>
+                  </li>
+                </ul>
+              </span>
+            <% end %>
+          <% end %>
+         </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% else %>
+
+  <div class="row user-header2">
+    <div class="cover2">
+      <div class="row">
+        <div class="col-md-4 user_profile_picture">
+          <% if  @user.image.blank? %>       
+              <div style="position: relative; left: 0; top: 0;">
+                <div id="paged_pic">
+                <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+                </div>
+                <div id="certificate_show">
+                  <% if @membership_exists %>
+                    <span style="color: orange; font-size: 40px;">
+                      <i class="fa fa-certificate" aria-hidden="true"></i>
+                    </span>
+                  <% end %>
+                </div>
+              </div>
+          <% else %> 
+            <div type="button" data-toggle="modal" data-target="#myModal">
+              <div style="position: relative; left: 0; top: 0;">
+                <div id="paged_pic">
+                <%= image_tag @user.image %>
+                </div>
+                <div id="certificate_show">
+                  <% if @membership_exists %>
+                    <span style="color: orange; font-size: 40px;">
+                      <i class="fa fa-certificate" aria-hidden="true"></i>
+                    </span>
+                  <% end %>
+                </div>
+              </div>
+            </div>  
+          <% end %>  
+          <% if !@user.membership.blank?%>
+            <p style="color: #32CD32; font-size: 14px; font-family: times; font-style: normal;">
+              <span style="color: #FF4500;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+              <span>ASPAP</span>
+              <span> Certified </span>
+              <span>member! </span>
+            </p>
+          <% end %>
+          <p style="color: #7CFC00; font-size: 18px; margin:0; padding: 0; ">
+            <span><%= @user.firstname %></span>
+            <% unless @user.middlename.blank?  %>
+              <span><%= @user.middlename %></span>
+            <% end %>
+            <span><%= @user.surname %></span>
+          </p> 
+          <p  style="font-size: smaller; color: white;">
+            <span>Email:</span>
+            <span><%= @user.email %></span><br>
+            <% unless @user.phone.blank? %>
+              <span ><i class="fa fa-phone" aria-hidden="true"></i></span>
+              <span><%= @user.phone %></span>           
+            <% end %>          
+          </p>      
+        </div>
+        <div class="col-md-8 profile_details">
+          <p>
+            <% unless @user.qualification.blank? %>  
+            <p style="color: white;"> 
+              <span style="color: #7CFC00;"><i class="fa fa-graduation-cap" aria-hidden="true"> </i> </span>
+              <span><%=  @user.qualification %></span>,
+            
+              <% end %>
+              <% unless @user.field.blank? %>  
+                <span ><%=  @user.field %></span><br>
+              <% end %>
+            </p>
+            <p style="color: white;"> 
+              <% unless @user.institution.blank? %>  
+                <span style="color: #7CFC00;"><i class="fa fa-university" aria-hidden="true"> </i> </span>
+                <span><%=  @user.institution %></span><br>
+              <% end %>
+            </p>
+            <p style="color: white;"> 
+              <% unless @user.placeOfWork.blank? %>  
+                <span style="color: #7CFC00;"><i class="fa fa-briefcase" aria-hidden="true"> </i> </span>
+                <span>Works at </span>
+                <span><%=  @user.placeOfWork %></span>
+              <% end %>
+            </p>
+          </p> 
+         </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>

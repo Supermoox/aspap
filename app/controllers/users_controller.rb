@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :verify_user, :delete_user]
 
-
   def index
     @users = User.all.order("created_at DESC")
   end
@@ -11,12 +10,12 @@ class UsersController < ApplicationController
    flash[:notice] = "User Verified!"
    redirect_to users_path
   end   
+  
   def delete_user
    @user.destroy
    flash[:notice] = "User Deleted!"
    redirect_to users_path
   end 
-
 
   def show
     @user_researches = Research.where(user_id: @user.id).where(approval: true)
@@ -26,6 +25,13 @@ class UsersController < ApplicationController
     @users = User.where("id = ?", @user.id)
     @post = Post.new
     @directorates = Directorate.all
+    @membership = Membership.new
+    
+    if @user.membership.blank? 
+      @membership_exists = false
+    else
+      @membership_exists = true
+    end
   end
 
   private
