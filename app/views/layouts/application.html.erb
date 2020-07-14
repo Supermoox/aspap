@@ -7,11 +7,12 @@
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'jquery.raty.js', "data-turbolinks-track" => false %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
   </head>
 
   <body>
-  
+
     <%= render 'layouts/header' %>
     <div class="row wrapper">
       <% flash.each do |name, msg| %>

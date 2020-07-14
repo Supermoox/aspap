@@ -1,42 +1,46 @@
-<div class="main-content">
-  <div class="journal-header">
-    <p>Photo Gallary</p>
-  </div>
-  <div class="my-gallery">
-    <% if user_signed_in? && current_user.vip %>
-      <p>
-        <%= link_to new_picture_path, class: "btn btn-default" do %>
-          <i class="fa fa-plus" aria-hidden="true"></i>
-        <% end %>
-      </p>  
+<div class="row application_portal">
+  <div class="col-md custom_wrapper">      
+    <div class="main-content">
+      <div class="journal-header">
+        <p>Photo Gallary</p>
+      </div>
+      <div class="my-gallery">
+        <% if user_signed_in? && current_user.vip %>
+          <p>
+            <%= link_to new_picture_path, class: "btn btn-default" do %>
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            <% end %>
+          </p>  
 
-    <% end %> 
-    <div class="row">
-      <% if @pictures.blank? %>
-        <p>No pictures added</p>  
-        <% else %>
-        <% @pictures.each do |picture| %>
+        <% end %> 
+        <div class="row">
+          <% if @pictures.blank? %>
+            <p>No pictures added</p>  
+            <% else %>
+            <% @pictures.each do |picture| %>
 
-          <div class="col-md-4">
-            <div class="thumbnail show">
-              <div id="gallery">
-                <div class="photo photo-type-line">
-                    <a href="<%= picture.image %>" class="photo-hover" data-lightbox="my-images" data-title="Gallery">             
-                    </a>
-                    <div class="photo-img"> <%= image_tag picture.image %></div>
+              <div class="col-md-4">
+                <div class="thumbnail show">
+                  <div id="gallery">
+                    <div class="photo photo-type-line">
+                        <a href="<%= picture.image %>" class="photo-hover" data-lightbox="my-images" data-title="Gallery">             
+                        </a>
+                        <div class="photo-img"> <%= image_tag picture.image %></div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <% if user_signed_in? && current_user.vip %>        
-              <span>
-                <%= link_to picture, method: :delete, data: { confirm: 'Are you sure you want to delete this picture?' }, class: "btn btn-default" do %>
-                  <i class="fa fa-trash" aria-hidden="true"></i>
-                <% end %>
-              </span>        
-            <% end %> 
-          </div>        
-        <% end %>
-      <% end %>
+                <% if user_signed_in? && current_user.vip %>        
+                  <span>
+                    <%= link_to picture, method: :delete, data: { confirm: 'Are you sure you want to delete this picture?' }, class: "btn btn-default" do %>
+                      <i class="fa fa-trash" aria-hidden="true"></i>
+                    <% end %>
+                  </span>        
+                <% end %> 
+              </div>        
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

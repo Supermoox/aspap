@@ -1,7 +1,5 @@
 .application_from{
 	padding: 50px;
-	width: 300px;
-	height: 200px;
 	border: 4px dotted #6495ED;
 	margin-bottom: 20px;
 }
@@ -9,11 +7,14 @@
 	padding: 30px;
 }
 .application_name{
-	width: 400px;
 	margin-bottom: 20px;
+	padding-top: 30px;
 }
 .form_download{
 	padding: 40px;
 	border-right: 2px solid grey;
 	margin-top: 40px;
+}
+.application_portal{
+	margin-bottom: 20px;
 }

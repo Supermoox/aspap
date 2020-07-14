@@ -1,34 +1,35 @@
- 
-<div class="main-content">
-  <div class="journal-header">
-    <p>Requests</p>
-  </div>
+<div class="row ">
+  <div class="col-md custom_wrapper">   
+    <div class="journal-header">
+      <p>Requests</p>
+    </div>
 
-  <% unless @editors.blank? %>
-    <% @editors.order("created_at DESC").each do |editor| %>
-      <div class="panel">
-        <div class="panel-body">
-          <div class="row">
-            <h5>
-              <span>
-                <strong>Request From : </strong>
-              </span>
-              <span style="color: #337ab7;">
-                <%= editor.user.username %>      
-              </span>
-              <span style="margin-left: 100px;"><%= link_to "VIEW SENDER", editor, class: "btn btn-default" %> </span>
-                          
-              <span style="float: right;">
-              <span style="color: grey; margin-right:10px;">Requesting to be</span><span style="color: #32CD32;"><%= editor.request %> </span>
-              </span> 
-            </h5>
- 
+    <% unless @editors.blank? %>
+      <% @editors.order("created_at DESC").each do |editor| %>
+        <div class="panel">
+          <div class="panel-body">
+            <div class="row">
+              <h5>
+                <span>
+                  <strong>Request From : </strong>
+                </span>
+                <span style="color: #337ab7;">
+                  <%= editor.user.username %>      
+                </span>
+                <span style="margin-left: 100px;"><%= link_to "VIEW SENDER", editor, class: "btn btn-default" %> </span>
+                            
+                <span style="float: right;">
+                <span style="color: grey; margin-right:10px;">Requesting to be</span><span style="color: #32CD32;"><%= editor.request %> </span>
+                </span> 
+              </h5>
+   
+            </div>
           </div>
-        </div>
-      </div>        
+        </div>        
+      <% end %>
     <% end %>
-  <% end %>
 
+  </div>
 </div>
 
 

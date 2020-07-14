@@ -100,20 +100,21 @@
 
 
 #article-body-small{
-	font-size: 14;
   position: relative;
-  height: 5.6em; /* exactly three lines */
+  height: 3.0em; /* exactly three lines */
   overflow: hidden;
+  text-align: justify;
 
 }
 #article-title-small{
-	font-size: 18px;
-	margin-top: 20px;
+	font-size: 16px;
 	font-family: initial;
 	color: black;
+  overflow: hidden;
+  text-align: justify;
 }
 .main-content{
-	padding: 5%;
+	padding-top: 20px;
 	background-color: white;
 	border: 1px solid #ccc;
 	margin-bottom: 20px;
@@ -125,7 +126,7 @@
 	margin-bottom: 5%;
 }
 .bottom img{
-	height: 400px;
+	max-height: 400px;
 	width: 100%;
 }
 .sub-title{

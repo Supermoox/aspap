@@ -1,32 +1,37 @@
-<h3 id="form-header">Send your Request</h3>
-<div class="my-form">
-<%= form_with(model: editor, local: true) do |form| %>
-  <% if editor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(editor.errors.count, "error") %> prohibited this editor from being saved:</h2>
+    
+<div class="row ">
+  <div class="col-md custom_wrapper">  
+    <h3 id="form-header">Send your Request</h3>
+    <div class="my-form">
+    <%= form_with(model: editor, local: true) do |form| %>
+      <% if editor.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(editor.errors.count, "error") %> prohibited this editor from being saved:</h2>
 
-      <ul>
-      <% editor.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% editor.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="form-group">
-    <% if current_user.verified %>
-      <p>Request to become an Editor, Peer Reviewer or Publisher!</p>
-      <%= form.label :select_request_to_send %><br>
-      <%=  form.collection_select :request, Editor.requests.map{ |a| [a.first,a.first] },  :first, :second %>
-    <% else %>
-      <p>Please click the button below to have your account verified!</p>
-      <%= form.hidden_field :request, value:"verify_my_account" %>
+      <div class="form-group">
+        <% if current_user.verified %>
+          <p>Request to become an Editor, Peer Reviewer or Publisher!</p>
+          <%= form.label :select_request_to_send %><br>
+          <%=  form.collection_select :request, Editor.requests.map{ |a| [a.first,a.first] },  :first, :second %>
+        <% else %>
+          <p>Please click the button below to have your account verified!</p>
+          <%= form.hidden_field :request, value:"verify_my_account" %>
+        <% end %>
+      </div>
+
+      <div class="actions">
+        <input type="submit" name="commit" value="Submit Request" data-disable-with="Create Editor">
+      </div>
     <% end %>
+    </div>
   </div>
-
-  <div class="actions">
-    <input type="submit" name="commit" value="Submit Request" data-disable-with="Create Editor">
-  </div>
-<% end %>
 </div>
  

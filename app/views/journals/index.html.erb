@@ -1,24 +1,27 @@
- 
-<div class="main-content">
-<h2 id="form-header">Active Journals</h2>
+<div class="row">
+  <div class="col-md custom_wrapper">  
+    <div class="main-content">
+    <h2 id="form-header">Active Journals</h2>
 
-  <% unless @journals.blank? %>
-    <% @journals.order("created_at DESC").each do |journal| %>
-      <div class="panel">
-        <div class="panel-body">
-          <%= link_to journal do %>
-          <div class="row link_journal">
-            <h4 id="link_journal_header"><%= journal.name %></h4>
-              <p id="journal_iner">
-                <%= journal.description %>
-              </p>
-          </div>
-          <% end %>
-        </div>
-      </div>        
-    <% end %>
-  <% end %>
+      <% unless @journals.blank? %>
+        <% @journals.order("created_at DESC").each do |journal| %>
+          <div class="panel">
+            <div class="panel-body">
+              <%= link_to journal do %>
+              <div class="row link_journal">
+                <h4 id="link_journal_header"><%= journal.name %></h4>
+                  <p id="journal_iner">
+                    <%= journal.description %>
+                  </p>
+              </div>
+              <% end %>
+            </div>
+          </div>        
+        <% end %>
+      <% end %>
 
+    </div>
+  </div>
 </div>
 
 

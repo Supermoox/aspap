@@ -1,35 +1,35 @@
-<div class="main-content">
-  <div class="journal-header">
-    <p>Application</p>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form_download">
-        
-        <div class="row">
-          <p style="font-size: 15px; color:grey;margin-bottom: 40px;">
-            In order to apply for ASPAP membership, Please Download and complete the application form below. Once completed, upload the form for review. 
-          </p>
-          <div class="col-sm-6 ">
-            <span style="color: #337ab7; font-family: initial; font-size: large;"><%=  @form.title %></span>
-          </div>       
-          <div class="col-sm-6 ">
-            <p style="color:#337ab7;"> 
-              <span id="note3">
-                <% if @form.document_content_type == "application/pdf" %>
-                  <%= link_to image_tag("/assets/doc3.jpg", alt: "pdf"), @form.document.url, target: "_blank" %>
-                <% else %>
-                  <%= link_to image_tag("/assets/note3.png", alt: "doc"), @form.document.url, target: "_blank" %>
-                <% end %>
-              </span>
-              <%= link_to 'Download', @form.document.url, target: "_blank" %>
+<div class="row application_portal">
+  <div class="col-md custom_wrapper">  
+    <div class="journal-header">
+      <p>Application</p>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form_download">
+          
+          <div class="row">
+            <p style="font-size: 15px; color:grey;margin-bottom: 40px;">
+              In order to apply for ASPAP membership, Please Download and complete the application form below. Once completed, upload the form for review. 
             </p>
-          </div>  
-        </div>       
+            <div class="col-sm-6 ">
+              <span style="color: #337ab7; font-family: initial; font-size: large;"><%=  @form.title %></span>
+            </div>       
+            <div class="col-sm-6 ">
+              <p style="color:#337ab7;"> 
+                <span id="note3">
+                  <% if @form.document_content_type == "application/pdf" %>
+                    <%= link_to image_tag("/assets/doc3.jpg", alt: "pdf"), @form.document.url, target: "_blank" %>
+                  <% else %>
+                    <%= link_to image_tag("/assets/note3.png", alt: "doc"), @form.document.url, target: "_blank" %>
+                  <% end %>
+                </span>
+                <%= link_to 'Download', @form.document.url, target: "_blank" %>
+              </p>
+            </div>  
+          </div>       
+        </div>
       </div>
-    </div>   
-    <div class="col-md-6">
-      <div id="application">
+      <div class="col-md-6">
         <%= form_for  @download do |f| %>
           <% if @download.errors.any? %>
             <div id="error_explanation">
@@ -44,17 +44,18 @@
           <% end %>
 
           <div class="application_name">
-          <p id="form-lebel"><%= f.label :Full_names %><p>
+            <p id="form-lebel"><%= f.label :Full_names %><p>
             <%= f.text_field :title, id: :download_title,  :required => true  %>
           </div> 
           <div class="application_from">
             <p id="form-lebel">Upload the Completed Application form<p>
             <%= f.file_field :document,  :required => true  %>
           </div>
+          <div style="margin-bottom: 20px;">
             <input type="submit" name="commit" value="submit" data-disable-with="Post">
+          </div>
         <% end %>
       </div>
-    </div>  
+    </div>
   </div>
 </div>
-

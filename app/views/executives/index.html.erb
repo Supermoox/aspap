@@ -1,56 +1,59 @@
-<div class="main-content">
-  <div class="journal-header">
-    <p>ASPAP Executive</p>
-  </div>
+<div class="row">
+  <div class="col-md article">
+
+    <div class="journal-header">
+      <p>ASPAP Executive</p>
+    </div>
 
 
-  <div class="executive">
-    <div class="row">
-    <% unless @executives.blank? %>
-      <% @executives.each do |executive| %>
+    <div class="executive">
+      <div class="row">
+      <% unless @executives.blank? %>
+        <% @executives.each do |executive| %>
 
-       <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
-        <h1 id="executive_header"> <%= executive.position %></h1>
-          <div class="executive_image">
-            <div class="img-fluid">
-              <% if executive.image.blank? %>
-                 <p>image not found</p>
-              <% else %>
-              
-                <%= image_tag(executive.image) %>            
-            </div>
+         <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
+          <h1 id="executive_header"> <%= executive.position %></h1>
+            <div class="executive_image">
+              <div class="img-fluid">
+                <% if executive.image.blank? %>
+                   <p>image not found</p>
+                <% else %>
+                
+                  <%= image_tag(executive.image) %>            
+              </div>
 
-            <% end %>
-          </div>
-        <h4 id="name"> <strong> <%= executive.name %></strong> </h4>
-        <div class="executive_description">
-          <p>
-            <span><strong>Education:</strong> </span> 
-            <span> <%= executive.education  %></span> 
-          </p>
-          <p>
-            <span><strong>Expertise:</strong> </span> 
-            <span> <%= executive.expertise  %></span> 
-          </p>
-          <p>
-            <span><strong>Research Interest:</strong> </span> 
-            <span><%= executive.research_interest  %></span> 
-          </p>
-          <p>
-            <span><strong>Brief Description:</strong> </span> 
-            <span> <%= executive.description  %> </span> 
-          </p>           
-        </div>
-          <% if user_signed_in? && current_user.vip %>        
-            <span>
-              <%= link_to executive, method: :delete, data: { confirm: 'Are you sure you want to delete this executive?' }, class: "btn btn-default" do %>
-                <i class="fa fa-trash" aria-hidden="true"></i>
               <% end %>
-            </span> 
-            <span><%= link_to 'Edit Post', edit_executive_path(executive), class: "btn btn-default" %></span>                
-          <% end %>
+            </div>
+          <h4 id="name"> <strong> <%= executive.name %></strong> </h4>
+          <div class="executive_description">
+            <p>
+              <span><strong>Education:</strong> </span> 
+              <span> <%= executive.education  %></span> 
+            </p>
+            <p>
+              <span><strong>Expertise:</strong> </span> 
+              <span> <%= executive.expertise  %></span> 
+            </p>
+            <p>
+              <span><strong>Research Interest:</strong> </span> 
+              <span><%= executive.research_interest  %></span> 
+            </p>
+            <p>
+              <span><strong>Brief Description:</strong> </span> 
+              <span> <%= executive.description  %> </span> 
+            </p>           
+          </div>
+            <% if user_signed_in? && current_user.vip %>        
+              <span>
+                <%= link_to executive, method: :delete, data: { confirm: 'Are you sure you want to delete this executive?' }, class: "btn btn-default" do %>
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                <% end %>
+              </span> 
+              <span><%= link_to 'Edit Post', edit_executive_path(executive), class: "btn btn-default" %></span>                
+            <% end %>
+        <% end %>
       <% end %>
-    <% end %>
+      </div>
     </div>
   </div>
 </div>

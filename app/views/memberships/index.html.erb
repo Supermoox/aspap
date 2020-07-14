@@ -1,66 +1,68 @@
-<div class="main-content">
-  <div class="journal-header">
-    <p>ASPAP Members</p>
-  </div>
-  
-  <% @memberships.order("created_at DESC").each do |membership| %>
-    <div class="panel">
-      <%= link_to membership do  %>
-      <div class="row membership_link">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-sm-3 ">
-              <div id="user_avatar2">
-                <% if membership.user.image.blank? %>
-                  <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
-                <% else  %>
-                  <%= image_tag membership.user.image %>
-                <% end  %>
-              </div> 
-              <p style="color:blue; text-align: center; margin-top: 20px;"> 
-                <span style="font-size: 16px;"><%=  membership.user.firstname %></span>
-                <span style="font-size: 16px;"><%=  membership.user.middlename %></span>
-                <span style="font-size: 16px;"><%=  membership.user.surname %></span>
-              </p> 
-            </div>               
-            <div class="col-sm-3 ">
-              <p style="color:#337ab7;"> 
-                <p style="color: black; font-size: 14px; font-family: times; font-style: normal;">
-                 <% if membership.kind == "Executive" %>
-                    <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-                    <span style="color: gold;">(Executive)</span>
-                  <% elsif membership.kind == "Proffesional" %>
-                    <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-                    <span style="color: #7CFC00;">(Professional)</span>
+<div class="row">
+  <div class="col-md article">
+    <div class="journal-header">
+      <p>ASPAP Members</p>
+    </div>
+    
+    <% @memberships.order("created_at DESC").each do |membership| %>
+      <div class="panel">
+        <%= link_to membership do  %>
+        <div class="row membership_link">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-sm-3 ">
+                <div id="user_avatar2">
+                  <% if membership.user.image.blank? %>
+                    <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+                  <% else  %>
+                    <%= image_tag membership.user.image %>
+                  <% end  %>
+                </div> 
+                <p style="color:blue; text-align: center; margin-top: 20px;"> 
+                  <span style="font-size: 16px;"><%=  membership.user.firstname %></span>
+                  <span style="font-size: 16px;"><%=  membership.user.middlename %></span>
+                  <span style="font-size: 16px;"><%=  membership.user.surname %></span>
+                </p> 
+              </div>               
+              <div class="col-sm-3 ">
+                <p style="color:#337ab7;"> 
+                  <p style="color: black; font-size: 14px; font-family: times; font-style: normal;">
+                   <% if membership.kind == "Executive" %>
+                      <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                      <span style="color: gold;">(Executive)</span>
+                    <% elsif membership.kind == "Proffesional" %>
+                      <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                      <span style="color: #7CFC00;">(Professional)</span>
+                    <% else %>
+                      <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                      <span style="color: #835220;">(Student)</span>
+                    <% end %>               
+                  </p>
+                </p>   
+              </div>            
+              
+              <div class="col-sm-3 ">
+                <p style="color: black; font-size: 16px; font-family: times; font-style: normal; margin-top: 10px">
+                 <span style="color: #337ab7; font-size: 16px;">Status: </span>
+                 <% if membership.active? %>
+                    <span style="color: #32CD32;">Active</span>
                   <% else %>
-                    <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-                    <span style="color: #835220;">(Student)</span>
+                    <span style="color: grey;">Expired</span>
                   <% end %>               
                 </p>
-              </p>   
-            </div>            
-            
-            <div class="col-sm-3 ">
-              <p style="color: black; font-size: 16px; font-family: times; font-style: normal; margin-top: 10px">
-               <span style="color: #337ab7; font-size: 16px;">Status: </span>
-               <% if membership.active? %>
-                  <span style="color: #32CD32;">Active</span>
-                <% else %>
-                  <span style="color: grey;">Expired</span>
-                <% end %>               
-              </p>
-            </div>           
-             <div class="col-sm-3 ">
-              <p style="color: black; font-size: 16px; font-family: times; font-style: normal; margin-top: 10px">
-                <span style="color: #337ab7; font-size: 16px;">Due: </span>
-                <span style="color: #32CD32;"><%=(membership.created_at + 1.year).strftime("%b %d, %Y") %></span>
-              </p>
-            </div> 
+              </div>           
+               <div class="col-sm-3 ">
+                <p style="color: black; font-size: 16px; font-family: times; font-style: normal; margin-top: 10px">
+                  <span style="color: #337ab7; font-size: 16px;">Due: </span>
+                  <span style="color: #32CD32;"><%=(membership.created_at + 1.year).strftime("%b %d, %Y") %></span>
+                </p>
+              </div> 
+            </div>
           </div>
         </div>
-      </div>
-      <% end %>
-    </div>        
-  <% end %>
+        <% end %>
+      </div>        
+    <% end %>
+  </div>
 </div>
 

@@ -1,158 +1,162 @@
-<div class="panel">
-  <div class="panel-body">
-  	<div class="row">
-  		<div class="col-md-3">
-        <%= link_to @research.user do %>
-  	  		<% if  @research.user.image.blank? %>
-            <div id="user_avatar2">
-              <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
-            </div>
-  	      <% else %>
-            <div id="user_avatar2">
-              <div id="paged_pic">
-                <span ><%= image_tag @research.user.image %></span>
-              </div>
-            </div>
-          <% end %>
-	      <% end %>
-      </div>
-      <div class="col-md-9">
-      	<div id="user_info">
-      		<p>
-            <%= link_to @research.user do %>
-  	      		<span><%= @research.user.title %></span>.
-  	      		<span style="margin-left: 10px;"><%= @research.user.firstname %></span>
-  	      		<% unless @research.user.middlename.blank?  %>
-  	      			<span><%= @research.user.middlename %></span>
-  	      		<% end %>
-  	      		<span style="margin-left: 10px;"><%= @research.user.surname %></span>
-            <% end %>
-      		</p>
-          <% unless @research.user.membership.blank? %>
-            <p style="color: black; font-size: 14px; font-family: times; font-style: italic;">
-             <% if @research.user.membership.kind == "Executive" %>
-                <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-                <span style="color: gold;">(Executive)</span>
-              <% elsif @research.user.membership.kind == "Proffesional" %>
-                <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-                <span style="color: #7CFC00;">(Professional)</span>
-              <% else %>
-                <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-                <span style="color: #835220;">(Student)</span>
-              <% end %>               
-              <span>ASPAP</span>
-              <span> Certified </span>
-              <span>member! </span>
-            </p>
-          <% end %> 
-      		<p>
-      			<span><%= @research.user.qualification %></span>,
-            <span><%= @research.user.field %></span>
-      		</p>      		 		
-      		<p>
-      			<span><%= @research.user.institution %></span>
-      		</p>
-
-      	</div>
-      </div>
-  	</div>
-  	<h3 id="form-header"><%= @research.topic %></h3>
-    <div class="row">
-      <p>
-      <% unless !user_signed_in? %>
-        <% if !@research.approval && current_user.vip? || current_user.editor?  %>
-         <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'Approve',approve_research_path(@research), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
-          </span> 
-          <span style="float: right; margin-right: 10px;">
-            <%= link_to @research, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
-              <i class="fa fa-trash" aria-hidden="true"></i>
-            <% end %>
-          </span>  
-        <% end %>              
-      <% end %>              
-      </p>
-      <p>          
-        <span style="float: right;">
-          <% if @research.concluded %> 
-            <span style="color: grey; margin-right:10px;">Status</span><span style="color: #32CD32;">Concluded</span>
-          <% else %>   
-            <span style="color: grey; margin-right:10px;">Status</span><span style="color: #32CD32;">On Going</span>
-          <% end %>   
-        </span>
-      </p>
-      <p>
-        <span><strong>Research Area: </strong></span>
-        <span style="color: #337ab7;"><%= @research.Research_area %></span>
-      </p>      
-      <p>
-        <span><%= simple_format(@research.description) %></span>
-      </p>
-    </div>
-  </div>
-</div> 
-
 <div class="row">
-	<% unless @user_researches.blank? %>
-  <div class="panel">
-   <div class="panel-body">
-    <h4><%= @research.user.username %>'s  Research</h4>
-    <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
-  	<% @user_researches.each do |research| %>
-  		<h4 id="research-link">
-        <span style="float: right; font-size: small;">
-          <% if research.concluded %> 
-            <span style="color: grey; margin-right:10px;">Status</span><span style="color: #32CD32;">Concluded</span>
-          <% else %>   
-            <span style="color: grey; margin-right:10px;">Status</span><span style="color: #32CD32;">On Going</span>
-          <% end %>   
-        </span>
-  			<span><%=link_to research.topic,research  %><span>
-  		</h4>
-  	<% end %>
-  	</div>
-  </div>
-	<% end %>
-
-
-	<% unless @manuscripts.blank? %>
+  <div class="col-md custom_wrapper">   
     <div class="panel">
       <div class="panel-body">
-      <h4><%= @research.user.username %>'s  PUblished Manuscripts</h4>
-      <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
-      	<% @manuscripts.each do |manuscript| %>
-        <div class="row">
-          <div class="col-sm-3 ">
-              <div class="thumbnail thumbnail-manuscript">
-              	<%= image_tag manuscript.image %>
-              </div>       
-          </div>       
-          <div class="col-sm-9 ">
-						<h4 style="color: #337ab7;"><%=  manuscript.title %> </h4>
-            <% if manuscript.user.image.blank? %>
-              <span id="user_avatar"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
-            <% else %>
-              <span id="user_avatar"><%= link_to (image_tag manuscript.user.image), manuscript.user  %> </span>
-						<% end %>
-            <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= link_to manuscript.user.username , manuscript.user %></span>
-            <span style="color: grey; float: right;"><%= manuscript.created_at.strftime("%b %d, %Y")  %></span>
-            <p> <%= simple_format(manuscript.abstract) %>  </p>
-            <p style="color:#337ab7;"> 
-            	<span>Vol. </span> 
-            	<span><%= manuscript.volume %> </span>
-            	<span>Issue</span> 
-              <span><%= manuscript.issue %> </span>
-            	<span id="note3">
-                <% if manuscript.document_content_type == "application/pdf" %>
-                  <%= link_to image_tag("/assets/doc3.jpg", alt: "pdf"), manuscript.document.url, target: "_blank" %>
-                <% else %>
-                  <%= link_to image_tag("/assets/note3.png", alt: "doc"), manuscript.document.url, target: "_blank" %>
+      	<div class="row">
+      		<div class="col-md-3">
+            <%= link_to @research.user do %>
+      	  		<% if  @research.user.image.blank? %>
+                <div id="user_avatar2">
+                  <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+                </div>
+      	      <% else %>
+                <div id="user_avatar2">
+                  <div id="paged_pic">
+                    <span ><%= image_tag @research.user.image %></span>
+                  </div>
+                </div>
+              <% end %>
+    	      <% end %>
+          </div>
+          <div class="col-md-9">
+          	<div id="user_info">
+          		<p style="font-size: 14">
+                <%= link_to @research.user do %>
+      	      		<span><%= @research.user.title %></span>.
+      	      		<span style="margin-left: 10px;"><%= @research.user.firstname %></span>
+      	      		<% unless @research.user.middlename.blank?  %>
+      	      			<span><%= @research.user.middlename %></span>
+      	      		<% end %>
+      	      		<span style="margin-left: 10px;"><%= @research.user.surname %></span>
                 <% end %>
-              </span>
-            </p>
-          </div>  
+          		</p>
+              <% unless @research.user.membership.blank? %>
+                <p style="color: black; font-size: 14px; font-family: times; font-style: italic;">
+                 <% if @research.user.membership.kind == "Executive" %>
+                    <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                    <span style="color: gold;">(Executive)</span>
+                  <% elsif @research.user.membership.kind == "Proffesional" %>
+                    <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                    <span style="color: #7CFC00;">(Professional)</span>
+                  <% else %>
+                    <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                    <span style="color: #835220;">(Student)</span>
+                  <% end %>               
+                  <span>ASPAP</span>
+                  <span> Certified </span>
+                  <span>member! </span>
+                </p>
+              <% end %> 
+          		<p>
+          			<span><%= @research.user.qualification %></span>,
+                <span><%= @research.user.field %></span>
+          		</p>      		 		
+          		<p>
+          			<span><%= @research.user.institution %></span>
+          		</p>
+
+          	</div>
+          </div>
+      	</div>
+      	<h4 id="form-header"><%= @research.topic %></h3>
+        <div class="row">
+          <p>
+          <% unless !user_signed_in? %>
+            <% if !@research.approval && current_user.vip? || current_user.editor?  %>
+             <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'Approve',approve_research_path(@research), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
+              </span> 
+              <span style="float: right; margin-right: 10px;">
+                <%= link_to @research, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                <% end %>
+              </span>  
+            <% end %>              
+          <% end %>              
+          </p>
+          <p>          
+            <span style="float: right;">
+              <% if @research.concluded %> 
+                <span style="color: grey; margin-right:10px;">Status</span><span style="color: #32CD32;">Concluded</span>
+              <% else %>   
+                <span style="color: grey; margin-right:10px;">Status</span><span style="color: #32CD32;">On Going</span>
+              <% end %>   
+            </span>
+          </p>
+          <p>
+            <span><strong>Research Area: </strong></span>
+            <span style="color: #337ab7;"><%= @research.Research_area %></span>
+          </p>      
+          <p>
+            <span><%= simple_format(@research.description) %></span>
+          </p>
         </div>
-        <% end %>
       </div>
-    </div>	
-	<% end %>
+    </div> 
+
+    <div class="row">
+    	<% unless @user_researches.blank? %>
+      <div class="panel">
+       <div class="panel-body">
+        <h4><%= @research.user.username %>'s  Research</h4>
+        <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
+      	<% @user_researches.each do |research| %>
+      		<h4 id="research-link">
+            <span style="float: right; font-size: small;">
+              <% if research.concluded %> 
+                <span style="color: grey; margin-right:10px;">Status</span><span style="color: #32CD32;">Concluded</span>
+              <% else %>   
+                <span style="color: grey; margin-right:10px;">Status</span><span style="color: #32CD32;">On Going</span>
+              <% end %>   
+            </span>
+      			<span><%=link_to research.topic,research  %><span>
+      		</h4>
+      	<% end %>
+      	</div>
+      </div>
+    	<% end %>
+
+
+    	<% unless @manuscripts.blank? %>
+        <div class="panel">
+          <div class="panel-body">
+          <h4><%= @research.user.username %>'s  PUblished Manuscripts</h4>
+          <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
+          	<% @manuscripts.each do |manuscript| %>
+            <div class="row">
+              <div class="col-sm-3 ">
+                  <div class="thumbnail thumbnail-manuscript">
+                  	<%= image_tag manuscript.image %>
+                  </div>       
+              </div>       
+              <div class="col-sm-9 ">
+    						<h4 style="color: #337ab7;"><%=  manuscript.title %> </h4>
+                <% if manuscript.user.image.blank? %>
+                  <span id="user_avatar"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+                <% else %>
+                  <span id="user_avatar"><%= link_to (image_tag manuscript.user.image), manuscript.user  %> </span>
+    						<% end %>
+                <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= link_to manuscript.user.username , manuscript.user %></span>
+                <span style="color: grey; float: right;"><%= manuscript.created_at.strftime("%b %d, %Y")  %></span>
+                <p> <%= simple_format(manuscript.abstract) %>  </p>
+                <p style="color:#337ab7;"> 
+                	<span>Vol. </span> 
+                	<span><%= manuscript.volume %> </span>
+                	<span>Issue</span> 
+                  <span><%= manuscript.issue %> </span>
+                	<span id="note3">
+                    <% if manuscript.document_content_type == "application/pdf" %>
+                      <%= link_to image_tag("/assets/doc3.jpg", alt: "pdf"), manuscript.document.url, target: "_blank" %>
+                    <% else %>
+                      <%= link_to image_tag("/assets/note3.png", alt: "doc"), manuscript.document.url, target: "_blank" %>
+                    <% end %>
+                  </span>
+                </p>
+              </div>  
+            </div>
+            <% end %>
+          </div>
+        </div>	
+    	<% end %>
+    </div>
+  </div>
 </div>

@@ -1,59 +1,63 @@
-<div class="main-content">
-  <div class="journal-header">
-    <p><%= @journal.name %></p>
-  </div>
+<div class="row">
+  <div class="col-md custom_wrapper">    
+    <div class="main-content">
+      <div class="journal-header">
+        <p><%= @journal.name %></p>
+      </div>
 
 
-	<div class="journal_description">
-    <br>
-    <br>
-    <h3>Description
-      <% if user_signed_in? && current_user.vip? %>
-        <span style="float: right;"><%= link_to 'Edit This Journal', edit_journal_path(@journal), class: "btn btn-default" %></span>
-      <% end %>
-    </h3>
-    <p><%= simple_format(@journal.description) %></p>
-    <p>You can join a research or start a <span style="text-decoration: underline;"><%= link_to "new project", new_research_path %> </span> and <span style="text-decoration: underline;"><%= link_to "submit your manuscript", new_manuscript_path %> .</span> You can see our <span style="text-decoration: underline;"><%= link_to "publishing ethic and policies", publishing_processes_path %></span> and also more about <span style="text-decoration: underline;"><%= link_to "ASPAP journals", journal_pages_path %></span>.
-    </p>
-      <p style="text-align: right;"> <%= link_to "SUBMIT MANUSCRIPT" , new_manuscript_path, class: "btn btn-primary" %></p>
-      </p>
-	</div>
-  <% @manuscripts.each do |manuscript| %>
-    <hr>
-    <div class="row">
-      <div class="col-sm-3 ">
-          <div class="thumbnail thumbnail-manuscript">
-            <%= image_tag manuscript.image %>
-          </div>       
-      </div>       
-      <div class="col-sm-9 ">
-        <h4 style="color: #337ab7;"><%=  manuscript.title %> </h4>
-        <%= link_to manuscript.user do %>
-          <% if manuscript.user.image.blank? %>
-            <span id="user_avatar"><img src="<%= asset_path( 'user.png' ) %>" /></span>
-          <% else %>
-            <span id="user_avatar"><%= image_tag manuscript.user.image %> </span>
+    	<div class="journal_description">
+        <br>
+        <br>
+        <h3>Description
+          <% if user_signed_in? && current_user.vip? %>
+            <span style="float: right;"><%= link_to 'Edit This Journal', edit_journal_path(@journal), class: "btn btn-default" %></span>
           <% end %>
-          <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= manuscript.user.username %></span>
-        <% end %>
-        <span style="color: grey; float: right;"><%= manuscript.created_at.strftime("%b %d, %Y")  %></span>
-        <p> <%= simple_format(manuscript.abstract) %>  </p>
-        <p style="color:#337ab7;"> 
-          <span>Vol. </span> 
-          <span><%= manuscript.volume %> </span>
-          <span>Issue</span> 
-          <span><%= manuscript.issue %> </span>
-          <span id="note3">
-            <% if manuscript.document_content_type == "application/pdf" %>
-              <%= link_to image_tag("/assets/doc3.jpg", alt: "pdf"), manuscript.document.url, target: "_blank" %>
-            <% else %>
-              <%= link_to image_tag("/assets/note3.png", alt: "doc"), manuscript.document.url, target: "_blank" %>
-            <% end %>
-          </span>
+        </h3>
+        <p><%= simple_format(@journal.description) %></p>
+        <p>You can join a research or start a <span style="text-decoration: underline;"><%= link_to "new project", new_research_path %> </span> and <span style="text-decoration: underline;"><%= link_to "submit your manuscript", new_manuscript_path %> .</span> You can see our <span style="text-decoration: underline;"><%= link_to "publishing ethic and policies", publishing_processes_path %></span> and also more about <span style="text-decoration: underline;"><%= link_to "ASPAP journals", journal_pages_path %></span>.
         </p>
-      </div>  
-    </div>
-  <% end %>
+          <p style="text-align: right;"> <%= link_to "SUBMIT MANUSCRIPT" , new_manuscript_path, class: "btn btn-primary" %></p>
+          </p>
+    	</div>
+      <% @manuscripts.each do |manuscript| %>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3 ">
+              <div class="thumbnail thumbnail-manuscript">
+                <%= image_tag manuscript.image %>
+              </div>       
+          </div>       
+          <div class="col-sm-9 ">
+            <h4 style="color: #337ab7;"><%=  manuscript.title %> </h4>
+            <%= link_to manuscript.user do %>
+              <% if manuscript.user.image.blank? %>
+                <span id="user_avatar"><img src="<%= asset_path( 'user.png' ) %>" /></span>
+              <% else %>
+                <span id="user_avatar"><%= image_tag manuscript.user.image %> </span>
+              <% end %>
+              <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= manuscript.user.username %></span>
+            <% end %>
+            <span style="color: grey; float: right;"><%= manuscript.created_at.strftime("%b %d, %Y")  %></span>
+            <p> <%= simple_format(manuscript.abstract) %>  </p>
+            <p style="color:#337ab7;"> 
+              <span>Vol. </span> 
+              <span><%= manuscript.volume %> </span>
+              <span>Issue</span> 
+              <span><%= manuscript.issue %> </span>
+              <span id="note3">
+                <% if manuscript.document_content_type == "application/pdf" %>
+                  <%= link_to image_tag("/assets/doc3.jpg", alt: "pdf"), manuscript.document.url, target: "_blank" %>
+                <% else %>
+                  <%= link_to image_tag("/assets/note3.png", alt: "doc"), manuscript.document.url, target: "_blank" %>
+                <% end %>
+              </span>
+            </p>
+          </div>  
+        </div>
+      <% end %>
 
-  <%= will_paginate @manuscripts %>
+      <%= will_paginate @manuscripts %>
+    </div>
+  </div>
 </div>

@@ -1,101 +1,103 @@
-<div class="panel panel-default">
-  <% unless @post.directorate.blank? %> 
-    <div style="text-align: right;">  
-      <%= link_to @post.directorate do %>
-        <p style="font-style: italic; font-size: smaller;"><%= @post.directorate.name %></p>
+<div class="row">
+  <div class="col-md custom_wrapper">
+    <div class="panel panel-default">
+      <% unless @post.directorate.blank? %> 
+        <div style="text-align: right;">  
+          <%= link_to @post.directorate do %>
+            <p style="font-style: italic; font-size: smaller;"><%= @post.directorate.name %></p>
+          <% end %>
+        </div>
       <% end %>
-    </div>
-  <% end %>
-  <div class="post">
-    <% unless @post.image.blank? %>
-      <img class="img-responsive" src="<%=  @post.image %>" class="img-fluid">
-    <% end %>
-    <p id="post-header"><%= @post.title %></p>
-    <p id="post-body">
-      <div id="article-body">
-        <p>
-          <%= simple_format(@post.body) %>
+      <div class="post">
+        <% unless @post.image.blank? %>
+          <img class="img-responsive" src="<%=  @post.image %>" class="img-fluid">
+        <% end %>
+        <p id="post-header"><%= @post.title %></p>
+        <p id="post-body">
+          <div id="article-body">
+            <p>
+              <%= simple_format(@post.body) %>
+            </p>
+          </div>
+          <% if @post.user.image.blank? %>
+            <div id="user_avatar">
+              <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+            </div>
+          <% else %>
+            <div id="user_avatar">
+              <span ><%= link_to (image_tag @post.user.image ), @post.user %></span>
+              <span style="color: #6495EA;"><%= link_to @post.user.firstname , @post.user%></span>
+              <span style="color: #6495EA;"><%= link_to @post.user.surname , @post.user%></span>
+            </div>
+          <% end %>
+
+          <% unless @post.user.membership.blank? %>
+            <p style="color: black; font-size: 14px; font-family: times; font-style: italic;">
+             <% if @post.user.membership.kind == "Executive" %>
+                <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                <span style="color: gold;">(Executive)</span>
+              <% elsif @post.user.membership.kind == "Proffesional" %>
+                <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                <span style="color: #7CFC00;">(Professional)</span>
+              <% else %>
+                <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                <span style="color: #835220;">(Student)</span>
+              <% end %>               
+              <span> Certified </span>
+              <span>member! </span>
+            </p>
+          <% end %> 
         </p>
       </div>
-      <% if @post.user.image.blank? %>
-        <div id="user_avatar">
-          <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
-        </div>
-      <% else %>
-        <div id="user_avatar">
-          <span ><%= link_to (image_tag @post.user.image ), @post.user %></span>
-          <span style="color: #6495EA;"><%= link_to @post.user.firstname , @post.user%></span>
-          <span style="color: #6495EA;"><%= link_to @post.user.surname , @post.user%></span>
-        </div>
-      <% end %>
-
-      <% unless @post.user.membership.blank? %>
-        <p style="color: black; font-size: 14px; font-family: times; font-style: italic;">
-         <% if @post.user.membership.kind == "Executive" %>
-            <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-            <span style="color: gold;">(Executive)</span>
-          <% elsif @post.user.membership.kind == "Proffesional" %>
-            <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-            <span style="color: #7CFC00;">(Professional)</span>
-          <% else %>
-            <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-            <span style="color: #835220;">(Student)</span>
-          <% end %>               
-          <span> Certified </span>
-          <span>member! </span>
-        </p>
-      <% end %> 
-    </p>
-  </div>
-  <div class="comments">
-  	<% if @comments.blank? %>
-      <p style="font-style: italic;">No comments on this post yet, be the first to comment!</p>
-    <% else %>
-  		<% @comments.each do |comment| %>
-  			<div class="comment">
-          <div class="row">
-            <div class="col-md-2 comment-owner"> 
-              <% if comment.user.image.blank? %>
-                <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
-              <% else %>
-                <span id="user_avatar">
-                  <%= link_to (image_tag comment.user.image), comment.user%>
-                </span>
-              <% end %>
-              <% unless comment.user.membership.blank? %>
-                <span style="color: black; font-size: 14px; font-family: times; font-style: italic;">
-                 <% if comment.user.membership.kind == "Executive" %>
-                    <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-                  <% elsif comment.user.membership.kind == "Proffesional" %>
-                    <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+      <div class="comments">
+      	<% if @comments.blank? %>
+          <p style="font-style: italic;">No comments on this post yet, be the first to comment!</p>
+        <% else %>
+      		<% @comments.each do |comment| %>
+      			<div class="comment">
+              <div class="row">
+                <div class="col-md-2 comment-owner"> 
+                  <% if comment.user.image.blank? %>
+                    <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
                   <% else %>
-                    <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-                  <% end %>               
-                </span>
-              <% end %> 
+                    <span id="user_avatar">
+                      <%= link_to (image_tag comment.user.image), comment.user%>
+                    </span>
+                  <% end %>
+                  <% unless comment.user.membership.blank? %>
+                    <span style="color: black; font-size: 14px; font-family: times; font-style: italic;">
+                     <% if comment.user.membership.kind == "Executive" %>
+                        <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                      <% elsif comment.user.membership.kind == "Proffesional" %>
+                        <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                      <% else %>
+                        <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                      <% end %>               
+                    </span>
+                  <% end %> 
+                </div>
+        				<div class="col-md-10 comment-body">
+                  <p class="media-heading">
+                    <span style="color: #6495EA; font-size: small"><%= link_to comment.user.firstname, comment.user %> </span> 
+                    <span style="color: #6495EA; font-size: small"><%= link_to comment.user.surname, comment.user %> </span> 
+                  </p>
+                  <p style="font-size: large; font-family: initial; "><%= simple_format(comment.body) %> </p>
+                  <h5 class="media-heading">
+                    <small><%= comment.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
+                  </h5>
+                </div>
+              </div>
             </div>
-    				<div class="col-md-10 comment-body">
-              <p class="media-heading">
-                <span style="color: #6495EA; font-size: small"><%= link_to comment.user.firstname, comment.user %> </span> 
-                <span style="color: #6495EA; font-size: small"><%= link_to comment.user.surname, comment.user %> </span> 
-              </p>
-              <p style="font-size: large; font-family: initial; "><%= simple_format(comment.body) %> </p>
-              <h5 class="media-heading">
-                <small><%= comment.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
-              </h5>
-            </div>
-          </div>
-        </div>
-  		<% end %>
-  	<% end %>
-    <% if user_signed_in? && current_user.verified? %>
-      <h4> Comment</h4>
-  	  <%= render "comments/form" %>
-    <% end %>
+      		<% end %>
+      	<% end %>
+        <% if user_signed_in? && current_user.verified? %>
+          <h4> Comment</h4>
+      	  <%= render "comments/form" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
-
-
 
 
  

@@ -1,37 +1,42 @@
-<div class="main-content">
-  <div class="journal-header">
-    <p>Manuscripts Awaiting Approval</p>
-  </div>
-  <% @manuscripts.order("created_at DESC").each do |manuscript| %>
-    <div class="panel">
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-sm-3 ">
-              <div class="thumbnail thumbnail-manuscript">
-                <%= link_to (image_tag manuscript.image, class: 'image'), manuscript %>
-              </div>       
-          </div>       
-          <div class="col-sm-9 ">
-            <h4 style="color: #337ab7;"><%= link_to manuscript.title, manuscript %> </h4>
-            <%= link_to manuscript.user do %>
-              <% if manuscript.user.image.blank? %>
-                <%= image_tag("/assets/user.png", alt: "user_avatar")  %> 
-              <% else %>
-                <span id="user_avatar"><%= image_tag manuscript.user.image %> </span>
-              <% end %>
-              <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= manuscript.user.username %></span>
-            <% end %>
-            <span style="color: grey; float: right;"><%= manuscript.created_at.strftime("%b %d, %Y")  %></span>
-            <p style="color:#337ab7;"> 
-              <span>Vol. </span> 
-              <span><%= manuscript.volume %> </span>
-              <span>Issue</span> 
-              <span><%= manuscript.issue %> </span>
-            </p>
-          </div>  
-        </div>
+<div class="row">
+  <div class="col-md custom_wrapper">      
+
+    <div class="main-content">
+      <div class="journal-header">
+        <p>Manuscripts Awaiting Approval</p>
       </div>
-    </div>        
-  <% end %>
+      <% @manuscripts.order("created_at DESC").each do |manuscript| %>
+        <div class="panel">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-sm-3 ">
+                  <div class="thumbnail thumbnail-manuscript">
+                    <%= link_to (image_tag manuscript.image, class: 'image'), manuscript %>
+                  </div>       
+              </div>       
+              <div class="col-sm-9 ">
+                <h4 style="color: #337ab7;"><%= link_to manuscript.title, manuscript %> </h4>
+                <%= link_to manuscript.user do %>
+                  <% if manuscript.user.image.blank? %>
+                    <%= image_tag("/assets/user.png", alt: "user_avatar")  %> 
+                  <% else %>
+                    <span id="user_avatar"><%= image_tag manuscript.user.image %> </span>
+                  <% end %>
+                  <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= manuscript.user.username %></span>
+                <% end %>
+                <span style="color: grey; float: right;"><%= manuscript.created_at.strftime("%b %d, %Y")  %></span>
+                <p style="color:#337ab7;"> 
+                  <span>Vol. </span> 
+                  <span><%= manuscript.volume %> </span>
+                  <span>Issue</span> 
+                  <span><%= manuscript.issue %> </span>
+                </p>
+              </div>  
+            </div>
+          </div>
+        </div>        
+      <% end %>
+    </div>
+  </div>
 </div>
 

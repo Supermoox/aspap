@@ -1,65 +1,69 @@
-<div class="main-content">
-  <div class="journal-header">
-    <p>Research</p>
-  </div>
-    <% if @researches.blank? %>
-      <h3 id="form-header">No Research Yet</h3>
-    <% else %>
-      <div class="panel">
-        <% @researches.order("created_at DESC").each do |research| %>
-          <%= link_to research do %> 
-            <div class="row clickable-div">
-              <h4>
-
-                <span style="color: #337ab7;">
-                  <%= research.topic %>      
-                </span>            
-              </h4>
-              <p>
-                <span style="color: grey;"><strong>Research Area: </strong></span>
-                <span style="color: #337ab7;"><%= research.Research_area %></span>
-              <p>
-                <% if research.user.image.blank? %>
-                  <p id="user_avatar">
-                    <span><strong>Researcher: </strong></span>
-                   <% unless research.user.membership.blank? %>
-                      <% if research.user.membership.kind == "Executive" %>
-                        <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-                      <% elsif research.user.membership.kind == "Proffesional" %>
-                        <span style="color: silver;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-                      <% else %>
-                        <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-                      <% end %> 
-                    <% end %>
-                    <span style="color: #337ab7;"><%= research.user.username %></span>
-                    <span style="margin-left: 10px;"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
-                    </span>
-                  </p>
-                <% else %>
-                  <p id="user_avatar">
-                    <span style="color: grey;"><strong>Researcher: </strong>
-                    </span><span style="color: #337ab7;"><%= research.user.username %></span>
-                    <span style="margin-left: 10px;"><%= image_tag research.user.image %></span>
-                    <% unless research.user.membership.blank? %>
-                      <% if research.user.membership.kind == "Executive" %>
-                        <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-                      <% elsif research.user.membership.kind == "Proffesional" %>
-                        <span style="color: #FF4500;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-                      <% else %>
-                        <span style="color: #9370DB;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-                      <% end %> 
-                    <% end %>
-                  </p>
-                <% end %>          
-              </p>
-              <div class="fade_research">
-                <p><%= research.description %></p>
-                <p class="read_more"></p>
-              </div>
-            </div> 
-          <% end %>
-          <hr>       
-        <% end %>
+<div class="row">
+  <div class="col-md custom_wrapper">  
+    <div class="main-content">
+      <div class="journal-header">
+        <p>Research</p>
       </div>
-    <% end %>
+        <% if @researches.blank? %>
+          <h3 id="form-header">No Research Yet</h3>
+        <% else %>
+          <div class="panel">
+            <% @researches.order("created_at DESC").each do |research| %>
+              <%= link_to research do %> 
+                <div class="row clickable-div">
+                  <h4>
+
+                    <span style="color: #337ab7;">
+                      <%= research.topic %>      
+                    </span>            
+                  </h4>
+                  <p>
+                    <span style="color: grey;"><strong>Research Area: </strong></span>
+                    <span style="color: #337ab7;"><%= research.Research_area %></span>
+                  <p>
+                    <% if research.user.image.blank? %>
+                      <p id="user_avatar">
+                        <span><strong>Researcher: </strong></span>
+                       <% unless research.user.membership.blank? %>
+                          <% if research.user.membership.kind == "Executive" %>
+                            <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                          <% elsif research.user.membership.kind == "Proffesional" %>
+                            <span style="color: silver;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                          <% else %>
+                            <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                          <% end %> 
+                        <% end %>
+                        <span style="color: #337ab7;"><%= research.user.username %></span>
+                        <span style="margin-left: 10px;"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
+                        </span>
+                      </p>
+                    <% else %>
+                      <p id="user_avatar">
+                        <span style="color: grey;"><strong>Researcher: </strong>
+                        </span><span style="color: #337ab7;"><%= research.user.username %></span>
+                        <span style="margin-left: 10px;"><%= image_tag research.user.image %></span>
+                        <% unless research.user.membership.blank? %>
+                          <% if research.user.membership.kind == "Executive" %>
+                            <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                          <% elsif research.user.membership.kind == "Proffesional" %>
+                            <span style="color: #FF4500;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                          <% else %>
+                            <span style="color: #9370DB;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                          <% end %> 
+                        <% end %>
+                      </p>
+                    <% end %>          
+                  </p>
+                  <div class="fade_research">
+                    <p><%= research.description %></p>
+                    <p class="read_more"></p>
+                  </div>
+                </div> 
+              <% end %>
+              <hr>       
+            <% end %>
+          </div>
+        <% end %>
+    </div>
+  </div>
 </div>

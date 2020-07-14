@@ -17,20 +17,39 @@
             <span><%= @user.surname %></span>
           </p> 
           <% unless @user.membership.blank? %>
-            <p style="color: black; font-size: 14px; font-family: times; font-style: italic;">
-             <% if @user.membership.kind == "Executive" %>
-                <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-                <span style="color: gold;">(Executive)</span>
-              <% elsif @user.membership.kind == "Proffesional" %>
-                <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-                <span style="color: #7CFC00;">(Professional)</span>
-              <% else %>
-                <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-                <span style="color: #835220;">(Student)</span>
-              <% end %>               
-              <span> Certified </span>
-              <span>member! </span>
-            </p>
+            <% if user_signed_in? && current_user.membership == @user.membership %>
+              <%= link_to @user.membership do %>
+                <p style="color: black; font-size: 14px; font-family: times; font-style: italic;">
+                 <% if @user.membership.kind == "Executive" %>
+                    <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                    <span style="color: gold;">(Executive)</span>
+                  <% elsif @user.membership.kind == "Proffesional" %>
+                    <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                    <span style="color: #7CFC00;">(Professional)</span>
+                  <% else %>
+                    <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                    <span style="color: #835220;">(Student)</span>
+                  <% end %>               
+                  <span> Certified </span>
+                  <span>member! </span>
+                </p>
+              <% end %>
+            <% else %>
+                <p style="color: black; font-size: 14px; font-family: times; font-style: italic;">
+                 <% if @user.membership.kind == "Executive" %>
+                    <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                    <span style="color: gold;">(Executive)</span>
+                  <% elsif @user.membership.kind == "Proffesional" %>
+                    <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                    <span style="color: #7CFC00;">(Professional)</span>
+                  <% else %>
+                    <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                    <span style="color: #835220;">(Student)</span>
+                  <% end %>               
+                  <span> Certified </span>
+                  <span>member! </span>
+                </p>
+            <% end %>
           <% end %> 
           <p  style="font-size: smaller; color: grey;">
             <span>Email:</span>

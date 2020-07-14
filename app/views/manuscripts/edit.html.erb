@@ -1,77 +1,81 @@
-<h3 id="form-header">Edit Manuscript</h3>
-<div class="my-form">
-  <%= form_with(model: @manuscript, local: true) do |form| %>
-    <% if @manuscript.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@manuscript.errors.count, "error") %> prohibited this manuscript from being saved:</h2>
+<div class="row ">
+  <div class="col-md custom_wrapper">      
+    <h3 id="form-header">Edit Manuscript</h3>
+    <div class="my-form">
+      <%= form_with(model: @manuscript, local: true) do |form| %>
+        <% if @manuscript.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@manuscript.errors.count, "error") %> prohibited this manuscript from being saved:</h2>
 
-        <ul>
-        <% @manuscript.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+            <ul>
+            <% @manuscript.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
         <% end %>
-        </ul>
-      </div>
-    <% end %>
 
-    <div class="form-group">
-      <p id="form-lebel"><%= form.label :title %><p>
-      <%= form.text_field :title, id: :form_input %>
-    </div>
+        <div class="form-group">
+          <p id="form-lebel"><%= form.label :title %><p>
+          <%= form.text_field :title, id: :form_input %>
+        </div>
 
-    <div class="form-group">
-      <p id="form-lebel"><%= form.label :journal_id %><p>
-      <%= collection_select(:manuscript, :journal_id, Journal.all, :id, :name, :prompt => "Journal") %>
-    </div>    
-    <% if current_user.publisher? %>
-      <div class="form-group">
-        <p id="form-lebel"><%= form.label :Publish_For %><p>
-        <%= collection_select(:manuscript, :user_id, User.all, :id, :username, :prompt => "select user") %>
-      </div>
-    <% end %>
-    <div class="form-group">
-      <p id="form-lebel"><%= form.label :abstract %><p>
-      <%= form.text_area :abstract, id: :manuscript_abstract, :required => true %>
-    </div>
-
-    <div class="form-group">
-      <p id="form-lebel">
-        <span><%= form.label :document %> </span>
-        <span style="color: grey; font-style: italic; margin-left: 20px;"> pdf, word doc  </span>
-      <p>
-      <%= form.file_field :document, :required => true %>
-    </div>
-
-    <div class="form-group">
-      <p id="form-lebel"><%= form.label :image %><p>
-      <%= form.file_field :image, :required => true %>
-    </div>
-
-    <div class="form-group">
-       <p id="form-lebel">
-        <span><%= form.label :volume %></span>
-        <span style="margin-left: 50px; color: grey; font-style: italic;">current volume</span>
-         <% unless @manuscripts.blank? %>
-            <span style="margin-left: 5px; color: grey; font-style: italic;"><%= @manuscripts.last.volume %></span>
-         <% end %>
-      <p>
-      <%= form.number_field :volume, :required => true %>
-    </div>
-    <div class="form-group">
-      <p id="form-lebel">
-        <span><%= form.label :issue %></span>
-        <span style="margin-left: 50px; color: grey; font-style: italic;">current Issue</span>
-        <% unless @manuscripts.blank? %>
-          <span style="margin-left: 5px; color: grey; font-style: italic;"><%= @manuscripts.last.issue %></span>
+        <div class="form-group">
+          <p id="form-lebel"><%= form.label :journal_id %><p>
+          <%= collection_select(:manuscript, :journal_id, Journal.all, :id, :name, :prompt => "Journal") %>
+        </div>    
+        <% if current_user.publisher? %>
+          <div class="form-group">
+            <p id="form-lebel"><%= form.label :Publish_For %><p>
+            <%= collection_select(:manuscript, :user_id, User.all, :id, :username, :prompt => "select user") %>
+          </div>
         <% end %>
-      <p>
-      <%= form.number_field :issue, :required => true %>
-    </div> 
+        <div class="form-group">
+          <p id="form-lebel"><%= form.label :abstract %><p>
+          <%= form.text_area :abstract, id: :manuscript_abstract, :required => true %>
+        </div>
+
+        <div class="form-group">
+          <p id="form-lebel">
+            <span><%= form.label :document %> </span>
+            <span style="color: grey; font-style: italic; margin-left: 20px;"> pdf, word doc  </span>
+          <p>
+          <%= form.file_field :document, :required => true %>
+        </div>
+
+        <div class="form-group">
+          <p id="form-lebel"><%= form.label :image %><p>
+          <%= form.file_field :image, :required => true %>
+        </div>
+
+        <div class="form-group">
+           <p id="form-lebel">
+            <span><%= form.label :volume %></span>
+            <span style="margin-left: 50px; color: grey; font-style: italic;">current volume</span>
+             <% unless @manuscripts.blank? %>
+                <span style="margin-left: 5px; color: grey; font-style: italic;"><%= @manuscripts.last.volume %></span>
+             <% end %>
+          <p>
+          <%= form.number_field :volume, :required => true %>
+        </div>
+        <div class="form-group">
+          <p id="form-lebel">
+            <span><%= form.label :issue %></span>
+            <span style="margin-left: 50px; color: grey; font-style: italic;">current Issue</span>
+            <% unless @manuscripts.blank? %>
+              <span style="margin-left: 5px; color: grey; font-style: italic;"><%= @manuscripts.last.issue %></span>
+            <% end %>
+          <p>
+          <%= form.number_field :issue, :required => true %>
+        </div> 
 
 
-    <div class="actions">
-      <%= form.submit %>
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+    </div>
 </div>
 
 

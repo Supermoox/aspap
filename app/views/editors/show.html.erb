@@ -1,117 +1,118 @@
+<div class="row ">
+  <div class="col-md custom_wrapper">  
+    <div class="journal-header">
+      <p>Awaiting Approval</p>
+    </div>
+      <div class="panel">
+        <div class="panel-body">
+          <div class="row user_info">
+            <div style="color: grey; text-align: center;">
+              <span><%= @editor.request %> Request</span>
+              <% if @editor.request == "editor" %>        
+                <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'Approve',approve_editor_editor_path(@editor), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
+                </span> 
+                <span style="float: right; margin-right: 10px;">
+                  <%= link_to @editor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  <% end %>
+                </span>  
+              <% elsif @editor.request == "peer_reviewer"  %> 
+                <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'Approve',approve_peer_editor_path(@editor), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
+                </span> 
+                <span style="float: right; margin-right: 10px;">
+                  <%= link_to @editor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  <% end %>
+              <% elsif @editor.request == "publisher"  %> 
+                <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'Approve',approve_publisher_editor_path(@editor), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
+                </span> 
+                <span style="float: right; margin-right: 10px;">
+                  <%= link_to @editor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  <% end %>
+              <% elsif @editor.request == "verify_my_account"  %> 
+                <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'Approve',verify_user_editor_path(@editor), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
+                </span> 
+                <span style="float: right; margin-right: 10px;">
+                  <%= link_to @editor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  <% end %>
+              <% end %>            
+            </div>
+          	<div class="col-md-2">
+  		        <% if @editor.user.image.blank? %>
+  		          <%= link_to(image_tag("/assets/user.png", alt: "user_avatar") ) %> 
+  		        <% else %>
+  		          <span id="user_avatar"><%= image_tag @editor.user.image %> </span>
+  		        <% end %>
+          	</div>
+          	<div class="col-md-10">
+          		<h3 id="form-header">Personal Info</h3>
+          		<p>
+          		<span><strong>Title</strong></span>
+          		<span id="request_info"><strong> <%= @editor.user.title %></strong></span>
+          		</p>   
+          		<p>
+          		<hr>
+          		<span><strong>First Name</strong></span>
+          		<span id="request_info"><strong> <%= @editor.user.firstname %></strong></span>
+          		</p>   
 
-<div class="main-content">
-  <div class="journal-header">
-    <p>Awaiting Approval</p>
-  </div>
-    <div class="panel">
-      <div class="panel-body">
-        <div class="row user_info">
-          <div style="color: grey; text-align: center;">
-            <span><%= @editor.request %> Request</span>
-            <% if @editor.request == "editor" %>        
-              <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'Approve',approve_editor_editor_path(@editor), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
-              </span> 
-              <span style="float: right; margin-right: 10px;">
-                <%= link_to @editor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
-                  <i class="fa fa-trash" aria-hidden="true"></i>
-                <% end %>
-              </span>  
-            <% elsif @editor.request == "peer_reviewer"  %> 
-              <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'Approve',approve_peer_editor_path(@editor), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
-              </span> 
-              <span style="float: right; margin-right: 10px;">
-                <%= link_to @editor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
-                  <i class="fa fa-trash" aria-hidden="true"></i>
-                <% end %>
-            <% elsif @editor.request == "publisher"  %> 
-              <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'Approve',approve_publisher_editor_path(@editor), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
-              </span> 
-              <span style="float: right; margin-right: 10px;">
-                <%= link_to @editor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
-                  <i class="fa fa-trash" aria-hidden="true"></i>
-                <% end %>
-            <% elsif @editor.request == "verify_my_account"  %> 
-              <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'Approve',verify_user_editor_path(@editor), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
-              </span> 
-              <span style="float: right; margin-right: 10px;">
-                <%= link_to @editor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
-                  <i class="fa fa-trash" aria-hidden="true"></i>
-                <% end %>
-            <% end %>            
-          </div>
-        	<div class="col-md-2">
-		        <% if @editor.user.image.blank? %>
-		          <%= link_to(image_tag("/assets/user.png", alt: "user_avatar") ) %> 
-		        <% else %>
-		          <span id="user_avatar"><%= image_tag @editor.user.image %> </span>
-		        <% end %>
-        	</div>
-        	<div class="col-md-10">
-        		<h3 id="form-header">Personal Info</h3>
-        		<p>
-        		<span><strong>Title</strong></span>
-        		<span id="request_info"><strong> <%= @editor.user.title %></strong></span>
-        		</p>   
-        		<p>
-        		<hr>
-        		<span><strong>First Name</strong></span>
-        		<span id="request_info"><strong> <%= @editor.user.firstname %></strong></span>
-        		</p>   
-
-        		<p>
-        		<hr>
-        		<span><strong>Middle Name</strong></span>
-        		<span id="request_info"><strong> <%= @editor.user.middlename %></strong></span>
-        		</p>        		
-        		<p>
-        		<hr>
-        		<span><strong>Surname</strong></span>
-        		<span id="request_info"><strong> <%= @editor.user.surname %></strong></span>
-        		</p>        		
-        		<p>
-        		<hr>
-        		<span><strong>Email</strong></span>
-        		<span id="request_info"><strong> <%= @editor.user.email %></strong></span>
-        		</p>        		
-                <p>
-                <hr>
-                <span><strong>Work Place</strong></span>
-                <span id="request_info"><strong> <%= @editor.user.placeOfWork %></strong></span>
-                </p>          		
-                <p>
-        		<hr>
-        		<span><strong>Phone Number</strong></span>
-        		<span id="request_info"><strong> <%= @editor.user.phone %></strong></span>
-        		</p>        		
-                <hr>
-        		<h3 id="form-header">Education</h3>
-        		<p>
-        		<span><strong>Institution</strong></span>
-        		<span id="request_info"><strong> <%= @editor.user.institution %></strong></span>
-        		</p>        		
-        		<p>
-        		<hr>
-        		<span><strong>Qualification</strong></span>
-        		<span id="request_info"><strong> <%= @editor.user.qualification %></strong></span>
-        		</p> 
-            <p>
-            <hr>
-              <span><strong>Proof of Qualification</strong></span>
-              <span id="note3">
-                <span id="request_info">
-                <% if @editor.user.document_content_type == "application/pdf" %>
-                  <%= link_to image_tag("/assets/doc3.jpg", alt: "pdf"), @editor.user.document.url, target: "_blank" %>
-                <% else %>
-                  <%= link_to image_tag("/assets/note3.png", alt: "doc"), @editor.user.document.url, target: "_blank" %>
-                <% end %>
+          		<p>
+          		<hr>
+          		<span><strong>Middle Name</strong></span>
+          		<span id="request_info"><strong> <%= @editor.user.middlename %></strong></span>
+          		</p>        		
+          		<p>
+          		<hr>
+          		<span><strong>Surname</strong></span>
+          		<span id="request_info"><strong> <%= @editor.user.surname %></strong></span>
+          		</p>        		
+          		<p>
+          		<hr>
+          		<span><strong>Email</strong></span>
+          		<span id="request_info"><strong> <%= @editor.user.email %></strong></span>
+          		</p>        		
+                  <p>
+                  <hr>
+                  <span><strong>Work Place</strong></span>
+                  <span id="request_info"><strong> <%= @editor.user.placeOfWork %></strong></span>
+                  </p>          		
+                  <p>
+          		<hr>
+          		<span><strong>Phone Number</strong></span>
+          		<span id="request_info"><strong> <%= @editor.user.phone %></strong></span>
+          		</p>        		
+                  <hr>
+          		<h3 id="form-header">Education</h3>
+          		<p>
+          		<span><strong>Institution</strong></span>
+          		<span id="request_info"><strong> <%= @editor.user.institution %></strong></span>
+          		</p>        		
+          		<p>
+          		<hr>
+          		<span><strong>Qualification</strong></span>
+          		<span id="request_info"><strong> <%= @editor.user.qualification %></strong></span>
+          		</p> 
+              <p>
+              <hr>
+                <span><strong>Proof of Qualification</strong></span>
+                <span id="note3">
+                  <span id="request_info">
+                  <% if @editor.user.document_content_type == "application/pdf" %>
+                    <%= link_to image_tag("/assets/doc3.jpg", alt: "pdf"), @editor.user.document.url, target: "_blank" %>
+                  <% else %>
+                    <%= link_to image_tag("/assets/note3.png", alt: "doc"), @editor.user.document.url, target: "_blank" %>
+                  <% end %>
+                  </span>
                 </span>
-              </span>
-            </p>       		
-        		<p>
-        		<hr>
-        	</div>
+              </p>       		
+          		<p>
+          		<hr>
+          	</div>
+          </div>
         </div>
-      </div>
-    </div>        
+      </div>        
+  </div>
 </div>
 

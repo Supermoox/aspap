@@ -1,5 +1,4 @@
 <% if user_signed_in? %>
-	<%= link_to current_user do %>
 		<div class="row user_content">
 			<div class="user_content_pic">
 				<div class="profile-pic-small">
@@ -10,7 +9,7 @@
 		      <% else %>
 		        <p></p>
 	          <div style="position: relative; left: 0; top: 0;">
-	            <span ><%= image_tag current_user.image %></span>
+	            <span ><%= link_to (image_tag current_user.image) , current_user %></span>
 	          </div>
 		        
 		      <% end %>		
@@ -18,29 +17,32 @@
 			</div>
 
 			<div class="welcome_user">
-				<span>Welcome, <%=  current_user.firstname %>!</span>
+				<span>Welcome, <%= link_to  current_user.firstname , current_user %>!</span>
         <% unless current_user.membership.blank? %>
-          <p style="color: black; font-size: 14px; font-family: times; font-style: italic;">
-           <% if current_user.membership.kind == "Executive" %>
-              <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-              <span style="color: gold;">(Executive)</span>
-            <% elsif current_user.membership.kind == "Proffesional" %>
-              <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-              <span style="color: #7CFC00;">(Professional)</span>
-            <% else %>
-              <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-              <span style="color: #835220;">(Student)</span>
-            <% end %>               
-            <span> Certified </span>
-            <span>member! </span>
-          </p>
+          <%= link_to current_user.membership do %>
+            <p style="color: black; font-size: 14px; font-family: times; font-style: italic;">
+             <% if current_user.membership.kind == "Executive" %>
+                <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                <span style="color: gold;">(Executive)</span>
+              <% elsif current_user.membership.kind == "Proffesional" %>
+                <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                <span style="color: #7CFC00;">(Professional)</span>
+              <% else %>
+                <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                <span style="color: #835220;">(Student)</span>
+              <% end %>               
+              <span> Certified </span>
+              <span>member! </span>
+            </p>
+          <% end %>
         <% end %> 
 			</div>		
 			<div style="text-align: center; padding-bottom: 10px;">
-				<span style="font-size: 12px;">View your Profile</span>
+				<span style="font-size: 12px;">
+				<%= link_to  'View your Profile', current_user %>
+				</span>
 			</div>
 		</div>
-	<% end %>
 <% else %>
 	<div class="row user_content">
 		<div class="user_content_pic">

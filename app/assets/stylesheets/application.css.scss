@@ -30,8 +30,7 @@ body{
 }
 
 .wrapper{
-	margin-left: 3%;
-	margin-right: 3%;
+
 	margin-top: 20px;
 }
 
@@ -43,8 +42,6 @@ body{
 .first-top-layer{
   background-color: #708090;
   vertical-align: middle;
- padding-right: 2%;
- padding-left: 3%;
 }
 
 
@@ -59,20 +56,24 @@ body{
 	 padding-bottom:7.5px;
 }
 
+.main-content-home{
+	padding: 0;
+}
 
 .top-content{
 	background-color: white;
 	margin-bottom: 20px;
 	border: 1px solid #ccc;
 }
-.right_content{
-	padding: 0;
-}
+
 .left_menu{
 	padding: 0;
+	padding-right: 10px;
+	padding-left: 10px;
+	margin-bottom: 20px;
 }
 .middle_content{
-	padding-right: 0;
+	padding: 0;
 }
 .col-md-6-openPostBox{
 	padding: 0;
@@ -471,6 +472,7 @@ a.btn.btn-primary{
 .btn-notification{
 	border: 2px solid #6495ED;
 	height: 38px;
+	padding: 0;
 }
 .dropdown-menu-notification{
 	top: 70%;
@@ -583,6 +585,17 @@ p#post-text{
 	text-align: left;
 }
 
+.easy-autocomplete.eac-round input {
+    border: 2px solid #888;
+    border-radius: 10px;
+    color: #888;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+    min-width: unset;
+    padding: 10px;
+}
 
 .top-left-col{
 	padding: 0;
@@ -609,4 +622,17 @@ p#post-text{
 	border: 1px solid #ccc;
 }
 
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    min-height: 230px;
+    line-height: 1;
+}
 
+.container-fluid{
+	padding: 0;
+}
+.fa-stack-2x{
+	color: white;
+}

@@ -18,14 +18,13 @@
 
   <div class="col-md-5 account">
       <% if user_signed_in? %>
-        <button class="dropdown-toggle btn-notification" data-toggle="dropdown">
-          <span class="label label-danger top-right-item">      
-            <span><%= @notifications %></span>
-          </span> 
-          <span style="font-size: larger; color: #708090;">
-            <i class="fa fa-bell" aria-hidden="true"> </i> 
+        <span class="fa-stack" data-toggle="dropdown">
+          <span class="fa fa-bell fa-stack-2x"></span>
+          <span class="fa-stack-1x">
+              <span style="color:red;"><%= @notifications %> </span>  
           </span>
-        </button> |
+        </span>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
         <ul class="dropdown-menu dropdown-menu-notification">
           <% unless @active_posts.blank?  %>
             <strong>Posts</strong>
@@ -58,13 +57,17 @@
         </ul>
       </span> 
 
-      <%= link_to mailbox_inbox_path do %>
-        <span class="label label-danger top-right-item">      
-          <%= unread_messages_count %> 
-        </span> 
-        <span style="font-size: larger; color: white;"><i class="fa fa-envelope-open-o" aria-hidden="true"> </i> </span>
-      <% end %>
-      <span class="top-right-item"><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></span> |
+      <span class="fa-stack"">
+        <%= link_to mailbox_inbox_path do %>
+        <span class="fa fa-envelope fa-stack-2x"></span>
+        <span class="fa-stack-1x">
+            <span style="color:red;"><%=   unread_messages_count %> </span>  
+        </span>
+        <% end %>
+      </span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+
+      <span class="top-right-item"><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></span> 
       <%= link_to current_user do %>
         <span id="user_name"><%= current_user.firstname %> </span>
           <% unless current_user.membership.blank? %>
