@@ -1,85 +1,86 @@
 <div class="row ">
   <div class="col-md custom_wrapper">  
-	<div class="row">
-		<div class="row article">
-			<div id="article-title">
-				<%=  @event.title %>
+		<div class="row">
+			<div class="row article">
+				<div id="article-title">
+					<%=  @event.title %>
+				</div>
+				<div id="article-body">
+					<%= simple_format(@event.body) %>             
+			  </div>
 			</div>
-			<div id="article-body">
-				<%= simple_format(@event.body) %>             
-		  </div>
 		</div>
-	</div>
 
-	<div class="row join-discussions-event"> <span style="color: #4169E1;">ASPAP</span> <span>articles</span></div>
-	<div class="row main-content">
-		<div class="row bottom">
-			<% unless @articles.blank? %>
-		    <% @articles.each do |article| %>
-					<div class="row article">
-						<%= link_to article.user do %> 
-					    <% if article.user.image.blank? %>
-				        <span id="user_avatar"><%= (image_tag("/assets/user.png", alt: "user_avatar") ) %> </span>
-				        <span id="user_avatar"><%= article.user.firstname %> </span>
-				        <span id="user_avatar"><%= article.user.surname %> </span>
-					    <% else %>	      
-			          <span id="user_avatar"><%= image_tag article.user.image %> </span>
-			          <span id="user_avatar"><%= article.user.firstname %> </span>
-			          <span id="user_avatar"><%= article.user.surname %> </span>
+		<div class="row join-discussions-event"> <span style="color: #4169E1;">ASPAP</span> <span>articles</span></div>
+		<div class="row main-content">
+			<div class="row bottom">
+				<% unless @articles.blank? %>
+			    <% @articles.each do |article| %>
+						<div class="row article">
+							<%= link_to article.user do %> 
+						    <% if article.user.image.blank? %>
+					        <span id="user_avatar"><%= (image_tag("/assets/user.png", alt: "user_avatar") ) %> </span>
+					        <span id="user_avatar"><%= article.user.firstname %> </span>
+					        <span id="user_avatar"><%= article.user.surname %> </span>
+						    <% else %>	      
+				          <span id="user_avatar"><%= image_tag article.user.image %> </span>
+				          <span id="user_avatar"><%= article.user.firstname %> </span>
+				          <span id="user_avatar"><%= article.user.surname %> </span>
+						    <% end %>
 					    <% end %>
-				    <% end %>
-						<%= link_to article do %>
-						  <div>
-						    <div id="article-title-small">
-						    	<%=  article.title %>					    		
-						    </div>
-						    <div id="article-body-small">
-									<%= simple_format(article.body) %> 
-								</div>
-								<span style="font-style: italic; margin: 0; color: blue;">...Continue</span>
-						    <div style="margin-top: 10px;">
-						      <% unless article.image.blank? %>
-						        <div class="article_image">
-						          <%= image_tag article.image %>          
-						        </div>  
-						      <% end %> 
-						    </div>
+							<%= link_to article do %>
+							  <div>
+							    <div id="article-title-small">
+							    	<%=  article.title %>					    		
+							    </div>
+							    <div id="article-body-small">
+										<%= simple_format(article.body) %> 
+									</div>
+									<span style="font-style: italic; margin: 0; color: blue;">...Continue</span>
+							    <div style="margin-top: 10px;">
+							      <% unless article.image.blank? %>
+							        <div class="article_image">
+							          <%= image_tag article.image %>          
+							        </div>  
+							      <% end %> 
+							    </div>
+							  </div>
+							<% end %>
+						</div>
+						  <div class="row small_article_footer">
+						  	<span style="font-size: 14px;">Coments (<%= article.articomments.count %>)</span>
 						  </div>
-						<% end %>
-					</div>
-					  <div class="row small_article_footer">
-					  	<span style="font-size: 14px;">Coments (<%= article.articomments.count %>)</span>
-					  </div>
-		    <% end %>
-	    <% end %>    
-			<p style="font-style: italic; text-align:right; font-size: 16px;"><%= link_to "See more articles" ,articles_path(@articles) %></p>  
+			    <% end %>
+		    <% end %>    
+				<p style="font-style: italic; text-align:right; font-size: 16px;"><%= link_to "See more articles" ,articles_path(@articles) %></p>  
+			</div>
 		</div>
-	</div>
-	<div class="row join-discussions"> <span>Join Discussions</span> </div>
-	<div class="row main-content">
-		<div class="row middle">
-	    <% @posts.each do |post| %> 
-	      <%= link_to post do %> 
-	        <div class="row clickable-div">
-	          <div class="col-sm-2 posts-col-sm">
-	            <% if post.user.image.blank? %>
-	              <p id="user_avatar"><img src="<%= asset_path( 'default_user.png' ) %>" /></p>
-	            <% else %>
-	              <p id="user_avatar"><%= image_tag post.user.image %></p>
-	            <% end %>
-	          </div>       
-	          <div class="col-sm-10">
-	          <div class="discuss">
-	            <p ><strong style="font-family: initial; font-size: large;"><%=  post.title  %> </strong></p>
-	            <div class="fadded">
-	              <span><%=  post.body  %> </span>
-	            </div>
-	          </div>
-	          </div>  
-	        </div>
-	      <% end %>
-	    <% end %>
-	    <p style="font-style: italic; text-align:right; font-size: 16px;"><%= link_to "See more posts" ,posts_path(@posts) %></p>
+		<div class="row join-discussions"> <span>Join Discussions</span> </div>
+		<div class="row main-content">
+			<div class="row middle">
+		    <% @posts.each do |post| %> 
+		      <%= link_to post do %> 
+		        <div class="row clickable-div">
+		          <div class="col-sm-2 posts-col-sm">
+		            <% if post.user.image.blank? %>
+		              <p id="user_avatar"><img src="<%= asset_path( 'default_user.png' ) %>" /></p>
+		            <% else %>
+		              <p id="user_avatar"><%= image_tag post.user.image %></p>
+		            <% end %>
+		          </div>       
+		          <div class="col-sm-10">
+		          <div class="discuss">
+		            <p ><strong style="font-family: initial; font-size: large;"><%=  post.title  %> </strong></p>
+		            <div class="fadded">
+		              <span><%=  post.body  %> </span>
+		            </div>
+		          </div>
+		          </div>  
+		        </div>
+		      <% end %>
+		    <% end %>
+		    <p style="font-style: italic; text-align:right; font-size: 16px;"><%= link_to "See more posts" ,posts_path(@posts) %></p>
+			</div>
 		</div>
 	</div>
 </div>

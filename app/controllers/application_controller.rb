@@ -71,8 +71,8 @@ class ApplicationController < ActionController::Base
 
 	def configure_permitted_parameters 
 		@search = Search.new
-		devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:username, :institution, :document, :field, :qualification, :year_completed, :title, :firstname, :PR, :middlename, :surname, :phone, :placeOfWork, :image, :email, :password, :password_confirmation, :remember_me) } 
+		devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:institution, :document, :field, :qualification, :year_completed, :title, :firstname, :PR, :middlename, :surname, :phone, :placeOfWork, :image, :email, :password, :password_confirmation, :remember_me) } 
 		devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(:email, :password, :remember_me) } 
-		devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:username, :document, :institution, :field, :qualification, :year_completed, :title, :firstname, :PR, :middlename, :surname, :phone, :placeOfWork, :image, :vip, :verified, :editor, :email, :password, :password_confirmation, :current_password) } 
+		devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:document, :institution, :field, :qualification, :year_completed, :title, :firstname, :PR, :middlename, :surname, :phone, :placeOfWork, :image, :vip, :verified, :editor, :email, :password, :password_confirmation, :current_password) } 
 	end 
 end
