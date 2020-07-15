@@ -1,9 +1,13 @@
-class UserMailer < ApplicationMailer
-  default from: 'onemoox@gmail.com'
- 
-  def welcome_email
-    @user = params[:user]
-    @url  = 'http://www.aspap.org/users/sign_in'
-    mail(to: @user.email, subject: 'Welcome to the ASPAP Network')
-  end
+class UserMailer < ActionMailer::Base
+	'layout user_mailer'
+
+	 default from: "Aspap <support@aspap.org>"
+
+    def user_welcome user
+		 @user = user
+
+		 mail to: user.email, subject: "Thanks for your purchase!"
+
+    end
+
 end

@@ -18,6 +18,8 @@ class MembershipsController < InheritedResources::Base
     unless current_user.vip?
       if current_user.membership.blank? || current_user.membership != @membership
         redirect_to root_path
+      else
+        @membership = Membership.find_by_uuid(params[:id])
       end
     end
   end

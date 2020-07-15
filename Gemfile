@@ -33,6 +33,7 @@ gem 'shareable'
 gem 'acts_as_votable'
 gem 'dotenv-rails'
 gem 'ransack'
+gem 'letter_opener',group: :development
 
 
 group :development, :test do

@@ -9,4 +9,5 @@ class Membership < ApplicationRecord
   }
   validates_attachment_content_type :card, :content_type => /\Aimage\/.*\Z/
 
+
 end
