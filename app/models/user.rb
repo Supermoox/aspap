@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   after_create :subscribe_user_to_mailing_list
   after_create :welcome_user
+  after_create :notify_user
   acts_as_voter
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -47,6 +48,10 @@ class User < ApplicationRecord
 
   def welcome_user
     UserMailer.user_welcome(self).deliver
+  end
+
+  def notify_user
+    UserNotifierMailer.send_signup_email(self).deliver
   end
 
   def subscribe_user_to_mailing_list

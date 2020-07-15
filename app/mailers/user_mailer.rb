@@ -6,7 +6,7 @@ class UserMailer < ActionMailer::Base
     def user_welcome user
 		 @user = user
 
-		 mail to: user.email, subject: "Thanks for your purchase!"
+		 mail to: user.email, subject: "Welcome to ASPAP!"
 
     end
 
