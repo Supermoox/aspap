@@ -37,8 +37,11 @@ Rails.application.configure do
     :user_name => ENV.fetch('MY_GMAIL'),
     :password => ENV.fetch('PASSWORD'),
     :authentication => :login,
-    :enable_starttls_auto => true
+    :enable_starttls_auto => true,
+    :tls => true
   } 
+
+
 
 
   # Show full error reports.
