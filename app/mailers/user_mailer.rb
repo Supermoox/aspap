@@ -1,7 +1,7 @@
 class UserMailer < ActionMailer::Base
 	'layout user_mailer'
 
-	 default from: "Aspap <support@aspap.org>"
+	 default from: "Aspap <info@aspap.org>"
 
     def user_welcome user
 		 @user = user
