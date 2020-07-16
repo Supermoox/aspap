@@ -17,16 +17,25 @@
           <%= render partial: 'messages' %>
         </div>
       </div>
-      <div class="panel-footer">
-        <!-- Reply Form -->
-        <%= form_for :message, url: reply_conversation_path(conversation) do |f| %>
-            <div class="form-group">
-              <%= f.text_area :body, placeholder: "Reply Message", rows: 4, class: "form-control" %>
-            </div>
-            <%= f.submit "Reply", class: 'btn btn-success pull-right' %>
-        <% end %>
-        <div class="clearfix"></div>
+      <div class="reply_form">
+        <div class="panel-footer">
+          <!-- Reply Form -->
+          <%= form_for :message, url: reply_conversation_path(conversation) do |f| %>
+              <div class="form-group">
+                <%= f.text_area :body, placeholder: "Reply Message", rows: 4, class: "form-control" %>
+              </div>
+              <%= f.submit "Reply", class: 'btn btn-success pull-right' %>
+          <% end %>
+          <div class="clearfix"></div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+
+<script type="text/javascript">
+  var objDiv = document.getElementById("scrollable");
+  objDiv.scrollTop = objDiv.scrollHeight;
+
+</script>

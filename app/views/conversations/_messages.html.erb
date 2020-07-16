@@ -19,7 +19,7 @@
 
         <p class="media-heading">
           <% if !message.sender.nil? %>
-              <span style="color: #6495EA;"><%= link_to message.sender.username, message.sender %></span><br>
+              <span style="color: #6495EA;"><%= link_to message.sender.firstname, message.sender %></span><br>
           <% else %>
             <span style="color: #6495EA;">Deleted User</span><br>
           <% end %>

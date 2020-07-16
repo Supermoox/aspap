@@ -19,12 +19,19 @@
   <div class="col-md-5 account">
       <% if user_signed_in? %>
         <span class="fa-stack" data-toggle="dropdown">
-          <span class="fa fa-bell fa-stack-2x"></span>
-          <span class="fa-stack-1x">
-              <span style="color:red;"><%= @notifications %> </span>  
-          </span>
+            <% if  @notifications == 0 %>
+              <span class="fa fa-bell fa-stack-2x stack_blue"></span>
+            <% else %>
+              <span class="fa fa-bell fa-stack-2x stack_white"></span>
+            <% end %>
+            <span class="fa-stack-1x">
+              <span style="color:red;">
+                <% unless @notifications == 0 %>
+                  <span class="label label-danger pull-right"><%= @notifications %> </span>
+                <% end %>
+              </span>  
+            </span>
         </span>
-        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
         <ul class="dropdown-menu dropdown-menu-notification">
           <% unless @active_posts.blank?  %>
             <strong>Posts</strong>
@@ -59,15 +66,20 @@
 
       <span class="fa-stack"">
         <%= link_to mailbox_inbox_path do %>
-        <span class="fa fa-envelope fa-stack-2x"></span>
-        <span class="fa-stack-1x">
-            <span style="color:red;"><%=   unread_messages_count %> </span>  
-        </span>
+          <% if  unread_messages_count == 0 %>
+             <span class="fa fa-envelope fa-stack-2x"></span>
+          <% else %>
+            <span class="fa fa-envelope fa-stack-2x stack_white"></span>
+          <% end %> 
+          <span class="fa-stack-1x">
+            <% unless unread_messages_count == 0 %>
+              <span class="label label-danger pull-right"><%=unread_messages_count%> </span>
+            <% end %>
+          </span>
         <% end %>
       </span>
-      <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
 
-      <span class="top-right-item"><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></span> 
+      <span class="top-right-item"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></span> 
       <%= link_to current_user do %>
         <span id="user_name"><%= current_user.firstname %> </span>
           <% unless current_user.membership.blank? %>
@@ -89,9 +101,9 @@
       <% end %>
     <% else %>
       <span class="top-right-item">
-        <span style="float: right; margin-top: 20px;"><%= link_to "REGISTER", new_user_registration_path %></span>
+        <span style="float: right; margin-top: 20px;"><%= link_to "Register", new_user_registration_path %></span>
       </span>
-      <span class="top-right-item"><span style="float: right; margin-top: 20px;"><%= link_to "LOG IN", new_user_session_path %></span></span>
+      <span class="top-right-item"><span style="float: right; margin-top: 20px;"><%= link_to "Log In", new_user_session_path %></span></span>
     <% end %>
   </div>
 </div>

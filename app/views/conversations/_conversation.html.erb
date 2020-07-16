@@ -48,6 +48,7 @@
             <% if @recipient.nil? %>
               <div class="col-md-2">
                 <span id="user_avatar4"><%= image_tag("/assets/user.png", alt: "user_avatar3") %></span>
+                <span style="float: right; margin-top: 20px;"><i class="fa fa-comment" aria-hidden="true"></i></span>
               </div>
               <div class="col-md-10 sub-message">
                 <div class="fadded">
@@ -57,6 +58,7 @@
             <% elsif conversation.messages.last.sender.image.blank?%>
               <div class="col-md-2">
                 <span id="user_avatar4"><%= image_tag("/assets/user.png", alt: "user_avatar3") %></span>
+                <span style="float: right; margin-top: 20px;"><i class="fa fa-comment" aria-hidden="true"></i></span>
               </div>
               <div class="col-md-10 sub-message">
                 <div class="fadded">
@@ -66,6 +68,7 @@
             <% else %>
               <div class="col-md-2">
                 <span id="user_avatar4"><%= image_tag conversation.messages.last.sender.image %> </span>
+                <span style="float: right; margin-top: 20px;"><i class="fa fa-comment" aria-hidden="true"></i></span>
               </div>
               <div class="col-md-10 sub-message">
                 <div class="fadded">
@@ -81,63 +84,43 @@
 
     <div class="my-messages">
       <div class="media-left">
-        <% if current_user == conversation.originator %>
-          <% conversation.recipients.each do |recipient| %>
-            <% if recipient != current_user %>
-              <% unless @recipient.nil? %>
-                <% @recipient = recipient %>
-              <% end %>
-            <% end %>
-          <% end %>
 
-          <% if @recipient.nil? || @recipient.image.blank? %>
-             <img src="<%= asset_path( 'user.png' ) %>" />
+
+
+        <% if conversation.recipients.last != current_user %>
+          <% if conversation.recipients.last.image.blank? %>
+            <%= image_tag("/assets/user.png", alt: "user_avatar") %> 
           <% else %>
-            <span id="user_avatar"><%= image_tag @recipient.image  %> </span><br>
+            <span id="user_avatar"><%= image_tag conversation.recipients.last.image  %> </span><br>
           <% end %>
-        <% else %>
-          <% unless conversation.originator.nil? %>
-            <% if conversation.originator.image.blank? %>
-              <img src="<%= asset_path( 'user.png' ) %>" />
-            <% else %>
-              <span id="user_avatar"><%= image_tag conversation.originator.image  %> </span><br>
-            <% end %>
+        <% elsif conversation.recipients.first != current_user %>
+          <% if conversation.recipients.first.image.blank? %>
+            <%= image_tag("/assets/user.png", alt: "user_avatar") %> 
+          <% else %>
+            <span id="user_avatar"><%= image_tag conversation.recipients.first.image %> </span><br>
           <% end %>
+        <% else  %>
+          <%= image_tag("/assets/user.png", alt: "user_avatar") %> 
         <% end %>
+
       </div>
       <div class="media-body">
-        <% unless conversation.originator.blank? %>
-          <% if current_user == conversation.originator %>
-            <% conversation.recipients.each do |recipient| %>
-              <% if recipient != current_user %>
-                <% unless @recipient.nil? %>
-                  <% @recipient = recipient %>
-                <% end %>
-              <% end %>
-            <% end %>
-            <% unless @recipient.nil? %>
-              <span><%= @recipient.firstname %><br></span>
-            <% end %>
-          <% else %>
-            <% unless conversation.originator.nil? %>
-              <span><%= conversation.originator.firstname %> </span><br>
-            <% end %>      
-          <% end %>      
-        <% end %>
 
-        <% if conversation.messages.last.sender.nil? %>
-          <div class="col-md-2">
-            <span id="user_avatar4"> <img src="<%= asset_path( 'user.png' ) %>" /></span>
-          </div>
-          <div class="col-md-10 sub-message">
-            <div class="fadded">
-              <span ><%=  conversation.messages.last.body %></span>
-            </div>
-          </div>
-        <% else %>
-          <% if conversation.messages.last.sender.image.blank? %>
+        <div class="row">
+          <% if conversation.recipients.last != current_user %>
+              <%= conversation.recipients.last.firstname %> 
+          <% elsif conversation.recipients.first != current_user %>
+              <%= conversation.recipients.first.firstname %> 
+          <% else  %>
+            <span>Deleted User</span> 
+          <% end %>
+        </div>
+          
+        <div class="row">
+          <% if conversation.messages.last.sender.nil? %>
             <div class="col-md-2">
               <span id="user_avatar4"> <img src="<%= asset_path( 'user.png' ) %>" /></span>
+              <span style="float: right; margin-top: 20px;"><i class="fa fa-comment" aria-hidden="true"></i></span>
             </div>
             <div class="col-md-10 sub-message">
               <div class="fadded">
@@ -145,17 +128,30 @@
               </div>
             </div>
           <% else %>
-            <div class="col-md-2">
-              <span id="user_avatar4"><%= image_tag conversation.messages.last.sender.image %> </span>
-            </div>
-
-            <div class="col-md-10 sub-message">
-              <div class="fadded">
-                <span ><%=  conversation.messages.last.body %></span>
+            <% if conversation.messages.last.sender.image.blank? %>
+              <div class="col-md-2">
+                <span id="user_avatar4"> <img src="<%= asset_path( 'user.png' ) %>" /></span>
+                <span style="float: right; margin-top: 20px;"><i class="fa fa-comment" aria-hidden="true"></i></span>
               </div>
-            </div>
+              <div class="col-md-10 sub-message">
+                <div class="fadded">
+                  <span ><%=  conversation.messages.last.body %></span>
+                </div>
+              </div>
+            <% else %>
+              <div class="col-md-2">
+                <span id="user_avatar4"><%= image_tag conversation.messages.last.sender.image %> </span>
+                <span style="float: right; margin-top: 20px;"><i class="fa fa-comment" aria-hidden="true"></i></span>
+              </div>
+
+              <div class="col-md-10 sub-message">
+                <div class="fadded">
+                  <span ><%=  conversation.messages.last.body %></span>
+                </div>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
     <hr style="margin:0px; padding:0px;">
