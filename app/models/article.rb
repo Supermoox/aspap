@@ -6,7 +6,7 @@ class Article < ApplicationRecord
   after_create :set_some_values
   acts_as_votable
 
-  # This method associates the attribute ":avatar" with a file attachment
+  # This method associates the attribte ":avatar" with a file attachment
   has_attached_file :image, styles: {
     thumb: '100x100>',
     square: '200x200#',

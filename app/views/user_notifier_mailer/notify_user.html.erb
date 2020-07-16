@@ -1,0 +1,38 @@
+ 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p> Dear Followers: </p>
+    <p> Those are the lastest entries to our blog. We invite you to read and share everything we did on this week. </p>
+
+    <br/>
+    <table>
+    <% @articles.each do |article| %>
+      <%#= link_to blog_url(post) do %>
+          <tr style="display:flex; float:left; clear:both;">
+            <td style="display:flex; float:left; clear:both; height: 80px; width: 100px;">
+              <% if article.mage.present? %>
+                <%= image_tag article.image.fullsize.url, class:"email_image" %>
+              <%# else %>
+                <%#= image_tag 'http://your_site_project.com' + post.cover_video, class:"principal-home-image-slider" %>
+                <%#= raw(video_embed(post.cover_video)) %>
+              <% end %>
+            </td>
+            <td>
+              <h3>
+                <%= link_to article.title, :controller => "blog", :action => "show", :only_path => false, :id => article.id %>
+              </h3>
+              <p><%= article.directory.name %></p>
+            </td>
+            <td style="display:flex; float:left; clear:both;">
+               
+            </td>
+          </tr>
+      <%# end %>
+    <% end %>
+    </table>
+  </body>
+</html

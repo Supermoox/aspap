@@ -28,7 +28,7 @@ gem 'figaro'
 gem 'aws-sdk', '~> 2.3'
 gem 'fog'
 gem 'gibbon', github: "amro/gibbon"
-gem 'social-share-button', '~> 1.2'
+gem 'rails-social-share-button'
 gem 'shareable'
 gem 'acts_as_votable'
 gem 'dotenv-rails'

@@ -418,6 +418,7 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails-social-share-button (0.0.2)
     railties (5.1.4)
       actionpack (= 5.1.4)
       activesupport (= 5.1.4)
@@ -478,8 +479,6 @@ GEM
       faraday (~> 0.9)
       jwt (>= 1.5, < 3.0)
       multi_json (~> 1.10)
-    social-share-button (1.2.0)
-      coffee-rails
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -549,11 +548,11 @@ DEPENDENCIES
   pg (~> 0.18)
   puma (~> 3.7)
   rails (~> 5.1.4)
+  rails-social-share-button
   ransack
   sass-rails (~> 5.0)
   selenium-webdriver
   shareable
-  social-share-button (~> 1.2)
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

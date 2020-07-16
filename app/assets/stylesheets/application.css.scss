@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *= require easy-autocomplete
  *= require easy-autocomplete.themes
+ *= require rails-social-share-button
  *= require_tree .
  *= require_self
  */
@@ -646,3 +647,21 @@ p#post-text{
 	color: blue;
 }
 
+$size: 24px;
+
+.rails-social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+    margin-right: 10px;
+  }
+}
+
+
+
+#directorate__name.btn a, a:link, a:visited {
+    text-decoration: none;
+    color: none;
+    font-size: 14px;
+}

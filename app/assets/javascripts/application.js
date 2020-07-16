@@ -15,6 +15,7 @@
 //= require bootstrap-sprockets
 //= require lightbox
 //= require jquery.easy-autocomplete
+//= require rails-social-share-button
 //= require_tree .
 
 
