@@ -2,7 +2,6 @@
   <div class="col-md custom_wrapper">  
     <h3 id="form-header">Articles</h3>
 
-      <div class="row bottom">
         <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
           <% @articles.each do |article| %>
             <div class="col-md-4">
@@ -30,7 +29,6 @@
             </div>
           <% end %>
           <p> <%= will_paginate @articles %> </p>
-      </div>
   </div>
 </div>
  
