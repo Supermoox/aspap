@@ -1,34 +1,32 @@
 <div class="row ">
   <div class="col-md custom_wrapper">  
-    <h3 id="form-header">Articles</h3>
-
-        <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
-          <% @articles.each do |article| %>
-            <div class="col-md-4">
-              <%= link_to article do %>
-                <div class="thumbnail thumbnail-article"> 
-                  <div class="thumbnail_image">                        
-                    <% if article.image.blank? %>
-                       
-                    <% else %>
-                      <%=  (image_tag article.image) %>
-                    <% end %>
-                  </div>  
-                  <div class = "caption">
-                      <h5 id="thumb-title">  
-                       <strong> 
-                          <span><%=  article.title %> </span>
-                       </strong>
-                      </h5>
-                     <div class="brief-body">
-                      <%=  article.body %>
-                     </div>
-                  </div>
-                </div>
-              <% end %>
+    <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
+      <% @articles.each do |article| %>
+        <div class="col-md-4">
+          <%= link_to article do %>
+            <div class="thumbnail thumbnail-article"> 
+              <div class="thumbnail_image">                        
+                <% if article.image.blank? %>
+                   
+                <% else %>
+                  <%=  (image_tag article.image) %>
+                <% end %>
+              </div>  
+              <div class = "caption">
+                  <h5 id="thumb-title">  
+                   <strong> 
+                      <span><%=  article.title %> </span>
+                   </strong>
+                  </h5>
+                 <div class="brief-body">
+                  <%=  article.body %>
+                 </div>
+              </div>
             </div>
           <% end %>
-          <p> <%= will_paginate @articles %> </p>
+        </div>
+      <% end %>
+      <p> <%= will_paginate @articles %> </p>
   </div>
 </div>
  
