@@ -16,3 +16,6 @@ class AddEmailConfirmationToUsers < ActiveRecord::Migration[5.1]
     remove_column :users, :confirmation_token
   end
 end
+
+
+
