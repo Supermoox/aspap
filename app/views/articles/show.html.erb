@@ -101,15 +101,13 @@
             <span><strong>Share Article On:</strong></span>
           </div>
           <div class="col-md-9 col-article-footer">
-
             <span style="float: left;"> 
-               <%= rails_social_share_button_tag('Share to Facebook', url: "www.aspap.org/articles", desc: @article.title) %>
+               <%= rails_social_share_button_tag(@title, url: @url, desc: @article.title) %>
             </span>
           </div>
         </div>
     </div>
     <hr>
-    
     <div id="comments">
     	<% if @articomments.blank? %>
         <p style="font-style: italic;">No comments on this post yet, be the first to comment!</p>

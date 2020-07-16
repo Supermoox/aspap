@@ -23,6 +23,7 @@ class ArticlesController < ApplicationController
       end     
     end
 
+    @url = "http://www.aspap.org/articles/" + @article.id.to_s
     @artireply = Artireply.new
     @reaction = Reaction.new
     @articomment = Articomment.new
