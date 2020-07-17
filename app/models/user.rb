@@ -46,7 +46,7 @@ class User < ApplicationRecord
   private
 
   def welcome_user
-    UserMailer.user_welcome(self).deliver_later
+    UserMailer.user_welcome(self).deliver
   end
 
   def after_confirmation
