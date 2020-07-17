@@ -19,12 +19,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    if current_user.verified?
-      @post = current_user.posts.build
-    else
-      flash[:success] = "To create a post, verify your account"
-      redirect_to root_path
-    end
+    @post = current_user.posts.build
   end
 
   def edit

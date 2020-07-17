@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-md custom_wrapper">
-    <%= render 'layouts/userheader' %>
+    <%= render 'layouts/userheader' %> 
     <% if user_signed_in? %>
-      <% if current_user.verified? && current_user == @user %>  
+      <% if current_user == @user %>  
         <div class="row top-content">
           <div class="row">
             <div class="col-md-12 col-md-6-openPostBox">
@@ -59,8 +59,8 @@
                     <% else %>
                       <span id="user_avatar"><%= image_tag current_user.image %> </span>
                     <% end %>
-                     <span id="user_name"><%= current_user.firstname %> </span>
-                     <span id="user_name"><%= current_user.surname %> </span>
+                     <span id="user_name_2"><%= current_user.firstname %> </span>
+                     <span id="user_name_2"><%= current_user.surname %> </span>
                     
                       <span style="width: 100px;"><%= collection_select(:post, :directorate_id, @directorates.all, :id, :name) %>   
                       </span>  
@@ -107,9 +107,6 @@
           </div>
         <% end %>
       <% end %>
-    <% else %>
-
-
     <% end %>
 
       <!-- Modal -->
@@ -126,17 +123,6 @@
           </div>
         </div>
       </div>
-
-
-    <% unless @user.verified? %>
-      <% if user_signed_in? && current_user.vip? %>
-        <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'verify User',verify_user_user_path(@user), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
-        </span>         
-        <span style="color: green; float: right; margin-right: 10px;"> <%= link_to 'Delete User',delete_user_user_path(@user), method: :patch, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
-        </span> 
-      <% end %>
-    <% end %>
-
 
 
     <div class="row">
