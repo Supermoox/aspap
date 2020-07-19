@@ -7,6 +7,12 @@ class DownloadsController < ApplicationController
     @downloads = Download.where(form: true)
   end
 
+  def edit
+    if !current_user.vip?
+      redirect_to root_path
+    end
+  end
+
 
   def new
     if current_user.vip?
@@ -17,11 +23,22 @@ class DownloadsController < ApplicationController
   end
 
   def show
-    unless current_user.vip? || current_user.editor? || current_user.publisher?
+    unless current_user.vip? 
       redirect_to root_path
     end
   end
 
+  def update
+    respond_to do |format|
+      if @download.update(download_params)
+        format.html { redirect_to received_applications_path, notice: 'Application was successfully updated.' }
+        format.json { render :show, status: :ok, location: @download }
+      else
+        format.html { render :edit }
+        format.json { render json: @download.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   def create
     @download = Download.new(download_params)
@@ -49,6 +66,6 @@ class DownloadsController < ApplicationController
     end
 
     def download_params
-      params.require(:download).permit(:title, :document, :form, :application)
+      params.require(:download).permit(:title, :document, :form, :application, :status)
     end
 end

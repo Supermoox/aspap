@@ -78,6 +78,11 @@
 			<% if !current_user.membership.blank? %>
 		  	<h5 id="side-content-links"> <%= link_to "My Membership" , current_user.membership %></h5>
 			<% end %>
+
+			<% if !current_user.downloads.blank? %>
+		  	<h5 id="side-content-links"> <%= link_to "My Application" , my_applications_path %></h5>
+			<% end %>
+
 		  <h5 id="side-content-links"> <%= link_to "My Posts" , my_posts_path %></h5>
 		  <h5 id="side-content-links"> <%= link_to "My Manuscripts" , my_manuscripts_path %></h5>
 		  <h5 id="side-content-links"> <%= link_to "My Research" , my_researches_path %></h5>

@@ -8,7 +8,12 @@
    <% unless user_signed_in? && !current_user.verified? %>
    	 <h5 id="side-content-links"> <%= link_to "Join the ASPAP editorial team" , editorial_teams_path %></h5>
    <% end %>
-	 <h5 id="side-content-links"> <%= link_to "Apply for ASPAP membership" , application_forms_path %></h5>	 
+   
+   <% if user_signed_in? && !current_user.membership.blank? %>
+
+   <% else %>
+	 	<h5 id="side-content-links"> <%= link_to "Apply for ASPAP membership" , application_forms_path %></h5>	
+	 <% end %> 
 	 <h5 id="side-content-links"> <%= link_to "ASPAP Executive 2020-2022" , executives_path %></h5>
 	 <h5 id="side-content-links"> <%= link_to "ASPAP Constitution" , constitutions_path %></h5>
 	 <h5 id="side-content-links"> <%= link_to "Downloads" , downloads_path %></h5>

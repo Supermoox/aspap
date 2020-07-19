@@ -14,3 +14,47 @@
 	width: 500px;
 	height: 381px;
 }
+
+.my_application{
+	background-color: white;
+	padding-top: 20px;
+	border-left: solid 2px #ccc;
+}
+
+
+.thank_you{
+	background-color: rgba(0, 255, 0, 0.1);
+	padding: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	color: green;
+	font-size: 16px;
+	box-shadow: 1px 2px 0.5px grey;
+
+}
+.app_lebel{
+	font-size: 18px;
+
+}
+
+.app_item_success{
+	background-color: #32CD32;
+	color: white;
+	font-size: 18px;
+	border-radius: 4px;
+	padding: 5px;	
+}
+.app_item{
+	background-color: #6495ED;
+	color: white;
+	font-size: 18px;
+	border-radius: 4px;
+	padding: 5px;
+}
+.app_item_date{
+	background-color: orange;
+	color: white;
+	font-size: 18px;
+	border-radius: 4px;
+	padding: 5px;
+}

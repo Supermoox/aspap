@@ -72,6 +72,7 @@ Rails.application.routes.draw do
   resources :my_posts
   resources :my_articles
   resources :my_researches
+  resources :my_applications
   resources :executives
   resources :directorates
   resources :my_manuscripts
