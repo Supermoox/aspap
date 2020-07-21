@@ -33,14 +33,14 @@
                             <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
                           <% end %> 
                         <% end %>
-                        <span style="color: #337ab7;"><%= research.user.username %></span>
+                        <span style="color: #337ab7;"><%= research.user.firstname %></span>
                         <span style="margin-left: 10px;"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
                         </span>
                       </p>
                     <% else %>
                       <p id="user_avatar">
                         <span style="color: grey;"><strong>Researcher: </strong>
-                        </span><span style="color: #337ab7;"><%= research.user.username %></span>
+                        </span><span style="color: #337ab7;"><%= research.user.firstname %></span>
                         <span style="margin-left: 10px;"><%= image_tag research.user.image %></span>
                         <% unless research.user.membership.blank? %>
                           <% if research.user.membership.kind == "Executive" %>

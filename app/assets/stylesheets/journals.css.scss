@@ -2,21 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.main-content{
-	padding-left: 20px;
-	padding-right: 20px;
-	background-color: white;
-}
+
 
 .journal-header{
-	font-size: xx-large;
+	font-size: large;
 	text-align: center;
-	background-color: #FAEBD7;
-	color: #337ab7;
+	background-color: #6495ED;
+	color: white;
 	border-left: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
-	box-shadow:  5px 5px 5px 5px #888888;
+	box-shadow:  2px 2px 2px 2px #888888;
+	padding-top: 10px;
+}
+.main-content-journal{
+	background-color: white;
+	margin-bottom: 20px;
+	padding-left:15px;
+	padding-right:15px;
 }
 
 #note3 img{
