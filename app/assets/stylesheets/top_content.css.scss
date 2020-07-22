@@ -8,6 +8,12 @@
 	cursor: pointer;
 
 }
+.openPostBox_home{
+	width: 100%;
+	margin-left: 0;
+	cursor: pointer;
+	height: auto;
+}
 .submit-aspap-artical{
 	background-color: white;
 	padding-top: 10px;
@@ -53,4 +59,39 @@
 }
 #user_name_2{
 	color:#6495ED;
+}
+.write_botton_article{
+	background-color: #000080;
+	height: 70px;
+	padding-top: 20px;
+	text-align: center;
+}
+.write_botton_article a{
+	color: white;
+}
+.write_botton_article a:hover{
+	color: white;
+}
+.write_botton_journal{
+	background-color: #4169E1;
+	height: 70px;
+	padding-top: 20px;
+	text-align: center;
+}
+.write_botton_journal a{
+	color:white;
+}
+.write_botton_journal a:hover{
+	color:white;
+}
+.write_botton_post{
+	background-color: #1E90FF;
+	height: 70px;
+	padding-top: 20px;
+	text-align: center;
+}
+.write_botton_post a{
+	color: white;
+}.write_botton_post a:hover{
+	color: grey;
 }
