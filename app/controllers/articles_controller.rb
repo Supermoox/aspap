@@ -64,7 +64,7 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.build(article_params)
     respond_to do |format|
       if @article.save
-        OrderMailer.with(article: @article).new_article_email.deliver_later
+       # OrderMailer.with(article: @article).new_article_email.deliver_later
         format.html { redirect_to @article, notice: 'Article has been submited for approval.' }
         format.json { render :show, status: :created, location: @article }
       else
