@@ -15,7 +15,7 @@
             <% else %>
               <span id="user_avatar"><%= image_tag @manuscript.user.image %> </span>
             <% end %>
-            <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= @manuscript.user.username %></span>
+            <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= @manuscript.user.firstname %></span>
             <span style="color: grey; float: right;"><%= @manuscript.created_at.strftime("%b %d, %Y")  %></span>
             <p> <%= @manuscript.abstract %>  </p>
             <p style="color:#337ab7;"> 
@@ -66,7 +66,7 @@
     		            </div>
     		    				<div class="col-md-10 comment-body">
     		              <p class="media-heading">
-    		                <span style="color: #6495EA; font-size: small"><%= review.user.username %>  </span> 
+    		                <span style="color: #6495EA; font-size: small"><%= review.user.firstname %>  </span> 
     		              </p>
     		              <div class="star-rating" data-score= <%= review.rating %> > </div>
     		              <p style="font-size: large; font-family: initial; "><%= review.comment %> </p>
@@ -95,7 +95,7 @@
                       </div>
                       <div class="col-md-10 comment-body">
                         <p class="media-heading">
-                          <span style="color: #6495EA; font-size: small"><%= review.user.username %>  </span> 
+                          <span style="color: #6495EA; font-size: small"><%= review.user.firstname %>  </span> 
                         </p>
                         <div class="star-rating" data-score= <%= review.rating %> > </div>
                         <p style="font-size: large; font-family: initial; "><%= simple_format(review.comment) %> </p>

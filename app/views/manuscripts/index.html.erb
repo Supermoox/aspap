@@ -22,7 +22,7 @@
                   <% else %>
                     <span id="user_avatar"><%= image_tag manuscript.user.image %> </span>
                   <% end %>
-                  <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= manuscript.user.username %></span>
+                  <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= manuscript.user.firstname %></span>
                 <% end %>
                 <span style="color: grey; float: right;"><%= manuscript.created_at.strftime("%b %d, %Y")  %></span>
                 <p style="color:#337ab7;"> 
