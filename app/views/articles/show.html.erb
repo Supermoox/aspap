@@ -68,7 +68,7 @@
        <p id="directorate__name"><%= link_to @article.directorate.name, @article.directorate %></p>
       <% end %>
       <% if user_signed_in? && current_user.vip %>
-        <%= link_to @article, method: :delete, data: { confirm: 'Are you sure you want to delete this executive?' }, class: "btn btn-default" do %>
+        <%= link_to @article, method: :delete, data: { confirm: 'Are you sure you want to delete this Article?' }, class: "btn btn-default" do %>
             <i class="fa fa-trash" aria-hidden="true"></i>
         <% end %>
         <span><%= link_to 'Edit Post', edit_article_path(@article), class: "btn btn-default" %></span> 
