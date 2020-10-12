@@ -20,7 +20,7 @@ class PagesController < ApplicationController
     @atomic = @directorates.find(11)
     @clean = @directorates.find(12)
     @AI = @directorates.find(17)
-    @astronomy = @directorates.find(14)
+    #@astronomy = @directorates.find(14)
     @medical = @directorates.find(15)
     @robotic = @directorates.find(16)
 	end
