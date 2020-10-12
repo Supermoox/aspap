@@ -23,13 +23,13 @@
               <p>
                 <% if research.user.image.blank? %>
                   <p id="user_avatar">
-                    <span><strong>Researcher: </strong></span><span style="color: #337ab7;"><%= research.user.username %></span>
+                    <span><strong>Researcher: </strong></span><span style="color: #337ab7;"><%= research.user.firstname %></span>
                     <span style="margin-left: 10px;"><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
                     </span>
                   </p>
                 <% else %>
                   <p id="user_avatar">
-                    <span style="color: grey;"><strong>Researcher: </strong></span><span style="color: #337ab7;"><%= research.user.username %></span>
+                    <span style="color: grey;"><strong>Researcher: </strong></span><span style="color: #337ab7;"><%= research.user.firstname %></span>
                     <span style="margin-left: 10px;"><%= image_tag research.user.image %></span>
                   </p>
                 <% end %>          
