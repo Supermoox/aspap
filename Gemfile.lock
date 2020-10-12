@@ -443,6 +443,8 @@ GEM
       json (>= 1.8)
       nokogiri (~> 1.5)
       trollop (~> 2.1)
+    recaptcha (5.5.0)
+      json
     representable (3.0.4)
       declarative (< 0.1.0)
       declarative-option (< 0.2.0)
@@ -550,6 +552,7 @@ DEPENDENCIES
   rails (~> 5.1.4)
   rails-social-share-button
   ransack
+  recaptcha
   sass-rails (~> 5.0)
   selenium-webdriver
   shareable

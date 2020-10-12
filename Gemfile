@@ -34,7 +34,7 @@ gem 'acts_as_votable'
 gem 'dotenv-rails'
 gem 'ransack'
 gem 'letter_opener',group: :development
-
+gem "recaptcha", require: "recaptcha/rails"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

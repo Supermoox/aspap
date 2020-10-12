@@ -19,6 +19,8 @@ Rails.application.routes.draw do
       patch :check_balance
     end
   end
+  
+  devise_for :users, controllers: { registrations: 'registrations' }
   resources :received_applications
   resources :events
   resources :pictures
@@ -46,7 +48,7 @@ Rails.application.routes.draw do
       put "like" => "articles#vote"
     end
   end
-  devise_for :users
+  #devise_for :users
   resources :memberships
 
   # NOTE: put this after the 'devise_for :users' line
