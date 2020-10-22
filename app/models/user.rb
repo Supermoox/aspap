@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :reactions, dependent: :destroy
   has_many :downloads, dependent: :destroy
   has_one :membership, dependent: :destroy
+  has_many :papers, dependent: :destroy
 
 
 

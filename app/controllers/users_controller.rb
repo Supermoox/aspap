@@ -26,6 +26,8 @@ class UsersController < ApplicationController
     @post = Post.new
     @directorates = Directorate.all
     @membership = Membership.new
+    @paper = Paper.new
+    @papers = Paper.where(user_id: @user.id)
     
     if @user.membership.blank? 
       @membership_exists = false

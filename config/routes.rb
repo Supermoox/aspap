@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :received_applications
   resources :events
   resources :pictures
+  resources :papers
   resources :editorial_teams
   resources :journal_pages
   resources :publishing_processes
@@ -55,6 +56,8 @@ Rails.application.routes.draw do
   #removed this only: [:index, :show] 
   resources :users, only: [:index, :show]  do
     resources :memberships, except: [:show, :index]
+    resources :papers, except: [:show, :index]
+
     member do
       patch :verify_user
       patch :delete_user
