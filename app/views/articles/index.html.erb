@@ -9,7 +9,7 @@
                 <% if article.image.blank? %>
                    
                 <% else %>
-                  <%=  (image_tag article.image) %>
+                  <%=  (image_tag article.image.url(:square)) %>
                 <% end %>
               </div>  
               <div class = "caption">
