@@ -355,6 +355,11 @@ input#search_keywords{
 	height: 160px;
 	overflow-y: hidden;
 }
+.thumbnail_image img{
+	width: 100%;
+	height: auto;
+	overflow-y: hidden;
+}
 .thumbnail_image_dp{
 	height: 250px;
 	overflow-y: hidden;
