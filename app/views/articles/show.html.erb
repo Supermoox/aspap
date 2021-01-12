@@ -4,7 +4,7 @@
       <div style="margin-bottom: 20px;">
         <% unless @article.image.blank? %>
           <div class="article_image">
-            <%= image_tag @article.image.url(:large)%>          
+            <%= image_tag @article.image %>          
           </div>  
         <% end %> 
       </div>
