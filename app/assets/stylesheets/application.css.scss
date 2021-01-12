@@ -41,8 +41,11 @@ body{
 }
 
 .first-top-layer{
-  background-color: #708090;
+  background-color: white;
   vertical-align: middle;
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
 }
 
 
@@ -110,7 +113,7 @@ body{
 
 .logo img{
 	height: 38px;
-	width: 80px;
+	width: 100px;
 
 	border-radius: 4px;
 
@@ -435,7 +438,6 @@ textarea{
 
 .navbar-default {
   background-color: #708090;
-  padding-left: 18%;
   border-color: #708090;
 }
 
@@ -592,8 +594,8 @@ p#post-text{
 }
 
 .easy-autocomplete.eac-round input {
-    border: 2px solid #888;
-    border-radius: 10px;
+    border: 1px solid #F5F5F5;
+    border-radius: 0;
     color: #888;
     font-family: inherit;
     font-size: 16px;
@@ -611,10 +613,8 @@ p#post-text{
 }
 .autosearch{
 	padding: 3px;
-	background-color: #6495ED;
-	text-align: center;
-	border-radius: 18px;
-	border: 1px solid white;
+	text-align: right;
+
 }
 .easy-autocomplete input{
 	border: 0;
@@ -637,7 +637,7 @@ p#post-text{
 	font-size: 1.5em;
 }
 .stack_white{
-	color: white;
+	color: #38678b;
 }
 .stack_blue{
 	color: #38678b;
@@ -691,4 +691,14 @@ $size: 24px;
 }
 .image_caption a{
 	color:white;
+}
+.user_content_pic a{
+	color: white;
+}
+.col-transparent{
+	padding:0;
+}
+.logo a img{
+	width: 100px;
+	height: 100px;
 }

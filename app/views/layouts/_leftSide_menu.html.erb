@@ -1,95 +1,63 @@
-<% if user_signed_in? %>
-		<div class="row user_content">
-			<div class="user_content_pic">
-				<div class="profile-pic-small">
-		      <% if current_user.image.blank? %>
-	          <div style="position: relative; left: 0; top: 0;">
-	            <span ><img src="<%= asset_path( 'default_user.png' ) %>" /></span>
-	          </div>
-		      <% else %>
-		        <p></p>
-	          <div style="position: relative; left: 0; top: 0;">
-	            <span ><%= link_to (image_tag current_user.image) , current_user %></span>
-	          </div>
-		        
-		      <% end %>		
-				</div>
-			</div>
 
-			<div class="welcome_user">
-				<span>Welcome, <%= link_to  current_user.firstname , current_user %>!</span>
-        <% unless current_user.membership.blank? %>
-          <%= link_to current_user.membership do %>
-            <p style="color: black; font-size: 14px; font-family: times; font-style: italic;">
-             <% if current_user.membership.kind == "Executive" %>
-                <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-                <span style="color: gold;">(Executive)</span>
-              <% elsif current_user.membership.kind == "Proffesional" %>
-                <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-                <span style="color: #7CFC00;">(Professional)</span>
-              <% else %>
-                <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-                <span style="color: #835220;">(Student)</span>
-              <% end %>               
-              <span> Certified </span>
-              <span>member! </span>
-            </p>
-          <% end %>
-        <% end %> 
-			</div>		
-			<div style="text-align: center; padding-bottom: 10px;">
-				<span style="font-size: 12px;">
-				<%= link_to  'View your Profile', current_user %>
-				</span>
-			</div>
-		</div>
-<% else %>
 	<div class="row user_content">
 		<div class="user_content_pic">
 			<div class="profile-pic-small">
-								
+				<div class="row">
+					<div class="col-xs-6 col-ms-6 col-md-8 col-transparent">
+						<div class="left_transparent">
+
+							<h5 id="leftside-content-links">
+								<span style="margin-right: 10px;"> <i class="fa fa-users" aria-hidden="true"></i></span>
+								<%= link_to "ASPAP Network" , users_path %>
+							</h5>
+					    <h5 id="leftside-content-links">
+					    	<span style="margin-right: 10px;"><i class="fa fa-comments-o"  aria-hidden="true"></i></span>
+					    	<%= link_to "Discussions" ,posts_path(@posts) %> 
+					    </h5>
+
+					    <h5 id="leftside-content-links">
+					    	<span style="margin-right: 10px;"><i class="fa fa-picture-o"  aria-hidden="true"></i></span>
+					    	<%= link_to "Gallery" ,pictures_path(@posts) %> 
+					    </h5>
+
+
+
+					    <% if user_signed_in? %>
+								<div class="dropdown">
+							    <h5 id="leftside-content-links">
+							    	<span style="margin-right: 10px;"><i class="fa fa-bars"  aria-hidden="true"></i>
+							    		<span style="margin-left: 10px;">Manage Acc</span>
+							    	</span>
+							    </h5>
+
+								  <div class="dropdown-content">
+								    
+										<% if !current_user.membership.blank? %>
+									  	<h5 id="side-content-links"> <%= link_to "My Membership" , current_user.membership %></h5>
+										<% end %>
+
+										<% if !current_user.downloads.blank? %>
+									  	<h5 id="side-content-links"> <%= link_to "My Application" , my_applications_path %></h5>
+										<% end %>
+
+									  <h5 id="side-content-links"> <%= link_to "My Posts" , my_posts_path %></h5>
+									  <h5 id="side-content-links"> <%= link_to "My Manuscripts" , my_manuscripts_path %></h5>
+									  <h5 id="side-content-links"> <%= link_to "My Research" , my_researches_path %></h5>
+									  <h5 id="side-content-links"> <%= link_to "My Articles" , my_articles_path %></h5>
+									 	<h5 id="side-content-links"><%= link_to "My Account" , edit_user_registration_path %></h5>
+
+								  </div>
+								</div>
+							<% end %>
+						</div>
+					</div>
+					<div class="col-xs-6 col-ms-6 col-md-4"></div>
+				</div>
 			</div>
-			</div>
-			<h3 style="color: black;"> <%= link_to "Sign Up!", new_user_registration_path %></h3>	
-			<%= link_to users_path  do %>
-			<div class="welcome_user">
-				<span> View the ASPAP </span>
-			</div>		
-			<div style="text-align: center; padding-bottom: 10px;">
-				<span style="font-size: 12px;">Network</span>
-			</div>
-		<% end %>
+		</div>
 	</div>
-<% end %>
 
-<div class="row side-content-bottom">
-		<h5 id="side-content-links"> <i class="fa fa-users" aria-hidden="true"></i>
-			<%= link_to "ASPAP Network" , users_path %>
-		</h5>
-    <h5 id="side-content-links">
-    	<span style="margin-right: 10px;"><i class="fa fa-comments-o"  aria-hidden="true"></i></span>
-    	<%= link_to "Discussions" ,posts_path(@posts) %> 
-    </h5>      
-    <h5 id="side-content-links">
-    	<span style="margin-right: 10px;"><i class="fa fa-picture-o"  aria-hidden="true"></i></span>
-    	<%= link_to "Gallery" ,pictures_path(@posts) %> 
-    </h5>   
-		<% if user_signed_in? %>
-			<% if !current_user.membership.blank? %>
-		  	<h5 id="side-content-links"> <%= link_to "My Membership" , current_user.membership %></h5>
-			<% end %>
 
-			<% if !current_user.downloads.blank? %>
-		  	<h5 id="side-content-links"> <%= link_to "My Application" , my_applications_path %></h5>
-			<% end %>
-
-		  <h5 id="side-content-links"> <%= link_to "My Posts" , my_posts_path %></h5>
-		  <h5 id="side-content-links"> <%= link_to "My Manuscripts" , my_manuscripts_path %></h5>
-		  <h5 id="side-content-links"> <%= link_to "My Research" , my_researches_path %></h5>
-		  <h5 id="side-content-links"> <%= link_to "My Articles" , my_articles_path %></h5>
-		 	<h5 id="side-content-links"><%= link_to "My Account" , edit_user_registration_path %></h5>
-		<% end %>
-</div>
 
 <% if user_signed_in?%>
 	<div class="row administrative_content">

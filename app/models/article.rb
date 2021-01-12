@@ -9,7 +9,7 @@ class Article < ApplicationRecord
   # This method associates the attribte ":avatar" with a file attachment
   has_attached_file :image, styles: {
     thumb: '100x100>',
-    square: '200x200#',
+    square: '270x160>',
     large: '400x400>'
   }
   # Validate the attached image is image/jpg, image/png, etc

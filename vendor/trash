@@ -2,77 +2,115 @@ bundle exec rake assets:precompile
 
 
 
-//removed this line form header.html.erb 
-    <%= form_for  @search do |f| %>    
-      <%= link_to root_path do %>
-        <span class="logo">  <img src="<%= asset_path( 'logo.png' ) %>" /></span>
-      <% end %>
-      <span><%= f.text_field :keywords, :placeholder =>"Publications, articles, People or discussions" %></span>
-      <span><%= f.button fa_icon("search"), class: "btn-search-submit" %></span>
-    <% end %>
-
-
-
-+ " <img src='"  + element.image  + " ' >"
-
-
-
-
-<script type="text/javascript">
-  
-  $(document).ready(function(){
-
-    //Check if the current URL contains '#' 
-    if(document.URL.indexOf("#")==-1)
-    {
-        // Set the URL to whatever it was plus "#".
-        url = document.URL+"#";
-        location = "#";
-
-        //Reload the page
-        location.reload(true);
-    }
-});
-</script>
-
-
-<span style="float: left;"><%=  twitter_button %></span>
-<span style="float: left; margin-left: 10px;"><%=  facebook_button %></span>
-<span style="float: left; margin-left: 10px;"><%=  linkedin_button %></span>
-
-
-<div id="slideshow">
-          <% @events.each do |event| %>
-            <div>
-              <%= link_to event do %>
-              <p id="event_fade" ">
-                <span style="font-size: 16px;color: #32CD32;"><i class="fa fa-tasks"></i> 
-                </span> 
-                <span style="font-size: 14px;color: black;"><%=  event.title %> </span><br>
-                <span><%= event.body %> </span> 
-              </p>
-              <% end %>
-            </div>
-          <% end %>
+<div class="row first-top-layer">
+  <div class="col-md-7 searcher">
+    
+    <div class="row">
+      <div class="col-md-4 top-left-col">
+        <%= link_to root_path do %>
+          <span class="logo">  <img src="<%= asset_path( 'logo.png' ) %>" /></span>
+        <% end %>  
       </div>
-
-
-
-  <div class="row">
-    <div class="col-md-4 write_botton_article">
-      <span style="color: grey; font-size: 14px;margin-left: 20px; ; color: black;"><i class="fa fa-newspaper-o"></i><%= link_to "Write an ASPAP Article" ,new_article_path %> 
-      </span>
-    </div>    
-    <div class="col-md-4 write_botton_journal">
-      <span style="color: grey; font-size: 14px; color:grey; margin-left: 20px"><i class="fa fa-book"></i><%= link_to "Journal (Pure & Applied)" ,journals_path(@journals) %> </span>  
-    </div>       
-    <div class="col-md-4 write_botton_post">
-      <div type="button" class="openPostBox_home" data-toggle="modal" data-target="#myModal">
-        <span style="font-size: 24px;color: grey;"><i class="fa fa-edit" aria-hidden="true"> </i> </span>
-        <span style="font-size: 18px; color: grey;">Start a discussion...</span>
-      </div> 
-    </div>    
+      <div class="col-md-8 top-left-col"> 
+        <%= form_with url: find_path, local: true, method: :get, html: {class: "autosearch"} do |form| %>
+            <span style="color: white; font-size: 16px; "><i class="fa fa-search" aria-hidden="true"> </i> </span>
+            <span><%= form.text_field :q, placeholder: "Search...", data: { behavior: "autocomplete" }  %></span>
+        <% end %>    
+      </div>
+    </div>
   </div>
+
+  <div class="col-md-5 account">
+      <% if user_signed_in? %>
+        <span class="fa-stack" data-toggle="dropdown">
+            <% if  @notifications == 0 %>
+              <span class="fa fa-bell fa-stack-2x stack_blue"></span>
+            <% else %>
+              <span class="fa fa-bell fa-stack-2x stack_white"></span>
+            <% end %>
+            <span class="fa-stack-1x">
+              <span style="color:red;">
+                <% unless @notifications == 0 %>
+                  <span class="label label-danger pull-right"><%= @notifications %> </span>
+                <% end %>
+              </span>  
+            </span>
+        </span>
+        <ul class="dropdown-menu dropdown-menu-notification">
+          <% unless @active_posts.blank?  %>
+            <strong>Posts</strong>
+            <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
+            <% @active_posts.each do |post| %>
+              <li>
+                <%= link_to post do %>
+                  <p id="noti-item">
+                    <p id="trunc"><span style="color: blue;"><%=  post.title  %></span></p>
+                    <span style="font-size: small; color: black; font-style: italic;">(<%=  post.counter %> new comments) </span>
+                  </p>
+                <% end %>
+              </li>
+            <% end %>  
+          <% end %>  
+          <% unless @active_articles.blank?  %>
+            <strong>Articles</strong>   
+            <hr style="height:2px;border:none;color:#333;background-color:#708090;" />       
+            <% @active_articles.each do |article| %>
+              <li>
+                <%= link_to article do %>
+                  <p id="noti-item">
+                    <p id="trunc"><span style="color: blue;"><%=  article.title  %></span></p>
+                    <span style="font-size: small; color: black; font-style: italic;">(<%=  article.counter %> new comments) </span>
+                  </p>
+                <% end %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </span> 
+
+      <span class="fa-stack"">
+        <%= link_to mailbox_inbox_path do %>
+          <% if  unread_messages_count == 0 %>
+             <span class="fa fa-envelope fa-stack-2x"></span>
+          <% else %>
+            <span class="fa fa-envelope fa-stack-2x stack_white"></span>
+          <% end %> 
+          <span class="fa-stack-1x">
+            <% unless unread_messages_count == 0 %>
+              <span class="label label-danger pull-right"><%=unread_messages_count%> </span>
+            <% end %>
+          </span>
+        <% end %>
+      </span>
+
+      <span class="top-right-item"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></span> 
+      <%= link_to current_user do %>
+        <span id="user_name"><%= current_user.firstname %> </span>
+          <% unless current_user.membership.blank? %>
+            <span style="font-size: 14px; font-family: times; font-style: italic;">
+             <% if current_user.membership.kind == "Executive" %>
+                <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+              <% elsif current_user.membership.kind == "Proffesional" %>
+                <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+              <% else %>
+                <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+              <% end %>               
+            </span>
+          <% end %> 
+        <% if current_user.image.blank? %>
+          <span id="user_avatar"><img src="<%= asset_path( 'default_user.png', alt: "avatar" ) %>" /></span>
+        <% else %>
+          <span id="user_avatar"><%= image_tag current_user.image %> </span>
+        <% end %>
+      <% end %>
+    <% else %>
+      <span class="top-right-item">
+        <span style="float: right; margin-top: 20px;"><%= link_to "Register", new_user_registration_path %></span>
+      </span>
+      <span class="top-right-item"><span style="float: right; margin-top: 20px;"><%= link_to "Log In", new_user_session_path %></span></span>
+    <% end %>
+  </div>
+</div>
 
 
 

@@ -2,14 +2,14 @@
   <div class="col-md-7 searcher">
     
     <div class="row">
-      <div class="col-md-4 top-left-col">
+      <div class="col-xs-3 col-ms-3 col-md-4 top-left-col">
         <%= link_to root_path do %>
-          <span class="logo">  <img src="<%= asset_path( 'logo.png' ) %>" /></span>
+          <span class="logo">  <img src="<%= asset_path( 'logo4.png' ) %>" /></span>
         <% end %>  
       </div>
-      <div class="col-md-8 top-left-col"> 
+      <div class="col-xs-9 col-ms-9 col-md-8 top-left-col"> 
         <%= form_with url: find_path, local: true, method: :get, html: {class: "autosearch"} do |form| %>
-            <span style="color: white; font-size: 16px; "><i class="fa fa-search" aria-hidden="true"> </i> </span>
+            <span style="color: #0d0d3f; font-size: 15px; "><i class="fa fa-search" aria-hidden="true"> </i> </span>
             <span><%= form.text_field :q, placeholder: "Search...", data: { behavior: "autocomplete" }  %></span>
         <% end %>    
       </div>
@@ -101,9 +101,9 @@
       <% end %>
     <% else %>
       <span class="top-right-item">
-        <span style="float: right; margin-top: 20px;"><%= link_to "Register", new_user_registration_path %></span>
+        <span style="float: right; margin-top: 20px; font-weight: bold;"><%= link_to "Register", new_user_registration_path %></span>
       </span>
-      <span class="top-right-item"><span style="float: right; margin-top: 20px;"><%= link_to "Log In", new_user_session_path %></span></span>
+      <span class="top-right-item"><span style="float: right; margin-top: 20px; font-weight: bold;"><%= link_to "Log In", new_user_session_path %></span></span>
     <% end %>
   </div>
 </div>

@@ -9,7 +9,7 @@
                 <% if article.image.blank? %>
                    
                 <% else %>
-                  <%=  (image_tag article.image) %>
+                  <%=  (image_tag article.image.url(:large)) %>
                 <% end %>
               </div>  
               <div class = "caption">
@@ -29,4 +29,3 @@
       <p> <%= will_paginate @articles %> </p>
   </div>
 </div>
- 

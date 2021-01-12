@@ -13,7 +13,7 @@
                   </div>
                 <% else %>
                   <div id="user_avatar2">
-                    <span ><%= image_tag user.image %></span>
+                    <span ><%= image_tag user.image.url(:large) %></span>
                   </div>
                 <% end %>
                 <div class="fadded_user">
