@@ -39,7 +39,14 @@ body{
 .header{
 	background-color:	#708090;
 }
+.header_row{
+  background-color: white;
+  vertical-align: middle;
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
 
+}
 .first-top-layer{
   background-color: white;
   vertical-align: middle;
@@ -112,9 +119,8 @@ body{
 }
 
 .logo img{
-	height: 38px;
-	width: 100px;
-
+	height: 45px;
+	width: 150px;
 	border-radius: 4px;
 
 }
@@ -617,8 +623,7 @@ p#post-text{
 
 }
 .autosearch{
-	padding: 3px;
-	text-align: right;
+	min-width: 300px;
 
 }
 .easy-autocomplete input{
@@ -707,3 +712,32 @@ $size: 24px;
 	width: 100px;
 	height: 100px;
 }
+
+.navbar-nav{
+	float: right;
+}
+.navbar-default{
+	background-color: white;
+	border-color: #ccc;
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
+.navbar{
+	border-radius: 0;
+}
+li{
+	margin-left: 30px;
+	margin-top: 20px;
+	font-family: inherit;
+	font-size: 16px;
+	font-weight: bold;
+}
+.nav > li > a{
+	display: inline;
+}
+
+
+
+
+
+

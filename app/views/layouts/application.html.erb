@@ -15,6 +15,7 @@
   <body>
 
     <%= render 'layouts/header' %>
+    
     <div class="row wrapper">
       <% flash.each do |name, msg| %>
         <%= content_tag(:p, msg, class: "alert") %>

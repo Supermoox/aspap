@@ -1,115 +1,136 @@
-<div class="row first-top-layer">
-  <div class="col-md-7 searcher">
-    
-    <div class="row">
-      <div class="col-xs-3 col-ms-3 col-md-4 top-left-col">
+<div class="row header_row">
+  
+  <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+         
         <%= link_to root_path do %>
           <span class="logo">  <img src="<%= asset_path( 'logo4.png' ) %>" /></span>
-        <% end %>  
-      </div>
-      <div class="col-xs-9 col-ms-9 col-md-8 top-left-col"> 
-        <%= form_with url: find_path, local: true, method: :get, html: {class: "autosearch"} do |form| %>
-            <span style="color: #0d0d3f; font-size: 15px; "><i class="fa fa-search" aria-hidden="true"> </i> </span>
-            <span><%= form.text_field :q, placeholder: "Search...", data: { behavior: "autocomplete" }  %></span>
-        <% end %>    
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-5 account">
-      <% if user_signed_in? %>
-        <span class="fa-stack" data-toggle="dropdown">
-            <% if  @notifications == 0 %>
-              <span class="fa fa-bell fa-stack-2x stack_blue"></span>
-            <% else %>
-              <span class="fa fa-bell fa-stack-2x stack_white"></span>
-            <% end %>
-            <span class="fa-stack-1x">
-              <span style="color:red;">
-                <% unless @notifications == 0 %>
-                  <span class="label label-danger pull-right"><%= @notifications %> </span>
-                <% end %>
-              </span>  
-            </span>
-        </span>
-        <ul class="dropdown-menu dropdown-menu-notification">
-          <% unless @active_posts.blank?  %>
-            <strong>Posts</strong>
-            <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
-            <% @active_posts.each do |post| %>
-              <li>
-                <%= link_to post do %>
-                  <p id="noti-item">
-                    <p id="trunc"><span style="color: blue;"><%=  post.title  %></span></p>
-                    <span style="font-size: small; color: black; font-style: italic;">(<%=  post.counter %> new comments) </span>
-                  </p>
-                <% end %>
-              </li>
-            <% end %>  
-          <% end %>  
-          <% unless @active_articles.blank?  %>
-            <strong>Articles</strong>   
-            <hr style="height:2px;border:none;color:#333;background-color:#708090;" />       
-            <% @active_articles.each do |article| %>
-              <li>
-                <%= link_to article do %>
-                  <p id="noti-item">
-                    <p id="trunc"><span style="color: blue;"><%=  article.title  %></span></p>
-                    <span style="font-size: small; color: black; font-style: italic;">(<%=  article.counter %> new comments) </span>
-                  </p>
-                <% end %>
-              </li>
-            <% end %>
-          <% end %>
-        </ul>
-      </span> 
-
-      <span class="fa-stack"">
-        <%= link_to mailbox_inbox_path do %>
-          <% if  unread_messages_count == 0 %>
-             <span class="fa fa-envelope fa-stack-2x"></span>
-          <% else %>
-            <span class="fa fa-envelope fa-stack-2x stack_white"></span>
-          <% end %> 
-          <span class="fa-stack-1x">
-            <% unless unread_messages_count == 0 %>
-              <span class="label label-danger pull-right"><%=unread_messages_count%> </span>
-            <% end %>
-          </span>
         <% end %>
-      </span>
+      </div>
 
-      <span class="top-right-item"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></span> 
-      <%= link_to current_user do %>
-        <span id="user_name"><%= current_user.firstname %> </span>
-          <% unless current_user.membership.blank? %>
-            <span style="font-size: 14px; font-family: times; font-style: italic;">
-             <% if current_user.membership.kind == "Executive" %>
-                <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-              <% elsif current_user.membership.kind == "Proffesional" %>
-                <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">        
+            <li> 
+              <%= form_with url: find_path, local: true, method: :get, html: {class: "autosearch"} do |form| %>
+                  <span style="color: #0d0d3f; font-size: 15px; "><i class="fa fa-search" aria-hidden="true"> </i> </span>
+                  <span><%= form.text_field :q, placeholder: "Search...", data: { behavior: "autocomplete" }  %></span>
+              <% end %>  
+            </li>              
+            <li> 
+               <span class="top-right-item"><strong><%= link_to "About ASPAP", abouts_path %></strong></span>
+            </li>          
+            <li> 
+               <span class="top-right-item"><strong> <%= link_to "ASPAP Journal" , journal_pages_path %></strong></span>
+            </li>              
+            <li> 
+               <span class="top-right-item"><strong><%= link_to "Research" , researches_path %></strong></span>
+            </li>          
+              
+
+            <li>
+
+              <span>
+                <% if user_signed_in? %>
+                  <span class="fa-stack" data-toggle="dropdown">
+                      <% if  @notifications == 0 %>
+                        <span class="fa fa-bell fa-stack-2x stack_blue"></span>
+                      <% else %>
+                        <span class="fa fa-bell fa-stack-2x stack_white"></span>
+                      <% end %>
+                      <span class="fa-stack-1x">
+                        <span style="color:red;">
+                          <% unless @notifications == 0 %>
+                            <span class="label label-danger pull-right"><%= @notifications %> </span>
+                          <% end %>
+                        </span>  
+                      </span>
+                  </span>
+                  <ul class="dropdown-menu dropdown-menu-notification">
+                    <% unless @active_posts.blank?  %>
+                      <strong>Posts</strong>
+                      <hr style="height:2px;border:none;color:#333;background-color:#708090;" />
+                      <% @active_posts.each do |post| %>
+                        <li>
+                          <%= link_to post do %>
+                            <p id="noti-item">
+                              <p id="trunc"><span style="color: blue;"><%=  post.title  %></span></p>
+                              <span style="font-size: small; color: black; font-style: italic;">(<%=  post.counter %> new comments) </span>
+                            </p>
+                          <% end %>
+                        </li>
+                      <% end %>  
+                    <% end %>  
+                    <% unless @active_articles.blank?  %>
+                      <strong>Articles</strong>   
+                      <hr style="height:2px;border:none;color:#333;background-color:#708090;" />       
+                      <% @active_articles.each do |article| %>
+                        <li>
+                          <%= link_to article do %>
+                            <p id="noti-item">
+                              <p id="trunc"><span style="color: blue;"><%=  article.title  %></span></p>
+                              <span style="font-size: small; color: black; font-style: italic;">(<%=  article.counter %> new comments) </span>
+                            </p>
+                          <% end %>
+                        </li>
+                      <% end %>
+                    <% end %>
+                  </ul>
+                </span> 
+
+                <span class="fa-stack"">
+                  <%= link_to mailbox_inbox_path do %>
+                    <% if  unread_messages_count == 0 %>
+                       <span class="fa fa-envelope fa-stack-2x"></span>
+                    <% else %>
+                      <span class="fa fa-envelope fa-stack-2x stack_white"></span>
+                    <% end %> 
+                    <span class="fa-stack-1x">
+                      <% unless unread_messages_count == 0 %>
+                        <span class="label label-danger pull-right"><%=unread_messages_count%> </span>
+                      <% end %>
+                    </span>
+                  <% end %>
+                </span>
+
+                <span class="top-right-item"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></span> 
+                <%= link_to current_user do %>
+                  <span id="user_name"><%= current_user.firstname %> </span>
+                    <% unless current_user.membership.blank? %>
+                      <span style="font-size: 14px; font-family: times; font-style: italic;">
+                       <% if current_user.membership.kind == "Executive" %>
+                          <span style="color: gold;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                        <% elsif current_user.membership.kind == "Proffesional" %>
+                          <span style="color: #7CFC00;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                        <% else %>
+                          <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
+                        <% end %>               
+                      </span>
+                    <% end %> 
+                  <% if current_user.image.blank? %>
+                    <span id="user_avatar"><img src="<%= asset_path( 'default_user.png', alt: "avatar" ) %>" /></span>
+                  <% else %>
+                    <span id="user_avatar"><%= image_tag current_user.image %> </span>
+                  <% end %>
+                <% end %>
               <% else %>
-                <span style="color: #835220;"><i class="fa fa-address-card" aria-hidden="true"> </i> </span>
-              <% end %>               
-            </span>
-          <% end %> 
-        <% if current_user.image.blank? %>
-          <span id="user_avatar"><img src="<%= asset_path( 'default_user.png', alt: "avatar" ) %>" /></span>
-        <% else %>
-          <span id="user_avatar"><%= image_tag current_user.image %> </span>
-        <% end %>
-      <% end %>
-    <% else %>
-      <span class="top-right-item">
-        <span style="float: right; margin-top: 20px; font-weight: bold;"><%= link_to "Register", new_user_registration_path %></span>
-      </span>
-      <span class="top-right-item"><span style="float: right; margin-top: 20px; font-weight: bold;"><%= link_to "Log In", new_user_session_path %></span></span>
-    <% end %>
-  </div>
+                <span class="top-right-item">
+                  <span><%= link_to "Register", new_user_registration_path %></span>
+                </span>
+                <span class="top-right-item"><%= link_to "Log In", new_user_session_path %></span></span>
+              <% end %>
+            </li>
+        </ul>
+
+      </div><!-- /.navbar-collapse -->
+  </nav>
 </div>
-
-
-
-
 
 
