@@ -48,10 +48,21 @@
 
 								  </div>
 								</div>
+							<% else %>
+							    <h5 id="leftside-content-links">
+							    	<span style="margin-right: 10px;"><i class="fa fa-user"  aria-hidden="true"></i>
+							    		<span  style="margin-left: 10px;"><%= link_to "Join", new_user_registration_path %></span> 
+							    		<span  style="margin-left: 10px;">|</span> 
+							    		<span style="margin-left: 10px;"><%= link_to "Log In", new_user_session_path %></span>
+							    	</span>
+							    </h5>
+
 							<% end %>
 						</div>
 					</div>
-					<div class="col-xs-6 col-ms-6 col-md-4"></div>
+					<div class="col-xs-6 col-ms-6 col-md-4">
+
+					</div>
 				</div>
 			</div>
 		</div>
