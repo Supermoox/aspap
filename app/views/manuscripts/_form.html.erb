@@ -26,7 +26,7 @@
         </div>    
         <% if current_user.publisher? %>
           <div class="form-group">
-            <p id="form-lebel"><%= form.label :Publish_For %><span style="color: grey;">Write the user Id for the user you are publishing for.</span><p>
+            <p id="form-lebel"><%= form.label :Publish_For %><span style="color: red; font-size: small; font-style: italic; margin-left: 10px;">Paste here the user Id found on the manuscript request</span><p>
             <%= form.number_field :user_id , :required => true %>
           </div>
         <% end %>
