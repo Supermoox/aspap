@@ -4,11 +4,16 @@
       <div class="panel-body">
         <div class="row">
 
-          <p style="margin: 10px;"> 
-            <span> User ID: </span>
-            <span style="color: black; font-weight: bold; margin-right: 10px;"><%= @manuscript.user.id %>  </span>
-            <span style="color: red; font-size: small; font-style: italic;">   Use this when creating the user's manuscript. </span>
-          </p>
+
+          <% if @manuscript.approval? %>
+
+          <% else %>
+            <p style="margin: 10px;"> 
+              <span> User ID: </span>
+              <span style="color: black; font-weight: bold; margin-right: 10px;"><%= @manuscript.user.id %>  </span>
+              <span style="color: red; font-size: small; font-style: italic;">   Use this when creating the user's manuscript. </span>
+            </p>
+          <% end %>
 
           <div class="col-sm-3 ">
               <div class="thumbnail thumbnail-manuscript">
@@ -57,69 +62,71 @@
           </div>  
         </div>
         <div class="row review_manuscript">
-        <% if current_user.vip? %>
-          <% if @reviews.blank? %>
-            <h3>No rating just yet.Be first to rate this Work!</h3>
-          <% else %>
-            <% @reviews.each do |review| %>
-              <div class="reviews"> 
-    		  			<div class="comment">
-    		          <div class="row">
-    		            <div class="col-md-2 comment-owner"> 
-    		              <% if review.user.image.blank? %>
-                        <img src="<%= asset_path( 'user.png' ) %>" />
-    		              <% else %>
-    		                <span id="user_avatar"><%= image_tag review.user.image %> </span>
-    		              <% end %>
-    		            </div>
-    		    				<div class="col-md-10 comment-body">
-    		              <p class="media-heading">
-    		                <span style="color: #6495EA; font-size: small"><%= review.user.firstname %>  </span> 
-    		              </p>
-    		              <div class="star-rating" data-score= <%= review.rating %> > </div>
-    		              <p style="font-size: large; font-family: initial; "><%= review.comment %> </p>
-    		              <h5 class="media-heading">
-    		                <small><%= review.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
-    		              </h5>
-    		            </div>
-    		          </div>
-    		        </div>
-              </div>
-       		  <% end %>
-          <% end %>
-        <% else %>
-            <% unless @user_reviews.blank? %>
-              <h3 id="form-header">Your Review </h3>
-              <% @user_reviews.each do |review| %>
-                <div class="reviews"> 
-                  <div class="comment">
-                    <div class="row">
-                      <div class="col-md-2 comment-owner"> 
-                        <% if review.user.image.blank? %>
-                          <img src="<%= asset_path( 'user.png' ) %>" />
-                        <% else %>
-                          <span id="user_avatar"><%= image_tag review.user.image %> </span>
-                        <% end %>
-                      </div>
-                      <div class="col-md-10 comment-body">
-                        <p class="media-heading">
-                          <span style="color: #6495EA; font-size: small"><%= review.user.firstname %>  </span> 
-                        </p>
-                        <div class="star-rating" data-score= <%= review.rating %> > </div>
-                        <p style="font-size: large; font-family: initial; "><%= simple_format(review.comment) %> </p>
-                        <h5 class="media-heading">
-                          <small><%= review.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
-                        </h5>
+          <% unless @manuscript.approval? %>
+            <% if current_user.vip? %>
+              <% if @reviews.blank? %>
+                <h3>No rating just yet.Be first to rate this Work!</h3>
+              <% else %>
+                <% @reviews.each do |review| %>
+                  <div class="reviews"> 
+        		  			<div class="comment">
+        		          <div class="row">
+        		            <div class="col-md-2 comment-owner"> 
+        		              <% if review.user.image.blank? %>
+                            <img src="<%= asset_path( 'user.png' ) %>" />
+        		              <% else %>
+        		                <span id="user_avatar"><%= image_tag review.user.image %> </span>
+        		              <% end %>
+        		            </div>
+        		    				<div class="col-md-10 comment-body">
+        		              <p class="media-heading">
+        		                <span style="color: #6495EA; font-size: small"><%= review.user.firstname %>  </span> 
+        		              </p>
+        		              <div class="star-rating" data-score= <%= review.rating %> > </div>
+        		              <p style="font-size: large; font-family: initial; "><%= review.comment %> </p>
+        		              <h5 class="media-heading">
+        		                <small><%= review.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
+        		              </h5>
+        		            </div>
+        		          </div>
+        		        </div>
+                  </div>
+           		  <% end %>
+              <% end %>
+            <% else %>
+              <% unless @user_reviews.blank? %>
+                <h3 id="form-header">Your Review </h3>
+                <% @user_reviews.each do |review| %>
+                  <div class="reviews"> 
+                    <div class="comment">
+                      <div class="row">
+                        <div class="col-md-2 comment-owner"> 
+                          <% if review.user.image.blank? %>
+                            <img src="<%= asset_path( 'user.png' ) %>" />
+                          <% else %>
+                            <span id="user_avatar"><%= image_tag review.user.image %> </span>
+                          <% end %>
+                        </div>
+                        <div class="col-md-10 comment-body">
+                          <p class="media-heading">
+                            <span style="color: #6495EA; font-size: small"><%= review.user.firstname %>  </span> 
+                          </p>
+                          <div class="star-rating" data-score= <%= review.rating %> > </div>
+                          <p style="font-size: large; font-family: initial; "><%= simple_format(review.comment) %> </p>
+                          <h5 class="media-heading">
+                            <small><%= review.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
+                          </h5>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                <% end %>
               <% end %>
             <% end %>
-        <% end %>
+          <% end %>
         </div>
       </div>
-      <% unless @already_reviewd %>
+      <% unless @already_reviewd || @manuscript.approval? %>
         <%= render 'layouts/review' %>
       <% end %>
     </div> 

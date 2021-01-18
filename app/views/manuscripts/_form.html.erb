@@ -15,6 +15,8 @@
           </div>
         <% end %>
 
+
+
         <div class="form-group">
           <p id="form-lebel"><%= form.label :title %><p>
           <%= form.text_field :title, id: :form_inpu, :required => true %>
@@ -26,10 +28,30 @@
         </div>    
         <% if current_user.publisher? %>
           <div class="form-group">
-            <p id="form-lebel"><%= form.label :Publish_For %><span style="color: red; font-size: small; font-style: italic; margin-left: 10px;">Paste here the user Id found on the manuscript request</span><p>
-            <%= form.number_field :user_id , :required => true %>
+            <p id="form-lebel"><%= form.label :Publish_For , :required => true %>
+              <span style="color: grey; font-size: small; font-style: italic; margin-left: 10px;">
+                Are you publishing for yourserlf or for another user?
+              </span>
+            <p>
+            
+            <div class="form-group">
+              <select name="tournament[mode]" id="tournament_mode" onchange="yesnoCheck(this);">
+                <option value="Round_Robin">Me</option>
+                <option value="Swiss_System">Other User</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <div id="ifYes" style="display: none;">
+              <div class="form-group">
+                <p id="form-lebel"><%= form.label :User_Id %><span style="color: red; font-size: small; font-style: italic; margin-left: 10px;">Paste here the user Id found on the manuscript request.</span></span>
+                <p>
+                <%= form.number_field :user_id  %>
+              </div>  
+            </div>
           </div>
         <% end %>
+
         <div class="form-group">
           <p id="form-lebel"><%= form.label :abstract %><p>
           <%= form.text_area :abstract, id: :manuscript_abstract, :required => true %>
@@ -77,3 +99,14 @@
     </div>
   </div>
 </div>
+
+
+<script type="text/javascript">
+  function yesnoCheck(that) {
+      if (that.value == "Swiss_System") {
+          document.getElementById("ifYes").style.display = "block";
+      } else {
+          document.getElementById("ifYes").style.display = "none";
+      }
+  }
+</script>
