@@ -3,6 +3,13 @@
     <div class="panel">
       <div class="panel-body">
         <div class="row">
+
+          <p style="margin: 10px;"> 
+            <span> User ID: </span>
+            <span style="color: black; font-weight: bold; margin-right: 10px;"><%= @manuscript.user.id %>  </span>
+            <span style="color: red; font-size: small; font-style: italic;">   Use this when creating the user's manuscript. </span>
+          </p>
+
           <div class="col-sm-3 ">
               <div class="thumbnail thumbnail-manuscript">
                 <%= image_tag @manuscript.image %>
@@ -15,13 +22,15 @@
             <% else %>
               <span id="user_avatar"><%= image_tag @manuscript.user.image %> </span>
             <% end %>
-            <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= @manuscript.user.firstname %></span>
+            <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= @manuscript.user.firstname %></span>           
+            <span style="color: #337ab7; font-style: italic; margin-left: 10px;"> <%= @manuscript.user.surname %></span>
             <span style="color: grey; float: right;"><%= @manuscript.created_at.strftime("%b %d, %Y")  %></span>
+
             <p> <%= @manuscript.abstract %>  </p>
             <p style="color:#337ab7;"> 
               <span>Vol. </span> 
               <span><%= @manuscript.volume %> </span>
-              <span>Issue</span> 
+              <span>Iss</span> 
               <span><%= @manuscript.issue %> </span>
               <span id="note3">
                 <% unless @manuscript.document.blank? %>
@@ -41,7 +50,6 @@
               <% end %>
               <% if current_user.vip? || current_user.publisher? %>
                 <span>
-                	<span style="margin-left: 10px; color: black;"><strong>Rating</strong></span>
                 	<span class="star-rating" data-score= <%= @avg_review %> > </span>
                 </span>  
               <% end %>          

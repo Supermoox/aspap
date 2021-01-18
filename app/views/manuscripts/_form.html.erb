@@ -26,8 +26,8 @@
         </div>    
         <% if current_user.publisher? %>
           <div class="form-group">
-            <p id="form-lebel"><%= form.label :Publish_For %><p>
-            <%= collection_select(:manuscript, :user_id, User.all, :id, :username, :prompt => "select user") %>
+            <p id="form-lebel"><%= form.label :Publish_For %><span style="color: grey;">Write the user Id for the user you are publishing for.</span><p>
+            <%= form.number_field :user_id , :required => true %>
           </div>
         <% end %>
         <div class="form-group">
