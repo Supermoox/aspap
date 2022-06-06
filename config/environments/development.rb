@@ -13,6 +13,15 @@ Rails.application.configure do
 
   
 
+  #config.paperclip_defaults = {
+  #  storage: :s3,
+  #  s3_credentials: {
+  #    bucket: ENV.fetch('S3_BUCKET_NAME'),
+  #   access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
+  #    secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
+  #    s3_region: ENV.fetch('AWS_REGION'),
+  #  }
+  #}
   config.paperclip_defaults = {
     storage: :s3,
     s3_credentials: {
@@ -21,6 +30,15 @@ Rails.application.configure do
       secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
       s3_region: ENV.fetch('AWS_REGION'),
     }
+  }
+
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV["EMAIL_LOGIN"],
+    password: ENV["EMAIL_PASSWORD"]
   }
 
   #for development user later opener

@@ -330,6 +330,12 @@ ActiveRecord::Schema.define(version: 20201022212927) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "titles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -349,6 +355,7 @@ ActiveRecord::Schema.define(version: 20201022212927) do
     t.datetime "image_updated_at"
     t.boolean "vip"
     t.boolean "editor"
+    t.integer "title_id"
     t.string "firstname"
     t.string "middlename"
     t.string "surname"
